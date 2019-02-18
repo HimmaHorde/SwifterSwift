@@ -9,12 +9,11 @@
 #if canImport(Dispatch)
 import Dispatch
 
-// MARK: - Properties
+// MARK: - 属性
 public extension DispatchQueue {
 
-    /// SwifterSwift: A Boolean value indicating whether the current
-    /// dispatch queue is the main queue.
-    public static var isMainQueue: Bool {
+    /// SwifterSwift: 返回当前队列是否是主队列
+    static var isMainQueue: Bool {
         enum Static {
             static var key: DispatchSpecificKey<Void> = {
                 let key = DispatchSpecificKey<Void>()
@@ -27,15 +26,14 @@ public extension DispatchQueue {
 
 }
 
-// MARK: - Methods
+// MARK: - 方法
 public extension DispatchQueue {
 
-    /// SwifterSwift: Returns a Boolean value indicating whether the current
-    /// dispatch queue is the specified queue.
+    /// SwifterSwift: 返回 bool 类型,判断当前队列是否是指定队列.
     ///
-    /// - Parameter queue: The queue to compare against.
-    /// - Returns: `true` if the current queue is the specified queue, otherwise `false`.
-    public static func isCurrent(_ queue: DispatchQueue) -> Bool {
+    /// - Parameter queue: 要比较的队列.
+    /// - Returns: 是指定队列返回`true`,否则返回`false`.
+    static func isCurrent(_ queue: DispatchQueue) -> Bool {
         let key = DispatchSpecificKey<Void>()
 
         queue.setSpecific(key: key, value: ())
