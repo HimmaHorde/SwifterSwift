@@ -34,7 +34,7 @@ public extension UITextField {
 public extension UITextField {
 
     /// SwifterSwift: Set textField for common text types.
-    public var textType: TextType {
+    var textType: TextType {
         get {
             if keyboardType == .emailAddress {
                 return .emailAddress
@@ -66,12 +66,12 @@ public extension UITextField {
     }
 
     /// SwifterSwift: Check if text field is empty.
-    public var isEmpty: Bool {
+    var isEmpty: Bool {
         return text?.isEmpty == true
     }
 
     /// SwifterSwift: Return text with no spaces or new lines in beginning and end.
-    public var trimmedText: String? {
+    var trimmedText: String? {
         return text?.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
@@ -83,7 +83,7 @@ public extension UITextField {
     ///		textField.text = "swifterswift"
     ///		textField.hasValidEmail -> false
     ///
-    public var hasValidEmail: Bool {
+    var hasValidEmail: Bool {
         // http://stackoverflow.com/questions/25471114/how-to-validate-an-e-mail-address-in-swift
         return text!.range(of: "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}",
                            options: String.CompareOptions.regularExpression,
@@ -91,7 +91,7 @@ public extension UITextField {
     }
 
     /// SwifterSwift: Left view tint color.
-    @IBInspectable public var leftViewTintColor: UIColor? {
+    @IBInspectable var leftViewTintColor: UIColor? {
         get {
             guard let iconView = leftView as? UIImageView else { return nil }
             return iconView.tintColor
@@ -104,7 +104,7 @@ public extension UITextField {
     }
 
     /// SwifterSwift: Right view tint color.
-    @IBInspectable public var rightViewTintColor: UIColor? {
+    @IBInspectable var rightViewTintColor: UIColor? {
         get {
             guard let iconView = rightView as? UIImageView else { return nil }
             return iconView.tintColor
