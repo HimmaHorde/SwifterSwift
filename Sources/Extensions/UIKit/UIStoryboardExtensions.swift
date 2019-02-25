@@ -23,7 +23,7 @@ public extension UIStoryboard {
     ///
     /// - Parameter name: UIViewController type
     /// - Returns: The view controller corresponding to specified class name
-    public func instantiateViewController<T: UIViewController>(withClass name: T.Type) -> T? {
+    func instantiateViewController<T: UIViewController>(withClass name: T.Type) -> T? {
         return instantiateViewController(withIdentifier: String(describing: name)) as? T
     }
 

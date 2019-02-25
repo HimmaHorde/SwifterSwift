@@ -37,14 +37,14 @@ public extension UIStackView {
     /// 批量添加 arrangedSubviews
     ///
     /// - Parameter views: views array.
-    public func addArrangedSubviews(_ views: [UIView]) {
+    func addArrangedSubviews(_ views: [UIView]) {
         for view in views {
             addArrangedSubview(view)
         }
     }
 
     /// 移除所有ArrangedSubviews
-    public func removeArrangedSubviews() {
+    func removeArrangedSubviews() {
         for view in arrangedSubviews {
             removeArrangedSubview(view)
         }

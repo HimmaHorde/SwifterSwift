@@ -50,7 +50,7 @@ extension UIEdgeInsets {
     /// - Parameters:
     ///   - top: Offset to be applied in to the top edge.
     /// - Returns: UIEdgeInsets offset with given offset.
-    public func insetBy(top: CGFloat) -> UIEdgeInsets {
+    func insetBy(top: CGFloat) -> UIEdgeInsets {
         return UIEdgeInsets(top: self.top + top, left: left, bottom: bottom, right: right)
     }
 
@@ -59,7 +59,7 @@ extension UIEdgeInsets {
     /// - Parameters:
     ///   - left: Offset to be applied in to the left edge.
     /// - Returns: UIEdgeInsets offset with given offset.
-    public func insetBy(left: CGFloat) -> UIEdgeInsets {
+    func insetBy(left: CGFloat) -> UIEdgeInsets {
         return UIEdgeInsets(top: top, left: self.left + left, bottom: bottom, right: right)
     }
 
@@ -68,7 +68,7 @@ extension UIEdgeInsets {
     /// - Parameters:
     ///   - bottom: Offset to be applied in to the bottom edge.
     /// - Returns: UIEdgeInsets offset with given offset.
-    public func insetBy(bottom: CGFloat) -> UIEdgeInsets {
+    func insetBy(bottom: CGFloat) -> UIEdgeInsets {
         return UIEdgeInsets(top: top, left: left, bottom: self.bottom + bottom, right: right)
     }
 
@@ -77,7 +77,7 @@ extension UIEdgeInsets {
     /// - Parameters:
     ///   - right: Offset to be applied in to the right edge.
     /// - Returns: UIEdgeInsets offset with given offset.
-    public func insetBy(right: CGFloat) -> UIEdgeInsets {
+    func insetBy(right: CGFloat) -> UIEdgeInsets {
         return UIEdgeInsets(top: top, left: left, bottom: bottom, right: self.right + right)
     }
 
@@ -86,7 +86,7 @@ extension UIEdgeInsets {
     /// - Parameters:
     ///   - horizontal: Offset to be applied to right and left.
     /// - Returns: UIEdgeInsets offset with given offset.
-    public func insetBy(horizontal: CGFloat) -> UIEdgeInsets {
+    func insetBy(horizontal: CGFloat) -> UIEdgeInsets {
         return UIEdgeInsets(top: top, left: left + horizontal/2, bottom: bottom, right: right + horizontal/2)
     }
 
@@ -95,7 +95,7 @@ extension UIEdgeInsets {
     /// - Parameters:
     ///   - vertical: Offset to be applied to top and bottom.
     /// - Returns: UIEdgeInsets offset with given offset.
-    public func insetBy(vertical: CGFloat) -> UIEdgeInsets {
+    func insetBy(vertical: CGFloat) -> UIEdgeInsets {
         return UIEdgeInsets(top: top + vertical/2, left: left, bottom: bottom + vertical/2, right: right)
     }
 }
