@@ -12,23 +12,23 @@ import UIKit
 // MARK: - Properties
 public extension UIImage {
 
-    /// SwifterSwift: Size in bytes of UIImage
-    public var bytesSize: Int {
+    /// 图片的大小 单位:bytes
+    var bytesSize: Int {
         return jpegData(compressionQuality: 1)?.count ?? 0
     }
 
-    /// SwifterSwift: Size in kilo bytes of UIImage
-    public var kilobytesSize: Int {
+    /// 图片大小 单位:KB ; 1KB = 1024Bytes
+    var kilobytesSize: Int {
         return bytesSize / 1024
     }
 
-    /// SwifterSwift: UIImage with .alwaysOriginal rendering mode.
-    public var original: UIImage {
+    /// 始终使用原图模式
+    var original: UIImage {
         return withRenderingMode(.alwaysOriginal)
     }
 
-    /// SwifterSwift: UIImage with .alwaysTemplate rendering mode.
-    public var template: UIImage {
+    /// 始终使用渲染模式
+    var template: UIImage {
         return withRenderingMode(.alwaysTemplate)
     }
 
@@ -37,40 +37,40 @@ public extension UIImage {
 // MARK: - Methods
 public extension UIImage {
 
-    /// SwifterSwift: Compressed UIImage from original UIImage.
+    /// SwifterSwift: 压缩图片质量,并返回压缩后的 UIImage。
     ///
-    /// - Parameter quality: The quality of the resulting JPEG image, expressed as a value from 0.0 to 1.0. The value 0.0 represents the maximum compression (or lowest quality) while the value 1.0 represents the least compression (or best quality), (default is 0.5).
-    /// - Returns: optional UIImage (if applicable).
-    public func compressed(quality: CGFloat = 0.5) -> UIImage? {
+    /// - Parameter quality: 生成的JPEG图像的质量，表示为从0.0到1.0的值。值0.0表示最大压缩(或最低质量)，值1.0表示最小压缩(或最佳质量)，(默认值为0.5)。
+    /// - Returns: 压缩后图片,可能为空。
+    func compressed(quality: CGFloat = 0.5) -> UIImage? {
         guard let data = compressedData(quality: quality) else { return nil }
         return UIImage(data: data)
     }
 
-    /// SwifterSwift: Compressed UIImage data from original UIImage.
+    /// SwifterSwift: 压缩图片质量,返回压缩后的 Data。
     ///
-    /// - Parameter quality: The quality of the resulting JPEG image, expressed as a value from 0.0 to 1.0. The value 0.0 represents the maximum compression (or lowest quality) while the value 1.0 represents the least compression (or best quality), (default is 0.5).
-    /// - Returns: optional Data (if applicable).
-    public func compressedData(quality: CGFloat = 0.5) -> Data? {
+    /// - Parameter quality: 压缩系数 0 - 1;默认0.5。
+    /// - Returns: 压缩后的 Data
+    func compressedData(quality: CGFloat = 0.5) -> Data? {
         return jpegData(compressionQuality: quality)
     }
 
-    /// SwifterSwift: UIImage Cropped to CGRect.
+    /// 剪切指定位置的图片。
     ///
-    /// - Parameter rect: CGRect to crop UIImage to.
-    /// - Returns: cropped UIImage
-    public func cropped(to rect: CGRect) -> UIImage {
+    /// - Parameter rect: 位置。
+    /// - Returns: 剪切后图片
+    func cropped(to rect: CGRect) -> UIImage {
         guard rect.size.width < size.width && rect.size.height < size.height else { return self }
         guard let image: CGImage = cgImage?.cropping(to: rect) else { return self }
         return UIImage(cgImage: image)
     }
 
-    /// SwifterSwift: UIImage scaled to height with respect to aspect ratio.
+    /// UIImage根据高宽比缩放。
     ///
     /// - Parameters:
-    ///   - toHeight: new height.
-    ///   - opaque: flag indicating whether the bitmap is opaque.
-    /// - Returns: optional scaled UIImage (if applicable).
-    public func scaled(toHeight: CGFloat, opaque: Bool = false) -> UIImage? {
+    ///   - toHeight: 指定高度。
+    ///   - opaque: 是否保留透明度。
+    /// - Returns: 缩放后的image。
+    func scaled(toHeight: CGFloat, opaque: Bool = false) -> UIImage? {
         let scale = toHeight / size.height
         let newWidth = size.width * scale
         UIGraphicsBeginImageContextWithOptions(CGSize(width: newWidth, height: toHeight), opaque, 0)
@@ -80,13 +80,13 @@ public extension UIImage {
         return newImage
     }
 
-    /// SwifterSwift: UIImage scaled to width with respect to aspect ratio.
+    /// UIImage根据宽高比缩放。
     ///
     /// - Parameters:
-    ///   - toWidth: new width.
-    ///   - opaque: flag indicating whether the bitmap is opaque.
-    /// - Returns: optional scaled UIImage (if applicable).
-    public func scaled(toWidth: CGFloat, opaque: Bool = false) -> UIImage? {
+    ///   - toWidth: 指定宽度。
+    ///   - opaque: 位图是否不透明标志。
+    /// - Returns: 缩放后的image。
+    func scaled(toWidth: CGFloat, opaque: Bool = false) -> UIImage? {
         let scale = toWidth / size.width
         let newHeight = size.height * scale
         UIGraphicsBeginImageContextWithOptions(CGSize(width: toWidth, height: newHeight), opaque, 0)
@@ -104,7 +104,7 @@ public extension UIImage {
     /// - Parameter angle: The angle measurement by which to rotate the image.
     /// - Returns: A new image rotated by the given angle.
     @available(iOS 10.0, tvOS 10.0, watchOS 3.0, *)
-    public func rotated(by angle: Measurement<UnitAngle>) -> UIImage? {
+    func rotated(by angle: Measurement<UnitAngle>) -> UIImage? {
         let radians = CGFloat(angle.converted(to: .radians).value)
 
         let destRect = CGRect(origin: .zero, size: size)
@@ -136,7 +136,7 @@ public extension UIImage {
     ///
     /// - Parameter radians: The angle, in radians, by which to rotate the image.
     /// - Returns: A new image rotated by the given angle.
-    public func rotated(by radians: CGFloat) -> UIImage? {
+    func rotated(by radians: CGFloat) -> UIImage? {
         let destRect = CGRect(origin: .zero, size: size)
             .applying(CGAffineTransform(rotationAngle: radians))
         let roundedDestRect = CGRect(x: destRect.origin.x.rounded(),
@@ -163,7 +163,7 @@ public extension UIImage {
     ///
     /// - Parameter color: color to fill image with.
     /// - Returns: UIImage filled with given color.
-    public func filled(withColor color: UIColor) -> UIImage {
+    func filled(withColor color: UIColor) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
         color.setFill()
         guard let context = UIGraphicsGetCurrentContext() else { return self }
@@ -188,7 +188,7 @@ public extension UIImage {
     ///   - color: color to tint image with.
     ///   - blendMode: how to blend the tint
     /// - Returns: UIImage tinted with given color.
-    public func tint(_ color: UIColor, blendMode: CGBlendMode) -> UIImage {
+    func tint(_ color: UIColor, blendMode: CGBlendMode) -> UIImage {
         let drawRect = CGRect(x: 0.0, y: 0.0, width: size.width, height: size.height)
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
         let context = UIGraphicsGetCurrentContext()
@@ -206,7 +206,7 @@ public extension UIImage {
     /// - Parameters:
     ///   - radius: corner radius (optional), resulting image will be round if unspecified
     /// - Returns: UIImage with all corners rounded
-    public func withRoundedCorners(radius: CGFloat? = nil) -> UIImage? {
+    func withRoundedCorners(radius: CGFloat? = nil) -> UIImage? {
         let maxRadius = min(size.width, size.height) / 2
         let cornerRadius: CGFloat
         if let radius = radius, radius > 0 && radius <= maxRadius {

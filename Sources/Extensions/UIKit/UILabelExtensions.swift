@@ -12,25 +12,25 @@ import UIKit
 // MARK: - Methods
 public extension UILabel {
 
-    /// SwifterSwift: Initialize a UILabel with text
-    public convenience init(text: String?) {
+    /// SwifterSwift: 使用字符串初始化 UILabel
+    convenience init(text: String?) {
         self.init()
         self.text = text
     }
 
-    /// SwifterSwift: Initialize a UILabel with a text and font style.
+    /// SwifterSwift: 使用给定字符串和字体类型初始化 UILabel
     ///
     /// - Parameters:
-    ///   - text: the label's text.
+    ///   - text: label 的文字.
     ///   - style: the text style of the label, used to determine which font should be used.
-    public convenience init(text: String, style: UIFont.TextStyle) {
+    convenience init(text: String, style: UIFont.TextStyle) {
         self.init()
         font = UIFont.preferredFont(forTextStyle: style)
         self.text = text
     }
 
-    /// SwifterSwift: Required height for a label
-    public var requiredHeight: CGFloat {
+    /// 当前Label文字内容的需求高度
+    var requiredHeight: CGFloat {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width, height: CGFloat.greatestFiniteMagnitude))
         label.numberOfLines = 0
         label.lineBreakMode = NSLineBreakMode.byWordWrapping

@@ -16,8 +16,8 @@
 [![Slack Channel](https://slackin-ppvrggbpgn.now.sh/badge.svg)](https://slackin-ppvrggbpgn.now.sh/)
 
 
-SwifterSwift is a collection of **over 500 native Swift extensions**, with handy methods, syntactic sugar, and performance improvements for wide range of primitive data types, UIKit and Cocoa classes –over 500 in 1– for iOS, macOS, tvOS, watchOS and Linux.
-
+SwifterSwift 自定义版本.
+支持 swift5 ，添加中文注释
 
 ### [Whats New in v4.6.0?](https://github.com/SwifterSwift/SwifterSwift/blob/master/CHANGELOG.md#v460)
 

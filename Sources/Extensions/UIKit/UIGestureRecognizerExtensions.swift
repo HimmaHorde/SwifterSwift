@@ -12,8 +12,8 @@ import UIKit
 // MARK: - Methods
 public extension UIGestureRecognizer {
 
-    /// SwifterSwift: Remove Gesture Recognizer from its view.
-    public func removeFromView() {
+    /// SwifterSwift: 从 View 上移除此手势.
+    func removeFromView() {
         view?.removeGestureRecognizer(self)
     }
 

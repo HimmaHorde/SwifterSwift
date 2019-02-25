@@ -12,14 +12,14 @@ import UIKit
 // MARK: - Methods
 public extension UIImageView {
 
-    /// SwifterSwift: Set image from a URL.
+    /// 设置网络图片
     ///
     /// - Parameters:
-    ///   - url: URL of image.
-    ///   - contentMode: imageView content mode (default is .scaleAspectFit).
-    ///   - placeHolder: optional placeholder image
-    ///   - completionHandler: optional completion handler to run when download finishs (default is nil).
-    public func download(
+    ///   - url: 图片网址
+    ///   - contentMode: 缩放模式
+    ///   - placeHolder: 占位图
+    ///   - completionHandler: 结束回调
+    func download(
         from url: URL,
         contentMode: UIView.ContentMode = .scaleAspectFit,
         placeholder: UIImage? = nil,
@@ -44,10 +44,10 @@ public extension UIImageView {
             }.resume()
     }
 
-    /// SwifterSwift: Make image view blurry
+    /// 高斯模糊，使用系统方法。
     ///
     /// - Parameter style: UIBlurEffectStyle (default is .light).
-    public func blur(withStyle style: UIBlurEffect.Style = .light) {
+    func blur(withStyle style: UIBlurEffect.Style = .light) {
         let blurEffect = UIBlurEffect(style: style)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = bounds
@@ -55,16 +55,5 @@ public extension UIImageView {
         addSubview(blurEffectView)
         clipsToBounds = true
     }
-
-    /// SwifterSwift: Blurred version of an image view
-    ///
-    /// - Parameter style: UIBlurEffectStyle (default is .light).
-    /// - Returns: blurred version of self.
-    public func blurred(withStyle style: UIBlurEffect.Style = .light) -> UIImageView {
-        let imgView = self
-        imgView.blur(withStyle: style)
-        return imgView
-    }
-
 }
 #endif

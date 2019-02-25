@@ -52,7 +52,7 @@ final class UIAlertControllerExtensionsTests: XCTestCase {
     }
 
     func testMessageInit() {
-        let alertController = UIAlertController(title: "Title", message: "Message", defaultActionButtonTitle: "Ok", tintColor: .blue)
+        let alertController = UIAlertController(title: "Title", message: "Message", actionTitle: "Ok", tintColor: .blue)
 
         XCTAssertNotNil(alertController)
 

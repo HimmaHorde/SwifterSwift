@@ -13,7 +13,7 @@ import UIKit
 @available(iOS 9.0, *)
 public extension UIStackView {
 
-    /// SwifterSwift: Initialize an UIStackView with an array of UIView and common parameters.
+    /// 使用 View 数组和其他参数初始化。
     ///
     ///     let stackView = UIStackView(arrangedSubviews: [UIView(), UIView()], axis: .vertical)
     ///
@@ -34,7 +34,7 @@ public extension UIStackView {
         self.distribution = distribution
     }
 
-    /// SwifterSwift: Adds array of views to the end of the arrangedSubviews array.
+    /// 批量添加 arrangedSubviews
     ///
     /// - Parameter views: views array.
     public func addArrangedSubviews(_ views: [UIView]) {
@@ -43,7 +43,7 @@ public extension UIStackView {
         }
     }
 
-    /// SwifterSwift: Removes all views in stack’s array of arranged subviews.
+    /// 移除所有ArrangedSubviews
     public func removeArrangedSubviews() {
         for view in arrangedSubviews {
             removeArrangedSubview(view)

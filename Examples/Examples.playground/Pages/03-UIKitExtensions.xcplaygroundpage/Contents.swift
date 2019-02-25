@@ -74,8 +74,8 @@ imageView.download(from: URL(string: "https://developer.apple.com/swift/images/s
 
                     imageView.sizeToFit()
 
-                    // Blur image view
-                    imageView.blur(withStyle: .light)
+                    imageView.blurred(withStyle: .dark)
+
 })
 
 //: ### UINavigationBar extensions

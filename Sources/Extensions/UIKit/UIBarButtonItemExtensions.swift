@@ -12,12 +12,12 @@ import UIKit
 // MARK: - Methods
 public extension UIBarButtonItem {
 
-    /// SwifterSwift: Add Target to UIBarButtonItem
+    /// 添加点击事件
     ///
     /// - Parameters:
     ///   - target: target.
     ///   - action: selector to run when button is tapped.
-    public func addTargetForAction(_ target: AnyObject, action: Selector) {
+    func addTargetForAction(_ target: AnyObject, action: Selector) {
         self.target = target
         self.action = action
     }
