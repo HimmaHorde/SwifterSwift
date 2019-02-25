@@ -12,11 +12,13 @@ import UIKit
 // MARK: - Methods
 public extension UINavigationController {
 
-    /// SwifterSwift: Pop ViewController with completion handler.
+    /// nav pop 添加回调事件。
+    ///
+    /// 使用 `CATransaction.begin()` 创建显式事务，事件完成后发送 `commit`，实现回调
     ///
     /// - Parameters:
-    ///   - animated: Set this value to true to animate the transition (default is true).
-    ///   - completion: optional completion handler (default is nil).
+    ///   - animated: 是否使用动画（默认 true）.
+    ///   - completion: 回调（默认空）.
     func popViewController(animated: Bool = true, _ completion: (() -> Void)? = nil) {
         // https://github.com/cotkjaer/UserInterface/blob/master/UserInterface/UIViewController.swift
         CATransaction.begin()
@@ -25,7 +27,7 @@ public extension UINavigationController {
         CATransaction.commit()
     }
 
-    /// SwifterSwift: Push ViewController with completion handler.
+    /// Push viewController 并添加回调事件。
     ///
     /// - Parameters:
     ///   - viewController: viewController to push.
@@ -38,7 +40,7 @@ public extension UINavigationController {
         CATransaction.commit()
     }
 
-    /// SwifterSwift: Make navigation controller's navigation bar transparent.
+    /// 设置导航栏透明。
     ///
     /// - Parameter tint: tint color (default is .white).
     func makeTransparent(withTint tint: UIColor = .white) {
