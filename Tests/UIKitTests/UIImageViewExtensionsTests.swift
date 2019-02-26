@@ -58,8 +58,9 @@ final class UIImageViewExtensionsTests: XCTestCase {
 
     func testBlurred() {
         let imageView = UIImageView()
-        let blurredImageView = imageView.blurred(withStyle: .extraLight)
-        XCTAssertEqual(blurredImageView, imageView)
+        imageView.blur(withStyle: .dark)
+//        let blurredImageView = imageView.blurred(withStyle: .extraLight)
+//        XCTAssertEqual(blurredImageView, imageView)
     }
 
 }

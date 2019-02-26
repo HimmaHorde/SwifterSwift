@@ -12,13 +12,13 @@ import UIKit
 // MARK: - Properties
 public extension UITableView {
 
-    /// SwifterSwift: Index path of last row in tableView.
-    public var indexPathForLastRow: IndexPath? {
+    /// 最后一个 row 的 indexpath
+    var indexPathForLastRow: IndexPath? {
         return indexPathForLastRow(inSection: lastSection)
     }
 
-    /// SwifterSwift: Index of last section in tableView.
-    public var lastSection: Int {
+    /// 最后一个 section 的 index
+    var lastSection: Int {
         return numberOfSections > 0 ? numberOfSections - 1 : 0
     }
 
@@ -27,9 +27,9 @@ public extension UITableView {
 // MARK: - Methods
 public extension UITableView {
 
-    /// SwifterSwift: Number of all rows in all sections of tableView.
+    /// tableView 全部 row 的个数。
     ///
-    /// - Returns: The count of all rows in the tableView.
+    /// - Returns: 个数
     func numberOfRows() -> Int {
         var section = 0
         var rowCount = 0
@@ -73,25 +73,25 @@ public extension UITableView {
         tableHeaderView = nil
     }
 
-    /// SwifterSwift: Scroll to bottom of TableView.
+    /// 滑动到 scrollView 的底部。
     ///
-    /// - Parameter animated: set true to animate scroll (default is true).
+    /// - Parameter animated: 是否开启动画（默认开启）。
     func scrollToBottom(animated: Bool = true) {
         let bottomOffset = CGPoint(x: 0, y: contentSize.height - bounds.size.height)
         setContentOffset(bottomOffset, animated: animated)
     }
 
-    /// SwifterSwift: Scroll to top of TableView.
+    /// 滑动到 scrollView 的顶部。
     ///
-    /// - Parameter animated: set true to animate scroll (default is true).
+    /// - Parameter animated: 是否开启动画（默认开启）。
     func scrollToTop(animated: Bool = true) {
         setContentOffset(CGPoint.zero, animated: animated)
     }
 
-    /// SwifterSwift: Dequeue reusable UITableViewCell using class name
+    /// 根据类型复用UITableViewCell
     ///
-    /// - Parameter name: UITableViewCell type
-    /// - Returns: UITableViewCell object with associated class name.
+    /// - Parameter name: UITableViewCell 类型
+    /// - Returns: UITableViewCell 实例.
     func dequeueReusableCell<T: UITableViewCell>(withClass name: T.Type) -> T {
         guard let cell = dequeueReusableCell(withIdentifier: String(describing: name)) as? T else {
             fatalError("Couldn't find UITableViewCell for \(String(describing: name))")

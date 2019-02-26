@@ -12,11 +12,11 @@ import UIKit
 // MARK: - Methods
 public extension UITabBar {
 
-    /// SwifterSwift: Set tabBar colors.
+    /// 设置 tabBar 的颜色
     ///
     /// - Parameters:
-    ///   - background: background color.
-    ///   - selectedBackground: background color for selected tab.
+    ///   - background: 背景色
+    ///   - selectedBackground: 选中的背景色
     ///   - item: icon tint color for items.
     ///   - selectedItem: icon tint color for item.
     func setColors(

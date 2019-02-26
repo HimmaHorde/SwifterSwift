@@ -16,7 +16,7 @@ public extension UIView {
     ///
     /// - horizontal: Shake left and right.
     /// - vertical: Shake up and down.
-    public enum ShakeDirection {
+    enum ShakeDirection {
         /// Shake left and right.
         case horizontal
 
@@ -28,7 +28,7 @@ public extension UIView {
     ///
     /// - degrees: degrees.
     /// - radians: radians.
-    public enum AngleUnit {
+    enum AngleUnit {
         /// degrees.
         case degrees
 
@@ -42,7 +42,7 @@ public extension UIView {
     /// - easeIn: easeIn animation.
     /// - easeOut: easeOut animation.
     /// - easeInOut: easeInOut animation.
-    public enum ShakeAnimationType {
+    enum ShakeAnimationType {
         /// linear animation.
         case linear
 
@@ -62,7 +62,7 @@ public extension UIView {
 public extension UIView {
 
     /// SwifterSwift: Border color of view; also inspectable from Storyboard.
-    @IBInspectable public var borderColor: UIColor? {
+    @IBInspectable var borderColor: UIColor? {
         get {
             guard let color = layer.borderColor else { return nil }
             return UIColor(cgColor: color)
@@ -79,7 +79,7 @@ public extension UIView {
     }
 
     /// SwifterSwift: Border width of view; also inspectable from Storyboard.
-    @IBInspectable public var borderWidth: CGFloat {
+    @IBInspectable var borderWidth: CGFloat {
         get {
             return layer.borderWidth
         }
@@ -89,7 +89,7 @@ public extension UIView {
     }
 
     /// SwifterSwift: Corner radius of view; also inspectable from Storyboard.
-    @IBInspectable public var cornerRadius: CGFloat {
+    @IBInspectable var cornerRadius: CGFloat {
         get {
             return layer.cornerRadius
         }
@@ -100,7 +100,7 @@ public extension UIView {
     }
 
     /// SwifterSwift: Height of view.
-    public var height: CGFloat {
+    var height: CGFloat {
         get {
             return frame.size.height
         }
@@ -110,7 +110,7 @@ public extension UIView {
     }
 
     /// SwifterSwift: Check if view is in RTL format.
-    public var isRightToLeft: Bool {
+    var isRightToLeft: Bool {
         if #available(iOS 10.0, *, tvOS 10.0, *) {
             return effectiveUserInterfaceLayoutDirection == .rightToLeft
         } else {
@@ -119,7 +119,7 @@ public extension UIView {
     }
 
     /// SwifterSwift: Take screenshot of view (if applicable).
-    public var screenshot: UIImage? {
+    var screenshot: UIImage? {
         UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, 0)
         defer {
             UIGraphicsEndImageContext()
@@ -130,7 +130,7 @@ public extension UIView {
     }
 
     /// SwifterSwift: Shadow color of view; also inspectable from Storyboard.
-    @IBInspectable public var shadowColor: UIColor? {
+    @IBInspectable var shadowColor: UIColor? {
         get {
             guard let color = layer.shadowColor else { return nil }
             return UIColor(cgColor: color)
@@ -141,7 +141,7 @@ public extension UIView {
     }
 
     /// SwifterSwift: Shadow offset of view; also inspectable from Storyboard.
-    @IBInspectable public var shadowOffset: CGSize {
+    @IBInspectable var shadowOffset: CGSize {
         get {
             return layer.shadowOffset
         }
@@ -151,7 +151,7 @@ public extension UIView {
     }
 
     /// SwifterSwift: Shadow opacity of view; also inspectable from Storyboard.
-    @IBInspectable public var shadowOpacity: Float {
+    @IBInspectable var shadowOpacity: Float {
         get {
             return layer.shadowOpacity
         }
@@ -161,7 +161,7 @@ public extension UIView {
     }
 
     /// SwifterSwift: Shadow radius of view; also inspectable from Storyboard.
-    @IBInspectable public var shadowRadius: CGFloat {
+    @IBInspectable var shadowRadius: CGFloat {
         get {
             return layer.shadowRadius
         }
@@ -171,7 +171,7 @@ public extension UIView {
     }
 
     /// SwifterSwift: Size of view.
-    public var size: CGSize {
+    var size: CGSize {
         get {
             return frame.size
         }
@@ -182,7 +182,7 @@ public extension UIView {
     }
 
     /// SwifterSwift: Get view's parent view controller
-    public var parentViewController: UIViewController? {
+    var parentViewController: UIViewController? {
         weak var parentResponder: UIResponder? = self
         while parentResponder != nil {
             parentResponder = parentResponder!.next
@@ -194,7 +194,7 @@ public extension UIView {
     }
 
     /// SwifterSwift: Width of view.
-    public var width: CGFloat {
+    var width: CGFloat {
         get {
             return frame.size.width
         }
@@ -205,7 +205,7 @@ public extension UIView {
 
     // swiftlint:disable next identifier_name
     /// SwifterSwift: x origin of view.
-    public var x: CGFloat {
+    var x: CGFloat {
         get {
             return frame.origin.x
         }
@@ -216,7 +216,7 @@ public extension UIView {
 
     // swiftlint:disable next identifier_name
     /// SwifterSwift: y origin of view.
-    public var y: CGFloat {
+    var y: CGFloat {
         get {
             return frame.origin.y
         }
@@ -317,7 +317,7 @@ public extension UIView {
     ///   - name: nib name.
     ///   - bundle: bundle of nib (default is nil).
     /// - Returns: optional UIView (if applicable).
-    public class func loadFromNib(named name: String, bundle: Bundle? = nil) -> UIView? {
+    class func loadFromNib(named name: String, bundle: Bundle? = nil) -> UIView? {
         return UINib(nibName: name, bundle: bundle).instantiate(withOwner: nil, options: nil)[0] as? UIView
     }
 

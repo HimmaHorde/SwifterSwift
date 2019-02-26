@@ -12,9 +12,14 @@ import UIKit
 // MARK: - Properties
 public extension UIViewController {
 
-    /// SwifterSwift: Check if ViewController is onscreen and not hidden.
-    public var isVisible: Bool {
+    /// 检查 ViewController 是否在屏幕上而不是隐藏的。
+    var isVisible: Bool {
         // http://stackoverflow.com/questions/2777438/how-to-tell-if-uiviewcontrollers-view-is-visible
+        /*
+         if viewController.viewIfLoaded?.window != nil {
+            view 存在
+         }
+         */
         return isViewLoaded && view.window != nil
     }
 
@@ -23,10 +28,10 @@ public extension UIViewController {
 // MARK: - Methods
 public extension UIViewController {
 
-    /// SwifterSwift: Assign as listener to notification.
+    /// 添加监听
     ///
     /// - Parameters:
-    ///   - name: notification name.
+    ///   - name: notification 名字
     ///   - selector: selector to run with notified.
     func addNotificationObserver(name: Notification.Name, selector: Selector) {
         NotificationCenter.default.addObserver(self, selector: selector, name: name, object: nil)
