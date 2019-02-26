@@ -32,28 +32,28 @@ public extension UIViewController {
     ///
     /// - Parameters:
     ///   - name: notification 名字
-    ///   - selector: selector to run with notified.
+    ///   - selector: 响应事件
     func addNotificationObserver(name: Notification.Name, selector: Selector) {
         NotificationCenter.default.addObserver(self, selector: selector, name: name, object: nil)
     }
 
-    /// SwifterSwift: Unassign as listener to notification.
+    /// 移除指定 notification。
     ///
-    /// - Parameter name: notification name.
+    /// - Parameter name: 通知名。
     func removeNotificationObserver(name: Notification.Name) {
         NotificationCenter.default.removeObserver(self, name: name, object: nil)
     }
 
-    /// SwifterSwift: Unassign as listener from all notifications.
+    /// 移除所有的监听
     func removeNotificationsObserver() {
         NotificationCenter.default.removeObserver(self)
     }
 
-    /// SwifterSwift: Helper method to display an alert on any UIViewController subclass. Uses UIAlertController to show an alert
+    /// 快速显示一个系统 alert。
     ///
     /// - Parameters:
-    ///   - title: title of the alert
-    ///   - message: message/body of the alert
+    ///   - title: alert 标题
+    ///   - message: alert 的主题内容
     ///   - buttonTitles: (Optional)list of button titles for the alert. Default button i.e "OK" will be shown if this paramter is nil
     ///   - highlightedButtonIndex: (Optional) index of the button from buttonTitles that should be highlighted. If this parameter is nil no button will be highlighted
     ///   - completion: (Optional) completion block to be invoked when any one of the buttons is tapped. It passes the index of the tapped button as an argument
@@ -79,21 +79,22 @@ public extension UIViewController {
             }
         }
         present(alertController, animated: true, completion: nil)
+        CFRunLoopWakeUp(CFRunLoopGetCurrent())
         return alertController
     }
 
-    /// SwifterSwift: Helper method to add a UIViewController as a childViewController.
+    /// 添加一个 childViewController，并自动添加到指定的 View 上
     ///
     /// - Parameters:
-    ///   - child: the view controller to add as a child
-    ///   - containerView: the containerView for the child viewcontroller's root view.
+    ///   - child: 需要添加的 childViewController
+    ///   - containerView: childView 的容器
     func addChildViewController(_ child: UIViewController, toContainerView containerView: UIView) {
         addChild(child)
         containerView.addSubview(child.view)
         child.didMove(toParent: self)
     }
 
-    /// SwifterSwift: Helper method to remove a UIViewController from its parent.
+    /// 移除已添加的 childViewController
     func removeViewAndControllerFromParentViewController() {
         guard parent != nil else { return }
 

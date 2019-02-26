@@ -34,8 +34,6 @@ func testfunc(str:String?)->Void{
 struct NotifationTTT {
 
 }
-Notification.Name
-
 let CC = NotifationTTT.init()
 print(CC)
 //testfunc(str: "temp")
@@ -46,5 +44,14 @@ print(CC)
 //
 //print(t.text ?? "aaaa")
 //print(temp)
+
+let tableView = UITableView.init()
+tableView.register(cellWithClass: UITableViewCell.self)
+
+var corners:UIRectCorner =  .topLeft;
+
+corners = [.topLeft,.bottomLeft]
+
+
 
 //: [Previous](@previous)

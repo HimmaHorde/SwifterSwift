@@ -12,10 +12,10 @@ import UIKit
 // MARK: - enums
 public extension UIView {
 
-    /// SwifterSwift: Shake directions of a view.
+    /// View 的抖动方向
     ///
-    /// - horizontal: Shake left and right.
-    /// - vertical: Shake up and down.
+    /// - horizontal: 水平抖
+    /// - vertical: 垂直抖
     enum ShakeDirection {
         /// Shake left and right.
         case horizontal
@@ -245,11 +245,11 @@ public extension UIView {
         return nil
     }
 
-    /// SwifterSwift: Set some or all corners radiuses of view.
+    /// 设置任意圆角
     ///
     /// - Parameters:
-    ///   - corners: array of corners to change (example: [.bottomLeft, .topRight]).
-    ///   - radius: radius for selected corners.
+    ///   - corners: UIRectCorner (example: [.bottomLeft, .topRight]).
+    ///   - radius: 圆角半径
     func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
         let maskPath = UIBezierPath(
             roundedRect: bounds,

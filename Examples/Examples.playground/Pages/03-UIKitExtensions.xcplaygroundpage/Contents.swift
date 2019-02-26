@@ -74,7 +74,7 @@ imageView.download(from: URL(string: "https://developer.apple.com/swift/images/s
 
                     imageView.sizeToFit()
 
-                    imageView.blurred(withStyle: .dark)
+                    imageView.blur(withStyle: .dark)
 
 })
 

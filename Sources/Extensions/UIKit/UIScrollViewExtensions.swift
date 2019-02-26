@@ -12,13 +12,13 @@ import UIKit
 // MARK: - Methods
 public extension UIScrollView {
 
-    /// SwifterSwift: Takes a snapshot of an entire ScrollView
+    /// 获取整个ScrollView的快照
     ///
     ///    AnySubclassOfUIScroolView().snapshot
     ///    UITableView().snapshot
     ///
-    /// - Returns: Snapshot as UIimage for rendered ScrollView
-    public var snapshot: UIImage? {
+    /// - Returns: 快照
+    var snapshot: UIImage? {
         // Original Source: https://gist.github.com/thestoics/1204051
         UIGraphicsBeginImageContextWithOptions(contentSize, false, 0)
         defer {
