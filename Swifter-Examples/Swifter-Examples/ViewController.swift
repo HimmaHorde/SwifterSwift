@@ -13,7 +13,6 @@ class ViewController: UIViewController {
 
     @IBOutlet var textField: UITextField!
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         let label = UILabel.init(text: "asdasfdfssfdgfhgfdsdf", style: .headline)
@@ -30,4 +29,3 @@ class ViewController: UIViewController {
     }
 
 }
-

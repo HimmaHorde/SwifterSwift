@@ -12,14 +12,14 @@ import UIKit
 extension UIEdgeInsets {
     /// SwifterSwift: Return the vertical insets. The vertical insets is composed by top + bottom.
     ///
-    public var vertical: CGFloat {
+    var vertical: CGFloat {
         // Source: https://github.com/MessageKit/MessageKit/blob/master/Sources/Extensions/UIEdgeInsets%2BExtensions.swift
         return top + bottom
     }
 
     /// SwifterSwift: Return the horizontal insets. The horizontal insets is composed by  left + right.
     ///
-    public var horizontal: CGFloat {
+    var horizontal: CGFloat {
         // Source: https://github.com/MessageKit/MessageKit/blob/master/Sources/Extensions/UIEdgeInsets%2BExtensions.swift
         return left + right
     }
@@ -31,7 +31,7 @@ extension UIEdgeInsets {
     /// SwifterSwift: Creates an `UIEdgeInsets` with the inset value applied to all (top, bottom, right, left)
     ///
     /// - Parameter inset: Inset to be applied in all the edges.
-    public init(inset: CGFloat) {
+    init(inset: CGFloat) {
         self.init(top: inset, left: inset, bottom: inset, right: inset)
     }
 
@@ -41,7 +41,7 @@ extension UIEdgeInsets {
     ///
     /// - Parameter horizontal: Inset to be applied to right and left.
     /// - Parameter vertical: Inset to be applied to top and bottom.
-    public init(horizontal: CGFloat, vertical: CGFloat) {
+    init(horizontal: CGFloat, vertical: CGFloat) {
         self.init(top: vertical/2, left: horizontal/2, bottom: vertical/2, right: horizontal/2)
     }
 
@@ -109,7 +109,7 @@ extension UIEdgeInsets {
     ///   - lhs: The left-hand expression
     ///   - rhs: The right-hand expression
     /// - Returns: A new `UIEdgeInsets` instance where the values of `lhs` and `rhs` are added together.
-    public static func + (_ lhs: UIEdgeInsets, _ rhs: UIEdgeInsets) -> UIEdgeInsets {
+    static func + (_ lhs: UIEdgeInsets, _ rhs: UIEdgeInsets) -> UIEdgeInsets {
         return UIEdgeInsets(top: lhs.top + rhs.top,
                             left: lhs.left + rhs.left,
                             bottom: lhs.bottom + rhs.bottom,
@@ -121,7 +121,7 @@ extension UIEdgeInsets {
     /// - Parameters:
     ///   - lhs: The left-hand expression to be mutated
     ///   - rhs: The right-hand expression
-    public static func += (_ lhs: inout UIEdgeInsets, _ rhs: UIEdgeInsets) {
+    static func += (_ lhs: inout UIEdgeInsets, _ rhs: UIEdgeInsets) {
         lhs.top += rhs.top
         lhs.left += rhs.left
         lhs.bottom += rhs.bottom

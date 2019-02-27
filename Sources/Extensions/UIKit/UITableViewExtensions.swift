@@ -184,7 +184,6 @@ public extension UITableView {
         register(UINib(nibName: identifier, bundle: bundle), forCellReuseIdentifier: identifier)
     }
 
-
     /// 批量注册同一个 bundle 下的 nib。
     ///
     /// - Parameters:

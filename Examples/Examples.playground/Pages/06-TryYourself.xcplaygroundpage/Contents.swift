@@ -7,11 +7,10 @@ import SwifterSwift
 //: ## Try yourself
 //: *Here you can try some extensions yourself*
 
-var temp:String? = "Hello"
+var temp: String? = "Hello"
 
 var temp1 = "sfs"
 temp = nil
-
 
 print(type(of: temp))
 print(type(of: temp1))
@@ -24,18 +23,17 @@ if stringA.isEmpty {
     print( "stringA 不是空的" )
 }
 
-func testfunc(str:String?)->Void{
+func testfunc(str: String?) {
     guard str == nil else {
         print("aaaaa")
-        return;
-    }
+        return }
 }
 
 struct NotifationTTT {
 
 }
-let CC = NotifationTTT.init()
-print(CC)
+let customNotifation = NotifationTTT.init()
+print(customNotifation)
 //testfunc(str: "temp")
 //
 //let t = UITextField.init()
@@ -48,10 +46,8 @@ print(CC)
 let tableView = UITableView.init()
 tableView.register(cellWithClass: UITableViewCell.self)
 
-var corners:UIRectCorner =  .topLeft;
+var corners: UIRectCorner =  .topLeft
 
-corners = [.topLeft,.bottomLeft]
-
-
+corners = [ .topLeft, .bottomLeft ]
 
 //: [Previous](@previous)

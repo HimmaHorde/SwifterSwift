@@ -14,41 +14,41 @@ import Foundation
 public extension FloatingPoint {
 
     /// SwifterSwift: Absolute value of number.
-    public var abs: Self {
+    var abs: Self {
         return Swift.abs(self)
     }
 
     /// SwifterSwift: Check if number is positive.
-    public var isPositive: Bool {
+    var isPositive: Bool {
         return self > 0
     }
 
     /// SwifterSwift: Check if number is negative.
-    public var isNegative: Bool {
+    var isNegative: Bool {
         return self < 0
     }
 
     #if canImport(Foundation)
     /// SwifterSwift: Ceil of number.
-    public var ceil: Self {
+    var ceil: Self {
         return Foundation.ceil(self)
     }
     #endif
 
     /// SwifterSwift: Radian value of degree input.
-    public var degreesToRadians: Self {
+    var degreesToRadians: Self {
         return Self.pi * self / Self(180)
     }
 
     #if canImport(Foundation)
     /// SwifterSwift: Floor of number.
-    public var floor: Self {
+    var floor: Self {
         return Foundation.floor(self)
     }
     #endif
 
     /// SwifterSwift: Degree value of radian input.
-    public var radiansToDegrees: Self {
+    var radiansToDegrees: Self {
         return self * Self(180) / Self.pi
     }
 
@@ -64,7 +64,7 @@ infix operator ±
 ///   - lhs: number
 ///   - rhs: number
 /// - Returns: tuple of plus-minus operation ( 2.5 ± 1.5 -> (4, 1)).
-public func ±<T: FloatingPoint> (lhs: T, rhs: T) -> (T, T) {
+func ±<T: FloatingPoint> (lhs: T, rhs: T) -> (T, T) {
     // http://nshipster.com/swift-operators/
     return (lhs + rhs, lhs - rhs)
 }
