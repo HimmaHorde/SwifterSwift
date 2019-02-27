@@ -65,8 +65,8 @@ public extension URL {
 
     /// SwifterSwift: Get value of a query key.
     ///
-    ///    var url = URL(string: "https://google.com?code=12345")!
-    ///    queryValue(for: "code") -> "12345"
+    ///     var url = URL(string: "https://google.com?code=12345")!
+    ///     url.queryValue(for: "code")// -> "12345"
     ///
     /// - Parameter key: The key of a query value.
     func queryValue(for key: String) -> String? {

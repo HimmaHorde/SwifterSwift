@@ -7,47 +7,32 @@ import SwifterSwift
 //: ## Try yourself
 //: *Here you can try some extensions yourself*
 
-var temp: String? = "Hello"
-
-var temp1 = "sfs"
-temp = nil
-
-print(type(of: temp))
-print(type(of: temp1))
-
-var stringA = ""
-
-if stringA.isEmpty {
-    print( "stringA 是空的" )
-} else {
-    print( "stringA 不是空的" )
+class Person {
+    public var age: Int = 0
+    init(age: Int) {
+        self.age = age
+    }
 }
 
-func testfunc(str: String?) {
-    guard str == nil else {
-        print("aaaaa")
-        return }
+let p1 = Person.init(age: 100)
+let p2 = Person.init(age: 88)
+let p3 = Person.init(age: 101)
+
+let arr = [p1, p2, p3]
+
+let temp = arr.sorted(by: \Person.age)
+
+var numArray = ["aaa", "aaaa"]
+
+//numArray.removeAll { (num) -> Bool in
+//    return num > 5
+//}
+
+numArray.reduce(into: [Int]()) {
+    print($0)
+    print($1)
 }
 
-struct NotifationTTT {
-
-}
-let customNotifation = NotifationTTT.init()
-print(customNotifation)
-//testfunc(str: "temp")
-//
-//let t = UITextField.init()
-//
-//t.text = temp
-//
-//print(t.text ?? "aaaa")
-//print(temp)
-
-let tableView = UITableView.init()
-tableView.register(cellWithClass: UITableViewCell.self)
-
-var corners: UIRectCorner =  .topLeft
-
-corners = [ .topLeft, .bottomLeft ]
+print(numArray)
 
 //: [Previous](@previous)
