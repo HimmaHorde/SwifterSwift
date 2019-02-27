@@ -33,6 +33,10 @@ numArray.reduce(into: [Int]()) {
     print($1)
 }
 
-print(numArray)
+let url = NSURL.init(string: "https://www.google.com/m/ald/cc.html")
+
+print(url?.scheme)
+print(url?.path)
+
 
 //: [Previous](@previous)
