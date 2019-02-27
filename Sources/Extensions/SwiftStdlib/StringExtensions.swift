@@ -26,7 +26,17 @@ import CoreGraphics
 public extension String {
 
     #if canImport(Foundation)
-    /// SwifterSwift: String decoded from base64 (if applicable).
+    /// base64 加密
+    ///
+    ///        "Hello World!".base64Encoded -> Optional("SGVsbG8gV29ybGQh")
+    ///
+    var base64Encoded: String? {
+        // https://github.com/Reza-Rg/Base64-Swift-Extension/blob/master/Base64.swift
+        let plainData = data(using: .utf8)
+        return plainData?.base64EncodedString()
+    }
+
+    /// base64 解密
     ///
     ///		"SGVsbG8gV29ybGQh".base64Decoded = Optional("Hello World!")
     ///
@@ -37,25 +47,13 @@ public extension String {
     }
     #endif
 
-    #if canImport(Foundation)
-    /// SwifterSwift: String encoded in base64 (if applicable).
-    ///
-    ///		"Hello World!".base64Encoded -> Optional("SGVsbG8gV29ybGQh")
-    ///
-    var base64Encoded: String? {
-        // https://github.com/Reza-Rg/Base64-Swift-Extension/blob/master/Base64.swift
-        let plainData = data(using: .utf8)
-        return plainData?.base64EncodedString()
-    }
-    #endif
-
-    /// SwifterSwift: Array of characters of a string.
+    /// 返回 characters 数组
     var charactersArray: [Character] {
         return Array(self)
     }
 
     #if canImport(Foundation)
-    /// SwifterSwift: CamelCase of string.
+    /// 转换为驼峰字符串
     ///
     ///		"sOme vAriable naMe".camelCased -> "someVariableName"
     ///
@@ -1194,5 +1192,80 @@ public extension String {
         return (self as NSString).appendingPathExtension(str)
     }
 
+}
+#endif
+
+#if canImport(Foundation)
+// MARK: - NSString Emoji
+public extension String {
+
+    @available(swift, deprecated: 4.2, message: "直接使用 count")
+    var glyphCount: Int {
+        let richText = NSAttributedString(string: self)
+        let line = CTLineCreateWithAttributedString(richText)
+        return CTLineGetGlyphCount(line)
+    }
+
+    /// 是否是单个 emoji
+    var isSingleEmoji: Bool {
+        return count == 1 && containsEmoji
+    }
+
+    /// 字符串是否包含 emoji
+    var containsEmoji: Bool {
+        return unicodeScalars.contains { $0.isEmoji }
+    }
+
+    /// 字符串全都是 emoji
+    var containsOnlyEmoji: Bool {
+        return !isEmpty
+            && !unicodeScalars.contains(where: {
+                !$0.isEmoji && !$0.isZeroWidthJoiner
+            })
+    }
+
+    // The next tricks are mostly to demonstrate how tricky it can be to determine emoji's
+    // If anyone has suggestions how to improve this, please let me know
+    var emojiString: String {
+        return emojiScalars.map { String($0) }.reduce("", +)
+    }
+
+    var emojis: [String] {
+        var scalars: [[UnicodeScalar]] = []
+        var currentScalarSet: [UnicodeScalar] = []
+        var previousScalar: UnicodeScalar?
+
+        for scalar in emojiScalars {
+            if let prev = previousScalar, !prev.isZeroWidthJoiner, !scalar.isZeroWidthJoiner {
+                scalars.append(currentScalarSet)
+                currentScalarSet = []
+            }
+            currentScalarSet.append(scalar)
+
+            previousScalar = scalar
+        }
+
+        scalars.append(currentScalarSet)
+
+        return scalars.map { $0.map { String($0) }.reduce("", +) }
+    }
+
+    fileprivate var emojiScalars: [UnicodeScalar] {
+        var chars: [UnicodeScalar] = []
+        var previous: UnicodeScalar?
+        for cur in unicodeScalars {
+            if let previous = previous, previous.isZeroWidthJoiner, cur.isEmoji {
+                chars.append(previous)
+                chars.append(cur)
+
+            } else if cur.isEmoji {
+                chars.append(cur)
+            }
+
+            previous = cur
+        }
+
+        return chars
+    }
 }
 #endif
