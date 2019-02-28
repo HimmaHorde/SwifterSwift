@@ -44,5 +44,15 @@ let queueArr = [1, 2, 3, 4, 5]
 DispatchQueue.concurrentPerform(iterations: queueArr.count) { (i) in
     print("index = \(i) ，线程\(Thread.current)")
 }
+extension Comparable {
+    public static func ~= (value: Self, pattern: ClosedRange<Self>) -> Bool {
+        return pattern ~= value
+    }
+}
+
+
+if 1 ~= 0...3 {
+    print("1在数组当中")
+}
 
 //: [Previous](@previous)
