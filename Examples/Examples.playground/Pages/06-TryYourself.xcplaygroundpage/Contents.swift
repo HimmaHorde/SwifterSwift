@@ -53,7 +53,6 @@ let dic = ["key1": "value1", "key2": "value2", "key3": "value3"]
 
 var aDic = ["key1": "value"]
 let bDic = ["key2": "value2"]
-Dictionary
 
 //let newDic =  dic.mapKeysAndValues { (key, value) -> (String, String) in
 //    let newKey = "A\(key)"
@@ -65,5 +64,7 @@ Dictionary
 //}
 
 //print(newDic)
-
+let num = 123456789
+print(num.digits)// ->[1, 2, 3, 4, 5, 6, 7, 8, 9]
+print(num.digitsCount)
 //: [Previous](@previous)

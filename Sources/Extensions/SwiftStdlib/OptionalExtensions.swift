@@ -9,7 +9,7 @@
 // MARK: - Methods
 public extension Optional {
 
-    /// SwifterSwift: Get self of default value (if self is nil).
+    /// 获取self的默认值(如果self为nil)。
     ///
     ///		let foo: String? = nil
     ///		print(foo.unwrapped(or: "bar")) -> "bar"
@@ -24,7 +24,7 @@ public extension Optional {
         return self ?? defaultValue
     }
 
-    /// SwifterSwift: Gets the wrapped value of an optional. If the optional is `nil`, throw a custom error.
+    /// 获取可选项的值。如果可选的是' nil '，则抛出一个自定义错误。
     ///
     ///        let foo: String? = nil
     ///        try print(foo.unwrapped(or: MyError.notFound)) -> error: MyError.notFound
@@ -40,7 +40,7 @@ public extension Optional {
         return wrapped
     }
 
-    /// SwifterSwift: Runs a block to Wrapped if not nil
+    /// 当这个可选实例不是nil时，计算给定的闭包，并将未包装的值作为参数传递。
     ///
     ///		let foo: String? = nil
     ///		foo.run { unwrappedFoo in
@@ -60,7 +60,7 @@ public extension Optional {
         _ = map(block)
     }
 
-    /// SwifterSwift: Assign an optional value to a variable only if the value is not nil.
+    /// a ??= b ，b != nil 时赋值。
     ///
     ///     let someParameter: String? = nil
     ///     let parameters = [String:Any]() //Some parameters to be attached to a GET request
@@ -74,7 +74,7 @@ public extension Optional {
         lhs = rhs
     }
 
-    /// SwifterSwift: Assign an optional value to a variable only if the variable is nil.
+    /// a ?= b ，a = nil 时赋值。
     ///
     ///     var someText: String? = nil
     ///     let newText = "Foo"
@@ -96,7 +96,7 @@ public extension Optional {
 // MARK: - Methods (Collection)
 public extension Optional where Wrapped: Collection {
 
-    /// SwifterSwift: Check if optional is nil or empty collection.
+    /// 检查是否为 nil or empty
     var isNilOrEmpty: Bool {
         guard let collection = self else { return true }
         return collection.isEmpty

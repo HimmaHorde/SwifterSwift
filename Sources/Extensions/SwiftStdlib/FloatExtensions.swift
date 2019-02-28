@@ -13,18 +13,18 @@ import CoreGraphics
 // MARK: - Properties
 public extension Float {
 
-    /// SwifterSwift: Int.
+    /// 转换为 Int.
     var int: Int {
         return Int(self)
     }
 
-    /// SwifterSwift: Double.
+    /// 转换为 Double.
     var double: Double {
         return Double(self)
     }
 
     #if canImport(CoreGraphics)
-    /// SwifterSwift: CGFloat.
+    /// 转换为 CGFloat.
     var cgFloat: CGFloat {
         return CGFloat(self)
     }
@@ -36,12 +36,12 @@ public extension Float {
 
 precedencegroup PowerPrecedence { higherThan: MultiplicationPrecedence }
 infix operator ** : PowerPrecedence
-/// SwifterSwift: Value of exponentiation.
+/// 指数幂
 ///
 /// - Parameters:
-///   - lhs: base float.
-///   - rhs: exponent float.
-/// - Returns: exponentiation result (4.4 ** 0.5 = 2.0976176963).
+///   - lhs: 底数
+///   - rhs: 指数
+/// - Returns: 结果 (4.4 ** 0.5 = 2.0976176963).
 func ** (lhs: Float, rhs: Float) -> Float {
     // http://nshipster.com/swift-operators/
     return pow(lhs, rhs)
@@ -49,10 +49,10 @@ func ** (lhs: Float, rhs: Float) -> Float {
 
 // swiftlint:disable next identifier_name
 prefix operator √
-/// SwifterSwift: Square root of float.
+/// 二次根号
 ///
-/// - Parameter float: float value to find square root for
-/// - Returns: square root of given float.
+/// - Parameter float: 开根号的数
+/// - Returns: 平分跟
 public prefix func √ (float: Float) -> Float {
     // http://nshipster.com/swift-operators/
     return sqrt(float)

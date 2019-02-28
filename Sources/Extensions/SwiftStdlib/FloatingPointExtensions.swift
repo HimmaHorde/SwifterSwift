@@ -13,41 +13,29 @@ import Foundation
 // MARK: - Properties
 public extension FloatingPoint {
 
-    /// SwifterSwift: Absolute value of number.
+    /// 绝对值
     var abs: Self {
         return Swift.abs(self)
     }
 
-    /// SwifterSwift: Check if number is positive.
-    var isPositive: Bool {
-        return self > 0
-    }
-
-    /// SwifterSwift: Check if number is negative.
-    var isNegative: Bool {
-        return self < 0
-    }
-
     #if canImport(Foundation)
-    /// SwifterSwift: Ceil of number.
+    /// 向上取整
     var ceil: Self {
         return Foundation.ceil(self)
     }
-    #endif
 
-    /// SwifterSwift: Radian value of degree input.
-    var degreesToRadians: Self {
-        return Self.pi * self / Self(180)
-    }
-
-    #if canImport(Foundation)
-    /// SwifterSwift: Floor of number.
+    /// 向下取整
     var floor: Self {
         return Foundation.floor(self)
     }
     #endif
 
-    /// SwifterSwift: Degree value of radian input.
+    /// 圆心角 -> 圆心角弧度数
+    var degreesToRadians: Self {
+        return Self.pi * self / Self(180)
+    }
+
+    /// 圆心角弧度数 -> 圆心角
     var radiansToDegrees: Self {
         return self * Self(180) / Self.pi
     }

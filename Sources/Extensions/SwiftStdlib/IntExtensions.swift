@@ -13,44 +13,44 @@ import CoreGraphics
 // MARK: - Properties
 public extension Int {
 
-    /// SwifterSwift: CountableRange 0..<Int.
+    /// 生成一个从零开始的开区间 0..< Int
     var countableRange: CountableRange<Int> {
         return 0..<self
     }
 
-    /// SwifterSwift: Radian value of degree input.
+    /// 圆心角 -> 圆心角弧度数
     var degreesToRadians: Double {
         return Double.pi * Double(self) / 180.0
     }
 
-    /// SwifterSwift: Degree value of radian input
+    /// 圆心角弧度数 -> 圆心角
     var radiansToDegrees: Double {
         return Double(self) * 180 / Double.pi
     }
 
-    /// SwifterSwift: UInt.
+    /// 无符号整数值类型。
     var uInt: UInt {
         return UInt(self)
     }
 
-    /// SwifterSwift: Double.
+    /// 转为 Double
     var double: Double {
         return Double(self)
     }
 
-    /// SwifterSwift: Float.
+    /// 转为 Float.
     var float: Float {
         return Float(self)
     }
 
     #if canImport(CoreGraphics)
-    /// SwifterSwift: CGFloat.
+    /// 转为 CGFloat.
     var cgFloat: CGFloat {
         return CGFloat(self)
     }
     #endif
 
-    /// SwifterSwift: String formatted for values over ±1000 (example: 1k, -2k, 100k, 1kk, -5kk..)
+    /// 转为以 K 为单位的字符串
     var kFormatted: String {
         var sign: String {
             return self >= 0 ? "" : "-"
@@ -66,7 +66,10 @@ public extension Int {
         return String(format: "\(sign)%ikk", abs / 100000)
     }
 
-    /// SwifterSwift: Array of digits of integer value.
+    /// 转化为数字数组
+    ///
+    ///     123456789.digits ->[1, 2, 3, 4, 5, 6, 7, 8, 9]
+    ///
     var digits: [Int] {
         guard self != 0 else { return [0] }
         var digits = [Int]()
@@ -82,7 +85,7 @@ public extension Int {
         return digits
     }
 
-    /// SwifterSwift: Number of digits of integer value.
+    /// 位数
     var digitsCount: Int {
         guard self != 0 else { return 1 }
         let number = Double(abs)
@@ -94,7 +97,7 @@ public extension Int {
 // MARK: - Methods
 public extension Int {
 
-    /// SwifterSwift: check if given integer prime or not.
+    /// 是否是素数
     /// Warning: Using big numbers can be computationally expensive!
     /// - Returns: true or false depending on prime-ness
     func isPrime() -> Bool {
@@ -117,7 +120,7 @@ public extension Int {
         return true
     }
 
-    /// SwifterSwift: Roman numeral string from integer (if applicable).
+    /// 转为罗马数字
     ///
     ///10.romanNumeral() -> "X"
     ///
@@ -158,12 +161,12 @@ public extension Int {
 
 precedencegroup PowerPrecedence { higherThan: MultiplicationPrecedence }
 infix operator ** : PowerPrecedence
-/// SwifterSwift: Value of exponentiation.
+/// 指数运算
 ///
 /// - Parameters:
-///   - lhs: base integer.
-///   - rhs: exponent integer.
-/// - Returns: exponentiation result (example: 2 ** 3 = 8).
+///   - lhs: 底数
+///   - rhs: 指数
+/// - Returns: 结果 (example: 2 ** 3 = 8).
 func ** (lhs: Int, rhs: Int) -> Double {
     // http://nshipster.com/swift-operators/
     return pow(Double(lhs), Double(rhs))
@@ -171,10 +174,10 @@ func ** (lhs: Int, rhs: Int) -> Double {
 
 // swiftlint:disable next identifier_name
 prefix operator √
-/// SwifterSwift: Square root of integer.
+/// 二次根号
 ///
-/// - Parameter int: integer value to find square root for
-/// - Returns: square root of given integer.
+/// - Parameter int: 开根号的数
+/// - Returns: 平方根
 public prefix func √ (int: Int) -> Double {
     // http://nshipster.com/swift-operators/
     return sqrt(Double(int))
