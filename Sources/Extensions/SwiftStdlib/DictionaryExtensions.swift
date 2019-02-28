@@ -13,19 +13,19 @@ import Foundation
 // MARK: - Methods
 public extension Dictionary {
 
-    /// SwifterSwift: Check if key exists in dictionary.
+    /// 检查 key 在字典中是否存在
     ///
     ///        let dict: [String : Any] = ["testKey": "testValue", "testArrayKey": [1, 2, 3, 4, 5]]
     ///        dict.has(key: "testKey") -> true
     ///        dict.has(key: "anotherKey") -> false
     ///
-    /// - Parameter key: key to search for
-    /// - Returns: true if key exists in dictionary.
+    /// - Parameter key: 查询的 key
+    /// - Returns: 如果存在返回 true
     func has(key: Key) -> Bool {
         return index(forKey: key) != nil
     }
 
-    /// SwifterSwift: Remove all keys contained in the keys parameter from the dictionary.
+    /// 批量删除指定 keys 的键值对
     ///
     ///        var dict : [String : String] = ["key1" : "value1", "key2" : "value2", "key3" : "value3"]
     ///        dict.removeAll(keys: ["key1", "key2"])
@@ -37,14 +37,6 @@ public extension Dictionary {
     mutating func removeAll<S: Sequence>(keys: S) where S.Element == Key {
         keys.forEach { removeValue(forKey: $0) }
     }
-
-    #if canImport(Foundation)
-    /// SwifterSwift: Remove a value for a random key from the dictionary.
-    @discardableResult mutating func removeValueForRandomKey() -> Value? {
-        guard let randomKey = keys.randomElement() else { return nil }
-        return removeValue(forKey: randomKey)
-    }
-    #endif
 
     #if canImport(Foundation)
     /// SwifterSwift: JSON Data from dictionary.
