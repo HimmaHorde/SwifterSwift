@@ -13,26 +13,15 @@ import Foundation
 // MARK: - Properties
 public extension Character {
 
-    /// SwifterSwift: Check if character is emoji.
+    /// 检测是否是 Emoji
     ///
     ///        Character("😀").isEmoji -> true
     ///
     var isEmoji: Bool {
-        // http://stackoverflow.com/questions/30757193/find-out-if-character-in-string-is-emoji
-        let scalarValue = String(self).unicodeScalars.first!.value
-        switch scalarValue {
-        case 0x3030, 0x00AE, 0x00A9, // Special Characters
-        0x1D000...0x1F77F, // Emoticons
-        0x2100...0x27BF, // Misc symbols and Dingbats
-        0xFE00...0xFE0F, // Variation Selectors
-        0x1F900...0x1F9FF: // Supplemental Symbols and Pictographs
-            return true
-        default:
-            return false
-        }
+        return unicodeScalars.contains { $0.isEmoji }
     }
 
-    /// SwifterSwift: Check if character is number.
+    /// 检查是否是数字
     ///
     ///        Character("1").isNumber -> true
     ///        Character("a").isNumber -> false
@@ -41,7 +30,7 @@ public extension Character {
         return Int(String(self)) != nil
     }
 
-    /// SwifterSwift: Check if character is a letter.
+    /// 检查是否是字母
     ///
     ///        Character("4").isLetter -> false
     ///        Character("a").isLetter -> true
@@ -50,7 +39,7 @@ public extension Character {
         return String(self).rangeOfCharacter(from: .letters, options: .numeric, range: nil) != nil
     }
 
-    /// SwifterSwift: Check if character is lowercased.
+    /// 检查是否是小写字母
     ///
     ///        Character("a").isLowercased -> true
     ///        Character("A").isLowercased -> false
@@ -59,7 +48,7 @@ public extension Character {
         return String(self) == String(self).lowercased()
     }
 
-    /// SwifterSwift: Check if character is uppercased.
+    /// 检查是否是大写字母
     ///
     ///        Character("a").isUppercased -> false
     ///        Character("A").isUppercased -> true
@@ -68,7 +57,7 @@ public extension Character {
         return String(self) == String(self).uppercased()
     }
 
-    /// SwifterSwift: Check if character is white space.
+    /// 检查是否是空格
     ///
     ///        Character(" ").isWhiteSpace -> true
     ///        Character("A").isWhiteSpace -> false
@@ -77,7 +66,7 @@ public extension Character {
         return String(self) == " "
     }
 
-    /// SwifterSwift: Integer from character (if applicable).
+    /// 转为数字（可选类型）
     ///
     ///        Character("1").int -> 1
     ///        Character("A").int -> nil
@@ -86,7 +75,7 @@ public extension Character {
         return Int(String(self))
     }
 
-    /// SwifterSwift: String from character.
+    /// 转为 String 类型
     ///
     ///        Character("a").string -> "a"
     ///
@@ -94,7 +83,7 @@ public extension Character {
         return String(self)
     }
 
-    /// SwifterSwift: Return the character lowercased.
+    /// 返回对应的小写字符
     ///
     ///        Character("A").lowercased -> Character("a")
     ///
@@ -102,7 +91,7 @@ public extension Character {
         return String(self).lowercased().first!
     }
 
-    /// SwifterSwift: Return the character uppercased.
+    /// 返回对应的大写字符
     ///
     ///        Character("a").uppercased -> Character("A")
     ///
@@ -116,7 +105,7 @@ public extension Character {
 public extension Character {
 
     #if canImport(Foundation)
-    /// SwifterSwift: Random character.
+    /// 随机字符，取大小写字符和数字。
     ///
     ///    Character.random() -> k
     ///
@@ -131,27 +120,27 @@ public extension Character {
 // MARK: - Operators
 public extension Character {
 
-    /// SwifterSwift: Repeat character multiple times.
+    /// 重复 N 次字符，生成字符串。
     ///
     ///        Character("-") * 10 -> "----------"
     ///
     /// - Parameters:
-    ///   - lhs: character to repeat.
-    ///   - rhs: number of times to repeat character.
-    /// - Returns: string with character repeated n times.
+    ///   - lhs: 需要重复的字符。
+    ///   - rhs: 重复次数。
+    /// - Returns: 生成的字符串
     static func * (lhs: Character, rhs: Int) -> String {
         guard rhs > 0 else { return "" }
         return String(repeating: String(lhs), count: rhs)
     }
 
-    /// SwifterSwift: Repeat character multiple times.
+    /// 重复 N 次字符，生成字符串。
     ///
     ///        10 * Character("-") -> "----------"
     ///
     /// - Parameters:
-    ///   - lhs: number of times to repeat character.
-    ///   - rhs: character to repeat.
-    /// - Returns: string with character repeated n times.
+    ///   - lhs: 重复次数。
+    ///   - rhs: 需要重复的字符。
+    /// - Returns: 生成的字符串
     static func * (lhs: Int, rhs: Character) -> String {
         guard lhs > 0 else { return "" }
         return String(repeating: String(rhs), count: lhs)

@@ -13,13 +13,13 @@ import Foundation
 // MARK: - Methods
 public extension Collection {
 
-    /// SwifterSwift: Performs `each` closure for each element of collection in parallel.
+    /// 并发的形式为每个元素执行闭包
     ///
     ///        array.forEachInParallel { item in
     ///            print(item)
     ///        }
     ///
-    /// - Parameter each: closure to run for each element.
+    /// - Parameter each: 函数闭包
     func forEachInParallel(_ each: (Self.Element) -> Void) {
         let indicesArray = Array(indices)
 
@@ -29,28 +29,27 @@ public extension Collection {
         }
     }
 
-    /// SwifterSwift: Safe protects the array from out of bounds by use of optional.
+    /// 安排通过下表访问集合的元素
     ///
     ///        let arr = [1, 2, 3, 4, 5]
     ///        arr[safe: 1] -> 2
     ///        arr[safe: 10] -> nil
     ///
-    /// - Parameter index: index of element to access element.
+    /// - Parameter index: 下标
     subscript(safe index: Index) -> Element? {
         return indices.contains(index) ? self[index] : nil
     }
-
 }
 
 // MARK: - Methods (Int)
 public extension Collection where Index == Int {
 
-    /// SwifterSwift: Get the first index where condition is met.
+    /// 获取满足条件的第一个d元素的索引。
     ///
     ///        [1, 7, 1, 2, 4, 1, 6].firstIndex { $0 % 2 == 0 } -> 3
     ///
-    /// - Parameter condition: condition to evaluate each element against.
-    /// - Returns: first index where the specified condition evaluates to true. (optional)
+    /// - Parameter condition: 条件闭包
+    /// - Returns: index 索引 (optional)
     func firstIndex(where condition: (Element) throws -> Bool) rethrows -> Index? {
         for (index, value) in lazy.enumerated() where try condition(value) {
             return index
@@ -58,12 +57,12 @@ public extension Collection where Index == Int {
         return nil
     }
 
-    /// SwifterSwift: Get the last index where condition is met.
+    /// 获取满足条件的最后一个元素的索引。
     ///
     ///     [1, 7, 1, 2, 4, 1, 8].lastIndex { $0 % 2 == 0 } -> 6
     ///
-    /// - Parameter condition: condition to evaluate each element against.
-    /// - Returns: last index where the specified condition evaluates to true. (optional)
+    /// - Parameter condition: 条件闭包
+    /// - Returns: index 索引 (optional)
     func lastIndex(where condition: (Element) throws -> Bool) rethrows -> Index? {
         for (index, value) in lazy.enumerated().reversed() where try condition(value) {
             return index
@@ -71,12 +70,12 @@ public extension Collection where Index == Int {
         return nil
     }
 
-    /// SwifterSwift: Get all indices where condition is met.
+    /// 获取满足条件的所有索引
     ///
     ///     [1, 7, 1, 2, 4, 1, 8].indices(where: { $0 == 1 }) -> [0, 2, 5]
     ///
-    /// - Parameter condition: condition to evaluate each element against.
-    /// - Returns: all indices where the specified condition evaluates to true. (optional)
+    /// - Parameter condition: 条件闭包
+    /// - Returns: 索引集合. (optional)
     func indices(where condition: (Element) throws -> Bool) rethrows -> [Index]? {
         var indicies: [Index] = []
         for (index, value) in lazy.enumerated() where try condition(value) {
@@ -85,13 +84,13 @@ public extension Collection where Index == Int {
         return indicies.isEmpty ? nil : indicies
     }
 
-    /// SwifterSwift: Calls the given closure with an array of size of the parameter slice.
+    /// 集合分割成指定大小，调用指定闭包。
     ///
     ///     [0, 2, 4, 7].forEach(slice: 2) { print($0) } -> //print: [0, 2], [4, 7]
     ///     [0, 2, 4, 7, 6].forEach(slice: 2) { print($0) } -> //print: [0, 2], [4, 7], [6]
     ///
     /// - Parameters:
-    ///   - slice: size of array in each interation.
+    ///   - slice: 分割数组的长度
     ///   - body: a closure that takes an array of slice size as a parameter.
     func forEach(slice: Int, body: ([Element]) throws -> Void) rethrows {
         guard slice > 0, !isEmpty else { return }
@@ -103,13 +102,13 @@ public extension Collection where Index == Int {
         }
     }
 
-    /// SwifterSwift: Returns an array of slices of length "size" from the array. If array can't be split evenly, the final slice will be the remaining elements.
+    /// 按给定 size 创建一个二维数组
     ///
     ///     [0, 2, 4, 7].group(by: 2) -> [[0, 2], [4, 7]]
     ///     [0, 2, 4, 7, 6].group(by: 2) -> [[0, 2], [4, 7], [6]]
     ///
-    /// - Parameter size: The size of the slices to be returned.
-    /// - Returns: grouped self.
+    /// - Parameter size: 单个数组的大小
+    /// - Returns: 返回一个指定 size 的二维数组
     func group(by size: Int) -> [[Element]]? {
         //Inspired by: https://lodash.com/docs/4.17.4#chunk
         guard size > 0, !isEmpty else { return nil }
@@ -126,7 +125,7 @@ public extension Collection where Index == Int {
 
 public extension Collection where Element: Equatable, Index == Int {
 
-    /// SwifterSwift: First index of a given item in an array.
+    /// 返回第一个等于给定元素的元素索引
     ///
     ///        [1, 2, 2, 3, 4, 2, 5].firstIndex(of: 2) -> 1
     ///        [1.2, 2.3, 4.5, 3.4, 4.5].firstIndex(of: 6.5) -> nil
@@ -141,7 +140,7 @@ public extension Collection where Element: Equatable, Index == Int {
         return nil
     }
 
-    /// SwifterSwift: Last index of element in array.
+    /// 返回等于给定元素的最后一个索引
     ///
     ///        [1, 2, 2, 3, 4, 2, 5].lastIndex(of: 2) -> 5
     ///        [1.2, 2.3, 4.5, 3.4, 4.5].lastIndex(of: 6.5) -> nil
@@ -161,9 +160,9 @@ public extension Collection where Element: Equatable, Index == Int {
 // MARK: - Methods (Integer)
 public extension Collection where Element == IntegerLiteralType, Index == Int {
 
-    /// SwifterSwift: Average of all elements in array.
+    /// 整数集合求平均值
     ///
-    /// - Returns: the average of the array's elements.
+    /// - Returns: 数组的平均值。
     func average() -> Double {
         // http://stackoverflow.com/questions/28288148/making-my-function-calculate-average-of-array-swift
         return isEmpty ? 0 : Double(reduce(0, +)) / Double(count)
@@ -174,14 +173,13 @@ public extension Collection where Element == IntegerLiteralType, Index == Int {
 // MARK: - Methods (FloatingPoint)
 public extension Collection where Element: FloatingPoint {
 
-    /// SwifterSwift: Average of all elements in array.
+    /// 小数集合的平均值
     ///
     ///        [1.2, 2.3, 4.5, 3.4, 4.5].average() = 3.18
     ///
-    /// - Returns: average of the array's elements.
+    /// - Returns: 数组的平均值。
     func average() -> Element {
-        guard !isEmpty else { return 0 }
-        return reduce(0, {$0 + $1}) / Element(count)
+        return isEmpty ? 0 : reduce(0, {$0 + $1}) / Element(count)
     }
 
 }

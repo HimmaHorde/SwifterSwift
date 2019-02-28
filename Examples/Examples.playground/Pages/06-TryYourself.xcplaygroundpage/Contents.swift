@@ -38,5 +38,11 @@ let url = NSURL.init(string: "https://www.google.com/m/ald/cc.html")
 print(url?.scheme)
 print(url?.path)
 
+//
+let queueArr = [1, 2, 3, 4, 5]
+
+DispatchQueue.concurrentPerform(iterations: queueArr.count) { (i) in
+    print("index = \(i) ，线程\(Thread.current)")
+}
 
 //: [Previous](@previous)

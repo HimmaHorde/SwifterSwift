@@ -987,7 +987,7 @@ public extension String {
 public extension String {
 
     #if canImport(Foundation)
-    /// SwifterSwift: Create a new string from a base64 string (if applicable).
+    /// 使用 base64 字符串初始化并解码
     ///
     ///		String(base64: "SGVsbG8gV29ybGQh") = "Hello World!"
     ///		String(base64: "hello") = nil
@@ -1000,11 +1000,11 @@ public extension String {
     }
     #endif
 
-    /// SwifterSwift: Create a new random string of given length.
+    /// 获取指定长度的随机字符串
     ///
     ///		String(randomOfLength: 10) -> "gY8r3MHvlQ"
     ///
-    /// - Parameter length: number of characters in string.
+    /// - Parameter length: 字符串长度
     init(randomOfLength length: Int) {
         guard length > 0 else {
             self.init()
@@ -1117,32 +1117,36 @@ public extension String {
 // MARK: - NSString extensions
 public extension String {
 
-    /// SwifterSwift: NSString from a string.
+    /// 转化为 NSString 类型
     var nsString: NSString {
         return NSString(string: self)
     }
 
-    /// SwifterSwift: NSString lastPathComponent.
+    /// 路径的最后一部分
+    ///
+    ///  “/tmp/scratch.tiff” -> “scratch.tiff”
     var lastPathComponent: String {
         return (self as NSString).lastPathComponent
     }
 
-    /// SwifterSwift: NSString pathExtension.
+    /// 获取拓展名
+    ///
+    ///  “/tmp/scratch.tiff” -> “tiff”
     var pathExtension: String {
         return (self as NSString).pathExtension
     }
 
-    /// SwifterSwift: NSString deletingLastPathComponent.
+    /// 删除路径的最后
     var deletingLastPathComponent: String {
         return (self as NSString).deletingLastPathComponent
     }
 
-    /// SwifterSwift: NSString deletingPathExtension.
+    /// 删除拓展名
     var deletingPathExtension: String {
         return (self as NSString).deletingPathExtension
     }
 
-    /// SwifterSwift: NSString pathComponents.
+    /// 路径分割成字符串
     var pathComponents: [String] {
         return (self as NSString).pathComponents
     }
@@ -1167,7 +1171,7 @@ public extension String {
 #endif
 
 #if canImport(Foundation)
-// MARK: - NSString Emoji
+// MARK: - String Emoji
 public extension String {
 
     @available(swift, deprecated: 4.2, message: "直接使用 count")

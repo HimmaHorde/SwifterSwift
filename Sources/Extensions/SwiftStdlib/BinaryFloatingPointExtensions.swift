@@ -9,9 +9,7 @@
 // MARK: - Methods
 public extension BinaryFloatingPoint {
 
-    /// SwifterSwift: Returns a rounded value with the specified number of
-    /// decimal places and rounding rule. If `numberOfDecimalPlaces` is negative,
-    /// `0` will be used.
+    /// SwifterSwift: 小数的四舍五入
     ///
     ///     let num = 3.1415927
     ///     num.rounded(numberOfDecimalPlaces: 3, rule: .up) -> 3.142

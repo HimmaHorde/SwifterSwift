@@ -13,7 +13,7 @@ import Foundation
 // MARK: - Properties
 public extension Bool {
 
-    /// SwifterSwift: Return 1 if true, or 0 if false.
+    /// true 返回 1 ，false 返回 0
     ///
     ///        false.int -> 0
     ///        true.int -> 1
@@ -21,14 +21,4 @@ public extension Bool {
     var int: Int {
         return self ? 1 : 0
     }
-
-    /// SwifterSwift: Return "true" if true, or "false" if false.
-    ///
-    ///        false.string -> "false"
-    ///        true.string -> "true"
-    ///
-    var string: String {
-        return description
-    }
-
 }
