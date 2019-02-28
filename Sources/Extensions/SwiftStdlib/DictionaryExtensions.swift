@@ -39,7 +39,7 @@ public extension Dictionary {
     }
 
     #if canImport(Foundation)
-    /// SwifterSwift: JSON Data from dictionary.
+    /// 字典转 jsonData
     ///
     /// - Parameter prettify: set true to prettify data (default is false).
     /// - Returns: optional JSON Data (if applicable).
@@ -53,7 +53,7 @@ public extension Dictionary {
     #endif
 
     #if canImport(Foundation)
-    /// SwifterSwift: JSON String from dictionary.
+    /// 字典转 jsonString
     ///
     ///        dict.jsonString() -> "{"testKey":"testValue","testArrayKey":[1,2,3,4,5]}"
     ///
@@ -74,7 +74,7 @@ public extension Dictionary {
     ///
     ///        */
     ///
-    /// - Parameter prettify: set true to prettify string (default is false).
+    /// - Parameter prettify: 是否使用空格和缩进，使数据更具可读性。
     /// - Returns: optional JSON String (if applicable).
     func jsonString(prettify: Bool = false) -> String? {
         guard JSONSerialization.isValidJSONObject(self) else { return nil }
@@ -84,14 +84,14 @@ public extension Dictionary {
     }
     #endif
 
-    /// SwifterSwift: Returns a dictionary containing the results of mapping the given closure over the sequence’s elements.
-    /// - Parameter transform: A mapping closure. `transform` accepts an element of this sequence as its parameter and returns a transformed value of the same or of a different type.
-    /// - Returns: A dictionary containing the transformed elements of this sequence.
+    /// 返回一个字典，其中包含将给定闭包映射到序列元素上的结果。
+    /// - Parameter transform: 一个映射。' transform '接受该序列的一个元素作为其参数，并返回相同或不同类型的转换值。
+    /// - Returns: 包含该序列的转换元素的字典.
     func mapKeysAndValues<K, V>(_ transform: ((key: Key, value: Value)) throws -> (K, V)) rethrows -> [K: V] {
         return [K: V](uniqueKeysWithValues: try map(transform))
     }
 
-    /// SwifterSwift: Returns a dictionary containing the non-`nil` results of calling the given transformation with each element of this sequence.
+    /// 装换生成一个新的字典不包含 nil
     /// - Parameter transform: A closure that accepts an element of this sequence as its argument and returns an optional value.
     /// - Returns: A dictionary of the non-`nil` results of calling `transform` with each element of the sequence.
     /// - Complexity: *O(m + n)*, where _m_ is the length of this sequence and _n_ is the length of the result.
@@ -104,7 +104,7 @@ public extension Dictionary {
 // MARK: - Methods (Value: Equatable)
 public extension Dictionary where Value: Equatable {
 
-    /// SwifterSwift: Returns an array of all keys that have the given value in dictionary.
+    /// 返回所有包含指定 value 的 keys
     ///
     ///        let dict = ["key1": "value1", "key2": "value1", "key3": "value2"]
     ///        dict.keys(forValue: "value1") -> ["key1", "key2"]
@@ -122,7 +122,7 @@ public extension Dictionary where Value: Equatable {
 // MARK: - Methods (ExpressibleByStringLiteral)
 public extension Dictionary where Key: StringProtocol {
 
-    /// SwifterSwift: Lowercase all keys in dictionary.
+    /// 小写所有 keys
     ///
     ///        var dict = ["tEstKeY": "value"]
     ///        dict.lowercaseAllKeys()
@@ -141,50 +141,12 @@ public extension Dictionary where Key: StringProtocol {
 // MARK: - Subscripts
 public extension Dictionary {
 
-    /// SwifterSwift: Deep fetch or set a value from nested dictionaries.
-    ///
-    ///        var dict =  ["key": ["key1": ["key2": "value"]]]
-    ///        dict[path: ["key", "key1", "key2"]] = "newValue"
-    ///        dict[path: ["key", "key1", "key2"]] -> "newValue"
-    ///
-    /// - Note: Value fetching is iterative, while setting is recursive.
-    ///
-    /// - Complexity: O(N), _N_ being the length of the path passed in.
-    ///
-    /// - Parameter path: An array of keys to the desired value.
-    ///
-    /// - Returns: The value for the key-path passed in. `nil` if no value is found.
-    subscript(path path: [Key]) -> Any? {
-        get {
-            guard !path.isEmpty else { return nil }
-            var result: Any? = self
-            for key in path {
-                if let element = (result as? [Key: Any])?[key] {
-                    result = element
-                } else {
-                    return nil
-                }
-            }
-            return result
-        }
-        set {
-            if let first = path.first {
-                if path.count == 1, let new = newValue as? Value {
-                    return self[first] = new
-                }
-                if var nested = self[first] as? [Key: Any] {
-                    nested[path: Array(path.dropFirst())] = newValue
-                    return self[first] = nested as? Value
-                }
-            }
-        }
-    }
 }
 
 // MARK: - Operators
 public extension Dictionary {
 
-    /// SwifterSwift: Merge the keys/values of two dictionaries.
+    /// 合并两个字典
     ///
     ///        let dict : [String : String] = ["key1" : "value1"]
     ///        let dict2 : [String : String] = ["key2" : "value2"]
@@ -204,7 +166,7 @@ public extension Dictionary {
 
     // MARK: - Operators
 
-    /// SwifterSwift: Append the keys and values from the second dictionary into the first one.
+    /// 当前字典合并一个新的字典
     ///
     ///        var dict : [String : String] = ["key1" : "value1"]
     ///        let dict2 : [String : String] = ["key2" : "value2"]
@@ -213,13 +175,13 @@ public extension Dictionary {
     ///        dict["key2"] -> "value2"
     ///
     /// - Parameters:
-    ///   - lhs: dictionary
-    ///   - rhs: dictionary
+    ///   - lhs: 字典
+    ///   - rhs: 字典
     static func += (lhs: inout [Key: Value], rhs: [Key: Value]) {
         rhs.forEach { lhs[$0] = $1}
     }
 
-    /// SwifterSwift: Remove keys contained in the sequence from the dictionary
+    /// 返回新的字典，不包含序列中的键
     ///
     ///        let dict : [String : String] = ["key1" : "value1", "key2" : "value2", "key3" : "value3"]
     ///        let result = dict-["key1", "key2"]
@@ -228,16 +190,16 @@ public extension Dictionary {
     ///        result.keys.contains("key2") -> false
     ///
     /// - Parameters:
-    ///   - lhs: dictionary
-    ///   - rhs: array with the keys to be removed.
-    /// - Returns: a new dictionary with keys removed.
+    ///   - lhs: 字典
+    ///   - rhs: 需要删除的 keys 序列
+    /// - Returns: 删除后新的字典
     static func - <S: Sequence>(lhs: [Key: Value], keys: S) -> [Key: Value] where S.Element == Key {
         var result = lhs
         result.removeAll(keys: keys)
         return result
     }
 
-    /// SwifterSwift: Remove keys contained in the sequence from the dictionary
+    /// 从字典中删除序列中包含的键
     ///
     ///        var dict : [String : String] = ["key1" : "value1", "key2" : "value2", "key3" : "value3"]
     ///        dict-=["key1", "key2"]
@@ -246,8 +208,8 @@ public extension Dictionary {
     ///        dict.keys.contains("key2") -> false
     ///
     /// - Parameters:
-    ///   - lhs: dictionary
-    ///   - rhs: array with the keys to be removed.
+    ///   - lhs: 字典
+    ///   - rhs: 需要删除的 keys 序列
     static func -= <S: Sequence>(lhs: inout [Key: Value], keys: S) where S.Element == Key {
         lhs.removeAll(keys: keys)
     }

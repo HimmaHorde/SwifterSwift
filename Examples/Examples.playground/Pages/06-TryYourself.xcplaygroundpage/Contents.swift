@@ -41,12 +41,29 @@ print(url?.path)
 //
 let queueArr = [1, 2, 3, 4, 5]
 
-DispatchQueue.concurrentPerform(iterations: queueArr.count) { (i) in
-    print("index = \(i) ，线程\(Thread.current)")
+DispatchQueue.concurrentPerform(iterations: queueArr.count) { (index) in
+    print("index = \(index) ，线程\(Thread.current)")
 }
 
 if "c" ~= "a"..."f" {
     print("1在数组当中")
 }
+
+let dic = ["key1": "value1", "key2": "value2", "key3": "value3"]
+
+var aDic = ["key1": "value"]
+let bDic = ["key2": "value2"]
+Dictionary
+
+//let newDic =  dic.mapKeysAndValues { (key, value) -> (String, String) in
+//    let newKey = "A\(key)"
+//    return (newKey, value)
+//}
+
+//let newDic = dic.map { (key, value) -> (String, String) in
+//    return("BB\(key)", value)
+//}
+
+//print(newDic)
 
 //: [Previous](@previous)
