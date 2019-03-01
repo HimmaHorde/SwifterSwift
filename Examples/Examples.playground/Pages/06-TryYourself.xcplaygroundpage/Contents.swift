@@ -89,4 +89,11 @@ let pathComponents = pathString.components(separatedBy: ".")
 
 print(pathComponents)
 
+//let url = URL.init(string: "http://www.baidu.com?name=yanglin&age=100")
+//
+//print(url?.queryParameters) // -> Optional(["name": "yanglin", "age": "100"])
+
+
+
+
 //: [Previous](@previous)

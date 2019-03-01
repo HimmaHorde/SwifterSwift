@@ -17,7 +17,11 @@ import AVFoundation
 // MARK: - Properties
 public extension URL {
 
-    /// SwifterSwift: Dictionary of the URL's query parameters
+    /// URL的参数字典
+    ///
+    ///     let url = URL.init(string: "http://www.baidu.com?name=yanglin&age=100")
+    ///     print(url?.queryParameters) // -> Optional(["name": "yanglin", "age": "100"])
+    ///
     var queryParameters: [String: String]? {
         guard let components = URLComponents(url: self, resolvingAgainstBaseURL: false), let queryItems = components.queryItems else { return nil }
 
@@ -35,14 +39,14 @@ public extension URL {
 // MARK: - Methods
 public extension URL {
 
-    /// SwifterSwift: URL with appending query parameters.
+    /// 生成新的URL并添加指定参数
     ///
     ///		let url = URL(string: "https://google.com")!
     ///		let param = ["q": "Swifter Swift"]
     ///		url.appendingQueryParameters(params) -> "https://google.com?q=Swifter%20Swift"
     ///
-    /// - Parameter parameters: parameters dictionary.
-    /// - Returns: URL with appending given query parameters.
+    /// - Parameter parameters: 参数字典
+    /// - Returns: 添加完新参数的 URL
     func appendingQueryParameters(_ parameters: [String: String]) -> URL {
         var urlComponents = URLComponents(url: self, resolvingAgainstBaseURL: true)!
         var items = urlComponents.queryItems ?? []
@@ -51,7 +55,7 @@ public extension URL {
         return urlComponents.url!
     }
 
-    /// SwifterSwift: Append query parameters to URL.
+    /// 为当前 URL 添加参数
     ///
     ///		var url = URL(string: "https://google.com")!
     ///		let param = ["q": "Swifter Swift"]
@@ -63,7 +67,7 @@ public extension URL {
         self = appendingQueryParameters(parameters)
     }
 
-    /// SwifterSwift: Get value of a query key.
+    /// 获取 URL 键对应的值
     ///
     ///     var url = URL(string: "https://google.com?code=12345")!
     ///     url.queryValue(for: "code")// -> "12345"
@@ -78,12 +82,12 @@ public extension URL {
         return nil
     }
 
-    /// SwifterSwift: Returns a new URL by removing all the path components.
+    /// 返回一个删除所有路径的新URL。
     ///
     ///     let url = URL(string: "https://domain.com/path/other")!
     ///     print(url.deletingAllPathComponents()) // prints "https://domain.com/"
     ///
-    /// - Returns: URL with all path components removed.
+    /// - Returns: 不包含任何路径的新 URL.
     func deletingAllPathComponents() -> URL {
         var url: URL = self
         for _ in 0..<pathComponents.count - 1 {
@@ -125,8 +129,9 @@ public extension URL {
 public extension URL {
 
     #if os(iOS) || os(tvOS)
-    /// Generate a thumbnail image from given url. Returns nil if no thumbnail could be created. This function may take some time to complete. It's recommended to dispatch the call if the thumbnail is not generated from a local resource.
+    /// 从给定的 url生成缩略图。如果无法创建缩略图，则返回nil。建议异步执行
     ///
+    ///     // 可以是视频缩略图
     ///     var url = URL(string: "https://video.golem.de/files/1/1/20637/wrkw0718-sd.mp4")!
     ///     var thumbnail = url.thumbnail()
     ///     thumbnail = url.thumbnail(fromTime: 5)
@@ -135,8 +140,8 @@ public extension URL {
     ///         someImageView.image = url.thumbnail()
     ///     }
     ///
-    /// - Parameter time: Seconds into the video where the image should be generated.
-    /// - Returns: The UIImage result of the AVAssetImageGenerator
+    /// - Parameter time: 生成图片的秒数
+    /// - Returns: 生成的缩略图
     func thumbnail(fromTime time: Float64 = 0) -> UIImage? {
         let imageGenerator = AVAssetImageGenerator(asset: AVAsset(url: self))
         let time = CMTimeMakeWithSeconds(time, preferredTimescale: 1)

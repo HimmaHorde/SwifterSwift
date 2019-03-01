@@ -24,16 +24,26 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DoX-3S-e7N">
+                                <rect key="frame" x="87" y="384" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="CX7-lR-aZg"/>
+                                    <constraint firstAttribute="width" constant="240" id="vZT-Ba-Ey9"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="RNt-EF-LJd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="K7r-rp-rTs"/>
                             <constraint firstItem="RNt-EF-LJd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="150" id="KXF-DA-2wT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RNt-EF-LJd" secondAttribute="trailing" constant="100" id="d0m-B2-2j8"/>
+                            <constraint firstItem="DoX-3S-e7N" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="n4O-xv-k0p"/>
+                            <constraint firstItem="DoX-3S-e7N" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="zWX-C8-2y9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="imageView" destination="DoX-3S-e7N" id="JEf-QB-D9F"/>
                         <outlet property="textField" destination="RNt-EF-LJd" id="dI4-RU-Ryg"/>
                     </connections>
                 </viewController>

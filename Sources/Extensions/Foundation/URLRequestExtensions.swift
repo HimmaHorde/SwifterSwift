@@ -12,9 +12,9 @@ import Foundation
 // MARK: - Initializers
 public extension URLRequest {
 
-    /// SwifterSwift: Create URLRequest from URL string.
+    /// url 字符串直接生成 Request
     ///
-    /// - Parameter urlString: URL string to initialize URL request from
+    /// - Parameter urlString: url 字符串
     init?(urlString: String) {
         guard let url = URL(string: urlString) else { return nil }
         self.init(url: url)

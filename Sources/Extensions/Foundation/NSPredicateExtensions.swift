@@ -12,7 +12,7 @@ import Foundation
 // MARK: - Properties
 public extension NSPredicate {
 
-    /// SwifterSwift: Returns a new predicate formed by NOT-ing the predicate.
+    /// 快速产生非运算
     var not: NSCompoundPredicate {
         return NSCompoundPredicate(notPredicateWithSubpredicate: self)
     }
@@ -22,15 +22,15 @@ public extension NSPredicate {
 // MARK: - Methods
 public extension NSPredicate {
 
-    /// SwifterSwift: Returns a new predicate formed by AND-ing the argument to the predicate.
+    /// 快速创建与运算
     ///
-    /// - Parameter predicate: NSPredicate
+    /// - Parameter predicate: 谓词
     /// - Returns: NSCompoundPredicate
     func and(_ predicate: NSPredicate) -> NSCompoundPredicate {
         return NSCompoundPredicate(andPredicateWithSubpredicates: [self, predicate])
     }
 
-    /// SwifterSwift: Returns a new predicate formed by OR-ing the argument to the predicate.
+    /// 快速创建或运算
     ///
     /// - Parameter predicate: NSPredicate
     /// - Returns: NSCompoundPredicate
@@ -43,14 +43,14 @@ public extension NSPredicate {
 // MARK: - Operators
 public extension NSPredicate {
 
-    /// SwifterSwift: Returns a new predicate formed by NOT-ing the predicate.
+    /// 快速产生非运算
     /// - Parameters: rhs: NSPredicate to convert.
     /// - Returns: NSCompoundPredicate
     static prefix func ! (rhs: NSPredicate) -> NSCompoundPredicate {
         return rhs.not
     }
 
-    /// SwifterSwift: Returns a new predicate formed by AND-ing the argument to the predicate.
+    /// 快速创建与运算
     ///
     /// - Parameters:
     ///   - lhs: NSPredicate.
@@ -60,7 +60,7 @@ public extension NSPredicate {
         return lhs.and(rhs)
     }
 
-    /// SwifterSwift: Returns a new predicate formed by OR-ing the argument to the predicate.
+    /// 快速创建或运算
     ///
     /// - Parameters:
     ///   - lhs: NSPredicate.
@@ -70,7 +70,7 @@ public extension NSPredicate {
         return lhs.or(rhs)
     }
 
-    /// SwifterSwift: Returns a new predicate formed by remove the argument to the predicate.
+    ///  ==  +！
     ///
     /// - Parameters:
     ///   - lhs: NSPredicate.
