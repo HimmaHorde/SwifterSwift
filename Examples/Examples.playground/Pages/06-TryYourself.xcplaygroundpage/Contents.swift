@@ -67,4 +67,26 @@ let bDic = ["key2": "value2"]
 let num = 123456789
 print(num.digits)// ->[1, 2, 3, 4, 5, 6, 7, 8, 9]
 print(num.digitsCount)
+
+let str1 = "hello " + "world"
+
+//extension String {
+//    infix operator 
+//}
+
+var color = #colorLiteral(red: 0, green: 0.4509803922, blue: 0.9725490196, alpha: 1)
+print(color.hexString)
+let c2 = color.complementary
+print(color.complementary)
+print(color)
+
+let today = Date.init(timeIntervalSinceNow: 0)
+print(today.monthName())
+
+let pathString = ".mp3"
+
+let pathComponents = pathString.components(separatedBy: ".")
+
+print(pathComponents)
+
 //: [Previous](@previous)

@@ -12,7 +12,7 @@ import Foundation
 // MARK: - Properties
 public extension Data {
 
-    /// SwifterSwift: Return data as an array of bytes.
+    /// 以字节数组的形式返回数据
     var bytes: [UInt8] {
         // http://stackoverflow.com/questions/38097710/swift-3-changes-for-getbytes-method
         return [UInt8](self)
@@ -23,21 +23,19 @@ public extension Data {
 // MARK: - Methods
 public extension Data {
 
-    /// SwifterSwift: String by encoding Data using the given encoding (if applicable).
+    /// 使用给定编码(如果适用)对数据进行编码。
     ///
-    /// - Parameter encoding: encoding.
-    /// - Returns: String by encoding Data using the given encoding (if applicable).
+    /// - Parameter encoding: 编码
+    /// - Returns: 编码后的字符串 (如果适用).
     func string(encoding: String.Encoding) -> String? {
         return String(data: self, encoding: encoding)
     }
 
-    /// SwifterSwift: Returns a Foundation object from given JSON data.
+    /// JsonData 直接解析
     ///
-    /// - Parameter options: Options for reading the JSON data and creating the Foundation object.
-    ///
-    ///   For possible values, see `JSONSerialization.ReadingOptions`.
-    /// - Returns: A Foundation object from the JSON data in the receiver, or `nil` if an error occurs.
-    /// - Throws: An `NSError` if the receiver does not represent a valid JSON object.
+    /// - Parameter options: 解析选项 JSONSerialization.ReadingOptions
+    /// - Returns: 返回一个 Function 对象，如果发生错误，则为“nil”。
+    /// - Throws: 抛出解析异常.
     func jsonObject(options: JSONSerialization.ReadingOptions = []) throws -> Any {
         return try JSONSerialization.jsonObject(with: self, options: options)
     }

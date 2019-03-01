@@ -11,13 +11,13 @@ import Foundation
 
 public extension FileManager {
 
-    /// SwifterSwift: Read from a JSON file at a given path.
+    /// 读取文件并 JSON 解析
     ///
     /// - Parameters:
-    ///   - path: JSON file path.
-    ///   - options: JSONSerialization reading options.
-    /// - Returns: Optional dictionary.
-    /// - Throws: Throws any errors thrown by Data creation or JSON serialization.
+    ///   - path: JSON 文件路径。
+    ///   - options: 解析方式。
+    /// - Returns: 返回解析后数据。
+    /// - Throws: 抛出解析错误。
     func jsonFromFile(
         atPath path: String,
         readingOptions: JSONSerialization.ReadingOptions = .allowFragments) throws -> [String: Any]? {
@@ -28,14 +28,14 @@ public extension FileManager {
         return json as? [String: Any]
     }
 
-    /// SwifterSwift: Read from a JSON file with a given filename.
+    /// 读取项目内 JSON 文件并解析
     ///
     /// - Parameters:
-    ///   - filename: File to read.
-    ///   - bundleClass: Bundle where the file is associated.
-    ///   - readingOptions: JSONSerialization reading options.
-    /// - Returns: Optional dictionary.
-    /// - Throws: Throws any errors thrown by Data creation or JSON serialization.
+    ///   - filename: 要读取的文件.
+    ///   - bundleClass: 所在的 Bundle
+    ///   - readingOptions: JSON 解析方式
+    /// - Returns: 解析结果.
+    /// - Throws: 抛出解析异常
     func jsonFromFile(
         withFilename filename: String,
         at bundleClass: AnyClass? = nil,

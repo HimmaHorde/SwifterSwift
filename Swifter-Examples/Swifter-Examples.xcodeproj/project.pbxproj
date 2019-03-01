@@ -12,6 +12,7 @@
 		CC38B6C82223D5B900DC4CDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC38B6C62223D5B900DC4CDA /* Main.storyboard */; };
 		CC38B6CA2223D5BD00DC4CDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC38B6C92223D5BD00DC4CDA /* Assets.xcassets */; };
 		CC38B6CD2223D5BD00DC4CDA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC38B6CB2223D5BD00DC4CDA /* LaunchScreen.storyboard */; };
+		CC4C68F42228FD9E00D3857A /* data.aa in Resources */ = {isa = PBXBuildFile; fileRef = CC4C68F32228FD9E00D3857A /* data.aa */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		CC38B6C92223D5BD00DC4CDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CC38B6CC2223D5BD00DC4CDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC38B6CE2223D5BD00DC4CDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC4C68F32228FD9E00D3857A /* data.aa */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.aa; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 		CC38B6C12223D5B800DC4CDA /* Swifter-Examples */ = {
 			isa = PBXGroup;
 			children = (
+				CC4C68F32228FD9E00D3857A /* data.aa */,
 				CC38B6C22223D5B800DC4CDA /* AppDelegate.swift */,
 				CC38B6C42223D5B900DC4CDA /* ViewController.swift */,
 				CC38B6C62223D5B900DC4CDA /* Main.storyboard */,
@@ -123,6 +126,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC38B6CD2223D5BD00DC4CDA /* LaunchScreen.storyboard in Resources */,
+				CC4C68F42228FD9E00D3857A /* data.aa in Resources */,
 				CC38B6CA2223D5BD00DC4CDA /* Assets.xcassets in Resources */,
 				CC38B6C82223D5B900DC4CDA /* Main.storyboard in Resources */,
 			);

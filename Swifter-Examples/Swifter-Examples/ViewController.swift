@@ -22,6 +22,17 @@ class ViewController: UIViewController {
 
         textField.text = "   阿萨德你看三大看点阿斯顿撒U盾哈可达爱仕达大所暗色调 as 大大的 ad \n 打算打双打实打实大四U盾还U盾和我   \n\n\n"
 
+//        if let data = try? FileManager.default.jsonFromFile(withFilename: "data") {
+//            print(data)
+//        } else {
+//            print("获取不到地址")
+//        }
+        let pathArr = "mp3".components(separatedBy: ".")
+        print(pathArr)
+
+
+
+
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
