@@ -25,7 +25,7 @@ public struct SwifterSwift {
 
     #if !os(macOS)
     /// App 名称 (如果存在)
-    public var appDisplayName: String? {
+    public static var appDisplayName: String? {
         // http://stackoverflow.com/questions/28254377/get-app-name-in-swift
         return Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String
     }
@@ -33,28 +33,28 @@ public struct SwifterSwift {
 
     #if !os(macOS)
     /// bundle ID (如果存在).
-    public var appBundleID: String? {
+    public static var appBundleID: String? {
         return Bundle.main.bundleIdentifier
     }
     #endif
 
     #if os(iOS)
-    /// SwifterSwift: StatusBar height
-    public var statusBarHeight: CGFloat {
+    /// 状态栏高度
+    public static var statusBarHeight: CGFloat {
         return UIApplication.shared.statusBarFrame.height
     }
     #endif
 
     #if !os(macOS)
     /// SwifterSwift: App current build number (if applicable).
-    public var appBuild: String? {
+    public static var appBuild: String? {
         return Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as? String
     }
     #endif
 
     #if os(iOS) || os(tvOS)
     /// SwifterSwift: Application icon badge current number.
-    public var applicationIconBadgeNumber: Int {
+    public static var applicationIconBadgeNumber: Int {
         get {
             return UIApplication.shared.applicationIconBadgeNumber
         }
@@ -66,33 +66,33 @@ public struct SwifterSwift {
 
     #if !os(macOS)
     /// SwifterSwift: App's current version (if applicable).
-    public var appVersion: String? {
+    public static var appVersion: String? {
         return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     }
     #endif
 
     #if os(iOS)
     /// SwifterSwift: Current battery level.
-    public var batteryLevel: Float {
+    public static var batteryLevel: Float {
         return UIDevice.current.batteryLevel
     }
     #endif
 
     #if os(iOS) || os(tvOS)
     /// SwifterSwift: Shared instance of current device.
-    public var currentDevice: UIDevice {
+    public static var currentDevice: UIDevice {
         return UIDevice.current
     }
     #elseif os(watchOS)
     /// SwifterSwift: Shared instance of current device.
-    public var currentDevice: WKInterfaceDevice {
+    public static var currentDevice: WKInterfaceDevice {
         return WKInterfaceDevice.current()
     }
     #endif
 
     #if !os(macOS)
     /// SwifterSwift: Screen height.
-    public var screenHeight: CGFloat {
+    public static var screenHeight: CGFloat {
         #if os(iOS) || os(tvOS)
         return UIScreen.main.bounds.height
         #elseif os(watchOS)
@@ -103,28 +103,28 @@ public struct SwifterSwift {
 
     #if !os(macOS)
     /// SwifterSwift: Current device model.
-    public var deviceModel: String {
+    public static var deviceModel: String {
         return currentDevice.model
     }
     #endif
 
     #if !os(macOS)
     /// SwifterSwift: Current device name.
-    public var deviceName: String {
+    public static var deviceName: String {
         return currentDevice.name
     }
     #endif
 
     #if os(iOS)
     /// SwifterSwift: Current orientation of device.
-    public var deviceOrientation: UIDeviceOrientation {
+    public static var deviceOrientation: UIDeviceOrientation {
         return currentDevice.orientation
     }
     #endif
 
     #if !os(macOS)
     /// SwifterSwift: Screen width.
-    public var screenWidth: CGFloat {
+    public static var screenWidth: CGFloat {
         #if os(iOS) || os(tvOS)
         return UIScreen.main.bounds.width
         #elseif os(watchOS)
@@ -134,7 +134,7 @@ public struct SwifterSwift {
     #endif
 
     /// SwifterSwift: Check if app is running in debug mode.
-    public var isInDebuggingMode: Bool {
+    public static var isInDebuggingMode: Bool {
         // http://stackoverflow.com/questions/9063100/xcode-ios-how-to-determine-whether-code-is-running-in-debug-release-build
         #if DEBUG
         return true
@@ -145,7 +145,7 @@ public struct SwifterSwift {
 
     #if !os(macOS)
     /// SwifterSwift: Check if app is running in TestFlight mode.
-    public var isInTestFlight: Bool {
+    public static var isInTestFlight: Bool {
         // http://stackoverflow.com/questions/12431994/detect-testflight
         return Bundle.main.appStoreReceiptURL?.path.contains("sandboxReceipt") == true
     }
@@ -153,14 +153,14 @@ public struct SwifterSwift {
 
     #if os(iOS)
     /// SwifterSwift: Check if multitasking is supported in current device.
-    public var isMultitaskingSupported: Bool {
+    public static var isMultitaskingSupported: Bool {
         return UIDevice.current.isMultitaskingSupported
     }
     #endif
 
     #if os(iOS)
     /// SwifterSwift: Current status bar network activity indicator state.
-    public var isNetworkActivityIndicatorVisible: Bool {
+    public static var isNetworkActivityIndicatorVisible: Bool {
         get {
             return UIApplication.shared.isNetworkActivityIndicatorVisible
         }
@@ -172,27 +172,27 @@ public struct SwifterSwift {
 
     #if os(iOS)
     /// SwifterSwift: Check if device is iPad.
-    public var isPad: Bool {
+    public static var isPad: Bool {
         return UIDevice.current.userInterfaceIdiom == .pad
     }
     #endif
 
     #if os(iOS)
     /// SwifterSwift: Check if device is iPhone.
-    public var isPhone: Bool {
+    public static var isPhone: Bool {
         return UIDevice.current.userInterfaceIdiom == .phone
     }
     #endif
 
     #if os(iOS) || os(tvOS)
     /// SwifterSwift: Check if device is registered for remote notifications for current app (read-only).
-    public var isRegisteredForRemoteNotifications: Bool {
+    public static var isRegisteredForRemoteNotifications: Bool {
         return UIApplication.shared.isRegisteredForRemoteNotifications
     }
     #endif
 
     /// SwifterSwift: Check if application is running on simulator (read-only).
-    public var isRunningOnSimulator: Bool {
+    public static var isRunningOnSimulator: Bool {
         // http://stackoverflow.com/questions/24869481/detect-if-app-is-being-built-for-device-or-simulator-in-swift
         #if targetEnvironment(simulator)
         return true
@@ -203,7 +203,7 @@ public struct SwifterSwift {
 
     #if os(iOS)
     /// SwifterSwift: Status bar visibility state.
-    public var isStatusBarHidden: Bool {
+    public static var isStatusBarHidden: Bool {
         get {
             return UIApplication.shared.isStatusBarHidden
         }
@@ -215,14 +215,14 @@ public struct SwifterSwift {
 
     #if os(iOS) || os(tvOS)
     /// SwifterSwift: Key window (read only, if applicable).
-    public var keyWindow: UIView? {
+    public static var keyWindow: UIView? {
         return UIApplication.shared.keyWindow
     }
     #endif
 
     #if os(iOS) || os(tvOS)
     /// SwifterSwift: Most top view controller (if applicable).
-    public var mostTopViewController: UIViewController? {
+    public static var mostTopViewController: UIViewController? {
         get {
             return UIApplication.shared.keyWindow?.rootViewController
         }
@@ -234,14 +234,14 @@ public struct SwifterSwift {
 
     #if os(iOS) || os(tvOS)
     /// SwifterSwift: Shared instance UIApplication.
-    public var sharedApplication: UIApplication {
+    public static var sharedApplication: UIApplication {
         return UIApplication.shared
     }
     #endif
 
     #if os(iOS)
     /// SwifterSwift: Current status bar style (if applicable).
-    public var statusBarStyle: UIStatusBarStyle? {
+    public static var statusBarStyle: UIStatusBarStyle? {
         get {
             return UIApplication.shared.statusBarStyle
         }
@@ -255,7 +255,7 @@ public struct SwifterSwift {
 
     #if !os(macOS)
     /// SwifterSwift: System current version (read-only).
-    public var systemVersion: String {
+    public static var systemVersion: String {
         return currentDevice.systemVersion
     }
     #endif

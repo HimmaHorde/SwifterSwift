@@ -18,6 +18,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Color.FlatUI.turquoise
+
+        print(SwifterSwift.appDisplayName!)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
