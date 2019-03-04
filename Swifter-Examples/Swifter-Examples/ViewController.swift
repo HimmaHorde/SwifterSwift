@@ -15,12 +15,9 @@ class ViewController: UIViewController {
 
     @IBOutlet var imageView: UIImageView!
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
-
+        view.backgroundColor = Color.FlatUI.turquoise
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
