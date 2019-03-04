@@ -17,16 +17,6 @@ public extension SignedInteger {
         return Swift.abs(self)
     }
 
-    /// SwifterSwift: Check if integer is positive.
-    var isPositive: Bool {
-        return self > 0
-    }
-
-    /// SwifterSwift: Check if integer is negative.
-    var isNegative: Bool {
-        return self < 0
-    }
-
     /// SwifterSwift: Check if integer is even.
     var isEven: Bool {
         return (self % 2) == 0

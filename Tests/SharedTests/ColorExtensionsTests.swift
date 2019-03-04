@@ -137,35 +137,6 @@ final class ColorExtensionsTests: XCTestCase {
         XCTAssertEqual((color.hsbaComponents.brightness * 100).rounded(), 24)
     }
 
-    func testUInt() {
-        var color = Color(hex: 0xFF0000, transparency: 1.0)
-        XCTAssertEqual(color?.uInt, 0xFF0000)
-
-        color = Color(hex: 0x00FF00, transparency: 1.0)
-        XCTAssertEqual(color?.uInt, 0x00FF00)
-
-        color = Color(hex: 0x0000FF, transparency: 1.0)
-        XCTAssertEqual(color?.uInt, 0x0000FF)
-
-        color = Color(hex: 0x000000, transparency: 1.0)
-        XCTAssertEqual(color?.uInt, 0x000000)
-
-        color = Color(hex: 0xFFFFFF, transparency: 1.0)
-        XCTAssertEqual(color?.uInt, 0xFFFFFF)
-
-        color = Color(hex: 0x123456, transparency: 1.0)
-        XCTAssertEqual(color?.uInt, 0x123456)
-
-        color = Color(hex: 0xFCA864, transparency: 1.0)
-        XCTAssertEqual(color?.uInt, 0xFCA864)
-
-        color = Color(hex: 0xFCA864, transparency: 1.0)
-        XCTAssertEqual(color?.uInt, 0xFCA864)
-
-        color = Color(hex: 0x1F2D3C, transparency: 1.0)
-        XCTAssertEqual(color?.uInt, 0x1F2D3C)
-    }
-
     func testHexString() {
         var color = Color.red
         XCTAssertEqual(color.hexString, "#FF0000")
@@ -181,34 +152,6 @@ final class ColorExtensionsTests: XCTestCase {
 
         color = Color.black
         XCTAssertEqual(color.hexString, "#000000")
-    }
-
-    func testShortHexString() {
-        var color: Color? = Color.red
-        XCTAssertEqual(color?.shortHexString, "#F00")
-
-        color = Color.blue
-        XCTAssertEqual(color?.shortHexString, "#00F")
-
-        color = Color(hexString: "#0F120F")
-        XCTAssertNil(color?.shortHexString)
-
-        color = Color(hexString: "#8FFFF")
-        XCTAssertNil(color?.shortHexString)
-    }
-
-    func testShortHexOrHexString() {
-        var color: Color? = Color.red
-        XCTAssertEqual(color?.shortHexOrHexString, "#F00")
-
-        color = Color(hexString: "#8FFFFF")
-        XCTAssertEqual(color?.shortHexOrHexString, "#8FFFFF")
-
-        color = Color(hexString: "#F")
-        XCTAssertEqual(color?.shortHexOrHexString, "#00000F")
-
-        color = Color(hexString: "#11")
-        XCTAssertEqual(color?.shortHexOrHexString, "#001")
     }
 
     func testComplementary() {

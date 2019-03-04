@@ -40,8 +40,8 @@ final class StringExtensionsTests: XCTestCase {
     }
 
     func testContainEmoji() {
-        XCTAssert("Hello 😂".containEmoji)
-        XCTAssertFalse("Hello ;)".containEmoji)
+        XCTAssert("Hello 😂".containsEmoji)
+        XCTAssertFalse("Hello ;)".containsEmoji)
     }
 
     func testFirstCharacter() {

@@ -46,14 +46,14 @@ public struct SwifterSwift {
     #endif
 
     #if !os(macOS)
-    /// SwifterSwift: App current build number (if applicable).
+    /// App当前构建版本号 (如果存在).
     public static var appBuild: String? {
         return Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as? String
     }
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// SwifterSwift: Application icon badge current number.
+    /// APP 角标数
     public static var applicationIconBadgeNumber: Int {
         get {
             return UIApplication.shared.applicationIconBadgeNumber
@@ -65,33 +65,54 @@ public struct SwifterSwift {
     #endif
 
     #if !os(macOS)
-    /// SwifterSwift: App's current version (if applicable).
+    /// APP 当前的版本号 (如果存在).
     public static var appVersion: String? {
         return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     }
     #endif
 
     #if os(iOS)
-    /// SwifterSwift: Current battery level.
+    /// 当前的电池电量
     public static var batteryLevel: Float {
         return UIDevice.current.batteryLevel
     }
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// SwifterSwift: Shared instance of current device.
+    /// 当前设备的共享实例
     public static var currentDevice: UIDevice {
         return UIDevice.current
     }
     #elseif os(watchOS)
-    /// SwifterSwift: Shared instance of current device.
+    /// 当前设备的共享实例
     public static var currentDevice: WKInterfaceDevice {
         return WKInterfaceDevice.current()
     }
     #endif
 
     #if !os(macOS)
-    /// SwifterSwift: Screen height.
+    /// 当前的设备模型 (eg. @”iPhone” , @”iPod touch”).
+    public static var deviceModel: String {
+        return currentDevice.model
+    }
+    #endif
+
+    #if !os(macOS)
+    /// 当前设备名称
+    public static var deviceName: String {
+        return currentDevice.name
+    }
+    #endif
+
+    #if os(iOS)
+    /// 设备当前方向。
+    public static var deviceOrientation: UIDeviceOrientation {
+        return currentDevice.orientation
+    }
+    #endif
+
+    #if !os(macOS)
+    /// 屏幕高度
     public static var screenHeight: CGFloat {
         #if os(iOS) || os(tvOS)
         return UIScreen.main.bounds.height
@@ -102,28 +123,7 @@ public struct SwifterSwift {
     #endif
 
     #if !os(macOS)
-    /// SwifterSwift: Current device model.
-    public static var deviceModel: String {
-        return currentDevice.model
-    }
-    #endif
-
-    #if !os(macOS)
-    /// SwifterSwift: Current device name.
-    public static var deviceName: String {
-        return currentDevice.name
-    }
-    #endif
-
-    #if os(iOS)
-    /// SwifterSwift: Current orientation of device.
-    public static var deviceOrientation: UIDeviceOrientation {
-        return currentDevice.orientation
-    }
-    #endif
-
-    #if !os(macOS)
-    /// SwifterSwift: Screen width.
+    /// 屏幕宽度
     public static var screenWidth: CGFloat {
         #if os(iOS) || os(tvOS)
         return UIScreen.main.bounds.width
@@ -133,7 +133,7 @@ public struct SwifterSwift {
     }
     #endif
 
-    /// SwifterSwift: Check if app is running in debug mode.
+    /// 是否是 debug 模式
     public static var isInDebuggingMode: Bool {
         // http://stackoverflow.com/questions/9063100/xcode-ios-how-to-determine-whether-code-is-running-in-debug-release-build
         #if DEBUG
@@ -144,7 +144,7 @@ public struct SwifterSwift {
     }
 
     #if !os(macOS)
-    /// SwifterSwift: Check if app is running in TestFlight mode.
+    /// 是否是TestFlightn模式
     public static var isInTestFlight: Bool {
         // http://stackoverflow.com/questions/12431994/detect-testflight
         return Bundle.main.appStoreReceiptURL?.path.contains("sandboxReceipt") == true
@@ -152,14 +152,14 @@ public struct SwifterSwift {
     #endif
 
     #if os(iOS)
-    /// SwifterSwift: Check if multitasking is supported in current device.
+    /// 前设备是否支持多任务处理。
     public static var isMultitaskingSupported: Bool {
         return UIDevice.current.isMultitaskingSupported
     }
     #endif
 
     #if os(iOS)
-    /// SwifterSwift: Current status bar network activity indicator state.
+    /// 打开或关闭网络活动的指示器。
     public static var isNetworkActivityIndicatorVisible: Bool {
         get {
             return UIApplication.shared.isNetworkActivityIndicatorVisible
@@ -171,27 +171,27 @@ public struct SwifterSwift {
     #endif
 
     #if os(iOS)
-    /// SwifterSwift: Check if device is iPad.
+    /// 检查设备是否是iPad。
     public static var isPad: Bool {
         return UIDevice.current.userInterfaceIdiom == .pad
     }
     #endif
 
     #if os(iOS)
-    /// SwifterSwift: Check if device is iPhone.
+    /// 检查设备是否是iPhone。
     public static var isPhone: Bool {
         return UIDevice.current.userInterfaceIdiom == .phone
     }
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// SwifterSwift: Check if device is registered for remote notifications for current app (read-only).
+    /// 检查当前 APP 是否注册远程推送 (read-only).
     public static var isRegisteredForRemoteNotifications: Bool {
         return UIApplication.shared.isRegisteredForRemoteNotifications
     }
     #endif
 
-    /// SwifterSwift: Check if application is running on simulator (read-only).
+    /// 检查应用程序是否在模拟器上运行 (read-only).
     public static var isRunningOnSimulator: Bool {
         // http://stackoverflow.com/questions/24869481/detect-if-app-is-being-built-for-device-or-simulator-in-swift
         #if targetEnvironment(simulator)
@@ -202,7 +202,7 @@ public struct SwifterSwift {
     }
 
     #if os(iOS)
-    /// SwifterSwift: Status bar visibility state.
+    /// 状态栏是否可见
     public static var isStatusBarHidden: Bool {
         get {
             return UIApplication.shared.isStatusBarHidden
@@ -214,14 +214,14 @@ public struct SwifterSwift {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// SwifterSwift: Key window (read only, if applicable).
+    /// Key window (read only, 如果存在).
     public static var keyWindow: UIView? {
         return UIApplication.shared.keyWindow
     }
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// SwifterSwift: Most top view controller (if applicable).
+    /// 最顶层视图控制器 (如果存在).
     public static var mostTopViewController: UIViewController? {
         get {
             return UIApplication.shared.keyWindow?.rootViewController
@@ -233,14 +233,14 @@ public struct SwifterSwift {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// SwifterSwift: Shared instance UIApplication.
+    /// UIApplication 实例
     public static var sharedApplication: UIApplication {
         return UIApplication.shared
     }
     #endif
 
     #if os(iOS)
-    /// SwifterSwift: Current status bar style (if applicable).
+    /// 当前状态栏样式 (如果存在).
     public static var statusBarStyle: UIStatusBarStyle? {
         get {
             return UIApplication.shared.statusBarStyle
@@ -254,7 +254,7 @@ public struct SwifterSwift {
     #endif
 
     #if !os(macOS)
-    /// SwifterSwift: System current version (read-only).
+    /// 系统当前版本号 (read-only).
     public static var systemVersion: String {
         return currentDevice.systemVersion
     }
@@ -265,20 +265,20 @@ public struct SwifterSwift {
 // MARK: - Methods
 public extension SwifterSwift {
 
-    /// SwifterSwift: Delay function or closure call.
+    /// 延迟调用函数或闭包
     ///
     /// - Parameters:
-    ///   - milliseconds: execute closure after the given delay.
-    ///   - queue: a queue that completion closure should be executed on (default is DispatchQueue.main).
-    ///   - completion: closure to be executed after delay.
-    ///   - Returns: DispatchWorkItem task. You can call .cancel() on it to cancel delayed execution.
+    ///   - milliseconds: 延迟时间 (单位：毫秒)。
+    ///   - queue: 完成闭包所在的队列。
+    ///   - completion: 延迟后执行的闭包。
+    ///   - Returns: DispatchWorkItem任务。您可以调用.cancel()来取消延迟的执行。
     @discardableResult static func delay(milliseconds: Double, queue: DispatchQueue = .main, completion: @escaping () -> Void) -> DispatchWorkItem {
         let task = DispatchWorkItem { completion() }
         queue.asyncAfter(deadline: .now() + (milliseconds/1000), execute: task)
         return task
     }
 
-    /// SwifterSwift: Debounce function or closure call.
+    /// 取消函数或闭包调用
     ///
     /// - Parameters:
     ///   - millisecondsOffset: allow execution of method if it was not called since millisecondsOffset.
@@ -315,14 +315,18 @@ public extension SwifterSwift {
     }
     #endif
 
-    /// SwifterSwift: Class name of object as string.
+    /// 对象的类名
     ///
-    /// - Parameter object: Any object to find its class name.
-    /// - Returns: Class name for given object.
+    /// - Parameter object: 任意实例对象
+    /// - Returns: 对象的类型字符串
     static func typeName(for object: Any) -> String {
         let objectType = type(of: object.self)
         return String.init(describing: objectType)
     }
 
 }
+
+// swiftlint:disable next type_name
+public typealias SS = SwifterSwift
+
 #endif

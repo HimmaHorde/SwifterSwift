@@ -13,7 +13,7 @@ import Foundation
 public extension Locale {
 
     /// 通常用于规范化的语言环境的UNIX表示。
-    var posix: Locale {
+    static var posix: Locale {
         return Locale(identifier: "en_US_POSIX")
     }
 

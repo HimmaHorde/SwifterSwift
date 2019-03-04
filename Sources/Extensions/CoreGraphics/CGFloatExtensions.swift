@@ -40,16 +40,6 @@ public extension CGFloat {
         return Foundation.floor(self)
     }
 
-    /// SwifterSwift: Check if CGFloat is positive.
-    var isPositive: Bool {
-        return self > 0
-    }
-
-    /// SwifterSwift: Check if CGFloat is negative.
-    var isNegative: Bool {
-        return self < 0
-    }
-
     /// SwifterSwift: Int.
     var int: Int {
         return Int(self)

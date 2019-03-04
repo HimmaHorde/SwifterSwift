@@ -17,8 +17,8 @@ final class BoolExtensionsTests: XCTestCase {
     }
 
     func testString() {
-        XCTAssertEqual(true.string, "true")
-        XCTAssertEqual(false.string, "false")
+        XCTAssertEqual(true.description, "true")
+        XCTAssertEqual(false.description, "false")
     }
 
 }

@@ -146,7 +146,7 @@ public extension Array where Element: Equatable {
     /// - Parameter items: items to remove.
     /// - Returns: self after removing all instances of all items in given array.
     @discardableResult
-    mutating func removeAll(_ items: [Element]) -> [Element] {
+    mutating func removeFrom(_ items: [Element]) -> [Element] {
         guard !items.isEmpty else { return self }
         removeAll(where: { items.contains($0) })
         return self

@@ -13,13 +13,13 @@ import XCTest
 final class ComparableExtensionsTests: XCTestCase {
 
     func testIsBetween() {
-        XCTAssertFalse(1.isBetween(5...7), "number range")
-        XCTAssertTrue(7.isBetween(6...12), "number range")
-        XCTAssertTrue(0.32.isBetween(0.31...0.33), "float range")
-        XCTAssertTrue("c".isBetween("a"..."d"), "string range")
+        XCTAssertFalse(1~=(5...7), "number range")
+        XCTAssertTrue(7~=(6...12), "number range")
+        XCTAssertTrue(0.32~=(0.31...0.33), "float range")
+        XCTAssertTrue("c"~=("a"..."d"), "string range")
 
         let date = Date()
-        XCTAssertTrue(date.isBetween(date...date.addingTimeInterval(1000)), "date range")
+        XCTAssertTrue(date~=(date...date.addingTimeInterval(1000)), "date range")
     }
 
     func testClamped() {

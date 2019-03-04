@@ -28,31 +28,31 @@ final class ArrayExtensionsTests: XCTestCase {
 
     func testSafeSwap() {
         var array: [Int] = [1, 2, 3, 4, 5]
-        array.safeSwap(from: 3, to: 0)
+        array.safeSwap(3, 0)
         XCTAssertEqual(array[3], 1)
         XCTAssertEqual(array[0], 4)
 
         var newArray = array
-        newArray.safeSwap(from: 1, to: 1)
+        newArray.safeSwap(1, 1)
         XCTAssertEqual(newArray, array)
 
         newArray = array
-        newArray.safeSwap(from: 1, to: 12)
+        newArray.safeSwap(1, 12)
         XCTAssertEqual(newArray, array)
 
         let emptyArray: [Int] = []
         var swappedEmptyArray = emptyArray
-        swappedEmptyArray.safeSwap(from: 1, to: 3)
+        swappedEmptyArray.safeSwap(1, 3)
         XCTAssertEqual(swappedEmptyArray, emptyArray)
     }
 
     func testKeepWhile() {
         var input = [2, 4, 6, 7, 8, 9, 10]
-        input.keep(while: {$0 % 2 == 0 })
+        input = input.take(while: {$0 % 2 == 0 })
         XCTAssertEqual(input, [2, 4, 6])
 
         input = [7, 7, 8, 10]
-        input.keep(while: {$0 % 2 == 0 })
+        input = input.take(while: {$0 % 2 == 0 })
         XCTAssertEqual(input, [Int]())
     }
 
@@ -66,18 +66,6 @@ final class ArrayExtensionsTests: XCTestCase {
         XCTAssertEqual(output, [Int]())
 
         XCTAssertEqual([].take(while: {$0 % 2 == 0 }), [])
-    }
-
-    func testSkipWhile() {
-        var input = [2, 4, 6, 7, 8, 9, 10]
-        var output = input.skip(while: {$0 % 2 == 0 })
-        XCTAssertEqual(output, [7, 8, 9, 10])
-
-        input = [7, 7, 8, 10]
-        output = input.skip(while: {$0 % 2 == 0 })
-        XCTAssertEqual(output, [7, 7, 8, 10])
-
-        XCTAssertEqual([].skip(while: { $0 % 2 == 0}), [])
     }
 
     func testDivided() {
@@ -120,21 +108,21 @@ final class ArrayExtensionsTests: XCTestCase {
 
     func testRemoveAll() {
         var arr = [0, 1, 2, 0, 3, 4, 5, 0, 0]
-        arr.removeAll(0)
+        arr.remove(0)
         XCTAssertEqual(arr, [1, 2, 3, 4, 5])
         arr = []
-        arr.removeAll(0)
+        arr.remove(0)
         XCTAssertEqual(arr, [])
     }
 
     func testRemoveAllItems() {
         var arr = [0, 1, 2, 2, 0, 3, 4, 5, 0, 0]
-        arr.removeAll([0, 2])
+        arr.removeFrom([0, 2])
         XCTAssertEqual(arr, [1, 3, 4, 5])
-        arr.removeAll([])
+        arr.removeFrom([])
         XCTAssertEqual(arr, [1, 3, 4, 5])
         arr = []
-        arr.removeAll([])
+        arr.removeFrom([])
         XCTAssertEqual(arr, [])
     }
 

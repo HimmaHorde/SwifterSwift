@@ -43,33 +43,6 @@ public extension Collection {
 
 // MARK: - Methods (Int)
 public extension Collection where Index == Int {
-
-    /// 获取满足条件的第一个d元素的索引。
-    ///
-    ///        [1, 7, 1, 2, 4, 1, 6].firstIndex { $0 % 2 == 0 } -> 3
-    ///
-    /// - Parameter condition: 条件闭包
-    /// - Returns: index 索引 (optional)
-    func firstIndex(where condition: (Element) throws -> Bool) rethrows -> Index? {
-        for (index, value) in lazy.enumerated() where try condition(value) {
-            return index
-        }
-        return nil
-    }
-
-    /// 获取满足条件的最后一个元素的索引。
-    ///
-    ///     [1, 7, 1, 2, 4, 1, 8].lastIndex { $0 % 2 == 0 } -> 6
-    ///
-    /// - Parameter condition: 条件闭包
-    /// - Returns: index 索引 (optional)
-    func lastIndex(where condition: (Element) throws -> Bool) rethrows -> Index? {
-        for (index, value) in lazy.enumerated().reversed() where try condition(value) {
-            return index
-        }
-        return nil
-    }
-
     /// 获取满足条件的所有索引
     ///
     ///     [1, 7, 1, 2, 4, 1, 8].indices(where: { $0 == 1 }) -> [0, 2, 5]
@@ -124,36 +97,6 @@ public extension Collection where Index == Int {
 }
 
 public extension Collection where Element: Equatable, Index == Int {
-
-    /// 返回第一个等于给定元素的元素索引
-    ///
-    ///        [1, 2, 2, 3, 4, 2, 5].firstIndex(of: 2) -> 1
-    ///        [1.2, 2.3, 4.5, 3.4, 4.5].firstIndex(of: 6.5) -> nil
-    ///        ["h", "e", "l", "l", "o"].firstIndex(of: "l") -> 2
-    ///
-    /// - Parameter item: item to check.
-    /// - Returns: first index of item in array (if exists).
-    func firstIndex(of item: Element) -> Index? {
-        for (index, value) in lazy.enumerated() where value == item {
-            return index
-        }
-        return nil
-    }
-
-    /// 返回等于给定元素的最后一个索引
-    ///
-    ///        [1, 2, 2, 3, 4, 2, 5].lastIndex(of: 2) -> 5
-    ///        [1.2, 2.3, 4.5, 3.4, 4.5].lastIndex(of: 6.5) -> nil
-    ///        ["h", "e", "l", "l", "o"].lastIndex(of: "l") -> 3
-    ///
-    /// - Parameter item: item to check.
-    /// - Returns: last index of item in array (if exists).
-    func lastIndex(of item: Element) -> Index? {
-        for (index, value) in lazy.enumerated().reversed() where value == item {
-            return index
-        }
-        return nil
-    }
 
 }
 

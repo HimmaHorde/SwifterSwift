@@ -15,18 +15,6 @@ final class SignedIntegerExtensionsTests: XCTestCase {
         XCTAssertEqual((-9).abs, 9)
     }
 
-    func testIsPositive() {
-        XCTAssert(1.isPositive)
-        XCTAssertFalse(0.isPositive)
-        XCTAssertFalse((-1).isPositive)
-    }
-
-    func testIsNegative() {
-        XCTAssert((-1).isNegative)
-        XCTAssertFalse(0.isNegative)
-        XCTAssertFalse(1.isNegative)
-    }
-
     func testIsEven() {
         XCTAssert(2.isEven)
         XCTAssertFalse(3.isEven)

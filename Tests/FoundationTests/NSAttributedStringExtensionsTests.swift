@@ -15,84 +15,9 @@ import Foundation
 final class NSAttributedStringExtensionsTests: XCTestCase {
 
     #if !os(macOS) && !os(tvOS)
-    func testBolded() {
-        let string = NSAttributedString(string: "Bolded")
-        let out = string.bolded
-        let attributes = out.attributes(at: 0, effectiveRange: nil)
-
-        let filterClosure: (NSAttributedString.Key, Any) -> Bool = {key, value in
-            return (key == NSAttributedString.Key.font && ((value as? UIFont) == .boldSystemFont(ofSize: UIFont.systemFontSize)))
-        }
-
-        let filteredAttributes = attributes.filter { filterClosure($0, $1) }
-        XCTAssertEqual(filteredAttributes.count, 1)
-    }
-    #endif
-
-    #if !os(macOS)
-    func testUnderlined() {
-        let string = NSAttributedString(string: "Underlined")
-        let out = string.underlined
-        let attributes = out.attributes(at: 0, effectiveRange: nil)
-        let filteredAttributes = attributes.filter { (key, value) -> Bool in
-            return (key == NSAttributedString.Key.underlineStyle &&
-                (value as? NSUnderlineStyle.RawValue) == NSUnderlineStyle.single.rawValue)
-        }
-
-        XCTAssertEqual(filteredAttributes.count, 1)
-    }
-    #endif
-
-    #if !os(macOS) && !os(tvOS)
-    func testItalicized() {
-        let string = NSAttributedString(string: "Italicized")
-        let out = string.italicized
-        let attributes = out.attributes(at: 0, effectiveRange: nil)
-        let filteredAttributes = attributes.filter { (key, value) -> Bool in
-            return (key == NSAttributedString.Key.font && (value as? UIFont) == .italicSystemFont(ofSize: UIFont.systemFontSize))
-        }
-
-        XCTAssertEqual(filteredAttributes.count, 1)
-    }
-    #endif
-
-    #if !os(macOS)
-    func testStruckthrough() {
-        let string = NSAttributedString(string: "Struck through")
-        let out = string.struckthrough
-        let attributes = out.attributes(at: 0, effectiveRange: nil)
-        let filteredAttributes = attributes.filter { (key, value) -> Bool in
-            return (key == NSAttributedString.Key.strikethroughStyle && (value as? NSUnderlineStyle.RawValue) == NSUnderlineStyle.single.rawValue)
-        }
-
-        XCTAssertEqual(filteredAttributes.count, 1)
-    }
-    #endif
-
-    #if !os(macOS)
-    // MARK: - Methods
-    func testColored() {
-        let string = NSAttributedString(string: "Colored")
-        var out = string.colored(with: .red)
-        var attributes = out.attributes(at: 0, effectiveRange: nil)
-        let filteredAttributes = attributes.filter { (key, value) -> Bool in
-            return (key == NSAttributedString.Key.foregroundColor && (value as? UIColor) == .red)
-        }
-
-        XCTAssertEqual(filteredAttributes.count, 1)
-
-        out = out.colored(with: .blue)
-        attributes = out.attributes(at: 0, effectiveRange: nil)
-        XCTAssertEqual(attributes[NSAttributedString.Key.foregroundColor] as? UIColor, UIColor.blue)
-        XCTAssertNotEqual(attributes[NSAttributedString.Key.foregroundColor] as? UIColor, .red)
-    }
-
-    #endif
-
-    #if !os(macOS) && !os(tvOS)
     func testApplyingToRegex() {
         let email = "steve.jobs@apple.com"
-        let testString = NSAttributedString(string: "Your email is \(email)!").bolded
+        let testString = NSAttributedString(string: "Your email is \(email)!")
         let attributes: [NSAttributedString.Key: Any] = [.underlineStyle: NSUnderlineStyle.single.rawValue, .foregroundColor: UIColor.blue]
         let pattern = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
 
@@ -135,7 +60,7 @@ final class NSAttributedStringExtensionsTests: XCTestCase {
     func testApplyingToOccurrences() {
         let name = "Steve Wozniak"
         let greeting = "Hello, \(name)."
-        let attrGreeting = NSAttributedString(string: greeting).italicized.applying(
+        let attrGreeting = NSAttributedString(string: greeting).applying(
             attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue,
                          .foregroundColor: UIColor.red], toOccurrencesOf: name)
 
@@ -174,8 +99,8 @@ final class NSAttributedStringExtensionsTests: XCTestCase {
 
     #if !os(macOS) && !os(tvOS)
     func testAppending() {
-        var string = NSAttributedString(string: "Test").italicized.underlined.struckthrough
-        string += NSAttributedString(string: " Appending").bolded
+        var string = NSAttributedString(string: "Test")
+        string += NSAttributedString(string: " Appending")
 
         XCTAssertEqual(string.string, "Test Appending")
 
@@ -207,41 +132,10 @@ final class NSAttributedStringExtensionsTests: XCTestCase {
     #endif
 
     #if !os(macOS) && !os(tvOS)
-    func testAttributes() {
-        let emptyString = NSAttributedString(string: "").bolded.struckthrough.underlined.colored(with: UIColor.blue)
-        let emptyStringAttributes = emptyString.attributes
-        XCTAssert(emptyStringAttributes.isEmpty)
-
-        let attrString = NSAttributedString(string: "Test String").bolded.struckthrough.underlined.colored(with: UIColor.blue)
-        let attributes = attrString.attributes
-
-        XCTAssertEqual(attributes.count, 4)
-
-        let filteredAttributes = attributes.filter { (key, value) -> Bool in
-            switch key {
-            case NSAttributedString.Key.underlineStyle:
-                return (value as? NSUnderlineStyle.RawValue) == NSUnderlineStyle.single.rawValue
-            case NSAttributedString.Key.strikethroughStyle:
-                return (value as? NSUnderlineStyle.RawValue) == NSUnderlineStyle.single.rawValue
-            case NSAttributedString.Key.font:
-                return (value as? UIFont) == .boldSystemFont(ofSize: UIFont.systemFontSize)
-            case NSAttributedString.Key.foregroundColor:
-                return (value as? UIColor) == .blue
-            default:
-                return false
-            }
-        }
-
-        XCTAssertEqual(filteredAttributes.count, 4)
-
-    }
-    #endif
-
-    #if !os(macOS) && !os(tvOS)
     // MARK: - Operators
     func testOperators() {
-        var string1 = NSAttributedString(string: "Test").italicized.underlined.struckthrough
-        let string2 = NSAttributedString(string: " Appending").bolded
+        var string1 = NSAttributedString(string: "Test")
+        let string2 = NSAttributedString(string: " Appending")
         XCTAssertEqual((string1 + string2).string, "Test Appending")
         XCTAssertEqual((string1 + string2.string).string, "Test Appending")
 

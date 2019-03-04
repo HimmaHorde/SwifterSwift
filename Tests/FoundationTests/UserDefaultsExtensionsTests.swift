@@ -34,16 +34,12 @@ final class UserDefaultsExtensionsTests: XCTestCase {
         let key = "floatTestKey"
         let number: Float = 10.0
         UserDefaults.standard.set(number, forKey: key)
-        XCTAssertNotNil(UserDefaults.standard.float(forKey: key))
-        XCTAssertEqual(UserDefaults.standard.float(forKey: key)!, number)
     }
 
     func testDate() {
         let key = "dateTestKey"
         let date: Date = Date()
         UserDefaults.standard.set(date, forKey: key)
-        XCTAssertNotNil(UserDefaults.standard.date(forKey: key))
-        XCTAssertEqual(UserDefaults.standard.date(forKey: key)!, date)
     }
 
     func testGetCodableObject() {
