@@ -9,31 +9,42 @@
 import UIKit
 import SwifterSwift
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var textField: UITextField!
 
     @IBOutlet var imageView: UIImageView!
 
+    var debounceTimer: Timer?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Color.FlatUI.turquoise
 
-        print(SwifterSwift.appDisplayName!)
     }
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        // Request
-        let url = URL(string: "http://www.runoob.com/try/demo_source/movie.mp4")!
+    // 模拟用户输入文字，并即时请求结果
 
-        DispatchQueue.global().async {
-            if let image = url.thumbnail() {
-                DispatchQueue.main.async(execute: {
-                    self.imageView.image = image
-                })
-            }
-
+    // 文字改变
+    func textChanged() {
+        if let timer = debounceTimer {
+            // 取消上一个网络请求
+            timer.invalidate()
         }
+        // 准备一个新的请求
+        debounceTimer = Timer(timeInterval: 1.0, target: self, selector:#selector(ViewController.search) , userInfo: nil, repeats: false)
+        RunLoop.current.add(debounceTimer!, forMode: .common)
+    }
+
+    // MARK: private
+    /// 开始新的请求
+    @objc func search() {
+        print(textField.text ?? "")
+    }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        textChanged()
+        return true
     }
 
 }

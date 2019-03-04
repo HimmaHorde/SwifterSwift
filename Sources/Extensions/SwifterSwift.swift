@@ -278,7 +278,7 @@ public extension SwifterSwift {
         return task
     }
 
-    /// 取消函数或闭包调用
+    /// 保证间隔时间内任务只被执行一次
     ///
     /// - Parameters:
     ///   - millisecondsOffset: allow execution of method if it was not called since millisecondsOffset.
@@ -302,9 +302,9 @@ public extension SwifterSwift {
     }
 
     #if os(iOS) || os(tvOS)
-    /// SwifterSwift: Called when user takes a screenshot
+    /// 当用户截图时回调
     ///
-    /// - Parameter action: a closure to run when user takes a screenshot
+    /// - Parameter action: 当用户截屏时要运行的闭包
     static func didTakeScreenShot(_ action: @escaping (_ notification: Notification) -> Void) {
         // http://stackoverflow.com/questions/13484516/ios-detection-of-screenshot
         _ = NotificationCenter.default.addObserver(forName: UIApplication.userDidTakeScreenshotNotification,
