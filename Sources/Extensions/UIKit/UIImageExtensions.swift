@@ -102,7 +102,7 @@ public extension UIImage {
     ///     image.rotated(by: Measurement(value: 180, unit: .degrees))
     ///
     /// - Parameter angle: 旋转的度数
-    /// - Returns: 旋转后的新图
+    /// - Returns: 以给定角度旋转的新图像。
     @available(iOS 10.0, tvOS 10.0, watchOS 3.0, *)
     func rotated(by angle: Measurement<UnitAngle>) -> UIImage? {
         let radians = CGFloat(angle.converted(to: .radians).value)
@@ -129,13 +129,13 @@ public extension UIImage {
         return newImage
     }
 
-    /// SwifterSwift: Creates a copy of the receiver rotated by the given angle (in radians).
+    /// 生成旋转给定弧度值的图片 (in radians).
     ///
     ///     // Rotate the image by 180°
     ///     image.rotated(by: .pi)
     ///
-    /// - Parameter radians: The angle, in radians, by which to rotate the image.
-    /// - Returns: A new image rotated by the given angle.
+    /// - Parameter radians: 以弧度表示的用来旋转图像的角度。
+    /// - Returns: 以给定角度旋转的新图像。
     func rotated(by radians: CGFloat) -> UIImage? {
         let destRect = CGRect(origin: .zero, size: size)
             .applying(CGAffineTransform(rotationAngle: radians))
@@ -182,23 +182,39 @@ public extension UIImage {
         return newImage
     }
 
-    /// SwifterSwift: UIImage tinted with color
+    /// 新图使用指定混合模式和颜色添加一个纯色填充图层
+    ///
+    ///       //实际使用效果类似于 PS 的图层混合模式 eg.正片叠底
+    ///       let image = UIImage.init(named: "TestImage.png")!
+    ///       image.blend(UIColor.red, mode: .multiply)
     ///
     /// - Parameters:
-    ///   - color: color to tint image with.
-    ///   - blendMode: how to blend the tint
-    /// - Returns: UIImage tinted with given color.
-    func tint(_ color: UIColor, blendMode: CGBlendMode) -> UIImage {
-        let drawRect = CGRect(x: 0.0, y: 0.0, width: size.width, height: size.height)
+    ///   - color: 填充色
+    ///   - mode: 填充模式
+    /// - Returns: 生成的图片
+    func blend(_ color: UIColor, mode: CGBlendMode) -> UIImage {
+        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
-        let context = UIGraphicsGetCurrentContext()
-        context!.clip(to: drawRect, mask: cgImage!)
         color.setFill()
-        context!.fill(drawRect)
-        draw(in: drawRect, blendMode: blendMode, alpha: 1.0)
-        let tintedImage = UIGraphicsGetImageFromCurrentImageContext()
+        guard let context = UIGraphicsGetCurrentContext() else { return self }
+
+        draw(in: rect)
+
+        // 旋转画布用于添加填充层
+        context.translateBy(x: 0, y: size.height)
+        context.scaleBy(x: 1.0, y: -1.0)
+        context.setBlendMode(mode)
+
+        // 添加填充层
+        guard let mask = cgImage else { return self }
+        context.clip(to: rect, mask: mask)
+        context.fill(rect)
+
+        context.scaleBy(x: 1.0, y: -1.0)
+
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        return tintedImage!
+        return newImage
     }
 
     /// 带圆角的图片

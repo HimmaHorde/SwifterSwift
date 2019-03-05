@@ -7,9 +7,8 @@ import SwifterSwift
 //: ## Try yourself
 //: *Here you can try some extensions yourself*
 
-var image = UIImage.init(named: "TestImage.png")!
+let image = UIImage.init(named: "TestImage.png")!
 
-let f = image.filled(withColor: UIColor.red)
-
+let mutiplyImage = image.blend(UIColor.red, mode: .multiply)
 
 //: [Previous](@previous)
