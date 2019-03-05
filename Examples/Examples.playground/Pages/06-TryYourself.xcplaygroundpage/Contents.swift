@@ -28,4 +28,10 @@ for index in 1...6 {
     }
 }
 
+var id = "aaa"
+var i = "asda"
+print(i)
+
+var j = "asda"
+print(j)
 //: [Previous](@previous)

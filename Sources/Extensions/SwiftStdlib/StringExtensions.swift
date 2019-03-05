@@ -541,7 +541,6 @@ public extension String {
     ///		"Hello World!"[safe: 20] -> nil
     ///
     /// - Parameter i: index.
-    // swiftlint:disable:next identifier_name
     subscript(safe i: Int) -> Character? {
         guard i >= 0 && i < count else { return nil }
         return self[index(startIndex, offsetBy: i)]
@@ -723,7 +722,6 @@ public extension String {
     ///   - i: string index the slicing should start from.
     ///   - length: amount of characters to be sliced after given index.
     /// - Returns: sliced substring of length number of characters (if applicable) (example: "Hello World".slicing(from: 6, length: 5) -> "World")
-    // swiftlint:disable:next identifier_name
     func slicing(from i: Int, length: Int) -> String? {
         guard length >= 0, i >= 0, i < count  else { return nil }
         guard i.advanced(by: length) <= count else {
@@ -742,7 +740,6 @@ public extension String {
     /// - Parameters:
     ///   - i: string index the slicing should start from.
     ///   - length: amount of characters to be sliced after given index.
-    // swiftlint:disable:next identifier_name
     mutating func slice(from i: Int, length: Int) {
         if let str = slicing(from: i, length: length) {
             self = String(str)
@@ -772,7 +769,6 @@ public extension String {
     ///		print(str) // prints "World"
     ///
     /// - Parameter i: string index the slicing should start from.
-    // swiftlint:disable:next identifier_name
     mutating func slice(at i: Int) {
         guard i < count else { return }
         if let str = self[safe: i..<count] {

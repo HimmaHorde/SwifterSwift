@@ -22,7 +22,6 @@ public extension Array {
         insert(newElement, at: 0)
     }
 
-    // swiftlint:disable identifier_name
     /// 安全交换两个位置的值
     ///
     ///        [1, 2, 3, 4, 5].safeSwap(from: 3, to: 0) -> [4, 2, 3, 1, 5]
