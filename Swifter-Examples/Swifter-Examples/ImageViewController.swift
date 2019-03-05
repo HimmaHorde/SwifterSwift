@@ -20,9 +20,9 @@ class ImageViewController: UIViewController {
     @IBAction func click(_ sender: UIButton) {
         switch sender.tag {
         case 0:
-            imageView.image = UIImage.init(named: "wall.jpg")?.filled(withColor: UIColor.red)
+            imageView.image = UIImage.init(named: "wall.png")?.filled(withColor: UIColor.red)
         case 1:
-            imageView.image = UIImage.init(named: "wall.jpg")?.tint(UIColor.red, blendMode: .destinationIn)
+            imageView.image = UIImage.init(named: "wall.png")?.tint(UIColor.red, blendMode: .clear)
         default:
             break
         }

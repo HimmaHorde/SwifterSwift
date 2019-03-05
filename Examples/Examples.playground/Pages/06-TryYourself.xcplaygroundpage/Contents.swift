@@ -7,31 +7,9 @@ import SwifterSwift
 //: ## Try yourself
 //: *Here you can try some extensions yourself*
 
-var value = 0
-var count = 0
-func incrementor() {
-    value += 1
-//    print()
-    print("value = \(value)")
-    print("count = \(count)")
+var image = UIImage.init(named: "TestImage.png")!
 
-}
-// 1 秒执行一次
-let debouncedIncrementor = SwifterSwift.debounce(millisecondsDelay: 2000) {
-    incrementor()
-}
+let f = image.filled(withColor: UIColor.red)
 
-for index in 1...6 {
-    DispatchQueue.main.asyncAfter(deadline: .now() + DispatchTimeInterval.seconds(1+index)) {
-        debouncedIncrementor()
-        count += 1
-    }
-}
 
-var id = "aaa"
-var i = "asda"
-print(i)
-
-var j = "asda"
-print(j)
 //: [Previous](@previous)
