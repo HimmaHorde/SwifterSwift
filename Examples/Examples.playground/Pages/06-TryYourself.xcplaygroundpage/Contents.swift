@@ -28,7 +28,4 @@ for index in 1...6 {
     }
 }
 
-
-
-
 //: [Previous](@previous)

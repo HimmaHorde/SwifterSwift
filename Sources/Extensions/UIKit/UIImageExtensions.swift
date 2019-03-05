@@ -96,13 +96,13 @@ public extension UIImage {
         return newImage
     }
 
-    /// SwifterSwift: Creates a copy of the receiver rotated by the given angle.
+    /// 生成旋转指定角度的图片
     ///
     ///     // Rotate the image by 180°
     ///     image.rotated(by: Measurement(value: 180, unit: .degrees))
     ///
-    /// - Parameter angle: The angle measurement by which to rotate the image.
-    /// - Returns: A new image rotated by the given angle.
+    /// - Parameter angle: 旋转的度数
+    /// - Returns: 旋转后的新图
     @available(iOS 10.0, tvOS 10.0, watchOS 3.0, *)
     func rotated(by angle: Measurement<UnitAngle>) -> UIImage? {
         let radians = CGFloat(angle.converted(to: .radians).value)
@@ -159,10 +159,10 @@ public extension UIImage {
         return newImage
     }
 
-    /// SwifterSwift: UIImage filled with color
+    /// 图片使用单色填充
     ///
-    /// - Parameter color: color to fill image with.
-    /// - Returns: UIImage filled with given color.
+    /// - Parameter color: 填充色
+    /// - Returns: 填充后的新图
     func filled(withColor color: UIColor) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
         color.setFill()
@@ -192,6 +192,7 @@ public extension UIImage {
         let drawRect = CGRect(x: 0.0, y: 0.0, width: size.width, height: size.height)
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
         let context = UIGraphicsGetCurrentContext()
+        context!.translateBy(x: 0, y: size.height)
         context!.clip(to: drawRect, mask: cgImage!)
         color.setFill()
         UIRectFill(drawRect)
@@ -201,11 +202,11 @@ public extension UIImage {
         return tintedImage!
     }
 
-    /// SwifterSwift: UIImage with rounded corners
+    /// 带圆角的图片
     ///
     /// - Parameters:
-    ///   - radius: corner radius (optional), resulting image will be round if unspecified
-    /// - Returns: UIImage with all corners rounded
+    ///   - radius: 角半径(可选)，生成的图像将是圆的，如果没有指定
+    /// - Returns: 圆角图
     func withRoundedCorners(radius: CGFloat? = nil) -> UIImage? {
         let maxRadius = min(size.width, size.height) / 2
         let cornerRadius: CGFloat
@@ -231,11 +232,11 @@ public extension UIImage {
 // MARK: - Initializers
 public extension UIImage {
 
-    /// SwifterSwift: Create UIImage from color and size.
+    /// 生成指定颜色和尺寸的图片
     ///
     /// - Parameters:
-    ///   - color: image fill color.
-    ///   - size: image size.
+    ///   - color: 填满色
+    ///   - size: 图片尺寸
     convenience init(color: UIColor, size: CGSize) {
         UIGraphicsBeginImageContextWithOptions(size, false, 1)
 

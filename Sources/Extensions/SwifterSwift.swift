@@ -326,7 +326,7 @@ public extension SwifterSwift {
 
 }
 
-// swiftlint:disable next type_name
+// swiftlint:disable:next type_name
 public typealias SS = SwifterSwift
 
 #endif

@@ -203,8 +203,8 @@ public extension UIView {
         }
     }
 
-    // swiftlint:disable next identifier_name
     /// SwifterSwift: x origin of view.
+    // swiftlint:disable:next identifier_name
     var x: CGFloat {
         get {
             return frame.origin.x
@@ -214,8 +214,8 @@ public extension UIView {
         }
     }
 
-    // swiftlint:disable next identifier_name
     /// SwifterSwift: y origin of view.
+    // swiftlint:disable:next identifier_name
     var y: CGFloat {
         get {
             return frame.origin.y
@@ -233,7 +233,7 @@ public extension UIView {
     /// SwifterSwift: Recursively find the first responder.
     func firstResponder() -> UIView? {
         var views = [UIView](arrayLiteral: self)
-        var i = 0
+        var i = 0 // swiftlint:disable:this identifier_name
         repeat {
             let view = views[i]
             if view.isFirstResponder {

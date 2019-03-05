@@ -513,7 +513,7 @@ public extension Date {
         }
     }
 
-    // swiftlint:disable function_body_length, function_body_length
+    // swiftlint:disable function_body_length
     // swiftlint:disable cyclomatic_complexity
     /// SwifterSwift: Date by changing value of calendar component.
     ///
