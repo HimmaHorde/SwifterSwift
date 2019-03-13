@@ -541,7 +541,6 @@ public extension String {
     ///		"Hello World!"[safe: 20] -> nil
     ///
     /// - Parameter i: index.
-    // swiftlint:disable:next identifier_name
     subscript(safe i: Int) -> Character? {
         guard i >= 0 && i < count else { return nil }
         return self[index(startIndex, offsetBy: i)]

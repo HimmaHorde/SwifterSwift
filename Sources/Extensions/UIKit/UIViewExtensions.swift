@@ -233,7 +233,6 @@ public extension UIView {
     /// SwifterSwift: Recursively find the first responder.
     func firstResponder() -> UIView? {
         var views = [UIView](arrayLiteral: self)
-        // swiftlint:disable:next identifier_name
         var i = 0
         repeat {
             let view = views[i]
