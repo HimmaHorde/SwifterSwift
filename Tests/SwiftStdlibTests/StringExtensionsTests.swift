@@ -650,9 +650,8 @@ final class StringExtensionsTests: XCTestCase {
 
     func testUnderline() {
         let underlinedString = "hello".underline
-        // swiftlint:disable legacy_constructor
+        // swiftlint:disable:next legacy_constructor
         let attrs = underlinedString.attributes(at: 0, longestEffectiveRange: nil, in: NSMakeRange(0, underlinedString.length))
-        // swiftlint:enable legacy_constructor
         XCTAssertNotNil(attrs[NSAttributedString.Key.underlineStyle])
         guard let style = attrs[NSAttributedString.Key.underlineStyle] as? Int else {
             XCTFail("Unable to find style in testUnderline")

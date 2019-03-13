@@ -36,9 +36,9 @@ public extension Color {
 
     /// 获取颜色的 RGB 值，（0-255）表示。
     ///
-    ///		UIColor.red.rgbComponents.red -> 255
-    ///		NSColor.green.rgbComponents.green -> 255
-    ///		UIColor.blue.rgbComponents.blue -> 255
+    ///     UIColor.red.rgbComponents.red -> 255
+    ///     NSColor.green.rgbComponents.green -> 255
+    ///     UIColor.blue.rgbComponents.blue -> 255
     ///
     // swiftlint:disable:next large_tuple
     var rgbComponents: (red: Int, green: Int, blue: Int) {
@@ -55,9 +55,9 @@ public extension Color {
 
     /// 获取颜色的 RGB 值，( 0 - 1)
     ///
-    ///		UIColor.red.rgbComponents.red -> 1.0
-    ///		NSColor.green.rgbComponents.green -> 1.0
-    ///		UIColor.blue.rgbComponents.blue -> 1.0
+    ///     UIColor.red.rgbComponents.red -> 1.0
+    ///     NSColor.green.rgbComponents.green -> 1.0
+    ///     UIColor.blue.rgbComponents.blue -> 1.0
     ///
     // swiftlint:disable:next large_tuple
     var cgFloatComponents: (red: CGFloat, green: CGFloat, blue: CGFloat) {

@@ -217,6 +217,25 @@ public extension UIImage {
         return newImage
     }
 
+    /// SwifterSwift: UIImage tinted with color
+    ///
+    /// - Parameters:
+    ///   - color: color to tint image with.
+    ///   - blendMode: how to blend the tint
+    /// - Returns: UIImage tinted with given color.
+    public func tint(_ color: UIColor, blendMode: CGBlendMode) -> UIImage {
+        let drawRect = CGRect(origin: .zero, size: size)
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        defer {
+            UIGraphicsEndImageContext()
+        }
+        let context = UIGraphicsGetCurrentContext()
+        color.setFill()
+        context?.fill(drawRect)
+        draw(in: drawRect, blendMode: blendMode, alpha: 1.0)
+        return UIGraphicsGetImageFromCurrentImageContext()!
+    }
+
     /// 带圆角的图片
     ///
     /// - Parameters:

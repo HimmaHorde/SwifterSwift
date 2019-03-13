@@ -191,7 +191,7 @@ infix operator ±
 ///   - rhs: integer number.
 /// - Returns: tuple of plus-minus operation (example: 2 ± 3 -> (5, -1)).
 // swiftlint:disable:next identifier_name
-func ± (lhs: Int, rhs: Int) -> (Int, Int) {
+public func ± (lhs: Int, rhs: Int) -> (Int, Int) {
     // http://nshipster.com/swift-operators/
     return (lhs + rhs, lhs - rhs)
 }
