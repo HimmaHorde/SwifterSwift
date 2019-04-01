@@ -64,4 +64,5 @@ final class UIImageViewExtensionsTests: XCTestCase {
     }
 
 }
+
 #endif
