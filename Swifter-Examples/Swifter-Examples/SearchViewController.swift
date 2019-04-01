@@ -5,6 +5,8 @@
 //  Created by yanglin on 2019/3/4.
 //  Copyright © 2019 yanglin
 //
+// 原生 API 实现用户输入的即时搜索逻辑
+// 模拟用户输入文字，停止输入 1s 后发起网络请求
 
 import UIKit
 import SwifterSwift
