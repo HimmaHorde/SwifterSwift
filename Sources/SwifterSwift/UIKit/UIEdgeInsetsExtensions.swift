@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: - Properties
-extension UIEdgeInsets {
+public extension UIEdgeInsets {
     /// SwifterSwift: Return the vertical insets. The vertical insets is composed by top + bottom.
     ///
     var vertical: CGFloat {
@@ -27,7 +27,7 @@ extension UIEdgeInsets {
 }
 
 // MARK: - Methods
-extension UIEdgeInsets {
+public extension UIEdgeInsets {
     /// SwifterSwift: Creates an `UIEdgeInsets` with the inset value applied to all (top, bottom, right, left)
     ///
     /// - Parameter inset: Inset to be applied in all the edges.
@@ -101,7 +101,7 @@ extension UIEdgeInsets {
 }
 
 // MARK: - Operators
-extension UIEdgeInsets {
+public extension UIEdgeInsets {
 
     /// SwifterSwift: Add all the properties of two `UIEdgeInsets` to create their addition.
     ///

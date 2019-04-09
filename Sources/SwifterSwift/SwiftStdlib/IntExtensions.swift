@@ -10,6 +10,12 @@
 import CoreGraphics
 #endif
 
+#if os(macOS) || os(iOS)
+import Darwin
+#elseif os(Linux)
+import Glibc
+#endif
+
 // MARK: - Properties
 public extension Int {
 
@@ -85,21 +91,18 @@ public extension Int {
         return digits
     }
 
-    #if canImport(Foundation) && !os(Linux)
     /// 位数
     var digitsCount: Int {
         guard self != 0 else { return 1 }
         let number = Double(abs)
         return Int(log10(number) + 1)
     }
-    #endif
 
 }
 
 // MARK: - Methods
 public extension Int {
 
-    #if canImport(Foundation) && !os(Linux)
     /// 是否是素数
     /// Warning: Using big numbers can be computationally expensive!
     /// - Returns: true or false depending on prime-ness
@@ -119,7 +122,6 @@ public extension Int {
         }
         return true
     }
-    #endif
 
     /// 转为罗马数字
     ///
@@ -150,18 +152,14 @@ public extension Int {
         return romanValue
     }
 
-    #if canImport(Foundation) && !os(Linux)
     /// SwifterSwift: Rounds to the closest multiple of n
     func roundToNearest(_ number: Int) -> Int {
         return number == 0 ? self : Int(round(Double(self) / Double(number))) * number
     }
-    #endif
 
 }
 
 // MARK: - Operators
-
-#if canImport(Foundation) && !os(Linux)
 
 precedencegroup PowerPrecedence { higherThan: MultiplicationPrecedence }
 infix operator ** : PowerPrecedence
@@ -176,10 +174,6 @@ func ** (lhs: Int, rhs: Int) -> Double {
     return pow(Double(lhs), Double(rhs))
 }
 
-#endif
-
-#if canImport(Foundation) && !os(Linux)
-
 prefix operator √
 /// 二次根号
 ///
@@ -190,8 +184,6 @@ public prefix func √ (int: Int) -> Double {
     // http://nshipster.com/swift-operators/
     return sqrt(Double(int))
 }
-
-#endif
 
 infix operator ±
 /// SwifterSwift: Tuple of plus-minus operation.

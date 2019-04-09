@@ -189,7 +189,8 @@ public extension String {
         return URL(string: self)?.isFileURL ?? false
     }
 
-    /// 坚持 string 是否是有效 swift 数字
+    #if canImport(Foundation)
+    /// 检测 string 是否是有效 swift 数字
     ///
     /// Note:
     /// In North America, "." is the decimal separator,
@@ -203,7 +204,11 @@ public extension String {
     var isNumeric: Bool {
         let scanner = Scanner(string: self)
         scanner.locale = NSLocale.current
+        #if os(Linux)
+        return scanner.scanDecimal() != nil && scanner.isAtEnd
+        #else
         return scanner.scanDecimal(nil) && scanner.isAtEnd
+        #endif
     }
 
     /// SwifterSwift: Check if string only contains digits.
@@ -1124,7 +1129,7 @@ public extension String {
 
 }
 
-#if canImport(Foundation) && !os(Linux)
+#if canImport(Foundation)
 
 // MARK: - NSString extensions
 public extension String {
