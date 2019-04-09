@@ -169,7 +169,7 @@ infix operator ** : PowerPrecedence
 ///   - lhs: 底数
 ///   - rhs: 指数
 /// - Returns: 结果 (example: 2 ** 3 = 8).
-func ** (lhs: Int, rhs: Int) -> Double {
+public func ** (lhs: Int, rhs: Int) -> Double {
     // http://nshipster.com/swift-operators/
     return pow(Double(lhs), Double(rhs))
 }
@@ -193,7 +193,7 @@ infix operator ±
 ///   - rhs: integer number.
 /// - Returns: tuple of plus-minus operation (example: 2 ± 3 -> (5, -1)).
 // swiftlint:disable:next identifier_name
-func ± (lhs: Int, rhs: Int) -> (Int, Int) {
+public func ± (lhs: Int, rhs: Int) -> (Int, Int) {
     // http://nshipster.com/swift-operators/
     return (lhs + rhs, lhs - rhs)
 }

@@ -189,7 +189,6 @@ public extension String {
         return URL(string: self)?.isFileURL ?? false
     }
 
-    #if canImport(Foundation)
     /// 检测 string 是否是有效 swift 数字
     ///
     /// Note:
