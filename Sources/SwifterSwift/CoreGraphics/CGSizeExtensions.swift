@@ -20,6 +20,26 @@ import Cocoa
 // MARK: - Methods
 public extension CGSize {
 
+    /// 宽高比
+    var aspectRatio: CGFloat {
+        return height == 0 ? 0 : width / height
+    }
+
+    /// 返回宽高中大的那个值
+    var maxDimension: CGFloat {
+        return max(width, height)
+    }
+
+    /// 获取宽高中小的那个值
+    var minDimension: CGFloat {
+        return min(width, height)
+    }
+
+}
+
+// MARK: - Methods
+public extension CGSize {
+
     /// SwifterSwift: Aspect fit CGSize.
     ///
     ///     let rect = CGSize(width: 120, height: 80)

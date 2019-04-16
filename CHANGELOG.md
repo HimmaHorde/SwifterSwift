@@ -5,14 +5,49 @@ The changelog for **SwifterSwift**. Also see the [releases](https://github.com/S
 ## Upcoming Release
 
 ### Added
+- **Sequence**:
+    - Added `withoutDuplicates(transform:)` for remove duplicate elements based on condition in a sequence. [#666](https://github.com/SwifterSwift/SwifterSwift/pull/666) by [saucym](https://github.com/saucym)
+- **String**
+  - `isPalindrome` computed property of String to check if it is a palindrome. [#671](https://github.com/SwifterSwift/SwifterSwift/pull/671) by [cHaLkdusT](https://github.com/cHaLkdusT).
+
+- **CGSize**:
+  - Added `aspectRatio`, `maxDimension`, and `minDimension` properties. [#662](https://github.com/SwifterSwift/SwifterSwift/pull/662) by [vyax](https://github.com/vyax)
+- **SCNBox**:
+  - Added `init(width:height:length:)`, `init(sideLength:chamferRadius:)`, `init(width:height:length:chamferRadius:material:)`, `init(sideLength:chamferRadius:material:)`, `init(width:height:length:chamferRadius:color:)`, and `init(sideLength:chamferRadius:color:)` convenience initializers. [#660](https://github.com/SwifterSwift/SwifterSwift/pull/660) by [vyax](https://github.com/vyax)
+- **SCNCapsule**:
+  - Added `init(capDiameter:height)`, `init(capRadius:height:material:)`, `init(capDiameter:height:material:)`, `init(capRadius:height:color:)`, and `init(capDiameter:height:color:)` convenience initializers. [#660](https://github.com/SwifterSwift/SwifterSwift/pull/660) by [vyax](https://github.com/vyax)
+- **SCNCone**:
+  - Added `init(topDiameter:bottomDiameter:height)`, `init(topRadius:bottomRadius:height:material:)`, `init(topDiameter:bottomDiameter:height:material:)`, `init(topRadius:bottomRadius:height:color:)`, and `init(topDiameter:bottomDiameter:height:color:)` convenience initializers. [#660](https://github.com/SwifterSwift/SwifterSwift/pull/660) by [vyax](https://github.com/vyax)
+- **SCNCylinder**:
+  - Added `init(diameter:height)`, `init(radius:height:material:)`, `init(diameter:height:material:)`, `init(radius:height:color:)`, and `init(diameter:height:color:)` convenience initializers. [#660](https://github.com/SwifterSwift/SwifterSwift/pull/660) by [vyax](https://github.com/vyax)
+- **SCNGeometry**:
+  - Added `boundingSize` property to get the size of the geometry's bounding box. [#660](https://github.com/SwifterSwift/SwifterSwift/pull/660) by [vyax](https://github.com/vyax)
+- **SCNMaterial**:
+  - Added `init(color:)` convenience initializer. [#660](https://github.com/SwifterSwift/SwifterSwift/pull/660) by [vyax](https://github.com/vyax)
+- **SCNPlane**:
+  - Added `init(width:)`, `init(width:height:material:)`, `init(width:material:)`, `init(width:height:color:)`, and `init(width:color:)` convenience initializers. [#660](https://github.com/SwifterSwift/SwifterSwift/pull/660) by [vyax](https://github.com/vyax)
+- **SCNShape**:
+  - Added `init(path:extrusionDepth:material:)` and `init(path:extrusionDepth:color:)` convenience initializers. [#660](https://github.com/SwifterSwift/SwifterSwift/pull/660) by [vyax](https://github.com/vyax)
+- **SCNSphere**:
+  - Added `init(diameter:)`, `init(radius:material:)`, `init(radius:color:)`, `init(diameter:material:)`, and `init(diameter:color:)` convenience initializers. [#660](https://github.com/SwifterSwift/SwifterSwift/pull/660) by [vyax](https://github.com/vyax)
+- **SCNVector3**:
+  - Added `absolute` property to calculate the vector's components as absolute values. [#660](https://github.com/SwifterSwift/SwifterSwift/pull/660) by [vyax](https://github.com/vyax)
+  - Added `length` property to calculate the vector's length. [#660](https://github.com/SwifterSwift/SwifterSwift/pull/660) by [vyax](https://github.com/vyax)
 
 ### Changed
+- **UIApplication**:
+  - - `queryValue(for:)` extension for URL is refactored. [#668](https://github.com/SwifterSwift/SwifterSwift/pull/668) by [LucianoPAlmeida](https://github.com/ratulSharker).
+
 
 ### Deprecated
 
 ### Removed
 
 ### Fixed
+
+- **UIApplication**:
+  - Resolved an issue where `version` would return the wrong Info.plist value.
+  - Resolved an issue where `version` and `displayName` would return nil if localized.
 
 ### Security
 

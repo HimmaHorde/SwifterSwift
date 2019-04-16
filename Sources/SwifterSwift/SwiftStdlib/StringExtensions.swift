@@ -133,9 +133,25 @@ public extension String {
         return comps.joined(separator: "").count == 0 && hasLetters && hasNumbers
     }
 
-    /// 检查是否是有效的 email
+    /// 检测是否是回文（指顺读和倒读都一样的词语）
     ///
-    /// - Note: Note that this property does not validate the email address against an email server. It merely attempts to determine whether its format is suitable for an email address.
+    ///     "abcdcba".isPalindrome -> true
+    ///     "Mom".isPalindrome -> true
+    ///     "A man a plan a canal, Panama!".isPalindrome -> true
+    ///     "Mama".isPalindrome -> false
+    ///
+    var isPalindrome: Bool {
+        let letters = filter { $0.isLetter }
+
+        guard !letters.isEmpty else { return false }
+
+        let midIndex = letters.index(letters.startIndex, offsetBy: letters.count / 2)
+        let firstHalf = letters[letters.startIndex..<midIndex]
+        let secondHalf = letters[midIndex..<letters.endIndex].reversed()
+        return !zip(firstHalf, secondHalf).contains(where: { $0.lowercased() != $1.lowercased() })
+    }
+
+    /// 检查是否是有效的 email
     ///
     ///		"john@doe.com".isValidEmail -> true
     ///
@@ -220,7 +236,7 @@ public extension String {
         return CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: self))
     }
 
-    /// SwifterSwift: Last character of string (if applicable).
+    /// 字符串的最后一个字符
     ///
     ///		"Hello".lastCharacterAsString -> Optional("o")
     ///		"".lastCharacterAsString -> nil
@@ -230,7 +246,7 @@ public extension String {
         return String(last)
     }
 
-    /// SwifterSwift: Latinized string.
+    /// 拉丁字母字符串
     ///
     ///		"Hèllö Wórld!".latinized -> "Hello World!"
     ///
@@ -238,7 +254,7 @@ public extension String {
         return folding(options: .diacriticInsensitive, locale: Locale.current)
     }
 
-    /// SwifterSwift: Bool value from string (if applicable).
+    /// 字符串转 bool 类型
     ///
     ///		"1".bool -> true
     ///		"False".bool -> false
@@ -281,7 +297,7 @@ public extension String {
     }
     #endif
 
-    /// SwifterSwift: Integer value from string (if applicable).
+    /// 字符串转 Int 类型
     ///
     ///		"101".int -> 101
     ///
@@ -289,9 +305,9 @@ public extension String {
         return Int(self)
     }
 
-    /// SwifterSwift: Lorem ipsum string of given length.
+    /// 获取指定长度的乱数假文
     ///
-    /// - Parameter length: number of characters to limit lorem ipsum to (default is 445 - full lorem ipsum).
+    /// - Parameter length: 默认长度445
     /// - Returns: Lorem ipsum dolor sit amet... string.
     static func loremIpsum(ofLength length: Int = 445) -> String {
         guard length > 0 else { return "" }
@@ -657,15 +673,15 @@ public extension String {
     }
     #endif
 
-    /// SwifterSwift: Check if string ends with substring.
+    /// 检测字符串是否包含指定后缀
     ///
     ///		"Hello World!".ends(with: "!") -> true
     ///		"Hello World!".ends(with: "WoRld!", caseSensitive: false) -> true
     ///
     /// - Parameters:
-    ///   - suffix: substring to search if string ends with.
-    ///   - caseSensitive: set true for case sensitive search (default is true).
-    /// - Returns: true if string ends with substring.
+    ///   - suffix: 子字符串
+    ///   - caseSensitive: 是否区分大小写
+    /// - Returns: 如果包含返回 true
     func ends(with suffix: String, caseSensitive: Bool = true) -> Bool {
         if !caseSensitive {
             return lowercased().hasSuffix(suffix.lowercased())
@@ -674,7 +690,7 @@ public extension String {
     }
 
     #if canImport(Foundation)
-    /// SwifterSwift: Latinize string.
+    /// 转为拉丁字母字符串
     ///
     ///		var str = "Hèllö Wórld!"
     ///		str.latinize()
@@ -687,12 +703,12 @@ public extension String {
     }
     #endif
 
-    /// SwifterSwift: Random string of given length.
+    /// 获取随机长度的字符串
     ///
     ///		String.random(ofLength: 18) -> "u7MMZYvGo9obcOcPj8"
     ///
-    /// - Parameter length: number of characters in string.
-    /// - Returns: random string of given length.
+    /// - Parameter length: 字符串长度
+    /// - Returns: 随机长度的字符串
     static func random(ofLength length: Int) -> String {
         guard length > 0 else { return "" }
         let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
@@ -703,7 +719,7 @@ public extension String {
         return randomString
     }
 
-    /// SwifterSwift: Reverse string.
+    /// 反转自身的字符串
     @discardableResult
     mutating func reverse() -> String {
         let chars: [Character] = reversed()
@@ -711,7 +727,7 @@ public extension String {
         return self
     }
 
-    /// SwifterSwift: Sliced string from a start index with length.
+    /// 截取指定位置的字符串
     ///
     ///        "Hello World".slicing(from: 6, length: 5) -> "World"
     ///
@@ -728,7 +744,7 @@ public extension String {
         return self[safe: i..<i.advanced(by: length)]
     }
 
-    /// SwifterSwift: Slice given string from a start index with length (if applicable).
+    /// 自身等于新截取指定位置的字符串
     ///
     ///		var str = "Hello World"
     ///		str.slice(from: 6, length: 5)
@@ -763,13 +779,13 @@ public extension String {
         return self
     }
 
-    /// SwifterSwift: Slice given string from a start index (if applicable).
+    /// 从给定起始位置切割字符串
     ///
     ///		var str = "Hello World"
     ///		str.slice(at: 6)
     ///		print(str) // prints "World"
     ///
-    /// - Parameter index: string index the slicing should start from.
+    /// - Parameter index: 切割字符串的起始位置
     @discardableResult
     mutating func slice(at index: Int) -> String {
         guard index < count else { return self }
@@ -779,7 +795,7 @@ public extension String {
         return self
     }
 
-    /// SwifterSwift: Check if string starts with substring.
+    /// 检查是否已指定字符串作为前缀
     ///
     ///		"hello World".starts(with: "h") -> true
     ///		"hello World".starts(with: "H", caseSensitive: false) -> true
@@ -796,14 +812,14 @@ public extension String {
     }
 
     #if canImport(Foundation)
-    /// SwifterSwift: Date object from string of date format.
+    /// 使用指定时间格式，转化为Date类型
     ///
     ///		"2017-01-15".date(withFormat: "yyyy-MM-dd") -> Date set to Jan 15, 2017
     ///		"not date string".date(withFormat: "yyyy-MM-dd") -> nil
     ///
     /// - Parameter format: date format.
     /// - Returns: Date object from string (if applicable).
-    func date(withFormat format: String) -> Date? {
+    func date(withFormat format: String = "yyyy-MM-dd") -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
         return dateFormatter.date(from: self)
@@ -811,7 +827,7 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// SwifterSwift: Removes spaces and new lines in beginning and end of string.
+    /// 删除字符串开头和结尾中的空格和换行
     ///
     ///		var str = "  \n Hello World \n\n\n"
     ///		str.trim()
@@ -970,23 +986,23 @@ public extension String {
         }
     }
 
-    /// SwifterSwift: Removes given prefix from the string.
+    /// 从字符串中移除给定的前缀。
     ///
     ///   "Hello, World!".removingPrefix("Hello, ") -> "World!"
     ///
-    /// - Parameter prefix: Prefix to remove from the string.
+    /// - Parameter prefix: 要从字符串中删除的前缀。
     /// - Returns: The string after prefix removing.
     func removingPrefix(_ prefix: String) -> String {
         guard hasPrefix(prefix) else { return self }
         return String(dropFirst(prefix.count))
     }
 
-    /// SwifterSwift: Removes given suffix from the string.
+    /// 从字符串中删除给定的后缀
     ///
     ///   "Hello, World!".removingSuffix(", World!") -> "Hello"
     ///
-    /// - Parameter suffix: Suffix to remove from the string.
-    /// - Returns: The string after suffix removing.
+    /// - Parameter suffix: 要从字符串中删除的后缀。
+    /// - Returns: 删除后的字符串
     func removingSuffix(_ suffix: String) -> String {
         guard hasSuffix(suffix) else { return self }
         return String(dropLast(suffix.count))
@@ -1168,18 +1184,12 @@ public extension String {
         return (self as NSString).pathComponents
     }
 
-    /// SwifterSwift: NSString appendingPathComponent(str: String)
-    ///
-    /// - Parameter str: the path component to append to the receiver.
-    /// - Returns: a new string made by appending aString to the receiver, preceded if necessary by a path separator.
+    /// 组合新的字符串路径
     func appendingPathComponent(_ str: String) -> String {
         return (self as NSString).appendingPathComponent(str)
     }
 
-    /// SwifterSwift: NSString appendingPathExtension(str: String)
-    ///
-    /// - Parameter str: The extension to append to the receiver.
-    /// - Returns: a new string made by appending to the receiver an extension separator followed by ext (if applicable).
+    /// 路径添加后缀名
     func appendingPathExtension(_ str: String) -> String? {
         return (self as NSString).appendingPathExtension(str)
     }

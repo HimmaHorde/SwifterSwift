@@ -22,7 +22,7 @@ class ImageViewController: UIViewController {
         case 0:
             imageView.image = UIImage.init(named: "wall.png")?.filled(withColor: UIColor.red)
         case 1:
-            imageView.image = UIImage.init(named: "wall.png")?.tint(UIColor.red, blendMode: .clear)
+            imageView.image = UIImage.init(named: "wall.png")?.tint(UIColor.white, blendMode: .multiply)
         default:
             break
         }
