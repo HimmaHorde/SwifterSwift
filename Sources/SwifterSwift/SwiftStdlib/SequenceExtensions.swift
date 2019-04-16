@@ -215,11 +215,9 @@ public extension Sequence where Element: Hashable {
 // MARK: - Methods (Numeric)
 public extension Sequence where Element: Numeric {
 
-    /// SwifterSwift: Sum of all elements in array.
+    /// 数字序列所有元素的和
     ///
     ///        [1, 2, 3, 4, 5].sum() -> 15
-    ///
-    /// - Returns: sum of the array's elements.
     func sum() -> Element {
         return reduce(0, {$0 + $1})
     }
