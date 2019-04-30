@@ -14,4 +14,3 @@
  **Make sure you build the SwifterSwift project before trying to run the playgrounds.**
  
 */
-S

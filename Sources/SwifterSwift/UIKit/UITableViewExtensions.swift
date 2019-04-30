@@ -63,16 +63,6 @@ public extension UITableView {
         })
     }
 
-    /// SwifterSwift: Remove TableFooterView.
-    func removeTableFooterView() {
-        tableFooterView = nil
-    }
-
-    /// SwifterSwift: Remove TableHeaderView.
-    func removeTableHeaderView() {
-        tableHeaderView = nil
-    }
-
     /// 滑动到 scrollView 的底部。
     ///
     /// - Parameter animated: 是否开启动画（默认开启）。
@@ -139,24 +129,6 @@ public extension UITableView {
         register(T.self, forHeaderFooterViewReuseIdentifier: String(describing: name))
     }
 
-    /// 注册 UITableViewCell
-    ///
-    /// Identifier = CLassName
-    ///
-    /// - Parameter name: UITableViewCell  类型
-    func register<T: UITableViewCell>(cellWithClass name: T.Type) {
-        register(T.self, forCellReuseIdentifier: String(describing: name))
-    }
-
-    /// 批量注册 Cell
-    ///
-    /// - Parameter names: cell 类型数组
-    func register<T: UITableViewCell>(cellWithClass names: [T.Type]) {
-        for cellType in names {
-            register(T.self, forCellReuseIdentifier: String(describing: cellType))
-        }
-    }
-
     /// 使用 xib 注册 UITableViewCell
     ///
     /// Identifier = CLassName
@@ -168,37 +140,50 @@ public extension UITableView {
         register(nib, forCellReuseIdentifier: String(describing: name))
     }
 
-    /// 使用 xib 注册 UITableViewCell，仅当 xib 文件名和 ClassName 相同，Identifier = CLassName。
-    ///
-    /// - Parameters:
-    ///   - name: Cell 类型.
-    ///   - bundleClass: xib 所在的 bundle.
-    func register<T: UITableViewCell>(nibWithCellClass name: T.Type, at bundleClass: AnyClass? = nil) {
-        let identifier = String(describing: name)
-        var bundle: Bundle?
-
-        if let bundleName = bundleClass {
-            bundle = Bundle(for: bundleName)
-        }
-
-        register(UINib(nibName: identifier, bundle: bundle), forCellReuseIdentifier: identifier)
-    }
-
     /// 批量注册同一个 bundle 下的 nib。
+    ///
+    /// 适用于 nib 和 Class 名称相同的 Cell
     ///
     /// - Parameters:
     ///   - names: cell 类型数组
     ///   - bundleClass: bundle类名
-    func register<T: UITableViewCell>(nibWithCellClass names: [T.Type], at bundleClass: AnyClass? = nil) {
+    func register(nibWithClasses classes: UITableViewCell.Type..., at bundleClass: AnyClass? = nil) {
+        register(nibWithClasses: classes)
+    }
+
+    /// 批量注册同一个 bundle 下的 nib。
+    ///
+    /// 适用于 nib 和 Class 名称相同的 Cell
+    ///
+    /// - Parameters:
+    ///   - names: cell 类型数组
+    ///   - bundleClass: bundle类名
+    func register(nibWithClasses classes: [UITableViewCell.Type], at bundleClass: AnyClass? = nil) {
         var bundle: Bundle?
 
         if let bundleName = bundleClass {
             bundle = Bundle(for: bundleName)
         }
 
-        for cellType in names {
+        for cellType in classes {
             let identifier = String(describing: cellType)
             register(UINib(nibName: identifier, bundle: bundle), forCellReuseIdentifier: identifier)
+        }
+    }
+
+    /// 批量注册 Cell
+    ///
+    /// - Parameter names: cell 类型数组
+    func register(cellWithClasses classes: UITableViewCell.Type...) {
+        register(cellWithClasses: classes)
+    }
+
+    /// 批量注册 Cell
+    ///
+    /// - Parameter names: cell 类型数组
+    func register(cellWithClasses classes: [UITableViewCell.Type]) {
+        for cellType in classes {
+            register(cellType, forCellReuseIdentifier: String(describing: cellType))
         }
     }
 
