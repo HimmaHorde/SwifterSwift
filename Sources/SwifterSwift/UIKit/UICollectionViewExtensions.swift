@@ -113,13 +113,6 @@ public extension UICollectionView {
         register(nib, forCellWithReuseIdentifier: String(describing: name))
     }
 
-    /// SwifterSwift: Register UICollectionViewCell using class name.
-    ///
-    /// - Parameter name: UICollectionViewCell type.
-    func register<T: UICollectionViewCell>(cellWithClass name: T.Type) {
-        register(T.self, forCellWithReuseIdentifier: String(describing: name))
-    }
-
     /// SwifterSwift: Register UICollectionReusableView using class name.
     ///
     /// - Parameters:
@@ -130,21 +123,34 @@ public extension UICollectionView {
         register(nib, forSupplementaryViewOfKind: kind, withReuseIdentifier: String(describing: name))
     }
 
-    /// SwifterSwift: Register UICollectionViewCell with .xib file using only its corresponding class.
-    ///               Assumes that the .xib filename and cell class has the same name.
-    ///
-    /// - Parameters:
-    ///   - name: UICollectionViewCell type.
-    ///   - bundleClass: Class in which the Bundle instance will be based on.
-    func register<T: UICollectionViewCell>(nibWithCellClass name: T.Type, at bundleClass: AnyClass? = nil) {
-        let identifier = String(describing: name)
+    /// 批量注册 cell
+    func register(cellWithClasses classes: [UICollectionViewCell.Type]) {
+        for cellType in classes {
+            register(cellType, forCellWithReuseIdentifier: String(describing: cellType))
+        }
+    }
+
+    /// 批量注册 cell
+    func register(cellWithClasses classes: UICollectionViewCell.Type...) {
+        register(cellWithClasses: classes)
+    }
+
+    /// 批量注册 nib cell，默认 xib 文件在 mainBundle 中。
+    func register(nibWithCellClasses classes: UICollectionViewCell.Type..., at bundleClass: AnyClass? = nil) {
+        register(nibWithCellClasses: classes)
+    }
+
+    /// 批量注册 nib cell，默认 xib 文件在 mainBundle 中。
+    func register(nibWithCellClasses classes: [UICollectionViewCell.Type], at bundleClass: AnyClass? = nil) {
         var bundle: Bundle?
 
         if let bundleName = bundleClass {
             bundle = Bundle(for: bundleName)
         }
-
-        register(UINib(nibName: identifier, bundle: bundle), forCellWithReuseIdentifier: identifier)
+        for cellType in classes {
+            let identifier = String(describing: cellType)
+            register(UINib(nibName: identifier, bundle: bundle), forCellWithReuseIdentifier: identifier)
+        }
     }
 
 }
