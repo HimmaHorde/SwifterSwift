@@ -516,6 +516,7 @@
 		CC209B802265A40900053A06 /* UnicodeScalarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC209B7E2265A40900053A06 /* UnicodeScalarExtensions.swift */; };
 		CC209B812265A40900053A06 /* UnicodeScalarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC209B7E2265A40900053A06 /* UnicodeScalarExtensions.swift */; };
 		CC209B822265A40900053A06 /* UnicodeScalarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC209B7E2265A40900053A06 /* UnicodeScalarExtensions.swift */; };
+		CC2E365E229B746100CD3903 /* SwifterSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2E365D229B746100CD3903 /* SwifterSwift.swift */; };
 		CF30948A216AAC7A005609BC /* UIActivityExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF309489216AAC7A005609BC /* UIActivityExtensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -729,6 +730,7 @@
 		CAC5EBC42125270A00AB27EC /* UITableViewHeaderFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UITableViewHeaderFooterView.xib; sourceTree = "<group>"; };
 		CAC5EBC52125270A00AB27EC /* big_buck_bunny_720p_1mb.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = big_buck_bunny_720p_1mb.mp4; sourceTree = "<group>"; };
 		CC209B7E2265A40900053A06 /* UnicodeScalarExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnicodeScalarExtensions.swift; sourceTree = "<group>"; };
+		CC2E365D229B746100CD3903 /* SwifterSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifterSwift.swift; sourceTree = "<group>"; };
 		CF309489216AAC7A005609BC /* UIActivityExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIActivityExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -888,6 +890,7 @@
 		07898B941F27904200558C97 /* SwifterSwift */ = {
 			isa = PBXGroup;
 			children = (
+				CC2E365C229B743E00CD3903 /* SS */,
 				664CB981217243BA00FC87B4 /* Dispatch */,
 				752AC79E20BC974700659E76 /* SpriteKit */,
 				9D806A3F2258B91F008E500A /* SceneKit */,
@@ -1194,6 +1197,14 @@
 				CAC5EBC42125270A00AB27EC /* UITableViewHeaderFooterView.xib */,
 			);
 			path = ResourcesTests;
+			sourceTree = "<group>";
+		};
+		CC2E365C229B743E00CD3903 /* SS */ = {
+			isa = PBXGroup;
+			children = (
+				CC2E365D229B746100CD3903 /* SwifterSwift.swift */,
+			);
+			path = SS;
 			sourceTree = "<group>";
 		};
 		D86A98EE1F7E50C90084EDCD /* SharedTests */ = {
@@ -1723,6 +1734,7 @@
 				B247BDE620D376EC00842ACC /* UIEdgeInsetsExtensions.swift in Sources */,
 				07B7F20F1F5EB43C00E6F910 /* DataExtensions.swift in Sources */,
 				07B7F19C1F5EB42000E6F910 /* UINavigationItemExtensions.swift in Sources */,
+				CC2E365E229B746100CD3903 /* SwifterSwift.swift in Sources */,
 				9D806A5B2258D2B8008E500A /* SCNMaterialExtensions.swift in Sources */,
 				07B7F1A51F5EB42000E6F910 /* UITextViewExtensions.swift in Sources */,
 				9D806A512258CFF9008E500A /* SCNSphereExtensions.swift in Sources */,

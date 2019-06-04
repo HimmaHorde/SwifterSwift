@@ -59,9 +59,10 @@ public extension UIView {
 }
 
 // MARK: - Properties
-public extension UIView {
 
-    /// SwifterSwift: Border color of view; also inspectable from Storyboard.
+// MARK: private xib support
+private extension UIView {
+    // 边框颜色
     @IBInspectable var borderColor: UIColor? {
         get {
             guard let color = layer.borderColor else { return nil }
@@ -78,7 +79,7 @@ public extension UIView {
         }
     }
 
-    /// SwifterSwift: Border width of view; also inspectable from Storyboard.
+    // 边框的宽度
     @IBInspectable var borderWidth: CGFloat {
         get {
             return layer.borderWidth
@@ -88,7 +89,7 @@ public extension UIView {
         }
     }
 
-    /// SwifterSwift: Corner radius of view; also inspectable from Storyboard.
+    // 圆角
     @IBInspectable var cornerRadius: CGFloat {
         get {
             return layer.cornerRadius
@@ -99,37 +100,7 @@ public extension UIView {
         }
     }
 
-    /// SwifterSwift: Height of view.
-    var height: CGFloat {
-        get {
-            return frame.size.height
-        }
-        set {
-            frame.size.height = newValue
-        }
-    }
-
-    /// SwifterSwift: Check if view is in RTL format.
-    var isRightToLeft: Bool {
-        if #available(iOS 10.0, *, tvOS 10.0, *) {
-            return effectiveUserInterfaceLayoutDirection == .rightToLeft
-        } else {
-            return false
-        }
-    }
-
-    /// SwifterSwift: Take screenshot of view (if applicable).
-    var screenshot: UIImage? {
-        UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, 0)
-        defer {
-            UIGraphicsEndImageContext()
-        }
-        guard let context = UIGraphicsGetCurrentContext() else { return nil }
-        layer.render(in: context)
-        return UIGraphicsGetImageFromCurrentImageContext()
-    }
-
-    /// SwifterSwift: Shadow color of view; also inspectable from Storyboard.
+    /// ss: 阴影颜色
     @IBInspectable var shadowColor: UIColor? {
         get {
             guard let color = layer.shadowColor else { return nil }
@@ -169,19 +140,31 @@ public extension UIView {
             layer.shadowRadius = newValue
         }
     }
+}
 
-    /// SwifterSwift: Size of view.
-    var size: CGSize {
-        get {
-            return frame.size
-        }
-        set {
-            width = newValue.width
-            height = newValue.height
+public extension UIView {
+
+    /// SwifterSwift: Check if view is in RTL format.
+    var isRightToLeft: Bool {
+        if #available(iOS 10.0, *, tvOS 10.0, *) {
+            return effectiveUserInterfaceLayoutDirection == .rightToLeft
+        } else {
+            return false
         }
     }
 
-    /// SwifterSwift: Get view's parent view controller
+    /// 对当前 View 截屏
+    var screenshot: UIImage? {
+        UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, 0)
+        defer {
+            UIGraphicsEndImageContext()
+        }
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+        layer.render(in: context)
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
+
+    /// ss: 获取 view 所在 ViewController
     var parentViewController: UIViewController? {
         weak var parentResponder: UIResponder? = self
         while parentResponder != nil {
@@ -193,44 +176,12 @@ public extension UIView {
         return nil
     }
 
-    /// SwifterSwift: Width of view.
-    var width: CGFloat {
-        get {
-            return frame.size.width
-        }
-        set {
-            frame.size.width = newValue
-        }
-    }
-
-    /// SwifterSwift: x origin of view.
-    // swiftlint:disable:next identifier_name
-    var x: CGFloat {
-        get {
-            return frame.origin.x
-        }
-        set {
-            frame.origin.x = newValue
-        }
-    }
-
-    /// SwifterSwift: y origin of view.
-    // swiftlint:disable:next identifier_name
-    var y: CGFloat {
-        get {
-            return frame.origin.y
-        }
-        set {
-            frame.origin.y = newValue
-        }
-    }
-
 }
 
 // MARK: - Methods
 public extension UIView {
 
-    /// SwifterSwift: Recursively find the first responder.
+    /// 递归查找第一响应者（自身和其 subviews ）
     func firstResponder() -> UIView? {
         var views = [UIView](arrayLiteral: self)
         var index = 0
@@ -245,7 +196,7 @@ public extension UIView {
         return nil
     }
 
-    /// 设置任意圆角
+    /// 设置任意圆角,使用 shapeLayer 不会产生离屏渲染
     ///
     /// - Parameters:
     ///   - corners: UIRectCorner (example: [.bottomLeft, .topRight]).
@@ -261,7 +212,32 @@ public extension UIView {
         layer.mask = shape
     }
 
-    /// SwifterSwift: Add shadow to view.
+    /// 添加边框
+    ///
+    /// - Parameters:
+    ///   - width: 宽度
+    ///   - color: 颜色
+    func addBorder(width: CGFloat = 1, color: UIColor, corners: UIRectCorner = .allCorners, radius: CGFloat = 10) {
+        if (layer.mask as? CAShapeLayer) != nil {
+            let maskPath = UIBezierPath(
+                roundedRect: bounds.insetBy(dx: width/2.0, dy: width/2.0),
+                byRoundingCorners: corners,
+                cornerRadii: CGSize(width: radius, height: radius))
+            let borderLayer = CAShapeLayer()
+            borderLayer.path = maskPath.cgPath
+            borderLayer.fillColor = UIColor.clear.cgColor
+            borderLayer.lineWidth = width
+            borderLayer.strokeColor = color.cgColor
+            borderLayer.frame = bounds
+            borderLayer.setNeedsLayout()
+            layer.addSublayer(borderLayer)
+        } else {
+            layer.borderColor = color.cgColor
+            layer.borderWidth = width
+        }
+    }
+
+    ///  ss: 设置阴影
     ///
     /// - Parameters:
     ///   - color: shadow color (default is #137992).
@@ -276,14 +252,14 @@ public extension UIView {
         layer.masksToBounds = false
     }
 
-    /// SwifterSwift: Add array of subviews to view.
+    /// 批量添加 subviews
     ///
     /// - Parameter subviews: array of subviews to add to self.
     func addSubviews(_ subviews: [UIView]) {
         subviews.forEach { addSubview($0) }
     }
 
-    /// SwifterSwift: Fade in view.
+    /// ss: 淡入视图
     ///
     /// - Parameters:
     ///   - duration: animation duration in seconds (default is 1 second).
@@ -297,7 +273,7 @@ public extension UIView {
         }, completion: completion)
     }
 
-    /// SwifterSwift: Fade out view.
+    /// ss: 淡出视图
     ///
     /// - Parameters:
     ///   - duration: animation duration in seconds (default is 1 second).
@@ -321,12 +297,12 @@ public extension UIView {
         return UINib(nibName: name, bundle: bundle).instantiate(withOwner: nil, options: nil)[0] as? UIView
     }
 
-    /// SwifterSwift: Remove all subviews in view.
+    /// ss: 移除所有 subview
     func removeSubviews() {
         subviews.forEach({ $0.removeFromSuperview() })
     }
 
-    /// SwifterSwift: Remove all gesture recognizers from view.
+    /// ss: 移除所有手势
     func removeGestureRecognizers() {
         gestureRecognizers?.forEach(removeGestureRecognizer)
     }
@@ -438,7 +414,27 @@ public extension UIView {
         CATransaction.commit()
     }
 
-    /// SwifterSwift: Add Visual Format constraints.
+    /// ss: 搜索所有父视图，直到找到具有该条件的 View 。
+    ///
+    /// - Parameter predicate: 父视图的筛选条件 。
+    func ancestorView(where predicate: (UIView?) -> Bool) -> UIView? {
+        if predicate(superview) {
+            return superview
+        }
+        return superview?.ancestorView(where: predicate)
+    }
+
+    /// ss: 搜索指定类型的父视图
+    ///
+    /// - Parameter name: 类型名称
+    func ancestorView<T: UIView>(withClass name: T.Type) -> T? {
+        return ancestorView(where: { $0 is T }) as? T
+    }
+}
+
+// MARK: Quice AutoLayout
+public extension UIView {
+    /// ss: 添加 VFL。
     ///
     /// - Parameters:
     ///   - withFormat: visual Format language
@@ -454,16 +450,16 @@ public extension UIView {
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: withFormat, options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: viewsDictionary))
     }
 
-    /// SwifterSwift: Anchor all sides of the view into it's superview.
+    /// ss: 添加和父视图相关的上下左右四面约束
     @available(iOS 9, *)
-    func fillToSuperview() {
+    func fillToSuperview(_ edge: UIEdgeInsets = UIEdgeInsets.zero) {
         // https://videos.letsbuildthatapp.com/
         translatesAutoresizingMaskIntoConstraints = false
         if let superview = superview {
-            let left = leftAnchor.constraint(equalTo: superview.leftAnchor)
-            let right = rightAnchor.constraint(equalTo: superview.rightAnchor)
-            let top = topAnchor.constraint(equalTo: superview.topAnchor)
-            let bottom = bottomAnchor.constraint(equalTo: superview.bottomAnchor)
+            let left = leftAnchor.constraint(equalTo: superview.leftAnchor, constant: edge.left)
+            let right = rightAnchor.constraint(equalTo: superview.rightAnchor, constant: -edge.right)
+            let top = topAnchor.constraint(equalTo: superview.topAnchor, constant: edge.top)
+            let bottom = bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -edge.bottom)
             NSLayoutConstraint.activate([left, right, top, bottom])
         }
     }
@@ -529,9 +525,9 @@ public extension UIView {
         return anchors
     }
 
-    /// SwifterSwift: Anchor center X into current view's superview with a constant margin value.
+    /// ss: 水平居中于父视图
     ///
-    /// - Parameter constant: constant of the anchor constraint (default is 0).
+    /// - Parameter constant: 偏移，默认 0。
     @available(iOS 9, *)
     func anchorCenterXToSuperview(constant: CGFloat = 0) {
         // https://videos.letsbuildthatapp.com/
@@ -541,9 +537,9 @@ public extension UIView {
         }
     }
 
-    /// SwifterSwift: Anchor center Y into current view's superview with a constant margin value.
+    /// ss: 垂直居中于父视图
     ///
-    /// - Parameter withConstant: constant of the anchor constraint (default is 0).
+    /// - Parameter withConstant: 偏移，默认 0。
     @available(iOS 9, *)
     func anchorCenterYToSuperview(constant: CGFloat = 0) {
         // https://videos.letsbuildthatapp.com/
@@ -553,31 +549,80 @@ public extension UIView {
         }
     }
 
-    /// SwifterSwift: Anchor center X and Y into current view's superview
+    /// ss: 居中显示在父视图中
     @available(iOS 9, *)
     func anchorCenterSuperview() {
         // https://videos.letsbuildthatapp.com/
         anchorCenterXToSuperview()
         anchorCenterYToSuperview()
     }
+}
 
-    /// SwifterSwift: Search all superviews until a view with the condition is found.
-    ///
-    /// - Parameter predicate: predicate to evaluate on superviews.
-    func ancestorView(where predicate: (UIView?) -> Bool) -> UIView? {
-        if predicate(superview) {
-            return superview
+// MARK: - SS
+public extension SwifterSwift where Base: UIView {
+    /// ss: view 的 宽度
+    var width: CGFloat {
+        get {
+            return base.frame.size.width
         }
-        return superview?.ancestorView(where: predicate)
+        set {
+            base.frame.size.width = newValue
+        }
     }
 
-    /// SwifterSwift: Search all superviews until a view with this class is found.
-    ///
-    /// - Parameter name: class of the view to search.
-    func ancestorView<T: UIView>(withClass name: T.Type) -> T? {
-        return ancestorView(where: { $0 is T }) as? T
+    /// ss: view 的 宽度
+    var height: CGFloat {
+        get {
+            return base.frame.size.height
+        }
+        set {
+            base.frame.size.height = newValue
+        }
     }
 
+    /// ss: view 的 x 坐标
+    // swiftlint:disable:next identifier_name
+    var x: CGFloat {
+        get {
+            return base.frame.origin.x
+        }
+        set {
+            base.frame.origin.x = newValue
+        }
+    }
+
+    /// ss: view 的 y 坐标
+    // swiftlint:disable:next identifier_name
+    var y: CGFloat {
+        get {
+            return base.frame.origin.y
+        }
+        set {
+            base.frame.origin.y = newValue
+        }
+    }
+
+    /// ss: view 的 size
+    var size: CGSize {
+        get {
+            return base.frame.size
+        }
+        set {
+            width = newValue.width
+            height = newValue.height
+        }
+    }
+
+    /// ss: view 的 origin
+    var origin: CGPoint {
+        get {
+            return base.frame.origin
+        }
+        set {
+            x = newValue.x
+            y = newValue.y
+        }
+    }
 }
 
 #endif
