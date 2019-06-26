@@ -17,52 +17,7 @@ public extension Character {
         return unicodeScalars.contains { $0.isEmoji }
     }
 
-    /// 检查是否是数字
-    ///
-    ///        Character("1").isNumber -> true
-    ///        Character("a").isNumber -> false
-    ///
-    var isNumber: Bool {
-        return Int(String(self)) != nil
-    }
-
-    /// 检查是否是字母
-    ///
-    ///        Character("4").isLetter -> false
-    ///        Character("a").isLetter -> true
-    ///
-    var isLetter: Bool {
-        return String(self).rangeOfCharacter(from: .letters, options: .numeric, range: nil) != nil
-    }
-
-    /// 检查是否是小写字母
-    ///
-    ///        Character("a").isLowercased -> true
-    ///        Character("A").isLowercased -> false
-    ///
-    var isLowercased: Bool {
-        return String(self) == String(self).lowercased()
-    }
-
-    /// 检查是否是大写字母
-    ///
-    ///        Character("a").isUppercased -> false
-    ///        Character("A").isUppercased -> true
-    ///
-    var isUppercased: Bool {
-        return String(self) == String(self).uppercased()
-    }
-
-    /// 检查是否是空格
-    ///
-    ///        Character(" ").isWhiteSpace -> true
-    ///        Character("A").isWhiteSpace -> false
-    ///
-    var isWhiteSpace: Bool {
-        return String(self) == " "
-    }
-
-    /// 转为数字（可选类型）
+    /// 转为数字
     ///
     ///        Character("1").int -> 1
     ///        Character("A").int -> nil
