@@ -989,6 +989,16 @@ public extension Date {
         self = date
     }
 
+    /// 使用日期字符串和日期格式初始化Date
+    init?(dateString: String, format: String) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.timeZone = TimeZone.current
+        dateFormatter.dateFormat = format
+        guard let date = dateFormatter.date(from: dateString) else { return nil }
+        self = date
+    }
+
     /// SwifterSwift: Create new date object from UNIX timestamp.
     ///
     ///     let date = Date(unixTimestamp: 1484239783.922743) // "Jan 12, 2017, 7:49 PM"

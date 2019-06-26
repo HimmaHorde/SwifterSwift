@@ -137,7 +137,7 @@ public extension UICollectionView {
 
     /// 批量注册 nib cell，默认 xib 文件在 mainBundle 中。
     func register(nibWithCellClasses classes: UICollectionViewCell.Type..., at bundleClass: AnyClass? = nil) {
-        register(nibWithCellClasses: classes)
+        register(nibWithCellClasses: classes, at: bundleClass)
     }
 
     /// 批量注册 nib cell，默认 xib 文件在 mainBundle 中。

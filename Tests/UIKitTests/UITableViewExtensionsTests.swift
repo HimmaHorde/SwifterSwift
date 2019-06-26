@@ -54,20 +54,6 @@ final class UITableViewExtensionsTests: XCTestCase {
         waitForExpectations(timeout: 5, handler: nil)
     }
 
-    func testRemoveTableFooterView() {
-        tableView.tableFooterView = UIView()
-        XCTAssertNotNil(tableView.tableFooterView)
-        tableView.removeTableFooterView()
-        XCTAssertNil(tableView.tableFooterView)
-    }
-
-    func testRemoveTableHeaderView() {
-        tableView.tableHeaderView = UIView()
-        XCTAssertNotNil(tableView.tableHeaderView)
-        tableView.removeTableHeaderView()
-        XCTAssertNil(tableView.tableHeaderView)
-    }
-
     func testScrollToBottom() {
         let bottomOffset = CGPoint(x: 0, y: tableView.contentSize.height - tableView.bounds.size.height)
         tableView.scrollToBottom()
@@ -151,7 +137,7 @@ final class UITableViewExtensionsTests: XCTestCase {
     }
 
     func testRegisterCellWithClass() {
-        tableView.register(cellWithClass: UITableViewCell.self)
+        tableView.register(cellWithClasses: UITableViewCell.self)
         let cell = tableView.dequeueReusableCell(withClass: UITableViewCell.self)
         XCTAssertNotNil(cell)
     }
@@ -167,7 +153,7 @@ final class UITableViewExtensionsTests: XCTestCase {
 
     #if os(iOS)
     func testRegisterCellWithNibUsingClass() {
-        tableView.register(nibWithCellClass: UITableViewCell.self, at: UITableViewExtensionsTests.self)
+        tableView.register(nibWithCellClasses: UITableViewCell.self, at: UITableViewExtensionsTests.self)
         let cell = tableView.dequeueReusableCell(withClass: UITableViewCell.self)
         XCTAssertNotNil(cell)
     }

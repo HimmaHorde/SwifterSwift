@@ -11,6 +11,7 @@ identifier_name:
     - URL
     - i
     - j
+    - ss
 
 excluded:
   - Tests/*/XCTestManifests.swift

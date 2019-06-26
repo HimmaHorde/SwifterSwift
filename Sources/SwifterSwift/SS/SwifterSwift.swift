@@ -23,38 +23,30 @@ public struct SwifterSwift<Base> {
 /// A type that has reactive extensions.
 public protocol SwifterCompatible {
     /// Extended type
-    associatedtype ReactiveBase
+    associatedtype SwifterSwiftBase
 
     /// Reactive extensions.
-    static var ss: SwifterSwift<ReactiveBase>.Type { get set }
+    static var ss: SwifterSwift<SwifterSwiftBase>.Type { get }
 
     /// Reactive extensions.
-    var ss: SwifterSwift<ReactiveBase> { get set }
+    var ss: SwifterSwift<SwifterSwiftBase> { get }
 }
 
 extension SwifterCompatible {
     /// Reactive extensions.
     public static var ss: SwifterSwift<Self>.Type {
-        get {
-            return SwifterSwift<Self>.self
-        }
-        set {
-            // this enables using Reactive to "mutate" base type
-        }
+        return SwifterSwift<Self>.self
     }
 
     /// Reactive extensions.
     public var ss: SwifterSwift<Self> {
-        get {
-            return SwifterSwift(self)
-        }
-        set {
-            // this enables using Reactive to "mutate" base object
-        }
+        return SwifterSwift(self)
     }
 }
 
 import class Foundation.NSObject
 
 /// Extend NSObject with `ss` proxy.
-extension NSObject: SwifterCompatible { }
+extension NSObject: SwifterCompatible {
+
+}

@@ -16,7 +16,7 @@ class ImageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         imageView.roundCorners(.topLeft, radius: 10)
-        imageView.addBorder(width: 1, color: UIColor.red,corners: .topLeft)
+        imageView.addBorder(width: 1, color: UIColor.red, corners: .topLeft)
         imageView2.addBorder(width: 1, color: .red)
     }
 
