@@ -1,0 +1,10 @@
+author: 杨林
+author_url: http://www.jackyanglin.com/
+github_url: https://github.com/HimmaHorde/SwifterSwift
+github_file_prefix: https://github.com/HimmaHorde/SwifterSwift/tree/master
+dash_url: https://himmahorde.github.io/SwifterDocs/docsets/SwifterSwift.xml
+output: docs
+module: SwifterSwift
+module_version: 5.0
+theme: fullwidth
+xcodebuild_arguments: [-workspace, 'SwifterSwift.xcworkspace', -scheme, 'SwifterSwift-iOS']
