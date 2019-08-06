@@ -85,7 +85,7 @@ public extension Color {
         return (hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
     }
 
-    /// 获取 hex 字符串 (read-only).
+    /// 获取完整的16 进制字符串 (read-only).
     var hexString: String {
         let components: [Int] = {
             let comps = cgColor.components!
@@ -95,7 +95,14 @@ public extension Color {
         return String(format: "#%02X%02X%02X", components[0], components[1], components[2])
     }
 
-    /// 短 hex 字符串
+    /// 获取短16 进制字符串
+    ///
+    /// 在16 进制中，第一二位相同，第三四位相同， 第五六位相同，
+    /// 可以简写为三位的 16 进制字符串。
+    ///
+    ///     let shortColocr = UIColor(hexString: "#ffeedd")
+    ///     print(shortColocr.shortHexOrHexString) // #FED
+    ///
     var shortHexString: String? {
         let string = hexString.replacingOccurrences(of: "#", with: "")
         let chrs = Array(string)
@@ -103,7 +110,7 @@ public extension Color {
         return "#\(chrs[0])\(chrs[2])\(chrs[4])"
     }
 
-    /// SwifterSwift: Short hexadecimal value string, or full hexadecimal string if not possible (read-only).
+    /// 返回十六进制字符串，对于符合short 规则的返回 `shortHexString`
     var shortHexOrHexString: String {
         let components: [Int] = {
             let comps = cgColor.components!
@@ -129,7 +136,7 @@ public extension Color {
     }
     #endif
 
-    /// 颜色取反 (read-only, if applicable).
+    /// 颜色的 10 进制值
     var uInt: UInt {
         let comps: [CGFloat] = {
             let comps = cgColor.components!
@@ -144,7 +151,7 @@ public extension Color {
         return UInt(colorAsUInt32)
     }
 
-    /// SwifterSwift: Get color complementary (read-only, if applicable).
+    /// 获取互补色 (read-only, if applicable).
     var complementary: Color? {
         let colorSpaceRGB = CGColorSpaceCreateDeviceRGB()
         let convertColorToRGBSpace: ((_ color: Color) -> Color?) = { color -> Color? in
@@ -298,10 +305,13 @@ public extension Color {
 
     /// 根据十六进制字符串生成颜色
     ///
+    /// debug 模式下会，无效的 hex，返回默认颜色
+    ///
     /// - Parameters:
     ///   - hexString: 十六进制字符串 (examples: EDE7F6, 0xEDE7F6, #EDE7F6, #0ff, 0xF0F, ..).
     ///   - transparency: 透明度 0 - 1 (默认 1)。
-    convenience init(hexString: String, transparency: CGFloat = 1) {
+    ///
+    convenience init(hexString: String, transparency: CGFloat = 1, placeholder: Int = 0 ) {
         var string = ""
         if hexString.lowercased().hasPrefix("0x") {
             string =  hexString.replacingOccurrences(of: "0x", with: "")
@@ -320,6 +330,11 @@ public extension Color {
         let hexValue = Int(string, radix: 16)
 
         assert(hexValue != nil, "无效的 16 进制 hex 字符串")
+
+        if hexValue == nil {
+            self.init(red: 1, green: 1, blue: 1, transparency: 1)
+            return
+        }
 
         var trans = transparency
         if trans < 0 { trans = 0 }

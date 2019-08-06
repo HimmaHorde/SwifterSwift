@@ -42,12 +42,23 @@ let beige = UIColor.CSS.beige
 // Return brand colors from more than 30 social brands
 let facebookColor = UIColor.Social.facebook
 
+// short Color
+
+let shortColocr = UIColor(hexString: "#ffeedd")
+
+// short 是指在 16 进制中 第一位和第二位相同，第三位和第四位相同， 第5位和第六位相同，可以简写为三位的 16 进制字符串
+print(shortColocr.shortHexOrHexString)
+
+// uint of color
+
+_ = shortColocr.uInt
+
 //: ### UIImage extensions
 
 let image1 = UIImage(named: "logo")!
 
 // Crop images
-let croppedImage = image1.cropped(to: CGRect(x: 0, y: 0, width: 100, height: 100))
+let croppedImage = image1.cropped(to: CGRect.init(x: 0, y: 0, width: 100, height: 100))
 
 // scale to fit width or height
 let scaledImage1 = image1.scaled(toHeight: 50)
@@ -97,7 +108,7 @@ view.backgroundColor = UIColor.red
 
 // Set some or all corners radiuses of view.
 view.roundCorners([.bottomLeft, .topRight], radius: 30)
-view.cornerRadius = 30
+//view.cornerRadius = 30
 
 // Add shadow to view
 view.addShadow(ofColor: .black, radius: 3, opacity: 0.5)
