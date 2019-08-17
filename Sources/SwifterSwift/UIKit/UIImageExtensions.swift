@@ -54,14 +54,15 @@ public extension UIImage {
         return jpegData(compressionQuality: quality)
     }
 
-    /// 剪切指定位置的图片。
+    /// 剪切指定位置的图片,图片scale等于原图。
     ///
     /// - Parameter rect: 位置。
     /// - Returns: 剪切后图片
     func cropped(to rect: CGRect) -> UIImage {
         guard rect.size.width <= size.width && rect.size.height <= size.height else { return self }
-        guard let image: CGImage = cgImage?.cropping(to: rect) else { return self }
-        return UIImage(cgImage: image)
+        let newRect = CGRect.init(x: rect.origin.x * scale, y: rect.origin.y * scale, width: rect.width * scale, height: rect.height * scale)
+        guard let image: CGImage = cgImage?.cropping(to: newRect) else { return self }
+        return UIImage.init(cgImage: image, scale: self.scale, orientation: .up)
     }
 
     /// UIImage根据高宽比缩放。
@@ -69,11 +70,12 @@ public extension UIImage {
     /// - Parameters:
     ///   - toHeight: 指定高度。
     ///   - opaque: 是否保留透明度。
+    ///   - scale: -1: 原图scale（默认），0: 系统scale，>0 :自定义 scale
     /// - Returns: 缩放后的image。
-    func scaled(toHeight: CGFloat, opaque: Bool = false) -> UIImage? {
-        let scale = toHeight / size.height
-        let newWidth = size.width * scale
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: newWidth, height: toHeight), opaque, 0)
+    func scaled(toHeight: CGFloat, opaque: Bool = false, scale: CGFloat = -1) -> UIImage? {
+        let aimScale = scale < 0 ? self.scale : scale
+        let newWidth = size.width * (toHeight / size.height)
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: newWidth, height: toHeight), opaque, aimScale)
         draw(in: CGRect(x: 0, y: 0, width: newWidth, height: toHeight))
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
@@ -85,11 +87,12 @@ public extension UIImage {
     /// - Parameters:
     ///   - toWidth: 指定宽度。
     ///   - opaque: 位图是否不透明标志。
+    ///   - scale: -1: 原图scale（默认），0: 系统scale，>0 :自定义 scale
     /// - Returns: 缩放后的image。
-    func scaled(toWidth: CGFloat, opaque: Bool = false) -> UIImage? {
-        let scale = toWidth / size.width
-        let newHeight = size.height * scale
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: toWidth, height: newHeight), opaque, 0)
+    func scaled(toWidth: CGFloat, opaque: Bool = false, scale: CGFloat = -1) -> UIImage? {
+        let aimScale = scale < 0 ? self.scale : scale
+        let newHeight = size.height * (toWidth / size.width)
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: toWidth, height: newHeight), opaque, aimScale)
         draw(in: CGRect(x: 0, y: 0, width: toWidth, height: newHeight))
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()

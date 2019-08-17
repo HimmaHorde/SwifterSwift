@@ -14,22 +14,20 @@ public extension UITableView {
 
     /// 最后一个 row 的 indexpath
     var indexPathForLastRow: IndexPath? {
+        guard let lastSection = lastSection else { return nil }
         return indexPathForLastRow(inSection: lastSection)
     }
 
     /// 最后一个 section 的 index
-    var lastSection: Int {
-        return numberOfSections > 0 ? numberOfSections - 1 : 0
+    var lastSection: Int? {
+        return numberOfSections > 0 ? numberOfSections - 1 : nil
     }
-
 }
 
 // MARK: - Methods
 public extension UITableView {
 
     /// tableView 全部 row 的个数。
-    ///
-    /// - Returns: 个数
     func numberOfRows() -> Int {
         var section = 0
         var rowCount = 0
@@ -40,19 +38,14 @@ public extension UITableView {
         return rowCount
     }
 
-    /// SwifterSwift: IndexPath for last row in section.
-    ///
-    /// - Parameter section: section to get last row in.
-    /// - Returns: optional last indexPath for last row in section (if applicable).
+    /// 获取指定 Section 的最后一个 Cell 的 indexPath
     func indexPathForLastRow(inSection section: Int) -> IndexPath? {
-        guard section >= 0 else { return nil }
-        guard numberOfRows(inSection: section) > 0  else {
-            return IndexPath(row: 0, section: section)
-        }
+        guard numberOfSections > 0, section >= 0 else { return nil }
+        guard numberOfRows(inSection: section) > 0  else { return nil }
         return IndexPath(row: numberOfRows(inSection: section) - 1, section: section)
     }
 
-    /// Reload data with a completion handler.
+    /// 带有结束回调事件的刷新方法
     ///
     /// - Parameter completion: completion handler to run after reloadData finishes.
     func reloadData(_ completion: @escaping () -> Void) {
@@ -192,15 +185,18 @@ public extension UITableView {
     /// - Parameter indexPath: 要检查的IndexPath
     /// - Returns: 返回是否有效
     func isValidIndexPath(_ indexPath: IndexPath) -> Bool {
-        return indexPath.section < numberOfSections && indexPath.row < numberOfRows(inSection: indexPath.section)
+        return indexPath.section >= 0 &&
+            indexPath.row >= 0 &&
+            indexPath.section < numberOfSections &&
+            indexPath.row < numberOfRows(inSection: indexPath.section)
     }
 
     /// 安全地滚动到可能无效的IndexPath
     ///
     /// - Parameters:
-    ///   - indexPath: Target IndexPath to scroll to
-    ///   - scrollPosition: Scroll position
-    ///   - animated: Whether to animate or not
+    ///   - indexPath: 目标 indexPath
+    ///   - scrollPosition: 位置 上 中 下
+    ///   - animated: 是否有动画
     func safeScrollToRow(at indexPath: IndexPath, at scrollPosition: UITableView.ScrollPosition, animated: Bool) {
         guard indexPath.section < numberOfSections else { return }
         guard indexPath.row < numberOfRows(inSection: indexPath.section) else { return }

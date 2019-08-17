@@ -26,6 +26,12 @@ class ImageViewController: UIViewController {
             imageView.image = UIImage.init(named: "wall.png")?.filled(withColor: UIColor.red)
         case 1:
             imageView.image = UIImage.init(named: "wall.png")?.tint(UIColor.white, blendMode: .multiply)
+        case 2:
+            let original = UIImage.init(named: "xiaofang")!
+            print("original size = \(original.size)")
+            imageView.image = original.cropped(to: CGRect.init(x: 0, y: 0, width: 270, height: 300))
+            print(imageView.image?.size ?? "nil")
+            print(imageView.image?.scale ?? "nil")
         default:
             break
         }

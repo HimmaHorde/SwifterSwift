@@ -33,6 +33,13 @@ The changelog for **SwifterSwift**. Also see the [releases](https://github.com/S
 - **SCNVector3**:
   - Added `absolute` property to calculate the vector's components as absolute values. [#660](https://github.com/SwifterSwift/SwifterSwift/pull/660) by [vyax](https://github.com/vyax)
   - Added `length` property to calculate the vector's length. [#660](https://github.com/SwifterSwift/SwifterSwift/pull/660) by [vyax](https://github.com/vyax)
+- **UICollectionView**:
+  - Added `isValidIndexPath(_:)` method to check whether given IndexPath is valid within UICollectionView. [#695](https://github.com/SwifterSwift/SwifterSwift/pull/695) by [emilrb](https://github.com/emilrb).
+  - Added `safeScrollToItem(at:at:animated:)` method to safely scroll UICollectionView to the given IndexPath. [#698](https://github.com/SwifterSwift/SwifterSwift/pull/698) by [emilrb](https://github.com/emilrb)
+  
+
+- **UIBezierPath**:
+  - Added `init(from:to:)`, `init(points:)`, `init(polygonWithPoints:)`, `init(ovalOf:centered:)` and `init(rectOf:centered:)` convenience initializers. [#659](https://github.com/SwifterSwift/SwifterSwift/pull/659) by [vyax](https://github.com/vyax)
 
 ### Changed
 - **UIApplication**:
@@ -51,6 +58,9 @@ The changelog for **SwifterSwift**. Also see the [releases](https://github.com/S
   - Resolved an issue where `version` and `displayName` would return nil if localized.
 - **UIImage**:
   - The size of rect can equal to the size of UIImage when using `cropped(to:)` to crop UIImage. [#679](https://github.com/SwifterSwift/SwifterSwift/pull/679) by [dirtmelon](https://github.com/dirtmelon).
+  - `scaled(toHeight:opaque:)` and `scaled(toWidth:opaque:)` will now keep the original scale of UIImage. [#703](https://github.com/SwifterSwift/SwifterSwift/pull/703) by [ShannonChou](https://github.com/shannonchou)
+- **UITableView**:
+  - `isValidIndexPath(_:)` will now return `false` for IndexPaths with a negative row or section. [#696](https://github.com/SwifterSwift/SwifterSwift/pull/696) by [emilrb](https://github.com/emilrb).
   
 ### Security
 
@@ -183,6 +193,8 @@ The changelog for **SwifterSwift**. Also see the [releases](https://github.com/S
 - **UIViewController**
   - Added `addChildViewController(_:toContainerView)` to easily add child view controllers. Accepts a `UIViewController` and a `UIView` to add the child's view to. 
   - Added `removeViewAndControllerFromParentViewController()` to remove a `UIViewController` from its parent.
+- **NSView**
+  - Added `backgroundColor` which allows to change backgroundColor of NSView [#702](https://github.com/SwifterSwift/SwifterSwift/pull/702) by [RomanPodymov](https://github.com/RomanPodymov)
 - **UIEdgeInsets**
   - Added  `insetBy(top:)`, `insetBy(left:)`, `insetBy(bottom:)`, `insetBy(right:)`, `insetBy(horizontal:)` and `insetBy(vertical:)` to creates an `UIEdgeInsets` based on current value and adjusted by given offset. [#532](https://github.com/SwifterSwift/SwifterSwift/pull/532) by [VincentSit](https://github.com/VincentSit).
   - Added operators `+` and `+=` to add two insets together in order to extend them. [#557](https://github.com/SwifterSwift/SwifterSwift/pull/557) by [guykogus](https://github.com/guykogus)
@@ -258,6 +270,8 @@ The changelog for **SwifterSwift**. Also see the [releases](https://github.com/S
 - **UITableView**:
   - Added `isValidIndexPath(_:)` method to check whether given IndexPath is valid within UITableView. [#441](https://github.com/SwifterSwift/SwifterSwift/pull/441) by [setoelkahfi](https://github.com/setoelkahfi).
   - Added `safeScrollToRow(at:at:animated:)` method to safely scroll UITableView to the given IndexPath. [#445](https://github.com/SwifterSwift/SwifterSwift/pull/445) by [setoelkahfi](https://github.com/setoelkahfi).
+  - Fixed  `lastSection`,  and `indexPathForLastRow`  and  `indexPathForLastRow(inSection: 0)`  methods to get last section, get the lastIndexPath for section 0 if exists and get the lastIndexPath for a given section respectively . 
+        [#694](https://github.com/SwifterSwift/SwifterSwift/pull/694) by [mohshin-shah](https://github.com/mohshin-shah).
 - **Optional**:
   - Added `isNilOrEmpty` property to check whether an optional is nil or empty collection.
 - **UIWindow**:
