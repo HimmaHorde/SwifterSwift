@@ -8,7 +8,7 @@
 
 public extension Sequence {
 
-    /// SwifterSwift: Check if all elements in collection match a conditon.
+    /// 检查所有元素是否遵守指定规则
     ///
     ///        [2, 2, 4].all(matching: {$0 % 2 == 0}) -> true
     ///        [1,2, 2, 4].all(matching: {$0 % 2 == 0}) -> false
@@ -19,7 +19,7 @@ public extension Sequence {
         return try !contains { try !condition($0) }
     }
 
-    /// SwifterSwift: Check if no elements in collection match a conditon.
+    /// 检查集合中是否没有与条件匹配的元素。
     ///
     ///        [2, 2, 4].none(matching: {$0 % 2 == 0}) -> false
     ///        [1, 3, 5, 7].none(matching: {$0 % 2 == 0}) -> true
@@ -167,6 +167,27 @@ public extension Sequence {
         return try filter { set.insert(try transform($0)).inserted }
     }
 
+    /// SwifterSwift: Separates all items into 2 lists based on a given predicate.
+    /// The first list contains all items for which the specified condition evaluates to true.
+    /// The second list contains those that don't.
+    ///
+    ///     let (even, odd) = [0, 1, 2, 3, 4, 5].divided { $0 % 2 == 0 }
+    ///     let (minors, adults) = people.divided { $0.age < 18 }
+    ///
+    /// - Parameter condition: condition to evaluate each element against.
+    /// - Returns: A tuple of matched and non-matched items
+    func divided(by condition: (Element) throws -> Bool) rethrows -> (matching: [Element], nonMatching: [Element]) {
+        //Inspired by: http://ruby-doc.org/core-2.5.0/Enumerable.html#method-i-partition
+        var matching = ContiguousArray<Element>()
+        var nonMatching = ContiguousArray<Element>()
+
+        var iterator = self.makeIterator()
+        while let element = iterator.next() {
+            try condition(element) ? matching.append(element) : nonMatching.append(element)
+        }
+        return (Array(matching), Array(nonMatching))
+    }
+
 }
 
 public extension Sequence where Element: Equatable {
@@ -232,7 +253,7 @@ public extension Sequence where Element: Numeric {
     ///
     ///        [1, 2, 3, 4, 5].sum() -> 15
     func sum() -> Element {
-        return reduce(0, {$0 + $1})
+        return reduce(into: 0, +=)
     }
 
 }

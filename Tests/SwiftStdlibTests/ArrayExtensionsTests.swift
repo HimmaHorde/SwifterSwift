@@ -46,42 +46,6 @@ final class ArrayExtensionsTests: XCTestCase {
         XCTAssertEqual(swappedEmptyArray, emptyArray)
     }
 
-    func testKeepWhile() {
-        var input = [2, 4, 6, 7, 8, 9, 10]
-        input = input.take(while: {$0 % 2 == 0 })
-        XCTAssertEqual(input, [2, 4, 6])
-
-        input = [7, 7, 8, 10]
-        input = input.take(while: {$0 % 2 == 0 })
-        XCTAssertEqual(input, [Int]())
-    }
-
-    func testTakeWhile() {
-        var input = [2, 4, 6, 7, 8, 9, 10]
-        var output = input.take(while: {$0 % 2 == 0 })
-        XCTAssertEqual(output, [2, 4, 6])
-
-        input = [7, 7, 8, 10]
-        output = input.take(while: {$0 % 2 == 0 })
-        XCTAssertEqual(output, [Int]())
-
-        XCTAssertEqual([].take(while: {$0 % 2 == 0 }), [])
-    }
-
-    func testDivided() {
-        let input = [0, 1, 2, 3, 4, 5]
-        let (even, odd) = input.divided { $0 % 2 == 0 }
-        XCTAssertEqual(even, [0, 2, 4])
-        XCTAssertEqual(odd, [1, 3, 5])
-
-        // Parameter names + indexes
-        let tuple = input.divided { $0 % 2 == 0 }
-        XCTAssertEqual(tuple.matching, [0, 2, 4])
-        XCTAssertEqual(tuple.0, [0, 2, 4])
-        XCTAssertEqual(tuple.nonMatching, [1, 3, 5])
-        XCTAssertEqual(tuple.1, [1, 3, 5])
-    }
-
     func testKeyPathSorted() {
         let array = [Person(name: "James", age: 32), Person(name: "Wade", age: 36), Person(name: "Rose", age: 29)]
 

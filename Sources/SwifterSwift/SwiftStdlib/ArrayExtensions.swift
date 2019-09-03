@@ -38,37 +38,6 @@ public extension Array {
         swapAt(i, j)
     }
 
-    /// 取数组元素，直到第一个不符合规则的元素
-    ///
-    ///       // 都符合条件返回自身数组自身的复制
-    ///       [0, 2, 4, 7, 6, 8].take( where: {$0 % 2 == 0}) -> [0, 2, 4]
-    ///
-    /// - Parameter condition: 判断条件
-    /// - Returns: 返回新的数组
-    /// - Throws: 抛出异常
-    func take(while condition: (Element) throws -> Bool) rethrows -> [Element] {
-        for (index, element) in lazy.enumerated() where try !condition(element) {
-            return Array(self[startIndex..<index])
-        }
-        return Array.init(self)
-    }
-
-    /// 根据筛选条件分割数组
-    ///
-    ///     [0, 1, 2, 3, 4, 5].divided { $0 % 2 == 0 } -> ( [0, 2, 4], [1, 3, 5] )
-    ///
-    /// - Parameter condition: 筛选条件.
-    /// - Returns: 两个数组，第一个数组符合条件，第二个数组不符合条件
-    func divided(by condition: (Element) throws -> Bool) rethrows -> (matching: [Element], nonMatching: [Element]) {
-        //Inspired by: http://ruby-doc.org/core-2.5.0/Enumerable.html#method-i-partition
-        var matching = [Element]()
-        var nonMatching = [Element]()
-        for element in self {
-            try condition(element) ? matching.append(element) : nonMatching.append(element)
-        }
-        return (matching, nonMatching)
-    }
-
     /// 基于 keypath 排序，并返回排序后的新数组
     ///
     /// - Parameter path: 用于排序的 Key path，必须是 Comparable.
