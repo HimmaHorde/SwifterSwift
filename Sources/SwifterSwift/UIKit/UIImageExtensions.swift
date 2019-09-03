@@ -185,6 +185,31 @@ public extension UIImage {
         return newImage
     }
 
+
+    /// 生成添加半透明遮罩的图片
+    ///
+    /// - Parameter color: 使用有透明度的颜色
+    /// - Returns: 新的图片
+    func masked(withColor color: UIColor) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        color.setFill()
+        guard let context = UIGraphicsGetCurrentContext() else { return self }
+        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        self.draw(in: rect, blendMode: .normal, alpha: 1)
+
+        context.translateBy(x: 0, y: size.height)
+        context.scaleBy(x: 1.0, y: -1.0)
+        context.setBlendMode(CGBlendMode.normal)
+
+        guard let mask = cgImage else { return self }
+        context.clip(to: rect, mask: mask)
+        context.fill(rect)
+
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return newImage
+    }
+
     /// 新图使用指定混合模式和颜色添加一个纯色填充图层
     ///
     ///       //实际使用效果类似于 PS 的图层混合模式 eg.正片叠底

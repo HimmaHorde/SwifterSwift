@@ -32,6 +32,8 @@ class ImageViewController: UIViewController {
             imageView.image = original.cropped(to: CGRect.init(x: 0, y: 0, width: 270, height: 300))
             print(imageView.image?.size ?? "nil")
             print(imageView.image?.scale ?? "nil")
+        case 4:
+            imageView.image = UIImage.init(named: "wall.png")?.masked(withColor: UIColor.init(hex: 0x000000, transparency: 0.5))
         default:
             break
         }
