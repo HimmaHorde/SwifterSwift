@@ -35,13 +35,14 @@ public extension Color {
         return Color(red: red, green: green, blue: blue)
     }
 
+    // swiftlint:disable large_tuple
+
     /// 获取颜色的 RGB 值，（0-255）表示。
     ///
     ///     UIColor.red.rgbComponents.red -> 255
     ///     NSColor.green.rgbComponents.green -> 255
     ///     UIColor.blue.rgbComponents.blue -> 255
     ///
-    // swiftlint:disable:next large_tuple
     var rgbComponents: (red: Int, green: Int, blue: Int) {
         var components: [CGFloat] {
             let comps = cgColor.components!
@@ -54,13 +55,12 @@ public extension Color {
         return (red: Int(red * 255.0), green: Int(green * 255.0), blue: Int(blue * 255.0))
     }
 
-    /// 获取颜色的 RGB 值，( 0 - 1)
+    /// 获取颜色的 RGB 值小数表示，( 0 - 1)
     ///
     ///     UIColor.red.rgbComponents.red -> 1.0
     ///     NSColor.green.rgbComponents.green -> 1.0
     ///     UIColor.blue.rgbComponents.blue -> 1.0
     ///
-    // swiftlint:disable:next large_tuple
     var cgFloatComponents: (red: CGFloat, green: CGFloat, blue: CGFloat) {
         var components: [CGFloat] {
             let comps = cgColor.components!
@@ -74,7 +74,6 @@ public extension Color {
     }
 
     /// 获取 HSB 颜色的值 (read-only).
-    // swiftlint:disable:next large_tuple
     var hsbaComponents: (hue: CGFloat, saturation: CGFloat, brightness: CGFloat, alpha: CGFloat) {
         var hue: CGFloat = 0.0
         var saturation: CGFloat = 0.0
@@ -84,6 +83,8 @@ public extension Color {
         getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
         return (hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
     }
+
+    // swiftlint:enable large_tuple
 
     /// 获取完整的16 进制字符串 (read-only).
     var hexString: String {
@@ -470,8 +471,8 @@ public extension Color {
 // MARK: - Material colors
 public extension Color {
 
+    // swiftlint:disable type_body_length
     /// SwifterSwift: Google Material design colors palette.
-    // swiftlint:disable:next type_body_length
     struct Material {
         // https://material.google.com/style/color.html
 
@@ -1828,6 +1829,7 @@ public extension Color {
         /// SwifterSwift: hex #95A5A6
         public static let concerte             = Color(hex: 0x95a5a6)
     }
+    // swiftlint:enable type_body_length
 
 }
 #endif

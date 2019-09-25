@@ -28,6 +28,7 @@ public extension FileManager {
         return json
     }
 
+    #if !os(Linux)
     /// 读取项目内 JSON 文件并解析
     ///
     /// - Parameters:
@@ -36,7 +37,6 @@ public extension FileManager {
     ///   - readingOptions: JSON 解析方式
     /// - Returns: 解析结果.
     /// - Throws: 抛出解析异常
-    #if !os(Linux)
     func jsonFromFile(
         withFilename filename: String,
         at bundleClass: AnyClass? = nil,
@@ -56,7 +56,8 @@ public extension FileManager {
         return nil
     }
     #endif
-    /// 创建用于保存临时文件的唯一目录。（iOS 不建议使用）
+    
+    /// 创建用于保存临时文件的唯一目录
     ///
     /// 该目录可用于创建用于公共目的的多个临时文件
     ///

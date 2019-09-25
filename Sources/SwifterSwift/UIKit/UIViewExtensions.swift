@@ -175,7 +175,6 @@ public extension UIView {
         }
         return nil
     }
-
 }
 
 // MARK: - Methods

@@ -37,54 +37,6 @@ public extension Array {
             return }
         swapAt(i, j)
     }
-
-    /// 基于 keypath 排序，并返回排序后的新数组
-    ///
-    /// - Parameter path: 用于排序的 Key path，必须是 Comparable.
-    /// - Parameter ascending: 是否升序
-    /// - Returns: 排序后的数组
-    func sorted<T: Comparable>(by path: KeyPath<Element, T?>, ascending: Bool = true) -> [Element] {
-        return sorted(by: { (lhs, rhs) -> Bool in
-            guard let lhsValue = lhs[keyPath: path], let rhsValue = rhs[keyPath: path] else { return false }
-            return ascending ? (lhsValue < rhsValue) : (lhsValue > rhsValue)
-        })
-    }
-
-    /// 基于 keypath 排序，并返回排序后的新数组
-    ///
-    /// - Parameter path: 用于排序的 Key path，必须是 Comparable.
-    /// - Parameter ascending: 是否升序
-    /// - Returns: Sorted array based on keyPath.
-    func sorted<T: Comparable>(by path: KeyPath<Element, T>, ascending: Bool = true) -> [Element] {
-        return sorted(by: { (lhs, rhs) -> Bool in
-            return ascending ? (lhs[keyPath: path] < rhs[keyPath: path]) : (lhs[keyPath: path] > rhs[keyPath: path])
-        })
-    }
-
-    /// Array 元素根据 keypath 重新排序
-    ///
-    /// - Parameters:
-    ///   - path: 用于排序的 Key path，必须是 Comparable.
-    ///   - ascending: 是否升序
-    /// - Returns: self after sorting.
-    @discardableResult
-    mutating func sort<T: Comparable>(by path: KeyPath<Element, T?>, ascending: Bool = true) -> [Element] {
-        self = sorted(by: path, ascending: ascending)
-        return self
-    }
-
-    /// Array 元素根据 keypath 重新排序
-    ///
-    /// - Parameters:
-    ///   - path: 用于排序的 Key path，必须是 Comparable.
-    ///   - ascending: 是否升序
-    /// - Returns: self after sorting.
-    @discardableResult
-    mutating func sort<T: Comparable>(by path: KeyPath<Element, T>, ascending: Bool = true) -> [Element] {
-        self = sorted(by: path, ascending: ascending)
-        return self
-    }
-
 }
 
 // MARK: - Methods (Equatable)
@@ -150,4 +102,24 @@ public extension Array where Element: Equatable {
         }
     }
 
+    /// SwifterSwift: Returns an array with all duplicate elements removed using KeyPath to compare.
+    ///
+    /// - Parameter path: Key path to compare, the value must be Equatable.
+    /// - Returns: an array of unique elements.
+    func withoutDuplicates<E: Equatable>(keyPath path: KeyPath<Element, E>) -> [Element] {
+        return reduce(into: [Element]()) { (result, element) in
+            if !result.contains { $0[keyPath: path] == element[keyPath: path] } {
+                result.append(element)
+            }
+        }
+    }
+
+    /// SwifterSwift: Returns an array with all duplicate elements removed using KeyPath to compare.
+    ///
+    /// - Parameter path: Key path to compare, the value must be Hashable.
+    /// - Returns: an array of unique elements.
+    func withoutDuplicates<E: Hashable>(keyPath path: KeyPath<Element, E>) -> [Element] {
+        var set = Set<E>()
+        return filter { set.insert($0[keyPath: path]).inserted }
+    }
 }

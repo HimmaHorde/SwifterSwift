@@ -51,7 +51,7 @@ infix operator ±
 ///   - rhs: number
 /// - Returns: tuple of plus-minus operation ( 2.5 ± 1.5 -> (4, 1)).
 // swiftlint:disable:next identifier_name
-public func ±<T: FloatingPoint> (lhs: T, rhs: T) -> (T, T) {
+public func ± <T: FloatingPoint> (lhs: T, rhs: T) -> (T, T) {
     // http://nshipster.com/swift-operators/
     return (lhs + rhs, lhs - rhs)
 }
@@ -62,7 +62,8 @@ prefix operator ±
 /// - Parameter int: number
 /// - Returns: tuple of plus-minus operation (± 2.5 -> (2.5, -2.5)).
 // swiftlint:disable:next identifier_name
-public prefix func ±<T: FloatingPoint> (number: T) -> (T, T) {
+public prefix func ± <T: FloatingPoint> (number: T) -> (T, T) {
     // http://nshipster.com/swift-operators/
     return 0 ± number
 }
+

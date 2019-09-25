@@ -53,13 +53,14 @@ func ** (lhs: Double, rhs: Double) -> Double {
     return pow(lhs, rhs)
 }
 
+// swiftlint:disable identifier_name
 prefix operator √
 /// 二次根号
 ///
 /// - Parameter double: 开根号的数
 /// - Returns: 平方根
-// swiftlint:disable:next identifier_name
 public prefix func √ (double: Double) -> Double {
     // http://nshipster.com/swift-operators/
     return sqrt(double)
 }
+// swiftlint:enable identifier_name

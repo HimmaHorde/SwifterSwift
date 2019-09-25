@@ -524,6 +524,7 @@ public extension Date {
         }
     }
 
+    // swiftlint:disable cyclomatic_complexity function_body_length
     /// SwifterSwift: Date by changing value of calendar component.
     ///
     ///     let date = Date() // "Jan 12, 2017, 7:07 PM"
@@ -536,7 +537,6 @@ public extension Date {
     ///   - component: component type.
     ///   - value: new value of compnenet to change.
     /// - Returns: original date after changing given component to given value.
-    // swiftlint:disable:next cyclomatic_complexity function_body_length
     func changing(_ component: Calendar.Component, value: Int) -> Date? {
         switch component {
         case .nanosecond:
@@ -637,6 +637,7 @@ public extension Date {
     }
     #endif
 
+    // swiftlint:disable function_body_length
     /// SwifterSwift: Date at the end of calendar component.
     ///
     ///     let date = Date() // "Jan 12, 2017, 7:27 PM"
@@ -646,7 +647,6 @@ public extension Date {
     ///
     /// - Parameter component: calendar component to get date at the end of.
     /// - Returns: date at the end of calendar component (if applicable).
-    // swiftlint:disable:next function_body_length
     func end(of component: Calendar.Component) -> Date? {
         switch component {
         case .second:
