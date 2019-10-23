@@ -1789,11 +1789,8 @@
 				07B7F22E1F5EB45100E6F910 /* CGColorExtensions.swift in Sources */,
 				70269A2B1FB478D100C6C2D0 /* CalendarExtensions.swift in Sources */,
 				07B7F2161F5EB43C00E6F910 /* LocaleExtensions.swift in Sources */,
-<<<<<<< HEAD
 				CC9DE56A22C30F0A00865094 /* DateFormatterExtensions.swift in Sources */,
-=======
 				F8C1AE6F225B7F990045D5A0 /* NSRegularExpressionExtensions.swift in Sources */,
->>>>>>> 4b557b922b26aade1e399c060e850ffe13e2d0b8
 				9D806A6F2258DE23008E500A /* SCNCylinderExtensions.swift in Sources */,
 				9D806A362258AC0D008E500A /* UIBezierPathExtensions.swift in Sources */,
 				07B7F2101F5EB43C00E6F910 /* DateExtensions.swift in Sources */,
