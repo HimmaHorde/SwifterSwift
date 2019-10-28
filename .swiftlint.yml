@@ -1,13 +1,4 @@
 custom_rules:
-  missing_swifterswift_prefix:
-    included: ".*\\.swift"
-    excluded: ".*Tests\\.swift"
-    name: "Missing SwifterSwift: prefix"
-    regex: "///\\s(?!SwifterSwift:\\s)\\w+[^\\n]*$"
-    match_kinds:
-      - doccomment
-    message: "Doc string should always start with the SwifterSwift: prefix"
-    severity: warning
   unnecessary_type:
     name: "Unnecessary Type"
     regex: '(?sm)[ \ta-zA-Z0-9]?(?:let|var){1} [ \ta-zA-Z0-9]+?:[ \t]+?([a-zA-Z0-9]+?)[\t ]+?=[\t ]?\1'

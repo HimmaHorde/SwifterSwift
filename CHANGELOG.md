@@ -5,6 +5,8 @@ The changelog for **SwifterSwift**. Also see the [releases](https://github.com/S
 ## Upcoming Release
 
 ### Added
+- **RangeReplaceableCollection**:
+  - Added `removeDuplicates(keyPath:)` for removing duplicate elements based on key path. [#737](https://github.com/SwifterSwift/SwifterSwift/pull/737) by [Ilya Glushchuk](https://github.com/iglushchuk).
 - **Color**:
   - Added `init(light:dark:)` to create an NSColor/UIColor with different variations for light and dark mode. Only available in iOS/tvOS 13.0, macOS 10.15. [#722](https://github.com/SwifterSwift/SwifterSwift/pull/722) by [MaxHaertwig](https://github.com/maxhaertwig).
 - **String**:
@@ -15,6 +17,7 @@ The changelog for **SwifterSwift**. Also see the [releases](https://github.com/S
   - Added `flexibleSpace` and `fixedSpace(width:)` extensions to UIBarButtonItem to simplify the creation of spacers. [#728](https://github.com/SwifterSwift/SwifterSwift/pull/728) by [MaxHaertwig](https://github.com/maxhaertwig).
 - **UIImage**:
   - Added `withBackgroundColor(_:)` to specify a background color for a partially transparent image. [#721](https://github.com/SwifterSwift/SwifterSwift/pull/721) by [MaxHaertwig](https://github.com/maxhaertwig).
+  - Added `init?(base64String:)` to create a `UIImage` from a base-64 `String`. [#741](https://github.com/SwifterSwift/SwifterSwift/issues/741) by [@thisIsTheFoxe](https://github.com/thisisthefoxe)
 - **CAGradientLayer**:
   - Added `init(colors:locations:startPoint:endPoint:type:)` convenience initializer. [#726](https://github.com/SwifterSwift/SwifterSwift/pull/726) by [JayMehta97](https://github.com/JayMehta97).
 - **Sequence**:
