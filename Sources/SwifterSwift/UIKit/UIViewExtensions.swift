@@ -1,9 +1,9 @@
 //
 //  UIViewExtensions.swift
-//  SwifterSwift
+//  SS
 //
 //  Created by Omar Albeik on 8/5/16.
-//  Copyright © 2016 SwifterSwift
+//  Copyright © 2016 SS
 //
 
 #if canImport(UIKit) && !os(watchOS)
@@ -12,47 +12,47 @@ import UIKit
 // MARK: - enums
 public extension UIView {
 
-    /// View 的抖动方向
+    /// SS: View 的抖动方向
     ///
     /// - horizontal: 水平抖
     /// - vertical: 垂直抖
     enum ShakeDirection {
-        /// SwifterSwift: Shake left and right.
+        /// SS: Shake left and right.
         case horizontal
 
-        /// SwifterSwift: Shake up and down.
+        /// SS: Shake up and down.
         case vertical
     }
 
-    /// SwifterSwift: Angle units.
+    /// SS: Angle units.
     ///
     /// - degrees: degrees.
     /// - radians: radians.
     enum AngleUnit {
-        /// SwifterSwift: degrees.
+        /// SS: degrees.
         case degrees
 
-        /// SwifterSwift: radians.
+        /// SS: radians.
         case radians
     }
 
-    /// SwifterSwift: Shake animations types.
+    /// SS: Shake animations types.
     ///
     /// - linear: linear animation.
     /// - easeIn: easeIn animation.
     /// - easeOut: easeOut animation.
     /// - easeInOut: easeInOut animation.
     enum ShakeAnimationType {
-        /// SwifterSwift: linear animation.
+        /// SS: linear animation.
         case linear
 
-        /// SwifterSwift: easeIn animation.
+        /// SS: easeIn animation.
         case easeIn
 
-        /// SwifterSwift: easeOut animation.
+        /// SS: easeOut animation.
         case easeOut
 
-        /// SwifterSwift: easeInOut animation.
+        /// SS: easeInOut animation.
         case easeInOut
     }
 
@@ -61,7 +61,7 @@ public extension UIView {
 // MARK: - Properties
 
 // MARK: private xib support
-private extension UIView {
+public extension UIView {
     // 边框颜色
     @IBInspectable var borderColor: UIColor? {
         get {
@@ -100,7 +100,7 @@ private extension UIView {
         }
     }
 
-    /// ss: 阴影颜色
+    /// SS: 阴影颜色
     @IBInspectable var shadowColor: UIColor? {
         get {
             guard let color = layer.shadowColor else { return nil }
@@ -111,7 +111,7 @@ private extension UIView {
         }
     }
 
-    /// SwifterSwift: Shadow offset of view; also inspectable from Storyboard.
+    /// SS: Shadow offset of view; also inspectable from Storyboard.
     @IBInspectable var shadowOffset: CGSize {
         get {
             return layer.shadowOffset
@@ -121,7 +121,7 @@ private extension UIView {
         }
     }
 
-    /// SwifterSwift: Shadow opacity of view; also inspectable from Storyboard.
+    /// SS: Shadow opacity of view; also inspectable from Storyboard.
     @IBInspectable var shadowOpacity: Float {
         get {
             return layer.shadowOpacity
@@ -131,7 +131,7 @@ private extension UIView {
         }
     }
 
-    /// SwifterSwift: Shadow radius of view; also inspectable from Storyboard.
+    /// SS: Shadow radius of view; also inspectable from Storyboard.
     @IBInspectable var shadowRadius: CGFloat {
         get {
             return layer.shadowRadius
@@ -144,7 +144,7 @@ private extension UIView {
 
 public extension UIView {
 
-    /// SwifterSwift: Check if view is in RTL format.
+    /// SS: Check if view is in RTL format.
     var isRightToLeft: Bool {
         if #available(iOS 10.0, *, tvOS 10.0, *) {
             return effectiveUserInterfaceLayoutDirection == .rightToLeft
@@ -164,7 +164,7 @@ public extension UIView {
         return UIGraphicsGetImageFromCurrentImageContext()
     }
 
-    /// ss: 获取 view 所在 ViewController
+    /// SS: 获取 view 所在 ViewController
     var parentViewController: UIViewController? {
         weak var parentResponder: UIResponder? = self
         while parentResponder != nil {
@@ -195,7 +195,7 @@ public extension UIView {
         return nil
     }
 
-    /// 设置任意圆角,使用 shapeLayer 不会产生离屏渲染
+    /// SS: 设置任意圆角,使用 shapeLayer 不会产生离屏渲染
     ///
     /// - Parameters:
     ///   - corners: UIRectCorner (example: [.bottomLeft, .topRight]).
@@ -211,7 +211,7 @@ public extension UIView {
         layer.mask = shape
     }
 
-    /// 添加边框
+    /// SS: 添加边框
     ///
     /// - Parameters:
     ///   - width: 宽度
@@ -236,7 +236,7 @@ public extension UIView {
         }
     }
 
-    ///  ss: 设置阴影
+    ///  SS:  设置阴影
     ///
     /// - Parameters:
     ///   - color: shadow color (default is #137992).
@@ -251,14 +251,14 @@ public extension UIView {
         layer.masksToBounds = false
     }
 
-    /// 批量添加 subviews
+    /// SS: 批量添加 subviews
     ///
     /// - Parameter subviews: array of subviews to add to self.
     func addSubviews(_ subviews: [UIView]) {
         subviews.forEach { addSubview($0) }
     }
 
-    /// ss: 淡入视图
+    /// SS:  淡入视图
     ///
     /// - Parameters:
     ///   - duration: animation duration in seconds (default is 1 second).
@@ -272,7 +272,7 @@ public extension UIView {
         }, completion: completion)
     }
 
-    /// ss: 淡出视图
+    /// SS:  淡出视图
     ///
     /// - Parameters:
     ///   - duration: animation duration in seconds (default is 1 second).
@@ -286,7 +286,7 @@ public extension UIView {
         }, completion: completion)
     }
 
-    /// SwifterSwift: Load view from nib.
+    /// SS: Load view from nib.
     ///
     /// - Parameters:
     ///   - name: nib name.
@@ -296,17 +296,17 @@ public extension UIView {
         return UINib(nibName: name, bundle: bundle).instantiate(withOwner: nil, options: nil)[0] as? UIView
     }
 
-    /// ss: 移除所有 subview
+    /// SS: 移除所有 subview
     func removeSubviews() {
         subviews.forEach({ $0.removeFromSuperview() })
     }
 
-    /// ss: 移除所有手势
+    /// SS: 移除所有手势
     func removeGestureRecognizers() {
         gestureRecognizers?.forEach(removeGestureRecognizer)
     }
 
-    /// SwifterSwift: Attaches gesture recognizers to the view. Attaching gesture recognizers to a view defines the scope of the represented gesture, causing it to receive touches hit-tested to that view and all of its subviews. The view establishes a strong reference to the gesture recognizers.
+    /// SS: Attaches gesture recognizers to the view. Attaching gesture recognizers to a view defines the scope of the represented gesture, causing it to receive touches hit-tested to that view and all of its subviews. The view establishes a strong reference to the gesture recognizers.
     ///
     /// - Parameter gestureRecognizers: The array of gesture recognizers to be added to the view.
     func addGestureRecognizers(_ gestureRecognizers: [UIGestureRecognizer]) {
@@ -315,7 +315,7 @@ public extension UIView {
         }
     }
 
-    /// SwifterSwift: Detaches gesture recognizers from the receiving view. This method releases gestureRecognizers in addition to detaching them from the view.
+    /// SS: Detaches gesture recognizers from the receiving view. This method releases gestureRecognizers in addition to detaching them from the view.
     ///
     /// - Parameter gestureRecognizers: The array of gesture recognizers to be removed from the view.
     func removeGestureRecognizers(_ gestureRecognizers: [UIGestureRecognizer]) {
@@ -324,7 +324,7 @@ public extension UIView {
         }
     }
 
-    /// SwifterSwift: Rotate view by angle on relative axis.
+    /// SS: Rotate view by angle on relative axis.
     ///
     /// - Parameters:
     ///   - angle: angle to rotate view by.
@@ -340,7 +340,7 @@ public extension UIView {
         }, completion: completion)
     }
 
-    /// SwifterSwift: Rotate view to angle on fixed axis.
+    /// SS: Rotate view to angle on fixed axis.
     ///
     /// - Parameters:
     ///   - angle: angle to rotate view to.
@@ -356,7 +356,7 @@ public extension UIView {
         }, completion: completion)
     }
 
-    /// SwifterSwift: Scale view by offset.
+    /// SS: Scale view by offset.
     ///
     /// - Parameters:
     ///   - offset: scale offset
@@ -374,7 +374,7 @@ public extension UIView {
         }
     }
 
-    /// SwifterSwift: Shake view.
+    /// SS: Shake view.
     ///
     /// - Parameters:
     ///   - direction: shake direction (horizontal or vertical), (default is .horizontal)
@@ -407,7 +407,7 @@ public extension UIView {
         CATransaction.commit()
     }
 
-    /// ss: 搜索所有父视图，直到找到具有该条件的 View 。
+    /// SS: 搜索所有父视图，直到找到具有该条件的 View 。
     ///
     /// - Parameter predicate: 父视图的筛选条件 。
     func ancestorView(where predicate: (UIView?) -> Bool) -> UIView? {
@@ -417,7 +417,7 @@ public extension UIView {
         return superview?.ancestorView(where: predicate)
     }
 
-    /// ss: 搜索指定类型的父视图
+    /// SS: 搜索指定类型的父视图
     ///
     /// - Parameter name: 类型名称
     func ancestorView<T: UIView>(withClass name: T.Type) -> T? {
@@ -427,7 +427,7 @@ public extension UIView {
 
 // MARK: Quice AutoLayout
 public extension UIView {
-    /// ss: 添加 VFL。
+    /// SS: 添加 VFL。
     ///
     /// - Parameters:
     ///   - withFormat: visual Format language
@@ -443,7 +443,7 @@ public extension UIView {
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: withFormat, options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: viewsDictionary))
     }
 
-    /// ss: 添加和父视图相关的上下左右四面约束
+    /// SS: 添加和父视图相关的上下左右四面约束
     @available(iOS 9, *)
     func fillToSuperview(_ edge: UIEdgeInsets = UIEdgeInsets.zero) {
         // https://videos.letsbuildthatapp.com/
@@ -457,7 +457,7 @@ public extension UIView {
         }
     }
 
-    /// SwifterSwift: Add anchors from any side of the current view into the specified anchors and returns the newly added constraints.
+    /// SS: Add anchors from any side of the current view into the specified anchors and returns the newly added constraints.
     ///
     /// - Parameters:
     ///   - top: current view's top anchor will be anchored into the specified anchor
@@ -518,7 +518,7 @@ public extension UIView {
         return anchors
     }
 
-    /// ss: 水平居中于父视图
+    /// SS: 水平居中于父视图
     ///
     /// - Parameter constant: 偏移，默认 0。
     @available(iOS 9, *)
@@ -530,7 +530,7 @@ public extension UIView {
         }
     }
 
-    /// ss: 垂直居中于父视图
+    /// SS: 垂直居中于父视图
     ///
     /// - Parameter withConstant: 偏移，默认 0。
     @available(iOS 9, *)
@@ -542,7 +542,7 @@ public extension UIView {
         }
     }
 
-    /// ss: 居中显示在父视图中
+    /// SS: 居中显示在父视图中
     @available(iOS 9, *)
     func anchorCenterSuperview() {
         // https://videos.letsbuildthatapp.com/
@@ -553,7 +553,7 @@ public extension UIView {
 
 // MARK: - SS
 public extension SwifterSwift where Base: UIView {
-    /// ss: view 的 宽度
+    /// SS: view 的 宽度
     var width: CGFloat {
         get {
             return base.frame.size.width
@@ -563,7 +563,7 @@ public extension SwifterSwift where Base: UIView {
         }
     }
 
-    /// ss: view 的 宽度
+    /// SS: view 的 宽度
     var height: CGFloat {
         get {
             return base.frame.size.height
@@ -573,7 +573,7 @@ public extension SwifterSwift where Base: UIView {
         }
     }
 
-    /// ss: view 的 x 坐标
+    /// SS: view 的 x 坐标
     // swiftlint:disable:next identifier_name
     var x: CGFloat {
         get {
@@ -584,7 +584,7 @@ public extension SwifterSwift where Base: UIView {
         }
     }
 
-    /// ss: view 的 y 坐标
+    /// SS: view 的 y 坐标
     // swiftlint:disable:next identifier_name
     var y: CGFloat {
         get {
@@ -595,7 +595,7 @@ public extension SwifterSwift where Base: UIView {
         }
     }
 
-    /// ss: view 的 size
+    /// SS: view 的 size
     var size: CGSize {
         get {
             return base.frame.size
@@ -606,7 +606,7 @@ public extension SwifterSwift where Base: UIView {
         }
     }
 
-    /// ss: view 的 origin
+    /// SS: view 的 origin
     var origin: CGPoint {
         get {
             return base.frame.origin
