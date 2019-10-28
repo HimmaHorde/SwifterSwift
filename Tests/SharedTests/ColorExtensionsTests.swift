@@ -77,7 +77,7 @@ final class ColorExtensionsTests: XCTestCase {
     }
 
     func testAlpha() {
-        var color: Color = Color.red
+        var color = Color.red
         XCTAssertEqual(color.alpha, 1.0)
 
         color = Color.white.withAlphaComponent(0.5)
@@ -194,8 +194,8 @@ final class ColorExtensionsTests: XCTestCase {
         XCTAssertEqual(blendColor.rgbComponents.green, 0xFF / 2)
         XCTAssertEqual(blendColor.rgbComponents.blue, 0xFF / 2)
 
-        color1 = Color(hex: 0x123456, transparency: 0.5)!
-        color2 = Color(hex: 0x665544, transparency: 0.7)!
+        color1 = Color(hex: 0x123456, transparency: 0.5)
+        color2 = Color(hex: 0x665544, transparency: 0.7)
 
         blendColor = Color.blend(color1, with: color2)
         XCTAssertEqual(blendColor.rgbComponents.red, (0x12 + 0x66) / 2)

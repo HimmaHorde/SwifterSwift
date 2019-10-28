@@ -13,6 +13,7 @@ import Foundation
 public extension BinaryFloatingPoint {
 
     #if canImport(Foundation)
+
     /// 返回指定小数位数和舍入规则的值
     ///
     ///     let num = 3.1415927

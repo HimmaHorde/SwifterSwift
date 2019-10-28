@@ -34,6 +34,11 @@ class ImageViewController: UIViewController {
             print(imageView.image?.scale ?? "nil")
         case 4:
             imageView.image = UIImage.init(named: "wall.png")?.masked(withColor: UIColor.init(hex: 0x000000, transparency: 0.5))
+        case 5:
+            let oImage = UIImage.init(named: "wall.png")!
+            let temp = oImage.scaled(toWidth: 100)
+            print("original \(oImage.size)")
+            print("scaled \(temp?.size)")
         default:
             break
         }

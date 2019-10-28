@@ -60,8 +60,8 @@ public extension Collection where Index == Int {
 
     /// 集合分割成指定大小，调用指定闭包。
     ///
-    ///     [0, 2, 4, 7].forEach(slice: 2) { print($0) } -> //print: [0, 2], [4, 7]
-    ///     [0, 2, 4, 7, 6].forEach(slice: 2) { print($0) } -> //print: [0, 2], [4, 7], [6]
+    ///     [0, 2, 4, 7].forEach(slice: 2) { print($0) } -> // print: [0, 2], [4, 7]
+    ///     [0, 2, 4, 7, 6].forEach(slice: 2) { print($0) } -> // print: [0, 2], [4, 7], [6]
     ///
     /// - Parameters:
     ///   - slice: 分割数组的长度
@@ -84,7 +84,7 @@ public extension Collection where Index == Int {
     /// - Parameter size: 单个数组的大小
     /// - Returns: 返回一个指定 size 的二维数组
     func group(by size: Int) -> [[Element]]? {
-        //Inspired by: https://lodash.com/docs/4.17.4#chunk
+        // Inspired by: https://lodash.com/docs/4.17.4#chunk
         guard size > 0, !isEmpty else { return nil }
         var value: Int = 0
         var slices: [[Element]] = []

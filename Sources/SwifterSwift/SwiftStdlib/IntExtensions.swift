@@ -103,8 +103,7 @@ public extension Int {
 // MARK: - Methods
 public extension Int {
 
-    /// 是否是素数
-    /// Warning: Using big numbers can be computationally expensive!
+    /// 是否是素数 Warning: Using big numbers can be computationally expensive!
     /// - Returns: true or false depending on prime-ness
     func isPrime() -> Bool {
         // To improve speed on latter loop :)
@@ -125,7 +124,7 @@ public extension Int {
 
     /// 转为罗马数字
     ///
-    ///10.romanNumeral() -> "X"
+    ///     10.romanNumeral() -> "X"
     ///
     /// - Returns: The roman numeral string.
     func romanNumeral() -> String? {

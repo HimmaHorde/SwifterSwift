@@ -15,7 +15,7 @@ public extension Dictionary {
 
     /// 检查 key 在字典中是否存在
     ///
-    ///        let dict: [String : Any] = ["testKey": "testValue", "testArrayKey": [1, 2, 3, 4, 5]]
+    ///        let dict: [String: Any] = ["testKey": "testValue", "testArrayKey": [1, 2, 3, 4, 5]]
     ///        dict.has(key: "testKey") -> true
     ///        dict.has(key: "anotherKey") -> false
     ///
@@ -27,7 +27,7 @@ public extension Dictionary {
 
     /// 批量删除指定 keys 的键值对
     ///
-    ///        var dict : [String : String] = ["key1" : "value1", "key2" : "value2", "key3" : "value3"]
+    ///        var dict : [String: String] = ["key1" : "value1", "key2" : "value2", "key3" : "value3"]
     ///        dict.removeAll(keys: ["key1", "key2"])
     ///        dict.keys.contains("key3") -> true
     ///        dict.keys.contains("key1") -> false
@@ -193,8 +193,8 @@ public extension Dictionary {
 
     /// 合并两个字典
     ///
-    ///        let dict : [String : String] = ["key1" : "value1"]
-    ///        let dict2 : [String : String] = ["key2" : "value2"]
+    ///        let dict: [String: String] = ["key1": "value1"]
+    ///        let dict2: [String: String] = ["key2": "value2"]
     ///        let result = dict + dict2
     ///        result["key1"] -> "value1"
     ///        result["key2"] -> "value2"
@@ -213,8 +213,8 @@ public extension Dictionary {
 
     /// 当前字典合并一个新的字典
     ///
-    ///        var dict : [String : String] = ["key1" : "value1"]
-    ///        let dict2 : [String : String] = ["key2" : "value2"]
+    ///        var dict: [String: String] = ["key1": "value1"]
+    ///        let dict2: [String: String] = ["key2": "value2"]
     ///        dict += dict2
     ///        dict["key1"] -> "value1"
     ///        dict["key2"] -> "value2"
@@ -228,7 +228,7 @@ public extension Dictionary {
 
     /// 返回新的字典，不包含序列中的键
     ///
-    ///        let dict : [String : String] = ["key1" : "value1", "key2" : "value2", "key3" : "value3"]
+    ///        let dict: [String: String] = ["key1": "value1", "key2": "value2", "key3": "value3"]
     ///        let result = dict-["key1", "key2"]
     ///        result.keys.contains("key3") -> true
     ///        result.keys.contains("key1") -> false
@@ -246,7 +246,7 @@ public extension Dictionary {
 
     /// 从字典中删除序列中包含的键
     ///
-    ///        var dict : [String : String] = ["key1" : "value1", "key2" : "value2", "key3" : "value3"]
+    ///        var dict: [String: String] = ["key1": "value1", "key2": "value2", "key3": "value3"]
     ///        dict-=["key1", "key2"]
     ///        dict.keys.contains("key3") -> true
     ///        dict.keys.contains("key1") -> false
