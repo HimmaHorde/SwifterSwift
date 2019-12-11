@@ -13,7 +13,7 @@ import Foundation
 // MARK: - Methods
 public extension Dictionary {
 
-    /// ss: Creates a Dictionary from a given sequence grouped by a given key path.
+    /// ss: 根据指定的 key path 进行分组，key 为 相同 key path 的值。
     ///
     /// - Parameters:
     ///   - sequence: Sequence being grouped
