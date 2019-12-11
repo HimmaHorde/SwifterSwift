@@ -23,7 +23,12 @@ public extension UIAlertController {
     ///   - vibrate: 是否震动。
     ///   - completion: 结束回调,默认为空。
     func show(animated: Bool = true, vibrate: Bool = false, completion: (() -> Void)? = nil) {
-        UIApplication.shared.keyWindow?.rootViewController?.present(self, animated: animated, completion: completion)
+        #if targetEnvironment(macCatalyst)
+        let window = UIApplication.shared.windows.last
+        #else
+        let window = UIApplication.shared.keyWindow
+        #endif
+        window?.rootViewController?.present(self, animated: animated, completion: completion)
         if vibrate {
             #if canImport(AudioToolbox)
             AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)

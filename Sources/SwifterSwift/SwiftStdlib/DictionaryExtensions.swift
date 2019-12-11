@@ -13,7 +13,16 @@ import Foundation
 // MARK: - Methods
 public extension Dictionary {
 
-    /// 检查 key 在字典中是否存在
+    /// ss: Creates a Dictionary from a given sequence grouped by a given key path.
+    ///
+    /// - Parameters:
+    ///   - sequence: Sequence being grouped
+    ///   - keypath: The key path to group by.
+    init<S: Sequence>(grouping sequence: S, by keyPath: KeyPath<S.Element, Key>) where Value == [S.Element] {
+       self.init(grouping: sequence, by: { $0[keyPath: keyPath] })
+    }
+
+    /// ss:检查 key 在字典中是否存在
     ///
     ///        let dict: [String: Any] = ["testKey": "testValue", "testArrayKey": [1, 2, 3, 4, 5]]
     ///        dict.has(key: "testKey") -> true
@@ -25,7 +34,7 @@ public extension Dictionary {
         return index(forKey: key) != nil
     }
 
-    /// 批量删除指定 keys 的键值对
+    /// ss:批量删除指定 keys 的键值对
     ///
     ///        var dict : [String: String] = ["key1" : "value1", "key2" : "value2", "key3" : "value3"]
     ///        dict.removeAll(keys: ["key1", "key2"])
@@ -38,7 +47,7 @@ public extension Dictionary {
         keys.forEach { removeValue(forKey: $0) }
     }
 
-    /// 字典转 jsonData
+    /// ss:字典转 jsonData
     @discardableResult
     mutating func removeValueForRandomKey() -> Value? {
         guard let randomKey = keys.randomElement() else { return nil }

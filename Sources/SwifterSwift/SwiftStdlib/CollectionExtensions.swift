@@ -14,7 +14,7 @@ import Dispatch
 public extension Collection {
 
     #if canImport(Dispatch)
-    /// 并发的形式为每个元素执行闭包
+    /// ss:并发的形式为每个元素执行闭包
     ///
     ///        array.forEachInParallel { item in
     ///            print(item)
@@ -30,7 +30,7 @@ public extension Collection {
     }
     #endif
 
-    /// 安排通过下表访问集合的元素
+    /// ss:安排通过下表访问集合的元素
     ///
     ///        let arr = [1, 2, 3, 4, 5]
     ///        arr[safe: 1] -> 2
@@ -40,6 +40,27 @@ public extension Collection {
     subscript(safe index: Index) -> Element? {
         return indices.contains(index) ? self[index] : nil
     }
+
+    /// ss:返回一个二维数组，按指定的大小均匀分割元数组，最后一个数组是剩余的元素
+    ///
+    ///     [0, 2, 4, 7].group(by: 2) -> [[0, 2], [4, 7]]
+    ///     [0, 2, 4, 7, 6].group(by: 2) -> [[0, 2], [4, 7], [6]]
+    ///
+    /// - Parameter size: 单个数组的大小
+    /// - Returns: 二维数组
+    func group(by size: Int) -> [[Element]]? {
+        // Inspired by: https://lodash.com/docs/4.17.4#chunk
+        guard size > 0, !isEmpty else { return nil }
+        var start = startIndex
+        var slices = [[Element]]()
+        while start != endIndex {
+            let end = index(start, offsetBy: size, limitedBy: endIndex) ?? endIndex
+            slices.append(Array(self[start..<end]))
+            start = end
+        }
+        return slices
+    }
+
 }
 
 // MARK: - Methods (Int)
@@ -75,26 +96,6 @@ public extension Collection where Index == Int {
             value += slice
         }
     }
-
-    /// 按给定 size 创建一个二维数组
-    ///
-    ///     [0, 2, 4, 7].group(by: 2) -> [[0, 2], [4, 7]]
-    ///     [0, 2, 4, 7, 6].group(by: 2) -> [[0, 2], [4, 7], [6]]
-    ///
-    /// - Parameter size: 单个数组的大小
-    /// - Returns: 返回一个指定 size 的二维数组
-    func group(by size: Int) -> [[Element]]? {
-        // Inspired by: https://lodash.com/docs/4.17.4#chunk
-        guard size > 0, !isEmpty else { return nil }
-        var value: Int = 0
-        var slices: [[Element]] = []
-        while value < count {
-            slices.append(Array(self[Swift.max(value, startIndex)..<Swift.min(value + size, endIndex)]))
-            value += size
-        }
-        return slices
-    }
-
 }
 
 public extension Collection where Element: Equatable, Index == Int {
