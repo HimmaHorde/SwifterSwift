@@ -19,8 +19,8 @@ class SpringViewController: UIViewController {
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        circleView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-        UIView.animate(withDuration: 1.2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+        circleView.transform = CGAffineTransform(scaleX: 0.2, y: 0.2)
+        UIView.animate(withDuration: 1.2, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
             self.circleView.transform = .identity
         }, completion: nil)
 
