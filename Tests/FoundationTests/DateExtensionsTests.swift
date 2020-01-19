@@ -786,16 +786,17 @@ final class DateExtensionsTests: XCTestCase {
 
     func testDayName() {
         let date = Date(timeIntervalSince1970: 1486121165)
-        XCTAssertEqual(date.dayName(ofStyle: .full), "Friday")
-        XCTAssertEqual(date.dayName(ofStyle: .threeLetters), "Fri")
-        XCTAssertEqual(date.dayName(ofStyle: .oneLetter), "F")
+        XCTAssertEqual(date.dayName(ofStyle: .full, locale: Locale.init(identifier: "en_US")), "Friday")
+        XCTAssertEqual(date.dayName(ofStyle: .threeLetters, locale: Locale.init(identifier: "en_US")), "Fri")
+        XCTAssertEqual(date.dayName(ofStyle: .oneLetter, locale: Locale.init(identifier: "en_US")), "F")
     }
 
     func testMonthName() {
         let date = Date(timeIntervalSince1970: 1486121165)
-        XCTAssertEqual(date.monthName(ofStyle: .full), "February")
-        XCTAssertEqual(date.monthName(ofStyle: .threeLetters), "Feb")
-        XCTAssertEqual(date.monthName(ofStyle: .oneLetter), "F")
+        let local = Locale.init(identifier: "en_US")
+        XCTAssertEqual(date.monthName(ofStyle: .full, locale: local), "February")
+        XCTAssertEqual(date.monthName(ofStyle: .threeLetters, locale: local), "Feb")
+        XCTAssertEqual(date.monthName(ofStyle: .oneLetter, locale: local), "F")
     }
 
     func testSecondsSince() {

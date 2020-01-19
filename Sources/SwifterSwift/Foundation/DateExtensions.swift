@@ -798,9 +798,10 @@ public extension Date {
     ///
     /// - Parameter Style: style of day name (default is DayNameStyle.full).
     /// - Returns: day name string (example: W, Wed, Wednesday).
-    func dayName(ofStyle style: DayNameStyle = .full) -> String {
+    func dayName(ofStyle style: DayNameStyle = .full, locale: Locale = .current) -> String {
         // http://www.codingexplorer.com/swiftly-getting-human-readable-date-nsdateformatter/
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = locale
         var format: String {
             switch style {
             case .oneLetter:
@@ -823,9 +824,10 @@ public extension Date {
     ///
     /// - Parameter Style: style of month name (default is MonthNameStyle.full).
     /// - Returns: month name string (example: D, Dec, December).
-    func monthName(ofStyle style: MonthNameStyle = .full) -> String {
+    func monthName(ofStyle style: MonthNameStyle = .full, locale: Locale = .current) -> String {
         // http://www.codingexplorer.com/swiftly-getting-human-readable-date-nsdateformatter/
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = locale
         var format: String {
             switch style {
             case .oneLetter:
