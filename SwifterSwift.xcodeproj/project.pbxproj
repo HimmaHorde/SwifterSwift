@@ -868,6 +868,7 @@
 		0726D7751F7C19880028CAB5 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				CC2E365D229B746100CD3903 /* SwifterSwift.swift */,
 				0726D7761F7C199E0028CAB5 /* ColorExtensions.swift */,
 				F8A710E823BF3EF100112DAD /* EdgeInsetsExtensions.swift */,
 			);
@@ -972,7 +973,6 @@
 		07898B941F27904200558C97 /* SwifterSwift */ = {
 			isa = PBXGroup;
 			children = (
-				CC2E365C229B743E00CD3903 /* SS */,
 				664CB981217243BA00FC87B4 /* Dispatch */,
 				752AC79E20BC974700659E76 /* SpriteKit */,
 				9D806A3F2258B91F008E500A /* SceneKit */,
@@ -1315,14 +1315,6 @@
 				CAC5EBC42125270A00AB27EC /* UITableViewHeaderFooterView.xib */,
 			);
 			path = ResourcesTests;
-			sourceTree = "<group>";
-		};
-		CC2E365C229B743E00CD3903 /* SS */ = {
-			isa = PBXGroup;
-			children = (
-				CC2E365D229B746100CD3903 /* SwifterSwift.swift */,
-			);
-			path = SS;
 			sourceTree = "<group>";
 		};
 		D86A98EE1F7E50C90084EDCD /* SharedTests */ = {
