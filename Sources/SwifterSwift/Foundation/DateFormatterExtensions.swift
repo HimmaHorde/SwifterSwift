@@ -11,7 +11,7 @@ import Foundation
 // MARK: init
 extension DateFormatter {
     // 使用指定 format 初始化
-    public class func initWith(format: String) -> DateFormatter {
+    public static func initWith(format: String) -> DateFormatter {
         let instance = self.init()
         instance.dateFormat = format
         return instance
