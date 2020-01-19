@@ -32,7 +32,7 @@ public extension Color {
         let red = Int.random(in: 0...255)
         let green = Int.random(in: 0...255)
         let blue = Int.random(in: 0...255)
-        return Color(red: red, green: green, blue: blue)
+        return Color(red: red, green: green, blue: blue)!
     }
 
     // swiftlint:disable large_tuple
@@ -276,10 +276,10 @@ public extension Color {
     ///   - green: 0...255.
     ///   - blue: 0...255.
     ///   - transparency: 透明度 0 - 1 (默认 1)。
-    convenience init(red: Int, green: Int, blue: Int, transparency: CGFloat = 1) {
-        assert(0...255 ~= red, "red 超出范围")
-        assert(0...255 ~= green, "green 超出范围")
-        assert(0...255 ~= blue, "blue 超出范围")
+    convenience init?(red: Int, green: Int, blue: Int, transparency: CGFloat = 1) {
+        guard red >= 0 && red <= 255 else { return nil }
+        guard green >= 0 && green <= 255 else { return nil }
+        guard blue >= 0 && blue <= 255 else { return nil }
 
         var trans = transparency
         if trans < 0 { trans = 0 }
@@ -293,7 +293,7 @@ public extension Color {
     /// - Parameters:
     ///   - hex: 16进制的值 (例: 0xDECEB5)。
     ///   - transparency: 透明度 0 - 1 (默认 1)。
-    convenience init(hex: Int, transparency: CGFloat = 1) {
+    convenience init?(hex: Int, transparency: CGFloat = 1) {
         var trans = transparency
         if trans < 0 { trans = 0 }
         if trans > 1 { trans = 1 }
@@ -312,7 +312,7 @@ public extension Color {
     ///   - hexString: 十六进制字符串 (examples: EDE7F6, 0xEDE7F6, #EDE7F6, #0ff, 0xF0F, ..).
     ///   - transparency: 透明度 0 - 1 (默认 1)。
     ///
-    convenience init(hexString: String, transparency: CGFloat = 1, placeholder: Int = 0 ) {
+    convenience init?(hexString: String, transparency: CGFloat = 1) {
         var string = ""
         if hexString.lowercased().hasPrefix("0x") {
             string =  hexString.replacingOccurrences(of: "0x", with: "")
@@ -328,22 +328,15 @@ public extension Color {
             string = str
         }
 
-        let hexValue = Int(string, radix: 16)
-
-        assert(hexValue != nil, "无效的 16 进制 hex 字符串")
-
-        if hexValue == nil {
-            self.init(red: 1, green: 1, blue: 1, transparency: 1)
-            return
-        }
+        guard let hexValue = Int(string, radix: 16) else { return nil }
 
         var trans = transparency
         if trans < 0 { trans = 0 }
         if trans > 1 { trans = 1 }
 
-        let red = (hexValue! >> 16) & 0xff
-        let green = (hexValue! >> 8) & 0xff
-        let blue = hexValue! & 0xff
+        let red = (hexValue >> 16) & 0xff
+        let green = (hexValue >> 8) & 0xff
+        let blue = hexValue & 0xff
         self.init(red: red, green: green, blue: blue, transparency: trans)
     }
 

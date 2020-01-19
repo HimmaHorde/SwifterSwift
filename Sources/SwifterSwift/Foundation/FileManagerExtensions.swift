@@ -20,12 +20,12 @@ public extension FileManager {
     /// - Throws: 抛出解析错误。
     func jsonFromFile(
         atPath path: String,
-        readingOptions: JSONSerialization.ReadingOptions = .allowFragments) throws -> Any? {
+        readingOptions: JSONSerialization.ReadingOptions = .allowFragments) throws -> [String: Any]? {
 
         let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-        let json = try? JSONSerialization.jsonObject(with: data, options: readingOptions)
+        let json = try JSONSerialization.jsonObject(with: data, options: readingOptions)
 
-        return json
+        return json as? [String: Any]
     }
 
     #if !os(Linux)
@@ -40,17 +40,17 @@ public extension FileManager {
     func jsonFromFile(
         withFilename filename: String,
         at bundleClass: AnyClass? = nil,
-        readingOptions: JSONSerialization.ReadingOptions = .allowFragments) throws -> Any? {
+        readingOptions: JSONSerialization.ReadingOptions = .allowFragments) throws -> [String: Any]? {
         // https://stackoverflow.com/questions/24410881/reading-in-a-json-file-using-swift
-
         // To handle cases that provided filename has an extension
+        let name = filename.components(separatedBy: ".")[0]
         let bundle = bundleClass != nil ? Bundle(for: bundleClass!) : Bundle.main
 
-        if let path = bundle.path(forResource: filename, ofType: nil) {
+        if let path = bundle.path(forResource: name, ofType: "json") {
             let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
             let json = try JSONSerialization.jsonObject(with: data, options: readingOptions)
 
-            return json
+            return json as? [String: Any]
         }
 
         return nil

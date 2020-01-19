@@ -22,12 +22,15 @@ public extension UITableView {
     var lastSection: Int? {
         return numberOfSections > 0 ? numberOfSections - 1 : nil
     }
+
 }
 
 // MARK: - Methods
 public extension UITableView {
 
-    /// tableView 全部 row 的个数。
+    /// SS: tableView 全部 row 的个数。
+    ///
+    /// - Returns: 全部 row 的个数。
     func numberOfRows() -> Int {
         var section = 0
         var rowCount = 0
@@ -41,7 +44,9 @@ public extension UITableView {
     /// 获取指定 Section 的最后一个 Cell 的 indexPath
     func indexPathForLastRow(inSection section: Int) -> IndexPath? {
         guard numberOfSections > 0, section >= 0 else { return nil }
-        guard numberOfRows(inSection: section) > 0  else { return nil }
+        guard numberOfRows(inSection: section) > 0  else {
+            return IndexPath(row: 0, section: section)
+        }
         return IndexPath(row: numberOfRows(inSection: section) - 1, section: section)
     }
 
@@ -141,7 +146,7 @@ public extension UITableView {
     ///   - names: cell 类型数组
     ///   - bundleClass: bundle类名
     func register(nibWithClasses classes: UITableViewCell.Type..., at bundleClass: AnyClass? = nil) {
-        register(nibWithClasses: classes)
+        register(nibWithClasses: classes, at: bundleClass)
     }
 
     /// 批量注册同一个 bundle 下的 nib。

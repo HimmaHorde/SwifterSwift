@@ -29,12 +29,8 @@ public extension Array {
     ///   - j: index of other element.
     mutating func safeSwap(_ i: Index, _ j: Index) {
         guard i != j else { return }
-        guard startIndex..<endIndex ~= i else {
-            assertionFailure("左侧越界")
-            return }
-        guard startIndex..<endIndex ~= j else {
-            assertionFailure("右侧越界")
-            return }
+        guard startIndex..<endIndex ~= i else { return }
+        guard startIndex..<endIndex ~= j else { return }
         swapAt(i, j)
     }
 

@@ -20,7 +20,6 @@ public extension NSEdgeInsets {
     static let zero = NSEdgeInsets()
 }
 
-// swiftlint:disable missing_swifterswift_prefix
 extension NSEdgeInsets: Equatable {
     /// 返回一个布尔值表示两个数是否相等.
     ///
@@ -37,7 +36,6 @@ extension NSEdgeInsets: Equatable {
             lhs.right == rhs.right
     }
 }
-// swiftlint:enable missing_swifterswift_prefix
 #endif
 
 #if os(iOS) || os(tvOS) || os(watchOS) || os(macOS)

@@ -25,7 +25,7 @@ final class FileManagerExtensionsTests: XCTestCase {
                 return
             }
 
-            let json = try FileManager.default.jsonFromFile(atPath: path) as? [String: Any]
+            let json = try FileManager.default.jsonFromFile(atPath: path)
 
             XCTAssertNotNil(json)
 
@@ -50,12 +50,12 @@ final class FileManagerExtensionsTests: XCTestCase {
         #if !os(Linux)
         do {
             var filename = "test.json"  // With extension
-            var json = try FileManager.default.jsonFromFile(withFilename: filename, at: FileManagerExtensionsTests.self) as? [String: Any]
+            var json = try FileManager.default.jsonFromFile(withFilename: filename, at: FileManagerExtensionsTests.self)
 
             XCTAssertNotNil(json)
 
             filename = "test"  // Without extension
-            json = try FileManager.default.jsonFromFile(withFilename: filename, at: FileManagerExtensionsTests.self) as? [String: Any]
+            json = try FileManager.default.jsonFromFile(withFilename: filename, at: FileManagerExtensionsTests.self)
 
             XCTAssertNotNil(json)
 
