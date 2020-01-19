@@ -803,7 +803,7 @@ final class StringExtensionsTests: XCTestCase {
     func testIntOrdinal() {
         let num = 12
         XCTAssertNotNil(num.ordinalString())
-        XCTAssertEqual(num.ordinalString(), "12th")
+        XCTAssertEqual(num.ordinalString(locale: Locale.init(identifier: "en_US")), "12th")
     }
 
 }
