@@ -66,4 +66,3 @@ public prefix func ± <T: FloatingPoint> (number: T) -> (T, T) {
     // http://nshipster.com/swift-operators/
     return 0 ± number
 }
-

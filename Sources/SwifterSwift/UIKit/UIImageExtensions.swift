@@ -198,7 +198,6 @@ public extension UIImage {
         return newImage
     }
 
-
     /// 生成添加半透明遮罩的图片
     ///
     /// - Parameter color: 使用有透明度的颜色
@@ -225,7 +224,7 @@ public extension UIImage {
 
     /// 新图使用指定混合模式和颜色添加一个纯色填充图层
     ///
-    ///       //实际使用效果类似于 PS 的图层混合模式 eg.正片叠底
+    ///       // 实际使用效果类似于 PS 的图层混合模式 eg.正片叠底
     ///       let image = UIImage.init(named: "TestImage.png")!
     ///       image.blend(UIColor.red, mode: .multiply)
     ///

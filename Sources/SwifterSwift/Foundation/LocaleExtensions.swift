@@ -17,5 +17,14 @@ public extension Locale {
         return Locale(identifier: "en_US_POSIX")
     }
 
+    /// ss: 返回bool值，指示语言环境是否具有12h格式。
+    var is12HourTimeFormat: Bool {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .short
+        dateFormatter.dateStyle = .none
+        dateFormatter.locale = self
+        let dateString = dateFormatter.string(from: Date())
+        return dateString.contains(dateFormatter.amSymbol) || dateString.contains(dateFormatter.pmSymbol)
+    }
 }
 #endif

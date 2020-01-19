@@ -56,7 +56,7 @@ public extension FileManager {
         return nil
     }
     #endif
-    
+
     /// 创建用于保存临时文件的唯一目录
     ///
     /// 该目录可用于创建用于公共目的的多个临时文件
