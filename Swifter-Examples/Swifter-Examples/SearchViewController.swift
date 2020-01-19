@@ -36,7 +36,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         RunLoop.current.add(debounceTimer!, forMode: .common)
     }
 
-    // MARK: private
+    // MARK: privatemacCatalyst
     /// 开始新的请求
     @objc func search() {
         print(textField.text ?? "")

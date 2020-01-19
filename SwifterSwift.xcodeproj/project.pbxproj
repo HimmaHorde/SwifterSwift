@@ -551,6 +551,9 @@
 		CC209B812265A40900053A06 /* UnicodeScalarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC209B7E2265A40900053A06 /* UnicodeScalarExtensions.swift */; };
 		CC209B822265A40900053A06 /* UnicodeScalarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC209B7E2265A40900053A06 /* UnicodeScalarExtensions.swift */; };
 		CC2E365E229B746100CD3903 /* SwifterSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2E365D229B746100CD3903 /* SwifterSwift.swift */; };
+		CC548C7723D3E9E8006EFFC9 /* SwifterSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2E365D229B746100CD3903 /* SwifterSwift.swift */; };
+		CC548C7823D3E9E9006EFFC9 /* SwifterSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2E365D229B746100CD3903 /* SwifterSwift.swift */; };
+		CC548C7923D3E9E9006EFFC9 /* SwifterSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2E365D229B746100CD3903 /* SwifterSwift.swift */; };
 		CC9DE56A22C30F0A00865094 /* DateFormatterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9DE56922C30F0A00865094 /* DateFormatterExtensions.swift */; };
 		CF30948A216AAC7A005609BC /* UIActivityExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF309489216AAC7A005609BC /* UIActivityExtensions.swift */; };
 		D9F36CF623521F440057258F /* MKMapViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F36CF523521F440057258F /* MKMapViewTests.swift */; };
@@ -1896,6 +1899,7 @@
 				07B7F1AF1F5EB42000E6F910 /* UILabelExtensions.swift in Sources */,
 				664CB984217243D200FC87B4 /* DispatchQueueExtensions.swift in Sources */,
 				9D806A612258D503008E500A /* SCNPlaneExtensions.swift in Sources */,
+				CC548C7723D3E9E8006EFFC9 /* SwifterSwift.swift in Sources */,
 				9D9784DC1FCAE42600D988E7 /* StringProtocolExtensions.swift in Sources */,
 				07B7F1FA1F5EB43C00E6F910 /* BoolExtensions.swift in Sources */,
 				B2A0DAB72336D5A6002B0BC5 /* StdlibDeprecated.swift in Sources */,
@@ -2022,6 +2026,7 @@
 				07B7F1BF1F5EB42200E6F910 /* UIBarButtonItemExtensions.swift in Sources */,
 				07B7F1CE1F5EB42200E6F910 /* UITabBarExtensions.swift in Sources */,
 				F8A710EB23BF3F7400112DAD /* EdgeInsetsExtensions.swift in Sources */,
+				CC548C7823D3E9E9006EFFC9 /* SwifterSwift.swift in Sources */,
 				664CB9782171899800FC87B4 /* BinaryFloatingPointExtensions.swift in Sources */,
 				07B7F1D21F5EB42200E6F910 /* UIViewControllerExtensions.swift in Sources */,
 				07B7F22B1F5EB45100E6F910 /* CGSizeExtensions.swift in Sources */,
@@ -2121,6 +2126,7 @@
 				9D4914861F85138E00F3868F /* NSPredicateExtensions.swift in Sources */,
 				07B7F2271F5EB44600E6F910 /* NSViewExtensions.swift in Sources */,
 				C7E027C72360942000F1061E /* KeyedDecodingContainerExtensions.swift in Sources */,
+				CC548C7923D3E9E9006EFFC9 /* SwifterSwift.swift in Sources */,
 				07B7F2211F5EB44600E6F910 /* CGFloatExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
