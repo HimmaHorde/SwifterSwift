@@ -91,9 +91,12 @@ public extension NSAttributedString {
     /// - Parameters:
     ///   - attributes: 属性字典
     ///   - pattern: 正则
-    /// - Returns: 新的富文本
-    func applying(attributes: [NSAttributedString.Key: Any], toRangesMatching pattern: String) -> NSAttributedString {
-        guard let pattern = try? NSRegularExpression(pattern: pattern, options: []) else { return self }
+    ///   - options: The regular expression options that are applied to the expression during matching. See NSRegularExpression.Options for possible values.
+    /// - Returns: An NSAttributedString with attributes applied to substrings matching the pattern
+    func applying(attributes: [NSAttributedString.Key: Any],
+                  toRangesMatching pattern: String,
+                  options: NSRegularExpression.Options = []) -> NSAttributedString {
+        guard let pattern = try? NSRegularExpression(pattern: pattern, options: options) else { return self }
 
         let matches = pattern.matches(in: string, options: [], range: NSRange(0..<length))
         let result = NSMutableAttributedString(attributedString: self)

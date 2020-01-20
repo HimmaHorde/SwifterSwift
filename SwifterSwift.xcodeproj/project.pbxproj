@@ -554,7 +554,6 @@
 		CC548C7723D3E9E8006EFFC9 /* SwifterSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2E365D229B746100CD3903 /* SwifterSwift.swift */; };
 		CC548C7823D3E9E9006EFFC9 /* SwifterSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2E365D229B746100CD3903 /* SwifterSwift.swift */; };
 		CC548C7923D3E9E9006EFFC9 /* SwifterSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2E365D229B746100CD3903 /* SwifterSwift.swift */; };
-		CC9DE56A22C30F0A00865094 /* DateFormatterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9DE56922C30F0A00865094 /* DateFormatterExtensions.swift */; };
 		CF30948A216AAC7A005609BC /* UIActivityExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF309489216AAC7A005609BC /* UIActivityExtensions.swift */; };
 		D9F36CF623521F440057258F /* MKMapViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F36CF523521F440057258F /* MKMapViewTests.swift */; };
 		E5E5EB3A2350EED400B04C42 /* CAGradientLayerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E5EB392350EED400B04C42 /* CAGradientLayerExtensions.swift */; };
@@ -798,7 +797,6 @@
 		CAC5EBC52125270A00AB27EC /* big_buck_bunny_720p_1mb.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = big_buck_bunny_720p_1mb.mp4; sourceTree = "<group>"; };
 		CC209B7E2265A40900053A06 /* UnicodeScalarExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnicodeScalarExtensions.swift; sourceTree = "<group>"; };
 		CC2E365D229B746100CD3903 /* SwifterSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifterSwift.swift; sourceTree = "<group>"; };
-		CC9DE56922C30F0A00865094 /* DateFormatterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtensions.swift; sourceTree = "<group>"; };
 		CF309489216AAC7A005609BC /* UIActivityExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIActivityExtensions.swift; sourceTree = "<group>"; };
 		D9F36CF523521F440057258F /* MKMapViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKMapViewTests.swift; sourceTree = "<group>"; };
 		E5E5EB392350EED400B04C42 /* CAGradientLayerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAGradientLayerExtensions.swift; sourceTree = "<group>"; };
@@ -1006,7 +1004,6 @@
 				70269A2A1FB478D100C6C2D0 /* CalendarExtensions.swift */,
 				07B7F16A1F5EB41600E6F910 /* DataExtensions.swift */,
 				07B7F16B1F5EB41600E6F910 /* DateExtensions.swift */,
-				CC9DE56922C30F0A00865094 /* DateFormatterExtensions.swift */,
 				A94AA78620280F9100E229A5 /* FileManagerExtensions.swift */,
 				07B7F1731F5EB41600E6F910 /* LocaleExtensions.swift */,
 				07B7F1621F5EB41600E6F910 /* NSAttributedStringExtensions.swift */,
@@ -1857,7 +1854,6 @@
 				07B7F22E1F5EB45100E6F910 /* CGColorExtensions.swift in Sources */,
 				70269A2B1FB478D100C6C2D0 /* CalendarExtensions.swift in Sources */,
 				07B7F2161F5EB43C00E6F910 /* LocaleExtensions.swift in Sources */,
-				CC9DE56A22C30F0A00865094 /* DateFormatterExtensions.swift in Sources */,
 				F8C1AE6F225B7F990045D5A0 /* NSRegularExpressionExtensions.swift in Sources */,
 				9D806A6F2258DE23008E500A /* SCNCylinderExtensions.swift in Sources */,
 				9D806A362258AC0D008E500A /* UIBezierPathExtensions.swift in Sources */,
