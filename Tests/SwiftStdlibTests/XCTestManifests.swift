@@ -138,8 +138,6 @@ extension FloatingPointExtensionsTests {
         ("testCeil", testCeil),
         ("testDegreesToRadians", testDegreesToRadians),
         ("testFloor", testFloor),
-        ("testIsNegative", testIsNegative),
-        ("testIsPositive", testIsPositive),
         ("testOperators", testOperators),
         ("testRadiansToDegrees", testRadiansToDegrees),
     ]
@@ -250,9 +248,7 @@ extension SignedIntegerExtensionsTests {
         ("testAbs", testAbs),
         ("testGcd", testGcd),
         ("testIsEven", testIsEven),
-        ("testIsNegative", testIsNegative),
         ("testIsOdd", testIsOdd),
-        ("testIsPositive", testIsPositive),
         ("testLcm", testLcm),
         ("testString", testString),
         ("testTimeString", testTimeString),

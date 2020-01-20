@@ -26,18 +26,6 @@ final class CGFloatExtensionsTests: XCTestCase {
         XCTAssertEqual(CGFloat(180).degreesToRadians, CGFloat.pi)
     }
 
-    func testIsPositive() {
-        XCTAssert(CGFloat(9.3).isPositive)
-        XCTAssertFalse(CGFloat(0).isPositive)
-        XCTAssertFalse(CGFloat(-9.2).isPositive)
-    }
-
-    func testIsNegative() {
-        XCTAssert(CGFloat(-9.3).isNegative)
-        XCTAssertFalse(CGFloat(0).isNegative)
-        XCTAssertFalse(CGFloat(9.3).isNegative)
-    }
-
     func testInt() {
         XCTAssertEqual(CGFloat(9.3).int, Int(9))
     }
