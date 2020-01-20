@@ -81,9 +81,9 @@ public extension UIAlertController {
     ///   - message: 消息 (默认 nil).
     ///   - actionTitle: 按钮标题 (默认 "OK")
     ///   - tintColor: alert controller's tint color (默认 nil)
-    convenience init(title: String, message: String? = nil, actionTitle: String = "OK", tintColor: UIColor? = nil) {
+    convenience init(title: String, message: String? = nil, defaultActionButtonTitle: String = "OK", tintColor: UIColor? = nil) {
         self.init(title: title, message: message, preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title: actionTitle, style: .default, handler: nil)
+        let defaultAction = UIAlertAction(title: defaultActionButtonTitle, style: .default, handler: nil)
         addAction(defaultAction)
         if let color = tintColor {
             view.tintColor = color

@@ -62,12 +62,12 @@ final class ArrayExtensionsTests: XCTestCase {
 
     func testRemoveAllItems() {
         var arr = [0, 1, 2, 2, 0, 3, 4, 5, 0, 0]
-        arr.removeFrom([0, 2])
+        arr.removeAll([0, 2])
         XCTAssertEqual(arr, [1, 3, 4, 5])
-        arr.removeFrom([])
+        arr.removeAll([])
         XCTAssertEqual(arr, [1, 3, 4, 5])
         arr = []
-        arr.removeFrom([])
+        arr.removeAll([])
         XCTAssertEqual(arr, [])
     }
 

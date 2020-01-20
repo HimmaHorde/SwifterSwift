@@ -26,6 +26,17 @@ final class DictionaryExtensionsTests: XCTestCase {
         XCTAssertFalse(dict.keys.contains("key2"))
     }
 
+    func testRemoveElementForRandomKey() {
+        var emptyDict = [String: String]()
+        XCTAssertNil(emptyDict.removeValueForRandomKey())
+
+        var dict = ["key1": "value1", "key2": "value2", "key3": "value3"]
+        let elements = dict.count
+        let removedElement = dict.removeValueForRandomKey()
+        XCTAssertEqual(elements - 1, dict.count)
+        XCTAssertFalse(dict.contains(where: {$0.value == removedElement}))
+    }
+
     func testJsonData() {
         let dict = ["key": "value"]
 
@@ -65,6 +76,16 @@ final class DictionaryExtensionsTests: XCTestCase {
         var dict = ["tEstKeY": "value"]
         dict.lowercaseAllKeys()
         XCTAssertEqual(dict, ["testkey": "value"])
+    }
+
+    func testSubscriptKeypath() {
+        var json = ["key": ["key1": ["key2": "value"]]]
+
+        XCTAssertEqual(json[path: []] as? String, nil)
+        XCTAssertEqual(json[path: ["key", "key1"]] as? [String: String], ["key2": "value"])
+        XCTAssertEqual(json[path: ["key", "key1", "key2"]] as? String, "value")
+        json[path: ["key", "key1", "key2"]] = "newValue"
+        XCTAssertEqual(json[path: ["key", "key1", "key2"]] as? String, "newValue")
     }
 
     func testOperatorPlus() {
