@@ -10,7 +10,6 @@
 import UIKit
 
 // MARK: - Initializers
-@available(iOS 9.0, *)
 public extension UIStackView {
 
     /// 使用 View 数组和其他参数初始化。
