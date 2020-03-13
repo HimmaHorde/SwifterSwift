@@ -43,3 +43,8 @@ extension SwifterCompatible {
         return SwifterSwift(self)
     }
 }
+
+ import class Foundation.NSObject
+ 
+ /// Extend NSObject with `ss` proxy.
+extension NSObject: SwifterCompatible { }
