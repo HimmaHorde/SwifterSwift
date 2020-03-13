@@ -40,5 +40,4 @@ identifier_name:
     - ss
 
 excluded:
-  - Tests/*/XCTestManifests.swift
   - vendor # Folder created by bundle install command that we run on CI
