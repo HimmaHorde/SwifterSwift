@@ -1,4 +1,13 @@
 custom_rules:
+  missing_swifterswift_prefix:
+    included: ".*\\.swift"
+    excluded: ".*Tests\\.swift"
+    name: "Missing SS: prefix"
+    regex: "///\\s(?!SS:\\s)\\w+[^\\n]*$"
+    match_kinds:
+      - doccomment
+    message: "Doc string should always start with the SS: prefix"
+    severity: warning
   unnecessary_type:
     name: "Unnecessary Type"
     regex: '(?sm)[ \ta-zA-Z0-9]?(?:let|var){1} [ \ta-zA-Z0-9]+?:[ \t]+?([a-zA-Z0-9]+?)[\t ]+?=[\t ]?\1'
