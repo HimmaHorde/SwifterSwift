@@ -12,7 +12,7 @@ import UIKit
 // MARK: - Methods
 public extension UISlider {
 
-    /// SwifterSwift: Set slide bar value with completion handler.
+    /// SS: Set slide bar value with completion handler.
     ///
     /// - Parameters:
     ///   - value: slider value.

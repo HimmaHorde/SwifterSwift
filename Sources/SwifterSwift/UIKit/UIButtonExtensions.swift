@@ -12,7 +12,7 @@ import UIKit
 // MARK: - Properties
 public extension UIButton {
 
-    /// SwifterSwift: Image of disabled state for button.
+    /// SS: Image of disabled state for button.
     var imageForDisabled: UIImage? {
         get {
             return image(for: .disabled)
@@ -22,7 +22,7 @@ public extension UIButton {
         }
     }
 
-    /// SwifterSwift: Image of highlighted state for button.
+    /// SS: Image of highlighted state for button.
     var imageForHighlighted: UIImage? {
         get {
             return image(for: .highlighted)
@@ -32,7 +32,7 @@ public extension UIButton {
         }
     }
 
-    /// SwifterSwift: Image of normal state for button.
+    /// SS: Image of normal state for button.
     var imageForNormal: UIImage? {
         get {
             return image(for: .normal)
@@ -42,7 +42,7 @@ public extension UIButton {
         }
     }
 
-    /// SwifterSwift: Image of selected state for button.
+    /// SS: Image of selected state for button.
     var imageForSelected: UIImage? {
         get {
             return image(for: .selected)
@@ -52,7 +52,7 @@ public extension UIButton {
         }
     }
 
-    /// SwifterSwift: Title color of disabled state for button.
+    /// SS: Title color of disabled state for button.
     var titleColorForDisabled: UIColor? {
         get {
             return titleColor(for: .disabled)
@@ -62,7 +62,7 @@ public extension UIButton {
         }
     }
 
-    /// SwifterSwift: Title color of highlighted state for button.
+    /// SS: Title color of highlighted state for button.
     var titleColorForHighlighted: UIColor? {
         get {
             return titleColor(for: .highlighted)
@@ -72,7 +72,7 @@ public extension UIButton {
         }
     }
 
-    /// SwifterSwift: Title color of normal state for button.
+    /// SS: Title color of normal state for button.
     var titleColorForNormal: UIColor? {
         get {
             return titleColor(for: .normal)
@@ -82,7 +82,7 @@ public extension UIButton {
         }
     }
 
-    /// SwifterSwift: Title color of selected state for button.
+    /// SS: Title color of selected state for button.
     var titleColorForSelected: UIColor? {
         get {
             return titleColor(for: .selected)
@@ -92,7 +92,7 @@ public extension UIButton {
         }
     }
 
-    /// SwifterSwift: Title of disabled state for button.
+    /// SS: Title of disabled state for button.
     var titleForDisabled: String? {
         get {
             return title(for: .disabled)
@@ -102,7 +102,7 @@ public extension UIButton {
         }
     }
 
-    /// SwifterSwift: Title of highlighted state for button.
+    /// SS: Title of highlighted state for button.
     var titleForHighlighted: String? {
         get {
             return title(for: .highlighted)
@@ -112,7 +112,7 @@ public extension UIButton {
         }
     }
 
-    /// SwifterSwift: Title of normal state for button.
+    /// SS: Title of normal state for button.
     var titleForNormal: String? {
         get {
             return title(for: .normal)
@@ -122,7 +122,7 @@ public extension UIButton {
         }
     }
 
-    /// SwifterSwift: Title of selected state for button.
+    /// SS: Title of selected state for button.
     var titleForSelected: String? {
         get {
             return title(for: .selected)
@@ -141,28 +141,28 @@ public extension UIButton {
         return [.normal, .selected, .highlighted, .disabled]
     }
 
-    /// SwifterSwift: Set image for all states.
+    /// SS: Set image for all states.
     ///
     /// - Parameter image: UIImage.
     func setImageForAllStates(_ image: UIImage) {
         states.forEach { setImage(image, for: $0) }
     }
 
-    /// SwifterSwift: Set title color for all states.
+    /// SS: Set title color for all states.
     ///
     /// - Parameter color: UIColor.
     func setTitleColorForAllStates(_ color: UIColor) {
         states.forEach { setTitleColor(color, for: $0) }
     }
 
-    /// SwifterSwift: Set title for all states.
+    /// SS: Set title for all states.
     ///
     /// - Parameter title: title string.
     func setTitleForAllStates(_ title: String) {
         states.forEach { setTitle(title, for: $0) }
     }
 
-    /// SwifterSwift: Center align title text and image
+    /// SS: Center align title text and image
     /// - Parameters:
     ///   - imageAboveText: set true to make image above title text, default is false, image on left of text
     ///   - spacing: spacing between title text and image.

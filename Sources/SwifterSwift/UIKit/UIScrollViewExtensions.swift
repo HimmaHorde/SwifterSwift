@@ -12,7 +12,7 @@ import UIKit
 // MARK: - Methods
 public extension UIScrollView {
 
-    /// 获取整个ScrollView的快照
+    /// SS: 获取整个ScrollView的快照
     ///
     ///    AnySubclassOfUIScroolView().snapshot
     ///    UITableView().snapshot

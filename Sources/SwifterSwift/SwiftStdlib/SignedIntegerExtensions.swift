@@ -12,22 +12,22 @@ import Foundation
 // MARK: - Properties
 public extension SignedInteger {
 
-    /// SwifterSwift: Absolute value of integer number.
+    /// SS: Absolute value of integer number.
     var abs: Self {
         return Swift.abs(self)
     }
 
-    /// SwifterSwift: Check if integer is even.
+    /// SS: Check if integer is even.
     var isEven: Bool {
         return (self % 2) == 0
     }
 
-    /// SwifterSwift: Check if integer is odd.
+    /// SS: Check if integer is odd.
     var isOdd: Bool {
         return (self % 2) != 0
     }
 
-    /// SwifterSwift: String of format (XXh XXm) from seconds Int.
+    /// SS: String of format (XXh XXm) from seconds Int.
     var timeString: String {
         guard self > 0 else {
             return "0 sec"
@@ -52,7 +52,7 @@ public extension SignedInteger {
 // MARK: - Methods
 public extension SignedInteger {
 
-    /// SwifterSwift: Greatest common divisor of integer value and n.
+    /// SS: Greatest common divisor of integer value and n.
     ///
     /// - Parameter number: integer value to find gcd with.
     /// - Returns: greatest common divisor of self and n.
@@ -60,7 +60,7 @@ public extension SignedInteger {
         return number == 0 ? self : number.gcd(of: self % number)
     }
 
-    /// SwifterSwift: Least common multiple of integer and n.
+    /// SS: Least common multiple of integer and n.
     ///
     /// - Parameter number: integer value to find lcm with.
     /// - Returns: least common multiple of self and n.
@@ -69,7 +69,7 @@ public extension SignedInteger {
     }
 
     #if canImport(Foundation)
-    /// SwifterSwift: Ordinal representation of an integer.
+    /// SS: Ordinal representation of an integer.
     ///
     ///        print((12).ordinalString()) // prints "12th"
     ///

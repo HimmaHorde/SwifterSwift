@@ -12,7 +12,7 @@ import SceneKit
 // MARK: - Methods
 public extension SCNCapsule {
 
-    /// SwifterSwift: Creates a capsule geometry with the specified diameter and height.
+    /// SS: Creates a capsule geometry with the specified diameter and height.
     ///
     /// - Parameters:
     ///   - capDiameter: The diameter both of the capsule’s cylindrical body and of its hemispherical ends.
@@ -21,7 +21,7 @@ public extension SCNCapsule {
         self.init(capRadius: capDiameter / 2, height: height)
     }
 
-    /// SwifterSwift: Creates a capsule geometry with the specified radius and height.
+    /// SS: Creates a capsule geometry with the specified radius and height.
     ///
     /// - Parameters:
     ///   - capRadius: The radius both of the capsule’s cylindrical body and of its hemispherical ends.
@@ -32,7 +32,7 @@ public extension SCNCapsule {
         materials = [material]
     }
 
-    /// SwifterSwift: Creates a capsule geometry with the specified diameter and height.
+    /// SS: Creates a capsule geometry with the specified diameter and height.
     ///
     /// - Parameters:
     ///   - capDiameter: The diameter both of the capsule’s cylindrical body and of its hemispherical ends.
@@ -43,7 +43,7 @@ public extension SCNCapsule {
         materials = [material]
     }
 
-    /// SwifterSwift: Creates a capsule geometry with the specified radius and height.
+    /// SS: Creates a capsule geometry with the specified radius and height.
     ///
     /// - Parameters:
     ///   - capRadius: The radius both of the capsule’s cylindrical body and of its hemispherical ends.
@@ -54,7 +54,7 @@ public extension SCNCapsule {
         materials = [SCNMaterial(color: color)]
     }
 
-    /// SwifterSwift: Creates a capsule geometry with the specified diameter and height.
+    /// SS: Creates a capsule geometry with the specified diameter and height.
     ///
     /// - Parameters:
     ///   - capDiameter: The diameter both of the capsule’s cylindrical body and of its hemispherical ends.

@@ -12,7 +12,7 @@ import UIKit
 // MARK: - Methods
 public extension UIWindow {
 
-    /// SwifterSwift: Switch current root view controller with a new view controller.
+    /// SS: Switch current root view controller with a new view controller.
     ///
     /// - Parameters:
     ///   - viewController: new view controller.

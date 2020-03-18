@@ -11,7 +11,7 @@ import Foundation
 
 public extension NotificationCenter {
 
-    /// SwifterSwift: Adds a one-time entry to the notification center's dispatch table that includes a notification queue and a block to add to the queue, and an optional notification name and sender.
+    /// SS: Adds a one-time entry to the notification center's dispatch table that includes a notification queue and a block to add to the queue, and an optional notification name and sender.
     /// - Parameters:
     ///   - name: The name of the notification for which to register the observer; that is, only notifications with this name are used to add the block to the operation queue.
     ///

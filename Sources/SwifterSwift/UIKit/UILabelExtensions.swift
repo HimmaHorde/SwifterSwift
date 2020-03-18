@@ -12,13 +12,13 @@ import UIKit
 // MARK: - Methods
 public extension UILabel {
 
-    /// SwifterSwift: 使用字符串初始化 UILabel
+    /// SS: 使用字符串初始化 UILabel
     convenience init(text: String?) {
         self.init()
         self.text = text
     }
 
-    /// SwifterSwift: 使用给定字符串和字体类型初始化 UILabel
+    /// SS: 使用给定字符串和字体类型初始化 UILabel
     ///
     /// - Parameters:
     ///   - text: label 的文字.
@@ -29,7 +29,7 @@ public extension UILabel {
         self.text = text
     }
 
-    /// 当前Label文字内容的需求高度
+    /// SS: 当前Label文字内容的需求高度
     var requiredHeight: CGFloat {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width, height: CGFloat.greatestFiniteMagnitude))
         label.numberOfLines = 0

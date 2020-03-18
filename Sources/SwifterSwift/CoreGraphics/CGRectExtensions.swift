@@ -12,7 +12,7 @@ import CoreGraphics
 // MARK: - Properties
 public extension CGRect {
 
-    /// SwifterSwift: Return center of rect
+    /// SS: Return center of rect
     var center: CGPoint { CGPoint(x: midX, y: midY) }
 
 }
@@ -20,7 +20,7 @@ public extension CGRect {
 // MARK: - Initializers
 public extension CGRect {
 
-    /// SwifterSwift: Create a `CGRect` instance with center and size
+    /// SS: Create a `CGRect` instance with center and size
     /// - Parameters:
     ///   - center: center of the new rect
     ///   - size: size of the new rect
@@ -34,7 +34,7 @@ public extension CGRect {
 // MARK: - Methods
 public extension CGRect {
 
-    /// SwifterSwift: Create a new `CGRect` by resizing with specified anchor
+    /// SS: Create a new `CGRect` by resizing with specified anchor
     /// - Parameters:
     ///   - size: new size to be applied
     ///   - anchor: specified anchor, a point in normalized coordinates -

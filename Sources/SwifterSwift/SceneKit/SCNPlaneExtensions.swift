@@ -12,14 +12,14 @@ import SceneKit
 // MARK: - Methods
 public extension SCNPlane {
 
-    /// SwifterSwift: Creates a square plane geometry with the specified width.
+    /// SS: Creates a square plane geometry with the specified width.
     ///
     /// - Parameter width: The width and height of the plane along the x-axis and y-axis of its local coordinate space.
     convenience init(width: CGFloat) {
         self.init(width: width, height: width)
     }
 
-    /// SwifterSwift: Creates a plane geometry with the specified width, height and material.
+    /// SS: Creates a plane geometry with the specified width, height and material.
     ///
     /// - Parameters:
     ///   - width: The width of the plane along the x-axis of its local coordinate space.
@@ -30,7 +30,7 @@ public extension SCNPlane {
         materials = [material]
     }
 
-    /// SwifterSwift: Creates a square plane geometry with the specified width and material.
+    /// SS: Creates a square plane geometry with the specified width and material.
     ///
     /// - Parameters:
     ///   - width: The width and height of the plane along the x-axis and y-axis of its local coordinate space.
@@ -40,7 +40,7 @@ public extension SCNPlane {
         materials = [material]
     }
 
-    /// SwifterSwift: Creates a plane geometry with the specified width, height and material color.
+    /// SS: Creates a plane geometry with the specified width, height and material color.
     ///
     /// - Parameters:
     ///   - width: The width of the plane along the x-axis of its local coordinate space.
@@ -51,7 +51,7 @@ public extension SCNPlane {
         materials = [SCNMaterial(color: color)]
     }
 
-    /// SwifterSwift: Creates a square plane geometry with the specified width and material color.
+    /// SS: Creates a square plane geometry with the specified width and material color.
     ///
     /// - Parameters:
     ///   - width: The width and height of the plane along the x-axis and y-axis of its local coordinate space.

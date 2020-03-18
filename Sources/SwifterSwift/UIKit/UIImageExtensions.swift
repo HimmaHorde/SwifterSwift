@@ -12,22 +12,22 @@ import UIKit
 // MARK: - Properties
 public extension UIImage {
 
-    /// 图片的大小 单位:bytes
+    /// SS: 图片的大小 单位:bytes
     var bytesSize: Int {
         return jpegData(compressionQuality: 1)?.count ?? 0
     }
 
-    /// 图片大小 单位:KB ; 1KB = 1024Bytes
+    /// SS: 图片大小 单位:KB ; 1KB = 1024Bytes
     var kilobytesSize: Int {
         return (jpegData(compressionQuality: 1)?.count ?? 0) / 1024
     }
 
-    /// 始终使用原图模式
+    /// SS: 始终使用原图模式
     var original: UIImage {
         return withRenderingMode(.alwaysOriginal)
     }
 
-    /// 始终使用渲染模式
+    /// SS: 始终使用渲染模式
     var template: UIImage {
         return withRenderingMode(.alwaysTemplate)
     }
@@ -37,7 +37,7 @@ public extension UIImage {
 // MARK: - Methods
 public extension UIImage {
 
-    /// SwifterSwift: 压缩图片质量,并返回压缩后的 UIImage。
+    /// SS: 压缩图片质量,并返回压缩后的 UIImage。
     ///
     /// - Parameter quality: 生成的JPEG图像的质量，表示为从0.0到1.0的值。值0.0表示最大压缩(或最低质量)，值1.0表示最小压缩(或最佳质量)，(默认值为0.5)。
     /// - Returns: 压缩后图片,可能为空。
@@ -46,7 +46,7 @@ public extension UIImage {
         return UIImage(data: data)
     }
 
-    /// SwifterSwift: 压缩图片质量,返回压缩后的 Data。
+    /// SS: 压缩图片质量,返回压缩后的 Data。
     ///
     /// - Parameter quality: 压缩系数 0 - 1;默认0.5。
     /// - Returns: 压缩后的 Data
@@ -54,7 +54,7 @@ public extension UIImage {
         return jpegData(compressionQuality: quality)
     }
 
-    /// 剪切指定位置的图片,图片scale等于原图。
+    /// SS: 剪切指定位置的图片,图片scale等于原图。
     ///
     /// - Parameter rect: 位置。
     /// - Returns: 剪切后图片
@@ -65,7 +65,7 @@ public extension UIImage {
         return UIImage.init(cgImage: image, scale: self.scale, orientation: .up)
     }
 
-    /// UIImage根据高宽比缩放。
+    /// SS: UIImage根据高宽比缩放。
     ///
     /// - Parameters:
     ///   - toHeight: 指定高度。
@@ -82,7 +82,7 @@ public extension UIImage {
         return newImage
     }
 
-    /// UIImage根据宽高比缩放。
+    /// SS: UIImage根据宽高比缩放。
     ///
     /// - Parameters:
     ///   - toWidth: 指定宽度。
@@ -99,7 +99,7 @@ public extension UIImage {
         return newImage
     }
 
-    /// 生成旋转指定角度的图片
+    /// SS: 生成旋转指定角度的图片
     ///
     ///     // Rotate the image by 180°
     ///     image.rotated(by: Measurement(value: 180, unit: .degrees))
@@ -132,7 +132,7 @@ public extension UIImage {
         return newImage
     }
 
-    /// 生成旋转给定弧度值的图片 (in radians).
+    /// SS: 生成旋转给定弧度值的图片 (in radians).
     ///
     ///     // Rotate the image by 180°
     ///     image.rotated(by: .pi)
@@ -162,7 +162,7 @@ public extension UIImage {
         return newImage
     }
 
-    /// 图片使用单色填充
+    /// SS: 图片使用单色填充
     ///
     /// - Parameter color: 填充色
     /// - Returns: 填充后的新图
@@ -198,7 +198,7 @@ public extension UIImage {
         return newImage
     }
 
-    /// 生成添加半透明遮罩的图片
+    /// SS: 生成添加半透明遮罩的图片
     ///
     /// - Parameter color: 使用有透明度的颜色
     /// - Returns: 新的图片
@@ -222,7 +222,7 @@ public extension UIImage {
         return newImage
     }
 
-    /// 新图使用指定混合模式和颜色添加一个纯色填充图层
+    /// SS: 新图使用指定混合模式和颜色添加一个纯色填充图层
     ///
     ///       // 实际使用效果类似于 PS 的图层混合模式 eg.正片叠底
     ///       let image = UIImage.init(named: "TestImage.png")!
@@ -257,7 +257,7 @@ public extension UIImage {
         return newImage
     }
 
-    /// SwifterSwift: UIImage tinted with color
+    /// SS: UIImage tinted with color
     ///
     /// - Parameters:
     ///   - color: color to tint image with.
@@ -289,7 +289,7 @@ public extension UIImage {
         return UIGraphicsGetImageFromCurrentImageContext()!
     }
 
-    /// 为图片添加背景色
+    /// SS: 为图片添加背景色
     ///
     /// - Parameters:
     ///   - backgroundColor: Color to use as background color
@@ -318,7 +318,7 @@ public extension UIImage {
         return UIGraphicsGetImageFromCurrentImageContext()!
     }
 
-    /// 带圆角的图片
+    /// SS: 带圆角的图片
     ///
     /// - Parameters:
     ///   - radius: 角半径(可选)，生成的图像将是圆的，如果没有指定
@@ -343,14 +343,14 @@ public extension UIImage {
         return image
     }
 
-    /// SwifterSwift: Base 64 encoded PNG data of the image.
+    /// SS: Base 64 encoded PNG data of the image.
     ///
     /// - returns: Base 64 encoded PNG data of the image as a String.
     func pngBase64String() -> String? {
         return pngData()?.base64EncodedString()
     }
 
-    /// SwifterSwift: Base 64 encoded JPEG data of the image.
+    /// SS: Base 64 encoded JPEG data of the image.
     ///
     /// - parameter compressionQuality: The quality of the resulting JPEG image, expressed as a value from 0.0 to 1.0. The value 0.0 represents the maximum compression (or lowest quality) while the value 1.0 represents the least compression (or best quality).
     /// - returns: Base 64 encoded JPEG data of the image as a String.
@@ -363,7 +363,7 @@ public extension UIImage {
 // MARK: - Initializers
 public extension UIImage {
 
-    /// 生成指定颜色和尺寸的图片
+    /// SS: 生成指定颜色和尺寸的图片
     ///
     /// - Parameters:
     ///   - color: 填满色
@@ -386,7 +386,7 @@ public extension UIImage {
         self.init(cgImage: aCgImage)
     }
 
-    /// SwifterSwift: Create a new image from a base 64 string.
+    /// SS: Create a new image from a base 64 string.
     ///
     /// - Parameters:
     ///   - base64String: a base-64 `String`, representing the image
@@ -396,7 +396,7 @@ public extension UIImage {
         self.init(data: data, scale: scale)
     }
 
-    /// SwifterSwift: Create a new image from a URL
+    /// SS: Create a new image from a URL
     ///
     /// - Important:
     ///   Use this method to convert data:// URLs to UIImage objects.

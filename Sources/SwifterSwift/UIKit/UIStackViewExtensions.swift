@@ -12,7 +12,7 @@ import UIKit
 // MARK: - Initializers
 public extension UIStackView {
 
-    /// 使用 View 数组和其他参数初始化。
+    /// SS: 使用 View 数组和其他参数初始化。
     ///
     ///     let stackView = UIStackView(arrangedSubviews: [UIView(), UIView()], axis: .vertical)
     ///
@@ -36,7 +36,7 @@ public extension UIStackView {
         self.distribution = distribution
     }
 
-    /// 批量添加 arrangedSubviews
+    /// SS: 批量添加 arrangedSubviews
     ///
     /// - Parameter views: views array.
     func addArrangedSubviews(_ views: [UIView]) {
@@ -45,7 +45,7 @@ public extension UIStackView {
         }
     }
 
-    /// 移除所有ArrangedSubviews
+    /// SS: 移除所有ArrangedSubviews
     func removeArrangedSubviews() {
         for view in arrangedSubviews {
             removeArrangedSubview(view)

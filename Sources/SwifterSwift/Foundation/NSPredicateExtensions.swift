@@ -12,7 +12,7 @@ import Foundation
 // MARK: - Properties
 public extension NSPredicate {
 
-    /// 快速产生非运算
+    /// SS: 快速产生非运算
     var not: NSCompoundPredicate {
         return NSCompoundPredicate(notPredicateWithSubpredicate: self)
     }
@@ -22,7 +22,7 @@ public extension NSPredicate {
 // MARK: - Methods
 public extension NSPredicate {
 
-    /// 快速创建与运算
+    /// SS: 快速创建与运算
     ///
     /// - Parameter predicate: 谓词
     /// - Returns: NSCompoundPredicate
@@ -30,7 +30,7 @@ public extension NSPredicate {
         return NSCompoundPredicate(andPredicateWithSubpredicates: [self, predicate])
     }
 
-    /// 快速创建或运算
+    /// SS: 快速创建或运算
     ///
     /// - Parameter predicate: NSPredicate
     /// - Returns: NSCompoundPredicate
@@ -43,14 +43,14 @@ public extension NSPredicate {
 // MARK: - Operators
 public extension NSPredicate {
 
-    /// 快速产生非运算
+    /// SS: 快速产生非运算
     /// - Parameters: rhs: NSPredicate to convert.
     /// - Returns: NSCompoundPredicate
     static prefix func ! (rhs: NSPredicate) -> NSCompoundPredicate {
         return rhs.not
     }
 
-    /// 快速创建与运算
+    /// SS: 快速创建与运算
     ///
     /// - Parameters:
     ///   - lhs: NSPredicate.
@@ -60,7 +60,7 @@ public extension NSPredicate {
         return lhs.and(rhs)
     }
 
-    /// 快速创建或运算
+    /// SS: 快速创建或运算
     ///
     /// - Parameters:
     ///   - lhs: NSPredicate.
@@ -70,7 +70,7 @@ public extension NSPredicate {
         return lhs.or(rhs)
     }
 
-    ///  ==  +！
+    ///  SS: ==  +！
     ///
     /// - Parameters:
     ///   - lhs: NSPredicate.

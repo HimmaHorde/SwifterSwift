@@ -12,7 +12,7 @@ import Foundation
 // MARK: - Properties
 public extension Data {
 
-    /// 以字节数组的形式返回数据
+    /// SS: 以字节数组的形式返回数据
     var bytes: [UInt8] {
         // http://stackoverflow.com/questions/38097710/swift-3-changes-for-getbytes-method
         return [UInt8](self)
@@ -23,7 +23,7 @@ public extension Data {
 // MARK: - Methods
 public extension Data {
 
-    /// 使用给定编码(如果适用)对数据进行编码。
+    /// SS: 使用给定编码(如果适用)对数据进行编码。
     ///
     /// - Parameter encoding: 编码
     /// - Returns: 编码后的字符串 (如果适用).
@@ -31,7 +31,7 @@ public extension Data {
         return String(data: self, encoding: encoding)
     }
 
-    /// JsonData 直接解析
+    /// SS: JsonData 直接解析
     ///
     /// - Parameter options: 解析选项 JSONSerialization.ReadingOptions
     /// - Returns: 返回一个 Function 对象，如果发生错误，则为“nil”。

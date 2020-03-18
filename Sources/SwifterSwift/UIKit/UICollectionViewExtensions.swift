@@ -12,12 +12,12 @@ import UIKit
 // MARK: - Properties
 public extension UICollectionView {
 
-    /// 获取 CollectionView 最后一个元素.
+    /// SS: 获取 CollectionView 最后一个元素.
     var indexPathForLastItem: IndexPath? {
         return indexPathForLastItem(inSection: lastSection)
     }
 
-    /// 获取最后一个 section 的index.
+    /// SS: 获取最后一个 section 的index.
     var lastSection: Int {
         return numberOfSections > 0 ? numberOfSections - 1 : 0
     }
@@ -27,7 +27,7 @@ public extension UICollectionView {
 // MARK: - Methods
 public extension UICollectionView {
 
-    /// SwifterSwift: 获取 collectionView 里面的 cell 总和.
+    /// SS: 获取 collectionView 里面的 cell 总和.
     ///
     /// - Returns: collectionView rows 的计数.
     func numberOfItems() -> Int {
@@ -40,7 +40,7 @@ public extension UICollectionView {
         return itemsCount
     }
 
-    /// SwifterSwift: 获取指定 section 里面最后一个 cell 的 IndexPath.
+    /// SS: 获取指定 section 里面最后一个 cell 的 IndexPath.
     ///
     /// - Parameter section: 指定 collectionView 的 section.
     /// - Returns: 返回 indexpath?
@@ -57,7 +57,7 @@ public extension UICollectionView {
         return IndexPath(item: numberOfItems(inSection: section) - 1, section: section)
     }
 
-    /// SwifterSwift: 刷新数据源,并添加结束回调
+    /// SS: 刷新数据源,并添加结束回调
     ///
     /// - Parameter completion: reloadData 结束后的回调.
     func reloadData(_ completion: @escaping () -> Void) {
@@ -68,7 +68,7 @@ public extension UICollectionView {
         })
     }
 
-    /// SwifterSwift: cell 根据类名复用.
+    /// SS: cell 根据类名复用.
     ///
     /// - Parameters:
     ///   - name: UICollectionViewCell 类型.
@@ -81,7 +81,7 @@ public extension UICollectionView {
         return cell
     }
 
-    /// SwifterSwift: UICollectionReusableView 根据类名复用.
+    /// SS: UICollectionReusableView 根据类名复用.
     ///
     /// - Parameters:
     ///   - kind: the kind of supplementary view to retrieve. This value is defined by the layout object.
@@ -95,7 +95,7 @@ public extension UICollectionView {
         return cell
     }
 
-    /// SwifterSwift: Register UICollectionReusableView using class name.
+    /// SS: Register UICollectionReusableView using class name.
     ///
     /// - Parameters:
     ///   - kind: the kind of supplementary view to retrieve. This value is defined by the layout object.
@@ -104,7 +104,7 @@ public extension UICollectionView {
         register(T.self, forSupplementaryViewOfKind: kind, withReuseIdentifier: String(describing: name))
     }
 
-    /// SwifterSwift: Register UICollectionViewCell using class name.
+    /// SS: Register UICollectionViewCell using class name.
     ///
     /// - Parameters:
     ///   - nib: Nib file used to create the collectionView cell.
@@ -113,7 +113,7 @@ public extension UICollectionView {
         register(nib, forCellWithReuseIdentifier: String(describing: name))
     }
 
-    /// SwifterSwift: Register UICollectionReusableView using class name.
+    /// SS: Register UICollectionReusableView using class name.
     ///
     /// - Parameters:
     ///   - nib: Nib file used to create the reusable view.
@@ -123,24 +123,24 @@ public extension UICollectionView {
         register(nib, forSupplementaryViewOfKind: kind, withReuseIdentifier: String(describing: name))
     }
 
-    /// 批量注册 cell
+    /// SS: 批量注册 cell
     func register(cellWithClasses classes: [UICollectionViewCell.Type]) {
         for cellType in classes {
             register(cellType, forCellWithReuseIdentifier: String(describing: cellType))
         }
     }
 
-    /// 批量注册 cell
+    /// SS: 批量注册 cell
     func register(cellWithClasses classes: UICollectionViewCell.Type...) {
         register(cellWithClasses: classes)
     }
 
-    /// 批量注册 nib cell，默认 xib 文件在 mainBundle 中。
+    /// SS: 批量注册 nib cell，默认 xib 文件在 mainBundle 中。
     func register(nibWithCellClasses classes: UICollectionViewCell.Type..., at bundleClass: AnyClass? = nil) {
         register(nibWithCellClasses: classes, at: bundleClass)
     }
 
-    /// 批量注册 nib cell，默认 xib 文件在 mainBundle 中。
+    /// SS: 批量注册 nib cell，默认 xib 文件在 mainBundle 中。
     func register(nibWithCellClasses classes: [UICollectionViewCell.Type], at bundleClass: AnyClass? = nil) {
         var bundle: Bundle?
 
@@ -153,7 +153,7 @@ public extension UICollectionView {
         }
     }
 
-    /// SwifterSwift: Safely scroll to possibly invalid IndexPath
+    /// SS: Safely scroll to possibly invalid IndexPath
     ///
     /// - Parameters:
     ///   - indexPath: Target IndexPath to scroll to
@@ -169,7 +169,7 @@ public extension UICollectionView {
         scrollToItem(at: indexPath, at: scrollPosition, animated: animated)
     }
 
-    /// SwifterSwift: Check whether IndexPath is valid within the CollectionView
+    /// SS: Check whether IndexPath is valid within the CollectionView
     ///
     /// - Parameter indexPath: An IndexPath to check
     /// - Returns: Boolean value for valid or invalid IndexPath

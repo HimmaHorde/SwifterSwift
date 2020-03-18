@@ -13,7 +13,7 @@ import Foundation
 public extension KeyedDecodingContainer {
 
     #if canImport(Foundation)
-    /// SwifterSwift: Try to decode a Bool as Int then String before decoding as Bool.
+    /// SS: Try to decode a Bool as Int then String before decoding as Bool.
     ///
     /// - Parameter key: Key.
     /// - Returns: Decoded Bool value.
@@ -30,7 +30,7 @@ public extension KeyedDecodingContainer {
     #endif
 
     #if canImport(Foundation)
-    /// SwifterSwift: Try to decode a Bool as Int then String before decoding as Bool if present.
+    /// SS: Try to decode a Bool as Int then String before decoding as Bool if present.
     ///
     /// - Parameter key: Key.
     /// - Returns: Decoded Bool value.

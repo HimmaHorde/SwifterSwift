@@ -12,7 +12,7 @@ import SceneKit
 // MARK: - Methods
 public extension SCNCone {
 
-    /// SwifterSwift: Creates a cone geometry with the given top diameter, bottom diameter, and height.
+    /// SS: Creates a cone geometry with the given top diameter, bottom diameter, and height.
     ///
     /// - Parameters:
     ///   - topDiameter: The diameter of the cone’s top, forming a circle in the x- and z-axis dimensions of its local coordinate space.
@@ -22,7 +22,7 @@ public extension SCNCone {
         self.init(topRadius: topDiameter / 2, bottomRadius: bottomDiameter / 2, height: height)
     }
 
-    /// SwifterSwift: Creates a cone geometry with the given top radius, bottom radius, height, and material.
+    /// SS: Creates a cone geometry with the given top radius, bottom radius, height, and material.
     ///
     /// - Parameters:
     ///   - topRadius: The radius of the cone’s top, forming a circle in the x- and z-axis dimensions of its local coordinate space.
@@ -34,7 +34,7 @@ public extension SCNCone {
         materials = [material]
     }
 
-    /// SwifterSwift: Creates a cone geometry with the given top diameter, bottom diameter, height, and material.
+    /// SS: Creates a cone geometry with the given top diameter, bottom diameter, height, and material.
     ///
     /// - Parameters:
     ///   - topDiameter: The diameter of the cone’s top, forming a circle in the x- and z-axis dimensions of its local coordinate space.
@@ -46,7 +46,7 @@ public extension SCNCone {
         materials = [material]
     }
 
-    /// SwifterSwift: Creates a cone geometry with the given top radius, bottom radius, height, and material.
+    /// SS: Creates a cone geometry with the given top radius, bottom radius, height, and material.
     ///
     /// - Parameters:
     ///   - topRadius: The radius of the cone’s top, forming a circle in the x- and z-axis dimensions of its local coordinate space.
@@ -58,7 +58,7 @@ public extension SCNCone {
         materials = [SCNMaterial(color: color)]
     }
 
-    /// SwifterSwift: Creates a cone geometry with the given top diameter, bottom diameter, height, and material.
+    /// SS: Creates a cone geometry with the given top diameter, bottom diameter, height, and material.
     ///
     /// - Parameters:
     ///   - topDiameter: The diameter of the cone’s top, forming a circle in the x- and z-axis dimensions of its local coordinate space.

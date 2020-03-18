@@ -8,7 +8,7 @@
 
 public extension RandomAccessCollection where Element: Equatable {
 
-    /// SwifterSwift: All indices of specified item.
+    /// SS: All indices of specified item.
     ///
     ///        [1, 2, 2, 3, 4, 2, 5].indices(of 2) -> [1, 2, 5]
     ///        [1.2, 2.3, 4.5, 3.4, 4.5].indices(of 2.3) -> [1]

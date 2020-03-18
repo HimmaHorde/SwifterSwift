@@ -13,29 +13,29 @@ import Foundation
 // MARK: - Properties
 public extension FloatingPoint {
 
-    /// 绝对值
+    /// SS: 绝对值
     var abs: Self {
         return Swift.abs(self)
     }
 
     #if canImport(Foundation)
-    /// 向上取整
+    /// SS: 向上取整
     var ceil: Self {
         return Foundation.ceil(self)
     }
 
-    /// 向下取整
+    /// SS: 向下取整
     var floor: Self {
         return Foundation.floor(self)
     }
     #endif
 
-    /// 圆心角 -> 圆心角弧度数
+    /// SS: 圆心角 -> 圆心角弧度数
     var degreesToRadians: Self {
         return Self.pi * self / Self(180)
     }
 
-    /// 圆心角弧度数 -> 圆心角
+    /// SS: 圆心角弧度数 -> 圆心角
     var radiansToDegrees: Self {
         return self * Self(180) / Self.pi
     }
@@ -44,7 +44,7 @@ public extension FloatingPoint {
 
 // MARK: - Operators
 infix operator ±
-/// SwifterSwift: Tuple of plus-minus operation.
+/// SS: Tuple of plus-minus operation.
 ///
 /// - Parameters:
 ///   - lhs: number
@@ -57,7 +57,7 @@ public func ± <T: FloatingPoint> (lhs: T, rhs: T) -> (T, T) {
 }
 
 prefix operator ±
-/// SwifterSwift: Tuple of plus-minus operation.
+/// SS: Tuple of plus-minus operation.
 ///
 /// - Parameter int: number
 /// - Returns: tuple of plus-minus operation (± 2.5 -> (2.5, -2.5)).

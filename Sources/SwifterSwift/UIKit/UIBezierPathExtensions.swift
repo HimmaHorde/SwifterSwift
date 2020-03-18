@@ -12,7 +12,7 @@ import UIKit
 // MARK: - Initializers
 public extension UIBezierPath {
 
-    /// SwifterSwift: Initializes a UIBezierPath with a line from a CGPoint to another CGPoint.
+    /// SS: Initializes a UIBezierPath with a line from a CGPoint to another CGPoint.
     ///
     /// - Parameters:
     ///   - from: The point from which to path should start.
@@ -23,7 +23,7 @@ public extension UIBezierPath {
         addLine(to: otherPoint)
     }
 
-    /// SwifterSwift: Initializes a UIBezierPath connecting the given CGPoints with straight lines.
+    /// SS: Initializes a UIBezierPath connecting the given CGPoints with straight lines.
     ///
     /// - Parameter points: The points of which the path should consist.
     convenience init(points: [CGPoint]) {
@@ -36,7 +36,7 @@ public extension UIBezierPath {
         }
     }
 
-    /// SwifterSwift: Initializes a polygonal UIBezierPath with the given CGPoints. At least 3 points must be given.
+    /// SS: Initializes a polygonal UIBezierPath with the given CGPoints. At least 3 points must be given.
     ///
     /// - Parameter points: The points of the polygon which the path should form.
     convenience init?(polygonWithPoints points: [CGPoint]) {
@@ -49,7 +49,7 @@ public extension UIBezierPath {
         close()
     }
 
-    /// SwifterSwift: Initializes a UIBezierPath with an oval path of given size.
+    /// SS: Initializes a UIBezierPath with an oval path of given size.
     ///
     /// - Parameters:
     ///   - size: The width and height of the oval.
@@ -59,7 +59,7 @@ public extension UIBezierPath {
         self.init(ovalIn: CGRect(origin: origin, size: size))
     }
 
-    /// SwifterSwift: Initializes a UIBezierPath with a  rectangular path of given size.
+    /// SS: Initializes a UIBezierPath with a  rectangular path of given size.
     ///
     /// - Parameters:
     ///   - size: The width and height of the rect.

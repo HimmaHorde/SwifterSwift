@@ -12,17 +12,17 @@ import CoreGraphics
 // MARK: - Methods
 public extension CGSize {
 
-    /// 宽高比
+    /// SS: 宽高比
     var aspectRatio: CGFloat {
         return height == 0 ? 0 : width / height
     }
 
-    /// 返回宽高中大的那个值
+    /// SS: 返回宽高中大的那个值
     var maxDimension: CGFloat {
         return max(width, height)
     }
 
-    /// 获取宽高中小的那个值
+    /// SS: 获取宽高中小的那个值
     var minDimension: CGFloat {
         return min(width, height)
     }
@@ -32,7 +32,7 @@ public extension CGSize {
 // MARK: - Methods
 public extension CGSize {
 
-    /// SwifterSwift: Aspect fit CGSize.
+    /// SS: Aspect fit CGSize.
     ///
     ///     let rect = CGSize(width: 120, height: 80)
     ///     let parentRect  = CGSize(width: 100, height: 50)
@@ -46,7 +46,7 @@ public extension CGSize {
         return CGSize(width: width * minRatio, height: height * minRatio)
     }
 
-    /// SwifterSwift: Aspect fill CGSize.
+    /// SS: Aspect fill CGSize.
     ///
     ///     let rect = CGSize(width: 20, height: 120)
     ///     let parentRect  = CGSize(width: 100, height: 60)
@@ -67,7 +67,7 @@ public extension CGSize {
 // MARK: - Operators
 public extension CGSize {
 
-    /// SwifterSwift: Add two CGSize
+    /// SS: Add two CGSize
     ///
     ///     let sizeA = CGSize(width: 5, height: 10)
     ///     let sizeB = CGSize(width: 3, height: 4)
@@ -82,7 +82,7 @@ public extension CGSize {
         return CGSize(width: lhs.width + rhs.width, height: lhs.height + rhs.height)
     }
 
-    /// SwifterSwift: Add a CGSize to self.
+    /// SS: Add a CGSize to self.
     ///
     ///     let sizeA = CGSize(width: 5, height: 10)
     ///     let sizeB = CGSize(width: 3, height: 4)
@@ -97,7 +97,7 @@ public extension CGSize {
         lhs.height += rhs.height
     }
 
-    /// SwifterSwift: Subtract two CGSize
+    /// SS: Subtract two CGSize
     ///
     ///     let sizeA = CGSize(width: 5, height: 10)
     ///     let sizeB = CGSize(width: 3, height: 4)
@@ -112,7 +112,7 @@ public extension CGSize {
         return CGSize(width: lhs.width - rhs.width, height: lhs.height - rhs.height)
     }
 
-    /// SwifterSwift: Subtract a CGSize from self.
+    /// SS: Subtract a CGSize from self.
     ///
     ///     let sizeA = CGSize(width: 5, height: 10)
     ///     let sizeB = CGSize(width: 3, height: 4)
@@ -127,7 +127,7 @@ public extension CGSize {
         lhs.height -= rhs.height
     }
 
-    /// SwifterSwift: Multiply two CGSize
+    /// SS: Multiply two CGSize
     ///
     ///     let sizeA = CGSize(width: 5, height: 10)
     ///     let sizeB = CGSize(width: 3, height: 4)
@@ -142,7 +142,7 @@ public extension CGSize {
         return CGSize(width: lhs.width * rhs.width, height: lhs.height * rhs.height)
     }
 
-    /// SwifterSwift: Multiply a CGSize with a scalar.
+    /// SS: Multiply a CGSize with a scalar.
     ///
     ///     let sizeA = CGSize(width: 5, height: 10)
     ///     let result = sizeA * 5
@@ -156,7 +156,7 @@ public extension CGSize {
         return CGSize(width: lhs.width * scalar, height: lhs.height * scalar)
     }
 
-    /// SwifterSwift: Multiply a CGSize with a scalar.
+    /// SS: Multiply a CGSize with a scalar.
     ///
     ///     let sizeA = CGSize(width: 5, height: 10)
     ///     let result = 5 * sizeA
@@ -170,7 +170,7 @@ public extension CGSize {
         return CGSize(width: scalar * rhs.width, height: scalar * rhs.height)
     }
 
-    /// SwifterSwift: Multiply self with a CGSize.
+    /// SS: Multiply self with a CGSize.
     ///
     ///     let sizeA = CGSize(width: 5, height: 10)
     ///     let sizeB = CGSize(width: 3, height: 4)
@@ -185,7 +185,7 @@ public extension CGSize {
         lhs.height *= rhs.height
     }
 
-    /// SwifterSwift: Multiply self with a scalar.
+    /// SS: Multiply self with a scalar.
     ///
     ///     let sizeA = CGSize(width: 5, height: 10)
     ///     sizeA *= 3

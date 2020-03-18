@@ -13,7 +13,7 @@ import Foundation
 public extension Decodable {
 
     #if canImport(Foundation)
-    /// SwifterSwift: Parsing the model in Decodable type
+    /// SS: Parsing the model in Decodable type
     /// - Parameters:
     ///   - data: Data.
     ///   - decoder: JSONDecoder. Initialized by default

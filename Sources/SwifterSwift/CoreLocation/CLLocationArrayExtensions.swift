@@ -12,7 +12,7 @@ import CoreLocation
 // MARK: - Methods
 public extension Array where Element: CLLocation {
 
-    /// SwifterSwift: Calculates the sum of distances between each location in the array based on the curvature of the earth.
+    /// SS: Calculates the sum of distances between each location in the array based on the curvature of the earth.
     ///
     /// - Parameter unitLength: The unit of length to return the distance in.
     /// - Returns: The distance in the specified unit.

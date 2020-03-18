@@ -17,7 +17,7 @@ public extension SKProduct {
         return priceFormatter
     }()
 
-    /// ss: 商品价格的本地化字符串
+    /// SS: 商品价格的本地化字符串
     var localizedPrice: String? {
         let formatter = SKProduct.priceFormatter
         formatter.locale = priceLocale

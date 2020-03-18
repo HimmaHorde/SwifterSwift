@@ -12,7 +12,7 @@ import AppKit
 // MARK: - Methods
 public extension NSImage {
 
-    /// SwifterSwift: NSImage scaled to maximum size with respect to aspect ratio
+    /// SS: NSImage scaled to maximum size with respect to aspect ratio
     ///
     /// - Parameter toMaxSize: maximum size
     /// - Returns: scaled NSImage
@@ -50,7 +50,7 @@ public extension NSImage {
         return imageWithNewSize
     }
 
-    /// SwifterSwift: Write NSImage to url.
+    /// SS: Write NSImage to url.
     ///
     /// - Parameters:
     ///   - url: Desired file URL.

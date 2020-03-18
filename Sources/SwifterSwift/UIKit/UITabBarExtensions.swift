@@ -12,7 +12,7 @@ import UIKit
 // MARK: - Methods
 public extension UITabBar {
 
-    /// 设置 tabBar 的颜色
+    /// SS: 设置 tabBar 的颜色
     ///
     /// - Parameters:
     ///   - background: 背景色

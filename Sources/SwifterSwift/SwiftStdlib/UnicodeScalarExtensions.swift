@@ -15,7 +15,7 @@ import Foundation
 // MARK: - 属性
 public extension UnicodeScalar {
 
-    /// 是否是 emoji
+    /// SS: 是否是 emoji
     ///
     ///    [引用链接](https://stackoverflow.com/questions/30757193/find-out-if-character-in-string-is-emoji)
     ///

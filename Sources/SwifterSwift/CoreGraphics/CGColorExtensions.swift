@@ -21,14 +21,14 @@ import AppKit
 public extension CGColor {
 
     #if canImport(UIKit)
-    /// SwifterSwift: UIColor.
+    /// SS: UIColor.
     var uiColor: UIColor? {
         return UIColor(cgColor: self)
     }
     #endif
 
     #if canImport(AppKit) && !targetEnvironment(macCatalyst)
-    /// SwifterSwift: NSColor.
+    /// SS: NSColor.
     var nsColor: NSColor? {
         return NSColor(cgColor: self)
     }

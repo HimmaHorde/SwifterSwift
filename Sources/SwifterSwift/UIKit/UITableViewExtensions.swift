@@ -12,13 +12,13 @@ import UIKit
 // MARK: - Properties
 public extension UITableView {
 
-    /// 最后一个 row 的 indexpath
+    /// SS: 最后一个 row 的 indexpath
     var indexPathForLastRow: IndexPath? {
         guard let lastSection = lastSection else { return nil }
         return indexPathForLastRow(inSection: lastSection)
     }
 
-    /// 最后一个 section 的 index
+    /// SS: 最后一个 section 的 index
     var lastSection: Int? {
         return numberOfSections > 0 ? numberOfSections - 1 : nil
     }
@@ -41,7 +41,7 @@ public extension UITableView {
         return rowCount
     }
 
-    /// 获取指定 Section 的最后一个 Cell 的 indexPath
+    /// SS: 获取指定 Section 的最后一个 Cell 的 indexPath
     func indexPathForLastRow(inSection section: Int) -> IndexPath? {
         guard numberOfSections > 0, section >= 0 else { return nil }
         guard numberOfRows(inSection: section) > 0  else {
@@ -50,7 +50,7 @@ public extension UITableView {
         return IndexPath(row: numberOfRows(inSection: section) - 1, section: section)
     }
 
-    /// 带有结束回调事件的刷新方法
+    /// SS: 带有结束回调事件的刷新方法
     ///
     /// - Parameter completion: completion handler to run after reloadData finishes.
     func reloadData(_ completion: @escaping () -> Void) {
@@ -61,7 +61,7 @@ public extension UITableView {
         })
     }
 
-    /// 滑动到 scrollView 的底部。
+    /// SS: 滑动到 scrollView 的底部。
     ///
     /// - Parameter animated: 是否开启动画（默认开启）。
     func scrollToBottom(animated: Bool = true) {
@@ -69,14 +69,14 @@ public extension UITableView {
         setContentOffset(bottomOffset, animated: animated)
     }
 
-    /// 滑动到 scrollView 的顶部。
+    /// SS: 滑动到 scrollView 的顶部。
     ///
     /// - Parameter animated: 是否开启动画（默认开启）。
     func scrollToTop(animated: Bool = true) {
         setContentOffset(CGPoint.zero, animated: animated)
     }
 
-    /// 根据类名复用UITableViewCell
+    /// SS: 根据类名复用UITableViewCell
     ///
     /// - Parameter name: UITableViewCell 类型
     /// - Returns: UITableViewCell 实例.
@@ -87,7 +87,7 @@ public extension UITableView {
         return cell
     }
 
-    /// 根据类名复用UITableViewCell
+    /// SS: 根据类名复用UITableViewCell
     ///
     /// - Parameters:
     ///   - name: UITableViewCell 类名.
@@ -100,7 +100,7 @@ public extension UITableView {
         return cell
     }
 
-    /// 复用 UITableViewHeaderFooterView
+    /// SS: 复用 UITableViewHeaderFooterView
     ///
     /// - Parameter name: UITableViewHeaderFooterView type
     /// - Returns: UITableViewHeaderFooterView object with associated class name.
@@ -111,7 +111,7 @@ public extension UITableView {
         return headerFooterView
     }
 
-    /// 使用 nib 注册 UITableViewHeaderFooterView
+    /// SS: 使用 nib 注册 UITableViewHeaderFooterView
     ///
     /// - Parameters:
     ///   - nib: Nib file used to create the header or footer view.
@@ -120,16 +120,16 @@ public extension UITableView {
         register(nib, forHeaderFooterViewReuseIdentifier: String(describing: name))
     }
 
-    /// 使用 Class 注册 UITableViewHeaderFooterView
+    /// SS: 使用 Class 注册 UITableViewHeaderFooterView
     ///
     /// - Parameter name: UITableViewHeaderFooterView type
     func register<T: UITableViewHeaderFooterView>(headerFooterViewClassWith name: T.Type) {
         register(T.self, forHeaderFooterViewReuseIdentifier: String(describing: name))
     }
 
-    /// 使用 xib 注册 UITableViewCell
+    /// SS: 使用 xib 注册 UITableViewCell
     ///
-    /// Identifier = CLassName
+    ///     Identifier = CLassName
     ///
     /// - Parameters:
     ///   - nib: nib 文件.
@@ -138,9 +138,9 @@ public extension UITableView {
         register(nib, forCellReuseIdentifier: String(describing: name))
     }
 
-    /// 批量注册同一个 bundle 下的 nib。
+    /// SS: 批量注册同一个 bundle 下的 nib。
     ///
-    /// 适用于 nib 和 Class 名称相同的 Cell
+    ///     适用于 nib 和 Class 名称相同的 Cell
     ///
     /// - Parameters:
     ///   - names: cell 类型数组
@@ -149,9 +149,9 @@ public extension UITableView {
         register(nibWithClasses: classes, at: bundleClass)
     }
 
-    /// 批量注册同一个 bundle 下的 nib。
+    /// SS: 批量注册同一个 bundle 下的 nib。
     ///
-    /// 适用于 nib 和 Class 名称相同的 Cell
+    ///     适用于 nib 和 Class 名称相同的 Cell
     ///
     /// - Parameters:
     ///   - names: cell 类型数组
@@ -169,14 +169,14 @@ public extension UITableView {
         }
     }
 
-    /// 批量注册 Cell
+    /// SS: 批量注册 Cell
     ///
     /// - Parameter names: cell 类型数组
     func register(cellWithClasses classes: UITableViewCell.Type...) {
         register(cellWithClasses: classes)
     }
 
-    /// 批量注册 Cell
+    /// SS: 批量注册 Cell
     ///
     /// - Parameter names: cell 类型数组
     func register(cellWithClasses classes: [UITableViewCell.Type]) {
@@ -185,7 +185,7 @@ public extension UITableView {
         }
     }
 
-    /// 检查IndexPath在tableView中是否有效
+    /// SS: 检查IndexPath在tableView中是否有效
     ///
     /// - Parameter indexPath: 要检查的IndexPath
     /// - Returns: 返回是否有效
@@ -196,7 +196,7 @@ public extension UITableView {
             indexPath.row < numberOfRows(inSection: indexPath.section)
     }
 
-    /// 安全地滚动到可能无效的IndexPath
+    /// SS: 安全地滚动到可能无效的IndexPath
     ///
     /// - Parameters:
     ///   - indexPath: 目标 indexPath

@@ -12,7 +12,7 @@ import Foundation
 // MARK: - Methods
 public extension UserDefaults {
 
-    /// 使用下标从UserDefaults获取对象
+    /// SS: 使用下标从UserDefaults获取对象
     ///
     /// - Parameter key: 键
     subscript(key: String) -> Any? {
@@ -24,7 +24,7 @@ public extension UserDefaults {
         }
     }
 
-    /// SwifterSwift: Float from UserDefaults.
+    /// SS: Float from UserDefaults.
     ///
     /// - Parameter forKey: key to find float for.
     /// - Returns: Float object for key (if exists).
@@ -32,7 +32,7 @@ public extension UserDefaults {
         return object(forKey: key) as? Float
     }
 
-    /// SwifterSwift: Date from UserDefaults.
+    /// SS: Date from UserDefaults.
     ///
     /// - Parameter forKey: key to find date for.
     /// - Returns: Date object for key (if exists).
@@ -40,7 +40,7 @@ public extension UserDefaults {
         return object(forKey: key) as? Date
     }
 
-    /// UserDefaults获取对象并进行JSON解析
+    /// SS: UserDefaults获取对象并进行JSON解析
     ///
     /// - Parameters:
     ///   - type: 遵守 Codable 协议的类型
@@ -52,7 +52,7 @@ public extension UserDefaults {
         return try? decoder.decode(type.self, from: data)
     }
 
-    /// 将可编码对象，编码后放入UserDefaults。
+    /// SS: 将可编码对象，编码后放入UserDefaults。
     ///
     /// - Parameters:
     ///   - object: 要保存的源对象

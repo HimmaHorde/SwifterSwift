@@ -13,7 +13,7 @@ import UIKit
 // MARK: - Methods
 public extension SCNShape {
 
-    /// SwifterSwift: Creates a shape geometry with the specified path, extrusion depth, and material.
+    /// SS: Creates a shape geometry with the specified path, extrusion depth, and material.
     ///
     /// - Parameters:
     ///   - path: The two-dimensional path forming the basis of the shape.
@@ -24,7 +24,7 @@ public extension SCNShape {
         materials = [material]
     }
 
-    /// SwifterSwift: Creates a shape geometry with the specified path, extrusion depth, and material.
+    /// SS: Creates a shape geometry with the specified path, extrusion depth, and material.
     ///
     /// - Parameters:
     ///   - path: The two-dimensional path forming the basis of the shape.

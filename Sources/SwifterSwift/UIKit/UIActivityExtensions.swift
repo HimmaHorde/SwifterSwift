@@ -12,16 +12,16 @@ import UIKit
 // MARK: - ActivityType
 public extension UIActivity.ActivityType {
 
-    /// SwifterSwift: AddToiCloudDrive
+    /// SS: AddToiCloudDrive
     static let addToiCloudDrive = UIActivity.ActivityType("com.apple.CloudDocsUI.AddToiCloudDrive")
 
-    /// SwifterSwift: WhatsApp share extension
+    /// SS: WhatsApp share extension
     static let postToWhatsApp = UIActivity.ActivityType("net.whatsapp.WhatsApp.ShareExtension")
 
-    /// SwifterSwift: LinkedIn share extension
+    /// SS: LinkedIn share extension
     static let postToLinkedIn = UIActivity.ActivityType("com.linkedin.LinkedIn.ShareExtension")
 
-    /// SwifterSwift: XING share extension
+    /// SS: XING share extension
     static let postToXing = UIActivity.ActivityType("com.xing.XING.Xing-Share")
 
 }

@@ -12,7 +12,7 @@ import UIKit
 // MARK: - Methods
 public extension UIImageView {
 
-    /// 设置网络图片
+    /// SS: 设置网络图片
     ///
     /// - Parameters:
     ///   - url: 图片网址
@@ -44,7 +44,7 @@ public extension UIImageView {
             }.resume()
     }
 
-    /// 高斯模糊，使用系统方法。
+    /// SS: 高斯模糊，使用系统方法。
     ///
     /// - Parameter style: UIBlurEffectStyle (default is .light).
     func blur(withStyle style: UIBlurEffect.Style = .light) {
@@ -56,7 +56,7 @@ public extension UIImageView {
         clipsToBounds = true
     }
 
-    /// SwifterSwift: Blurred version of an image view
+    /// SS: Blurred version of an image view
     ///
     /// - Parameter style: UIBlurEffectStyle (default is .light).
     /// - Returns: blurred version of self.

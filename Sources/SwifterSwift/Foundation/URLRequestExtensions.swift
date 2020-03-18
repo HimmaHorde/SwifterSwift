@@ -16,7 +16,7 @@ import FoundationNetworking
 // MARK: - Initializers
 public extension URLRequest {
 
-    /// url 字符串直接生成 Request
+    /// SS: url 字符串直接生成 Request
     ///
     /// - Parameter urlString: url 字符串
     init?(urlString: String) {
@@ -24,7 +24,7 @@ public extension URLRequest {
         self.init(url: url)
     }
 
-    /// SwifterSwift: cURL command representation of this URL request.
+    /// SS: cURL command representation of this URL request.
     var curlString: String {
 
         guard let url = url else { return "" }

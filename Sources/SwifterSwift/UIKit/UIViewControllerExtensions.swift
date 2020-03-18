@@ -12,7 +12,7 @@ import UIKit
 // MARK: - Properties
 public extension UIViewController {
 
-    /// 检查 ViewController 是否在屏幕上而不是隐藏的。
+    /// SS: 检查 ViewController 是否在屏幕上而不是隐藏的。
     var isVisible: Bool {
         // http://stackoverflow.com/questions/2777438/how-to-tell-if-uiviewcontrollers-view-is-visible
         /*
@@ -28,7 +28,7 @@ public extension UIViewController {
 // MARK: - Methods
 public extension UIViewController {
 
-    /// 添加监听
+    /// SS: 添加监听
     ///
     /// - Parameters:
     ///   - name: notification 名字
@@ -37,19 +37,19 @@ public extension UIViewController {
         NotificationCenter.default.addObserver(self, selector: selector, name: name, object: nil)
     }
 
-    /// 移除指定 notification。
+    /// SS: 移除指定 notification。
     ///
     /// - Parameter name: 通知名。
     func removeNotificationObserver(name: Notification.Name) {
         NotificationCenter.default.removeObserver(self, name: name, object: nil)
     }
 
-    /// 移除所有的监听
+    /// SS: 移除所有的监听
     func removeNotificationsObserver() {
         NotificationCenter.default.removeObserver(self)
     }
 
-    /// 快速显示一个系统 alert。
+    /// SS: 快速显示一个系统 alert。
     ///
     /// - Parameters:
     ///   - title: alert 标题
@@ -82,7 +82,7 @@ public extension UIViewController {
         return alertController
     }
 
-    /// 添加一个 childViewController，并自动添加到指定的 View 上
+    /// SS: 添加一个 childViewController，并自动添加到指定的 View 上
     ///
     /// - Parameters:
     ///   - child: 需要添加的 childViewController
@@ -93,7 +93,7 @@ public extension UIViewController {
         child.didMove(toParent: self)
     }
 
-    /// 移除已添加的 childViewController
+    /// SS: 移除已添加的 childViewController
     func removeViewAndControllerFromParentViewController() {
         guard parent != nil else { return }
 
@@ -103,7 +103,7 @@ public extension UIViewController {
     }
 
     #if os(iOS)
-    /// SwifterSwift: Helper method to present a UIViewController as a popover.
+    /// SS: Helper method to present a UIViewController as a popover.
     ///
     /// - Parameters:
     ///   - popoverContent: the view controller to add as a popover.

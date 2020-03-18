@@ -9,7 +9,7 @@
 // MARK: - Properties
 public extension Bool {
 
-    /// true 返回 1 ，false 返回 0
+    /// SS: true 返回 1 ，false 返回 0
     ///
     ///        false.int -> 0
     ///        true.int -> 1
@@ -18,7 +18,7 @@ public extension Bool {
         return self ? 1 : 0
     }
 
-    /// 返回true false 的字符串
+    /// SS: 返回true false 的字符串
     ///
     ///        false.string -> "false"
     ///        true.string -> "true"

@@ -19,18 +19,18 @@ import Glibc
 // MARK: - Properties
 public extension Double {
 
-    /// 转换为 Int
+    /// SS: 转换为 Int
     var int: Int {
         return Int(self)
     }
 
-    /// 转换为 Float
+    /// SS: 转换为 Float
     var float: Float {
         return Float(self)
     }
 
     #if canImport(CoreGraphics)
-    /// 转换为 CGFloat.
+    /// SS: 转换为 CGFloat.
     var cgFloat: CGFloat {
         return CGFloat(self)
     }
@@ -42,7 +42,7 @@ public extension Double {
 
 precedencegroup PowerPrecedence { higherThan: MultiplicationPrecedence }
 infix operator ** : PowerPrecedence
-/// 指数幂
+/// SS: 指数幂
 ///
 /// - Parameters:
 ///   - lhs: 底数。
@@ -55,7 +55,7 @@ func ** (lhs: Double, rhs: Double) -> Double {
 
 // swiftlint:disable identifier_name
 prefix operator √
-/// 二次根号
+/// SS: 二次根号
 ///
 /// - Parameter double: 开根号的数
 /// - Returns: 平方根

@@ -8,7 +8,7 @@
 
 public extension Sequence {
 
-    /// 检查所有元素是否遵守指定规则
+    /// SS: 检查所有元素是否遵守指定规则
     ///
     ///        [2, 2, 4].all(matching: {$0 % 2 == 0}) -> true
     ///        [1,2, 2, 4].all(matching: {$0 % 2 == 0}) -> false
@@ -19,7 +19,7 @@ public extension Sequence {
         return try !contains { try !condition($0) }
     }
 
-    /// 检查集合中是否没有与条件匹配的元素。
+    /// SS: 检查集合中是否没有与条件匹配的元素。
     ///
     ///        [2, 2, 4].none(matching: {$0 % 2 == 0}) -> false
     ///        [1, 3, 5, 7].none(matching: {$0 % 2 == 0}) -> true
@@ -30,7 +30,7 @@ public extension Sequence {
         return try !contains { try condition($0) }
     }
 
-    /// SwifterSwift: Check if any element in collection match a conditon.
+    /// SS: Check if any element in collection match a conditon.
     ///
     ///        [2, 2, 4].any(matching: {$0 % 2 == 0}) -> false
     ///        [1, 3, 5, 7].any(matching: {$0 % 2 == 0}) -> true
@@ -41,7 +41,7 @@ public extension Sequence {
         return try contains { try condition($0) }
     }
 
-    /// SwifterSwift: Get last element that satisfies a conditon.
+    /// SS: Get last element that satisfies a conditon.
     ///
     ///        [2, 2, 4, 7].last(where: {$0 % 2 == 0}) -> 4
     ///
@@ -54,7 +54,7 @@ public extension Sequence {
         return nil
     }
 
-    /// SwifterSwift: Filter elements based on a rejection condition.
+    /// SS: Filter elements based on a rejection condition.
     ///
     ///        [2, 2, 4, 7].reject(where: {$0 % 2 == 0}) -> [7]
     ///
@@ -64,7 +64,7 @@ public extension Sequence {
         return try filter { return try !condition($0) }
     }
 
-    /// SwifterSwift: Get element count based on condition.
+    /// SS: Get element count based on condition.
     ///
     ///        [2, 2, 4, 7].count(where: {$0 % 2 == 0}) -> 3
     ///
@@ -78,7 +78,7 @@ public extension Sequence {
         return count
     }
 
-    /// SwifterSwift: Iterate over a collection in reverse order. (right to left)
+    /// SS: Iterate over a collection in reverse order. (right to left)
     ///
     ///        [0, 2, 4, 7].forEachReversed({ print($0)}) -> // Order of print: 7,4,2,0
     ///
@@ -87,7 +87,7 @@ public extension Sequence {
         try reversed().forEach(body)
     }
 
-    /// SwifterSwift: Calls the given closure with each element where condition is true.
+    /// SS: Calls the given closure with each element where condition is true.
     ///
     ///        [0, 2, 4, 7].forEach(where: {$0 % 2 == 0}, body: { print($0)}) -> // print: 0, 2, 4
     ///
@@ -100,7 +100,7 @@ public extension Sequence {
         }
     }
 
-    /// SwifterSwift: Reduces an array while returning each interim combination.
+    /// SS: Reduces an array while returning each interim combination.
     ///
     ///     [1, 2, 3].accumulate(initial: 0, next: +) -> [1, 3, 6]
     ///
@@ -116,7 +116,7 @@ public extension Sequence {
         }
     }
 
-    /// SwifterSwift: Filtered and map in a single operation.
+    /// SS: Filtered and map in a single operation.
     ///
     ///     [1,2,3,4,5].filtered({ $0 % 2 == 0 }, map: { $0.string }) -> ["2", "4"]
     ///
@@ -133,7 +133,7 @@ public extension Sequence {
         })
     }
 
-    /// SwifterSwift: Get the only element based on a condition.
+    /// SS: Get the only element based on a condition.
     ///
     ///     [].single(where: {_ in true}) -> nil
     ///     [4].single(where: {_ in true}) -> 4
@@ -154,7 +154,7 @@ public extension Sequence {
         return singleElement
     }
 
-    /// SwifterSwift: Remove duplicate elements based on condition.
+    /// SS: Remove duplicate elements based on condition.
     ///
     ///        [1, 2, 1, 3, 2].withoutDuplicates { $0 } -> [1, 2, 3]
     ///        [(1, 4), (2, 2), (1, 3), (3, 2), (2, 1)].withoutDuplicates { $0.0 } -> [(1, 4), (2, 2), (3, 2)]
@@ -167,7 +167,7 @@ public extension Sequence {
         return try filter { set.insert(try transform($0)).inserted }
     }
 
-    /// SwifterSwift: Separates all items into 2 lists based on a given predicate. The first list contains all items for which the specified condition evaluates to true. The second list contains those that don't.
+    /// SS: Separates all items into 2 lists based on a given predicate. The first list contains all items for which the specified condition evaluates to true. The second list contains those that don't.
     ///
     ///     let (even, odd) = [0, 1, 2, 3, 4, 5].divided { $0 % 2 == 0 }
     ///     let (minors, adults) = people.divided { $0.age < 18 }
@@ -186,7 +186,7 @@ public extension Sequence {
         return (Array(matching), Array(nonMatching))
     }
 
-    /// SwifterSwift: Return a sorted array based on a key path and a compare function.
+    /// SS: Return a sorted array based on a key path and a compare function.
     ///
     /// - Parameter keyPath: Key path to sort by.
     /// - Parameter compare: Comparation function that will determine the ordering.
@@ -195,7 +195,7 @@ public extension Sequence {
         return sorted { compare($0[keyPath: keyPath], $1[keyPath: keyPath]) }
     }
 
-    /// SwifterSwift: Return a sorted array based on a key path.
+    /// SS: Return a sorted array based on a key path.
     ///
     /// - Parameter keyPath: Key path to sort by. The key path type must be Comparable.
     /// - Returns: The sorted array.
@@ -203,7 +203,7 @@ public extension Sequence {
         return sorted { $0[keyPath: keyPath] < $1[keyPath: keyPath] }
     }
 
-    /// SwifterSwift: Returns a sorted sequence based on two key paths. The second one will be used in case the values of the first one match.
+    /// SS: Returns a sorted sequence based on two key paths. The second one will be used in case the values of the first one match.
     ///
     /// - Parameters:
     ///     - keyPath1: Key path to sort by. Must be Comparable.
@@ -218,7 +218,7 @@ public extension Sequence {
         }
     }
 
-    /// SwifterSwift: Returns a sorted sequence based on three key paths. Whenever the values of one key path match, the next one will be used.
+    /// SS: Returns a sorted sequence based on three key paths. Whenever the values of one key path match, the next one will be used.
     ///
     /// - Parameters:
     ///     - keyPath1: Key path to sort by. Must be Comparable.
@@ -238,7 +238,7 @@ public extension Sequence {
         }
     }
 
-    /// SwifterSwift: Sum of a `AdditiveArithmetic` property of each `Element` in a `Sequence`.
+    /// SS: Sum of a `AdditiveArithmetic` property of each `Element` in a `Sequence`.
     ///
     ///     ["James", "Wade", "Bryant"].sum(for: \.count) -> 15
     ///
@@ -249,7 +249,7 @@ public extension Sequence {
         return reduce(.zero) { $0 + $1[keyPath: keyPath] }
     }
 
-    /// SwifterSwift: Returns an array containing the results of mapping the given key path over the sequence’s elements.
+    /// SS: Returns an array containing the results of mapping the given key path over the sequence’s elements.
     ///
     /// - Parameter keyPath: Key path to map.
     /// - Returns: An array containing the results of mapping.
@@ -257,7 +257,7 @@ public extension Sequence {
         return map { $0[keyPath: keyPath] }
     }
 
-    /// SwifterSwift: Returns an array containing the non-nil results of mapping the given key path over the sequence’s elements.
+    /// SS: Returns an array containing the non-nil results of mapping the given key path over the sequence’s elements.
     ///
     /// - Parameter keyPath: Key path to map.
     /// - Returns: An array containing the non-nil results of mapping.
@@ -265,7 +265,7 @@ public extension Sequence {
         return compactMap { $0[keyPath: keyPath] }
     }
 
-    /// SwifterSwift: Returns an array containing the results of filtering the sequence’s elements by a boolean key path.
+    /// SS: Returns an array containing the results of filtering the sequence’s elements by a boolean key path.
     ///
     /// - Parameter keyPath: Boolean key path. If it's value is `true` the element will be added to result.
     /// - Returns: An array containing filtered elements.
@@ -276,7 +276,7 @@ public extension Sequence {
 
 public extension Sequence where Element: Equatable {
 
-    /// SwifterSwift: Check if array contains an array of elements.
+    /// SS: Check if array contains an array of elements.
     ///
     ///        [1, 2, 3, 4, 5].contains([1, 2]) -> true
     ///        [1.2, 2.3, 4.5, 3.4, 4.5].contains([2, 6]) -> false
@@ -298,7 +298,7 @@ public extension Sequence where Element: Equatable {
 
 public extension Sequence where Element: Hashable {
 
-    /// SwifterSwift: Check whether a sequence contains duplicates.
+    /// SS: Check whether a sequence contains duplicates.
     ///
     /// - Returns: true if the receiver contains duplicates.
     func containsDuplicates() -> Bool {
@@ -311,7 +311,7 @@ public extension Sequence where Element: Hashable {
         return false
     }
 
-    /// SwifterSwift: Getting the duplicated elements in a sequence.
+    /// SS: Getting the duplicated elements in a sequence.
     ///
     ///     [1, 1, 2, 2, 3, 3, 3, 4, 5].duplicates().sorted() -> [1, 2, 3])
     ///     ["h", "e", "l", "l", "o"].duplicates().sorted() -> ["l"])
@@ -333,7 +333,7 @@ public extension Sequence where Element: Hashable {
 // MARK: - Methods (Numeric)
 public extension Sequence where Element: Numeric {
 
-    /// 数字序列所有元素的和
+    /// SS: 数字序列所有元素的和
     ///
     ///        [1, 2, 3, 4, 5].sum() -> 15
     func sum() -> Element {

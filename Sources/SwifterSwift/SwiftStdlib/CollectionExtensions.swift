@@ -14,7 +14,7 @@ import Dispatch
 public extension Collection {
 
     #if canImport(Dispatch)
-    /// ss:并发的形式为每个元素执行闭包
+    /// SS: 并发的形式为每个元素执行闭包
     ///
     ///        array.forEachInParallel { item in
     ///            print(item)
@@ -30,7 +30,7 @@ public extension Collection {
     }
     #endif
 
-    /// ss:安排通过下表访问集合的元素
+    /// SS: 安排通过下表访问集合的元素
     ///
     ///        let arr = [1, 2, 3, 4, 5]
     ///        arr[safe: 1] -> 2
@@ -41,7 +41,7 @@ public extension Collection {
         return indices.contains(index) ? self[index] : nil
     }
 
-    /// ss:返回一个二维数组，按指定的大小均匀分割元数组，最后一个数组是剩余的元素
+    /// SS: 返回一个二维数组，按指定的大小均匀分割元数组，最后一个数组是剩余的元素
     ///
     ///     [0, 2, 4, 7].group(by: 2) -> [[0, 2], [4, 7]]
     ///     [0, 2, 4, 7, 6].group(by: 2) -> [[0, 2], [4, 7], [6]]
@@ -65,7 +65,7 @@ public extension Collection {
 
 // MARK: - Methods (Int)
 public extension Collection where Index == Int {
-    /// 获取满足条件的所有索引
+    /// SS: 获取满足条件的所有索引
     ///
     ///     [1, 7, 1, 2, 4, 1, 8].indices(where: { $0 == 1 }) -> [0, 2, 5]
     ///
@@ -79,7 +79,7 @@ public extension Collection where Index == Int {
         return indicies.isEmpty ? nil : indicies
     }
 
-    /// 集合分割成指定大小，调用指定闭包。
+    /// SS: 集合分割成指定大小，调用指定闭包。
     ///
     ///     [0, 2, 4, 7].forEach(slice: 2) { print($0) } -> // print: [0, 2], [4, 7]
     ///     [0, 2, 4, 7, 6].forEach(slice: 2) { print($0) } -> // print: [0, 2], [4, 7], [6]
@@ -105,7 +105,7 @@ public extension Collection where Element: Equatable, Index == Int {
 // MARK: - Methods (Integer)
 public extension Collection where Element == IntegerLiteralType, Index == Int {
 
-    /// 整数集合求平均值
+    /// SS: 整数集合求平均值
     ///
     /// - Returns: 数组的平均值。
     func average() -> Double {
@@ -118,7 +118,7 @@ public extension Collection where Element == IntegerLiteralType, Index == Int {
 // MARK: - Methods (FloatingPoint)
 public extension Collection where Element: FloatingPoint {
 
-    /// 小数集合的平均值
+    /// SS: 小数集合的平均值
     ///
     ///        [1.2, 2.3, 4.5, 3.4, 4.5].average() = 3.18
     ///

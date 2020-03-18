@@ -12,7 +12,7 @@ import UIKit
 // MARK: - Properties
 public extension UISegmentedControl {
 
-    /// SwifterSwift: Segments titles.
+    /// SS: Segments titles.
     var segmentTitles: [String] {
         get {
             let range = 0..<numberOfSegments
@@ -26,7 +26,7 @@ public extension UISegmentedControl {
         }
     }
 
-    /// SwifterSwift: Segments images.
+    /// SS: Segments images.
     var segmentImages: [UIImage] {
         get {
             let range = 0..<numberOfSegments

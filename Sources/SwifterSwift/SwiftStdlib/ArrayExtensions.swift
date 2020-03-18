@@ -9,7 +9,7 @@
 // MARK: - Methods
 public extension Array {
 
-    /// ss: 在数组的开头插入一个元素。
+    /// SS: 在数组的开头插入一个元素。
     ///
     ///     [2, 3, 4, 5].prepend(1) -> [1, 2, 3, 4, 5]
     ///     ["e", "l", "l", "o"].prepend("h") -> ["h", "e", "l", "l", "o"]
@@ -19,7 +19,7 @@ public extension Array {
         insert(newElement, at: 0)
     }
 
-    /// ss: 安全交换两个位置的值。
+    /// SS: 安全交换两个位置的值。
     ///
     ///        [1, 2, 3, 4, 5].safeSwap(from: 3, to: 0) -> [4, 2, 3, 1, 5]
     ///        ["h", "e", "l", "l", "o"].safeSwap(from: 1, to: 0) -> ["e", "h", "l", "l", "o"]
@@ -34,7 +34,7 @@ public extension Array {
         swapAt(i, j)
     }
 
-    /// ss: 根据键路径对数组进行排序，就像另一个数组排序一样。如果另一个数组不包含某个值，它将最后排序。
+    /// SS: 根据键路径对数组进行排序，就像另一个数组排序一样。如果另一个数组不包含某个值，它将最后排序。
     ///
     ///        [MyStruct(x: 3), MyStruct(x: 1), MyStruct(x: 2)].sorted(like: [1, 2, 3], keyPath: \.x)
     ///            -> [MyStruct(x: 1), MyStruct(x: 2), MyStruct(x: 3)]
@@ -56,7 +56,7 @@ public extension Array {
 // MARK: - Methods (Equatable)
 public extension Array where Element: Equatable {
 
-    /// ss: 移除数组中指定元素。
+    /// SS: 移除数组中指定元素。
     ///
     ///        [1, 2, 2, 3, 4, 5].removeAll(2) -> [1, 3, 4, 5]
     ///        ["h", "e", "l", "l", "o"].removeAll("l") -> ["h", "e", "o"]
@@ -69,7 +69,7 @@ public extension Array where Element: Equatable {
         return self
     }
 
-    /// ss: 移除数组中指定一组元素。
+    /// SS: 移除数组中指定一组元素。
     ///
     ///        [1, 2, 2, 3, 4, 5].removeAll([2,5]) -> [1, 3, 4]
     ///        ["h", "e", "l", "l", "o"].removeAll(["l", "h"]) -> ["e", "o"]
@@ -83,7 +83,7 @@ public extension Array where Element: Equatable {
         return self
     }
 
-    /// ss: 去除数组中的重复元素
+    /// SS: 去除数组中的重复元素
     ///
     ///        [1, 2, 2, 3, 4, 5].removeDuplicates() -> [1, 2, 3, 4, 5]
     ///        ["h", "e", "l", "l", "o"]. removeDuplicates() -> ["h", "e", "l", "o"]
@@ -100,7 +100,7 @@ public extension Array where Element: Equatable {
         return self
     }
 
-    /// ss: 返回一个没有重复数据的数组。
+    /// SS: 返回一个没有重复数据的数组。
     ///
     ///     [1, 1, 2, 2, 3, 3, 3, 4, 5].withoutDuplicates() -> [1, 2, 3, 4, 5])
     ///     ["h", "e", "l", "l", "o"].withoutDuplicates() -> ["h", "e", "l", "o"])
@@ -116,7 +116,7 @@ public extension Array where Element: Equatable {
         }
     }
 
-    /// ss: 返回一个元素指定KeyPath的值没有重复的数组。
+    /// SS: 返回一个元素指定KeyPath的值没有重复的数组。
     ///
     /// - Parameter path: 指定一个keyPath去比价，值必须是可比较的。
     /// - Returns: an array of unique elements.
@@ -128,7 +128,7 @@ public extension Array where Element: Equatable {
         }
     }
 
-    /// ss: 返回一个元素指定KeyPath的值没有重复的数组。
+    /// SS: 返回一个元素指定KeyPath的值没有重复的数组。
     ///
     /// - Parameter path: 指定一个keyPath去比价，值必须是 Hashable.
     /// - Returns: an array of unique elements.

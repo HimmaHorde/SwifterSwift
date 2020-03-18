@@ -9,7 +9,7 @@
 // MARK: - Methods
 public extension Comparable {
 
-    /// 判断元素是否在闭区间内。
+    /// SS: 判断元素是否在闭区间内。
     ///
     /// - Parameters:
     ///   - value: 元素值。
@@ -19,7 +19,7 @@ public extension Comparable {
         return pattern ~= value
     }
 
-    /// 判断元素是否在闭区间内。
+    /// SS: 判断元素是否在闭区间内。
     ///    1.isBetween(5...7) // false
     ///    7.isBetween(6...12) // true
     ///    date.isBetween(date1...date2)
@@ -34,7 +34,7 @@ public extension Comparable {
         return range ~= self
     }
 
-    /// 值在闭区间内返回self，否则返回闭区间的 Lower 或者 Upper
+    /// SS: 值在闭区间内返回self，否则返回闭区间的 Lower 或者 Upper
     ///
     ///     1.clamped(to: 3...8) // 3
     ///     4.clamped(to: 3...7) // 4

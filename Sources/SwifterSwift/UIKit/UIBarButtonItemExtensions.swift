@@ -12,7 +12,7 @@ import UIKit
 // MARK: - Properties
 public extension UIBarButtonItem {
 
-    /// SwifterSwift: Creates a flexible space UIBarButtonItem
+    /// SS: Creates a flexible space UIBarButtonItem
     static var flexibleSpace: UIBarButtonItem {
         return UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
     }
@@ -22,7 +22,7 @@ public extension UIBarButtonItem {
 // MARK: - Methods
 public extension UIBarButtonItem {
 
-    /// 添加点击事件
+    /// SS: 添加点击事件
     ///
     /// - Parameters:
     ///   - target: target.
@@ -32,7 +32,7 @@ public extension UIBarButtonItem {
         self.action = action
     }
 
-    /// SwifterSwift: Creates a fixed space UIBarButtonItem with a specific width
+    /// SS: Creates a fixed space UIBarButtonItem with a specific width
     ///
     /// - Parameter width: Width of the UIBarButtonItem
     static func fixedSpace(width: CGFloat) -> UIBarButtonItem {

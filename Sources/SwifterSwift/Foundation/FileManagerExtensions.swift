@@ -11,7 +11,7 @@ import Foundation
 
 public extension FileManager {
 
-    /// 读取文件并 JSON 解析
+    /// SS: 读取文件并 JSON 解析
     ///
     /// - Parameters:
     ///   - path: JSON 文件路径。
@@ -29,7 +29,7 @@ public extension FileManager {
     }
 
     #if !os(Linux)
-    /// 读取项目内 JSON 文件并解析
+    /// SS: 读取项目内 JSON 文件并解析
     ///
     /// - Parameters:
     ///   - filename: 要读取的文件.
@@ -57,9 +57,9 @@ public extension FileManager {
     }
     #endif
 
-    /// 创建用于保存临时文件的唯一目录
+    /// SS: 创建用于保存临时文件的唯一目录
     ///
-    /// 该目录可用于创建用于公共目的的多个临时文件
+    ///     该目录可用于创建用于公共目的的多个临时文件
     ///
     ///     let tempDirectory = try fileManager.createTemporaryDirectory()
     ///     let tempFile1URL = tempDirectory.appendingPathComponent(ProcessInfo().globallyUniqueString)

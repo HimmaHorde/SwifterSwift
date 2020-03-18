@@ -9,13 +9,11 @@
 import XCTest
 @testable import SwifterSwift
 
-// swiftlint:disable identifier_name
 private struct City: Decodable {
     var id: Int
     var name: String
     var url: URL
 }
-// swiftlint:enable identifier_name
 
 final class DecodableExtensionsTests: XCTestCase {
 

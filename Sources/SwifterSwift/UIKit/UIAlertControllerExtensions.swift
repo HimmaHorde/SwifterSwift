@@ -16,7 +16,7 @@ import AudioToolbox
 // MARK: - Methods
 public extension UIAlertController {
 
-    /// keyWindow 的根视图弹出一个警告框。
+    /// SS: keyWindow 的根视图弹出一个警告框。
     ///
     /// - Parameters:
     ///   - animated: 是否显示动画。
@@ -36,7 +36,7 @@ public extension UIAlertController {
         }
     }
 
-    /// 为自身添加一个 action 对象
+    /// SS: 为自身添加一个 action 对象
     ///
     /// - Parameters:
     ///   - title: action 的标题
@@ -52,7 +52,7 @@ public extension UIAlertController {
         return action
     }
 
-    /// 为自身添加一个文本输入框
+    /// SS: 为自身添加一个文本输入框
     ///
     /// - Parameters:
     ///   - text: 文本框文字 (默认 nil)
@@ -74,7 +74,7 @@ public extension UIAlertController {
 // MARK: - Initializers
 public extension UIAlertController {
 
-    /// 创建只有一个确认按钮的提示框.
+    /// SS: 创建只有一个确认按钮的提示框.
     ///
     /// - Parameters:
     ///   - title: 标题.
@@ -90,7 +90,7 @@ public extension UIAlertController {
         }
     }
 
-    /// SwifterSwift: Create new error alert view controller from Error with default OK action.
+    /// SS: Create new error alert view controller from Error with default OK action.
     ///
     /// - Parameters:
     ///   - title: alert controller's title (默认 "Error").

@@ -12,9 +12,9 @@ import UIKit
 // MARK: - Methods
 public extension UINavigationController {
 
-    /// nav pop 添加回调事件。
+    /// SS: nav pop 添加回调事件。
     ///
-    /// 使用 `CATransaction.begin()` 创建显式事务，事件完成后发送 `commit`，实现回调
+    ///     使用 `CATransaction.begin()` 创建显式事务，事件完成后发送 `commit`，实现回调
     ///
     /// - Parameters:
     ///   - animated: 是否使用动画（默认 true）.
@@ -27,7 +27,7 @@ public extension UINavigationController {
         CATransaction.commit()
     }
 
-    /// Push viewController 并添加回调事件。
+    /// SS: Push viewController 并添加回调事件。
     ///
     /// - Parameters:
     ///   - viewController: viewController to push.
@@ -40,7 +40,7 @@ public extension UINavigationController {
         CATransaction.commit()
     }
 
-    /// 设置导航栏透明。
+    /// SS: 设置导航栏透明。
     ///
     /// - Parameter tint: tint color (default is .white).
     func makeTransparent(withTint tint: UIColor = .white) {

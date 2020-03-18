@@ -9,7 +9,7 @@
 // MARK: - Methods
 public extension BidirectionalCollection {
 
-    /// 通过下标获取集合的元素，正整数下标正向查找，负数反向查找
+    /// SS: 通过下标获取集合的元素，正整数下标正向查找，负数反向查找
     ///
     ///        let arr = [1, 2, 3, 4, 5]
     ///        arr[offset: 1] -> 2

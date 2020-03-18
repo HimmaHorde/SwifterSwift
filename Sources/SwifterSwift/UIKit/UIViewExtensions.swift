@@ -153,7 +153,7 @@ public extension UIView {
         }
     }
 
-    /// 对当前 View 截屏
+    /// SS: 对当前 View 截屏
     var screenshot: UIImage? {
         UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, 0)
         defer {
@@ -180,7 +180,7 @@ public extension UIView {
 // MARK: - Methods
 public extension UIView {
 
-    /// 递归查找第一响应者（自身和其 subviews ）
+    /// SS: 递归查找第一响应者（自身和其 subviews ）
     func firstResponder() -> UIView? {
         var views = [UIView](arrayLiteral: self)
         var index = 0

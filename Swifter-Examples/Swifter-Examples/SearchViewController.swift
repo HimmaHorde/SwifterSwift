@@ -37,7 +37,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     }
 
     // MARK: privatemacCatalyst
-    /// 开始新的请求
+    /// SS: 开始新的请求
     @objc func search() {
         print(textField.text ?? "")
         searchLabel.text = textField.text

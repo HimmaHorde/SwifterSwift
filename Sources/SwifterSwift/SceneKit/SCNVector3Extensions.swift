@@ -7,10 +7,10 @@
 //
 
 #if os(OSX)
-/// SwifterSwift: CGFloat.
+/// SS: CGFloat.
 public typealias SceneKitFloat = CGFloat
 #else
-/// SwifterSwift: Float.
+/// SS: Float.
 public typealias SceneKitFloat = Float
 #endif
 
@@ -20,7 +20,7 @@ import SceneKit
 // MARK: - Methods
 public extension SCNVector3 {
 
-    /// SwifterSwift: Returns the absolute values of the vector's components.
+    /// SS: Returns the absolute values of the vector's components.
     ///
     ///         SCNVector3(2, -3, -6).abs -> SCNVector3(2, 3, 6)
     ///
@@ -28,7 +28,7 @@ public extension SCNVector3 {
         return SCNVector3(abs(x), abs(y), abs(z))
     }
 
-    /// SwifterSwift: Returns the length of the vector.
+    /// SS: Returns the length of the vector.
     ///
     ///         SCNVector3(2, 3, 6).length -> 7
     ///
@@ -41,7 +41,7 @@ public extension SCNVector3 {
 // MARK: - Operators
 public extension SCNVector3 {
 
-    /// SwifterSwift: Add two SCNVector3s.
+    /// SS: Add two SCNVector3s.
     ///
     ///     SCNVector3(10, 10, 10) + SCNVector3(10, 20, -30) -> SCNVector3(20, 30, -20)
     ///
@@ -53,7 +53,7 @@ public extension SCNVector3 {
         return SCNVector3(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z)
     }
 
-    /// SwifterSwift: Add a SCNVector3 to self.
+    /// SS: Add a SCNVector3 to self.
     ///
     ///     SCNVector3(10, 10, 10) += SCNVector3(10, 20, -30) -> SCNVector3(20, 30, -20)
     ///
@@ -65,7 +65,7 @@ public extension SCNVector3 {
         lhs = lhs + rhs
     }
 
-    /// SwifterSwift: Subtract two SCNVector3s.
+    /// SS: Subtract two SCNVector3s.
     ///
     ///     SCNVector3(10, 10, 10) - SCNVector3(10, 20, -30) -> SCNVector3(0, -10, 40)
     ///
@@ -77,7 +77,7 @@ public extension SCNVector3 {
         return SCNVector3(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z)
     }
 
-    /// SwifterSwift: Subtract a SCNVector3 from self.
+    /// SS: Subtract a SCNVector3 from self.
     ///
     ///     SCNVector3(10, 10, 10) -= SCNVector3(10, 20, -30) -> SCNVector3(0, -10, 40)
     ///
@@ -89,7 +89,7 @@ public extension SCNVector3 {
         lhs = lhs - rhs
     }
 
-    /// SwifterSwift: Multiply a SCNVector3 with a scalar
+    /// SS: Multiply a SCNVector3 with a scalar
     ///
     ///     SCNVector3(10, 20, -30) * 3 -> SCNVector3(30, 60, -90)
     ///
@@ -101,7 +101,7 @@ public extension SCNVector3 {
         return SCNVector3(vector.x * scalar, vector.y * scalar, vector.z * scalar)
     }
 
-    /// SwifterSwift: Multiply self with a scalar
+    /// SS: Multiply self with a scalar
     ///
     ///     SCNVector3(10, 20, -30) *= 3 -> SCNVector3(30, 60, -90)
     ///
@@ -114,7 +114,7 @@ public extension SCNVector3 {
         vector = vector * scalar
     }
 
-    /// SwifterSwift: Multiply a scalar with a SCNVector3
+    /// SS: Multiply a scalar with a SCNVector3
     ///
     ///     3 * SCNVector3(10, 20, -30) -> SCNVector3(30, 60, -90)
     ///

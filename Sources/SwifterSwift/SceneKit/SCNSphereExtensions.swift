@@ -12,14 +12,14 @@ import SceneKit
 // MARK: - Methods
 public extension SCNSphere {
 
-    /// SwifterSwift: Creates a sphere geometry with the specified diameter.
+    /// SS: Creates a sphere geometry with the specified diameter.
     ///
     /// - Parameter diameter: The diameter of the sphere in its local coordinate space.
     convenience init(diameter: CGFloat) {
         self.init(radius: diameter / 2)
     }
 
-    /// SwifterSwift: Creates a sphere geometry with the specified radius and material.
+    /// SS: Creates a sphere geometry with the specified radius and material.
     ///
     /// - Parameters:
     ///   - radius: The radius of the sphere in its local coordinate space.
@@ -29,7 +29,7 @@ public extension SCNSphere {
         materials = [material]
     }
 
-    /// SwifterSwift: Creates a sphere geometry with the specified radius and material color.
+    /// SS: Creates a sphere geometry with the specified radius and material color.
     ///
     /// - Parameters:
     ///   - radius: The radius of the sphere in its local coordinate space.
@@ -38,7 +38,7 @@ public extension SCNSphere {
         self.init(radius: radius, material: SCNMaterial(color: color))
     }
 
-    /// SwifterSwift: Creates a sphere geometry with the specified diameter and material.
+    /// SS: Creates a sphere geometry with the specified diameter and material.
     ///
     /// - Parameters:
     ///   - diameter: The diameter of the sphere in its local coordinate space.
@@ -48,7 +48,7 @@ public extension SCNSphere {
         materials = [material]
     }
 
-    /// SwifterSwift: Creates a sphere geometry with the specified diameter and material color.
+    /// SS: Creates a sphere geometry with the specified diameter and material color.
     ///
     /// - Parameters:
     ///   - diameter: The diameter of the sphere in its local coordinate space.

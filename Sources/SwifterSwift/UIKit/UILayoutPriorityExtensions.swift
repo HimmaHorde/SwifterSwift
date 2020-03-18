@@ -13,7 +13,7 @@ extension UILayoutPriority: ExpressibleByFloatLiteral, ExpressibleByIntegerLiter
 
     // MARK: - Initializers
 
-    /// SwifterSwift: Initialize `UILayoutPriority` with a float literal
+    /// SS: Initialize `UILayoutPriority` with a float literal
     ///
     ///     constraint.priority = 0.5
     ///
@@ -22,7 +22,7 @@ extension UILayoutPriority: ExpressibleByFloatLiteral, ExpressibleByIntegerLiter
         self.init(rawValue: value)
     }
 
-    /// SwifterSwift: Initialize `UILayoutPriority` with an integer literal
+    /// SS: Initialize `UILayoutPriority` with an integer literal
     ///
     ///     constraint.priority = 5
     ///

@@ -10,7 +10,7 @@ import Foundation
 
 public extension StringProtocol {
 
-    /// SwifterSwift: The longest common suffix.
+    /// SS: The longest common suffix.
     ///
     ///        "Hello world!".commonSuffix(with: "It's cold!") = "ld!"
     ///

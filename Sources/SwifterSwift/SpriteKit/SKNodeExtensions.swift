@@ -12,7 +12,7 @@ import SpriteKit
 // MARK: - Methods
 public extension SKNode {
 
-    /// SwifterSwift: Return an array of all SKNode descendants
+    /// SS: Return an array of all SKNode descendants
     ///
     ///         mySKNode.descendants() -> [childNodeOne, childNodeTwo]
     ///

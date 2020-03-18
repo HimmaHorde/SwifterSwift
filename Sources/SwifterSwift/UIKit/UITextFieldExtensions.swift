@@ -12,19 +12,19 @@ import UIKit
 // MARK: - Enums
 public extension UITextField {
 
-    /// SwifterSwift: UITextField text type.
+    /// SS: UITextField text type.
     ///
     /// - emailAddress: UITextField is used to enter email addresses.
     /// - password: UITextField is used to enter passwords.
     /// - generic: UITextField is used to enter generic text.
     enum TextType {
-        /// SwifterSwift: UITextField is used to enter email addresses.
+        /// SS: UITextField is used to enter email addresses.
         case emailAddress
 
-        /// SwifterSwift: UITextField is used to enter passwords.
+        /// SS: UITextField is used to enter passwords.
         case password
 
-        /// SwifterSwift: UITextField is used to enter generic text.
+        /// SS: UITextField is used to enter generic text.
         case generic
     }
 
@@ -33,7 +33,7 @@ public extension UITextField {
 // MARK: - Properties
 public extension UITextField {
 
-    /// SwifterSwift: Set textField for common text types.
+    /// SS: Set textField for common text types.
     var textType: TextType {
         get {
             if keyboardType == .emailAddress {
@@ -67,17 +67,17 @@ public extension UITextField {
         }
     }
 
-    /// 文字是否为空
+    /// SS: 文字是否为空
     var isEmpty: Bool {
         return text?.isEmpty == true
     }
 
-    /// 去除 text 头尾的空格和换行
+    /// SS: 去除 text 头尾的空格和换行
     var trimmedText: String? {
         return text?.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
-    /// 检测是否是有效的 Mail
+    /// SS: 检测是否是有效的 Mail
     ///
     ///		textField.text = "john@doe.com"
     ///		textField.hasValidEmail -> true
@@ -92,7 +92,7 @@ public extension UITextField {
                            range: nil, locale: nil) != nil
     }
 
-    /// SwifterSwift: Left view tint color.
+    /// SS: Left view tint color.
     @IBInspectable var leftViewTintColor: UIColor? {
         get {
             guard let iconView = leftView as? UIImageView else { return nil }
@@ -105,7 +105,7 @@ public extension UITextField {
         }
     }
 
-    /// SwifterSwift: Right view tint color.
+    /// SS: Right view tint color.
     @IBInspectable var rightViewTintColor: UIColor? {
         get {
             guard let iconView = rightView as? UIImageView else { return nil }
@@ -123,13 +123,13 @@ public extension UITextField {
 // MARK: - Methods
 public extension UITextField {
 
-    /// 清除 text
+    /// SS: 清除 text
     func clear() {
         text = ""
         attributedText = NSAttributedString(string: "")
     }
 
-    /// 设置占位文字颜色
+    /// SS: 设置占位文字颜色
     ///
     /// - Parameter color: 颜色
     func setPlaceHolderTextColor(_ color: UIColor) {
@@ -137,7 +137,7 @@ public extension UITextField {
         attributedPlaceholder = NSAttributedString(string: holder, attributes: [.foregroundColor: color])
     }
 
-    /// 在左侧添加一个空白的 view
+    /// SS: 在左侧添加一个空白的 view
     ///
     /// - Parameter padding: 左侧边距.
     func addPaddingLeft(_ padding: CGFloat) {
@@ -146,7 +146,7 @@ public extension UITextField {
         leftViewMode = .always
     }
 
-    /// 左侧添加图片 padding 内边距 （left + right）
+    /// SS: 左侧添加图片 padding 内边距 （left + right）
     ///
     /// - Parameters:
     ///   - image: 图

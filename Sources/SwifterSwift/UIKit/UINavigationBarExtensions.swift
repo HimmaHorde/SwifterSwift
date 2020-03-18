@@ -12,7 +12,7 @@ import UIKit
 // MARK: - Methods
 public extension UINavigationBar {
 
-    /// 设置NavigationBar标题的字体和颜色.
+    /// SS: 设置NavigationBar标题的字体和颜色.
     ///
     /// - Parameters:
     ///   - font: 字体
@@ -24,7 +24,7 @@ public extension UINavigationBar {
         titleTextAttributes = attrs
     }
 
-    /// 导航栏透明
+    /// SS: 导航栏透明
     ///
     /// - Parameter tint: tint color (default is .white).
     func makeTransparent(withTint tint: UIColor = .white) {
@@ -37,7 +37,7 @@ public extension UINavigationBar {
         shadowImage = UIImage()
     }
 
-    /// 设置导航栏的文字颜色和背景颜色
+    /// SS: 设置导航栏的文字颜色和背景颜色
     ///
     /// - Parameters:
     ///   - background: 背景色

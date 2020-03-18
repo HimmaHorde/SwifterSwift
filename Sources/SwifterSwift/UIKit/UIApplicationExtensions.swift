@@ -13,21 +13,21 @@ import UIKit
 
 public extension UIApplication {
 
-    /// SwifterSwift: Application running environment.
+    /// SS: Application running environment.
     ///
     /// - debug: Application is running in debug mode.
     /// - testFlight: Application is installed from Test Flight.
     /// - appStore: Application is installed from the App Store.
     enum Environment {
-        /// SwifterSwift: Application is running in debug mode.
+        /// SS: Application is running in debug mode.
         case debug
-        /// SwifterSwift: Application is installed from Test Flight.
+        /// SS: Application is installed from Test Flight.
         case testFlight
-        /// SwifterSwift: Application is installed from the App Store.
+        /// SS: Application is installed from the App Store.
         case appStore
     }
 
-    /// SwifterSwift: Current inferred app environment.
+    /// SS: Current inferred app environment.
     var inferredEnvironment: Environment {
         #if DEBUG
         return .debug
@@ -56,17 +56,17 @@ public extension UIApplication {
         #endif
     }
 
-    /// SwifterSwift: Application name (if applicable).
+    /// SS: Application name (if applicable).
     var displayName: String? {
         return Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String
     }
 
-    /// SwifterSwift: App current build number (if applicable).
+    /// SS: App current build number (if applicable).
     var buildNumber: String? {
         return Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as? String
     }
 
-    /// SwifterSwift: App's current version number (if applicable).
+    /// SS: App's current version number (if applicable).
     var version: String? {
         return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
     }

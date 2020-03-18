@@ -12,7 +12,7 @@ import Dispatch
 // MARK: - 属性
 public extension DispatchQueue {
 
-    /// SwifterSwift: 返回当前队列是否是主队列
+    /// SS: 返回当前队列是否是主队列
     static var isMainQueue: Bool {
         enum Static {
             static var key: DispatchSpecificKey<Void> = {
@@ -29,7 +29,7 @@ public extension DispatchQueue {
 // MARK: - 方法
 public extension DispatchQueue {
 
-    /// SwifterSwift: 返回 bool 类型,判断当前队列是否是指定队列.
+    /// SS: 返回 bool 类型,判断当前队列是否是指定队列.
     ///
     /// - Parameter queue: 要比较的队列.
     /// - Returns: 是指定队列返回`true`,否则返回`false`.

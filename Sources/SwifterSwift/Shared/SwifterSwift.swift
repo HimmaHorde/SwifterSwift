@@ -9,10 +9,10 @@
 // 代码引用自 rxswift，为防止个 rx 冲突已修改名称
 
 public struct SwifterSwift<Base> {
-    /// 要扩展的基本对象。
+    /// SS: 要扩展的基本对象。
     public let base: Base
 
-    /// 使用对象创建扩展
+    /// SS: 使用对象创建扩展
     ///
     /// - parameter base: 对象。
     public init(_ base: Base) {
@@ -20,31 +20,31 @@ public struct SwifterSwift<Base> {
     }
 }
 
-/// A type that has reactive extensions.
+/// SS: A type that has reactive extensions.
 public protocol SwifterCompatible {
-    /// Extended type
+    /// SS: Extended type
     associatedtype SwifterSwiftBase
 
-    /// Reactive extensions.
+    /// SS: Reactive extensions.
     static var ss: SwifterSwift<SwifterSwiftBase>.Type { get }
 
-    /// Reactive extensions.
+    /// SS: Reactive extensions.
     var ss: SwifterSwift<SwifterSwiftBase> { get }
 }
 
 extension SwifterCompatible {
-    /// Reactive extensions.
+    /// SS: Reactive extensions.
     public static var ss: SwifterSwift<Self>.Type {
         return SwifterSwift<Self>.self
     }
 
-    /// Reactive extensions.
+    /// SS: Reactive extensions.
     public var ss: SwifterSwift<Self> {
         return SwifterSwift(self)
     }
 }
 
  import class Foundation.NSObject
- 
- /// Extend NSObject with `ss` proxy.
+
+ /// SS:  Extend NSObject with `ss` proxy.
 extension NSObject: SwifterCompatible { }

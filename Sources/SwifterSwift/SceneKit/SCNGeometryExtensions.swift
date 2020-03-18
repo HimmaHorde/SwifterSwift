@@ -12,7 +12,7 @@ import SceneKit
 // MARK: - Properties
 public extension SCNGeometry {
 
-    /// SwifterSwift: Returns the size of the geometry's bounding box.
+    /// SS: Returns the size of the geometry's bounding box.
     var boundingSize: SCNVector3 {
         return (boundingBox.max - boundingBox.min).absolute
     }

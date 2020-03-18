@@ -12,7 +12,7 @@ import UIKit
 // MARK: - Properties
 public extension UISearchBar {
 
-    /// 获取 textField 如果存在
+    /// SS: 获取 textField 如果存在
     var textField: UITextField? {
         if #available(iOS 13.0, *) {
             return searchTextField
@@ -24,7 +24,7 @@ public extension UISearchBar {
         return textField
     }
 
-    /// SwifterSwift: Text with no spaces or new lines in beginning and end (if applicable).
+    /// SS: Text with no spaces or new lines in beginning and end (if applicable).
     var trimmedText: String? {
         return text?.trimmingCharacters(in: .whitespacesAndNewlines)
     }
@@ -34,7 +34,7 @@ public extension UISearchBar {
 // MARK: - Methods
 public extension UISearchBar {
 
-    /// 清除搜索文字
+    /// SS: 清除搜索文字
     func clear() {
         text = ""
     }

@@ -12,12 +12,12 @@ import Foundation
 // MARK: - Properties
 public extension Locale {
 
-    /// 通常用于规范化的语言环境的UNIX表示。
+    /// SS: 通常用于规范化的语言环境的UNIX表示。
     static var posix: Locale {
         return Locale(identifier: "en_US_POSIX")
     }
 
-    /// ss: 返回bool值，指示语言环境是否具有12h格式。
+    /// SS: 返回bool值，指示语言环境是否具有12h格式。
     var is12HourTimeFormat: Bool {
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = .short
@@ -32,7 +32,7 @@ public extension Locale {
 // MARK: - Functions
 public extension Locale {
 
-    /// SwifterSwift: Get the flag emoji for a given country region code.
+    /// SS: Get the flag emoji for a given country region code.
     /// - Parameter isoRegionCode: The IOS region code.
     ///
     /// Adapted from https://stackoverflow.com/a/30403199/1627511

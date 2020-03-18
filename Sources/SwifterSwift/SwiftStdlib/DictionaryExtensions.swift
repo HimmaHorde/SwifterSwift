@@ -13,7 +13,7 @@ import Foundation
 // MARK: - Methods
 public extension Dictionary {
 
-    /// ss: 根据指定的 key path 进行分组，key 为 相同 key path 的值。
+    /// SS: 根据指定的 key path 进行分组，key 为 相同 key path 的值。
     ///
     /// - Parameters:
     ///   - sequence: Sequence being grouped
@@ -22,7 +22,7 @@ public extension Dictionary {
        self.init(grouping: sequence, by: { $0[keyPath: keyPath] })
     }
 
-    /// ss:检查 key 在字典中是否存在
+    /// SS: 检查 key 在字典中是否存在
     ///
     ///        let dict: [String: Any] = ["testKey": "testValue", "testArrayKey": [1, 2, 3, 4, 5]]
     ///        dict.has(key: "testKey") -> true
@@ -34,7 +34,7 @@ public extension Dictionary {
         return index(forKey: key) != nil
     }
 
-    /// ss:批量删除指定 keys 的键值对
+    /// SS: 批量删除指定 keys 的键值对
     ///
     ///        var dict : [String: String] = ["key1" : "value1", "key2" : "value2", "key3" : "value3"]
     ///        dict.removeAll(keys: ["key1", "key2"])
@@ -47,7 +47,7 @@ public extension Dictionary {
         keys.forEach { removeValue(forKey: $0) }
     }
 
-    /// ss:字典转 jsonData
+    /// SS: 字典转 jsonData
     @discardableResult
     mutating func removeValueForRandomKey() -> Value? {
         guard let randomKey = keys.randomElement() else { return nil }
@@ -55,7 +55,7 @@ public extension Dictionary {
     }
 
     #if canImport(Foundation)
-    /// SwifterSwift: JSON Data from dictionary.
+    /// SS: JSON Data from dictionary.
     ///
     /// - Parameter prettify: set true to prettify data (default is false).
     /// - Returns: optional JSON Data (if applicable).
@@ -69,7 +69,7 @@ public extension Dictionary {
     #endif
 
     #if canImport(Foundation)
-    /// 字典转 jsonString
+    /// SS: 字典转 jsonString
     ///
     ///        dict.jsonString() -> "{"testKey":"testValue","testArrayKey":[1,2,3,4,5]}"
     ///
@@ -100,14 +100,14 @@ public extension Dictionary {
     }
     #endif
 
-    /// 返回一个字典，其中包含将给定闭包映射到序列元素上的结果。
+    /// SS: 返回一个字典，其中包含将给定闭包映射到序列元素上的结果。
     /// - Parameter transform: 一个映射。' transform '接受该序列的一个元素作为其参数，并返回相同或不同类型的转换值。
     /// - Returns: 包含该序列的转换元素的字典.
     func mapKeysAndValues<K, V>(_ transform: ((key: Key, value: Value)) throws -> (K, V)) rethrows -> [K: V] {
         return [K: V](uniqueKeysWithValues: try map(transform))
     }
 
-    /// 装换生成一个新的字典不包含 nil
+    /// SS: 装换生成一个新的字典不包含 nil
     /// - Parameter transform: A closure that accepts an element of this sequence as its argument and returns an optional value.
     /// - Returns: A dictionary of the non-`nil` results of calling `transform` with each element of the sequence.
     /// - Complexity: *O(m + n)*, where _m_ is the length of this sequence and _n_ is the length of the result.
@@ -120,7 +120,7 @@ public extension Dictionary {
 // MARK: - Methods (Value: Equatable)
 public extension Dictionary where Value: Equatable {
 
-    /// 返回所有包含指定 value 的 keys
+    /// SS: 返回所有包含指定 value 的 keys
     ///
     ///        let dict = ["key1": "value1", "key2": "value1", "key3": "value2"]
     ///        dict.keys(forValue: "value1") -> ["key1", "key2"]
@@ -138,7 +138,7 @@ public extension Dictionary where Value: Equatable {
 // MARK: - Methods (ExpressibleByStringLiteral)
 public extension Dictionary where Key: StringProtocol {
 
-    /// 小写所有 keys
+    /// SS: 小写所有 keys
     ///
     ///        var dict = ["tEstKeY": "value"]
     ///        dict.lowercaseAllKeys()
@@ -157,7 +157,7 @@ public extension Dictionary where Key: StringProtocol {
 // MARK: - Subscripts
 public extension Dictionary {
 
-    /// SwifterSwift: Deep fetch or set a value from nested dictionaries.
+    /// SS: Deep fetch or set a value from nested dictionaries.
     ///
     ///        var dict =  ["key": ["key1": ["key2": "value"]]]
     ///        dict[path: ["key", "key1", "key2"]] = "newValue"
@@ -200,7 +200,7 @@ public extension Dictionary {
 // MARK: - Operators
 public extension Dictionary {
 
-    /// 合并两个字典
+    /// SS: 合并两个字典
     ///
     ///        let dict: [String: String] = ["key1": "value1"]
     ///        let dict2: [String: String] = ["key2": "value2"]
@@ -220,7 +220,7 @@ public extension Dictionary {
 
     // MARK: - Operators
 
-    /// 当前字典合并一个新的字典
+    /// SS: 当前字典合并一个新的字典
     ///
     ///        var dict: [String: String] = ["key1": "value1"]
     ///        let dict2: [String: String] = ["key2": "value2"]
@@ -235,7 +235,7 @@ public extension Dictionary {
         rhs.forEach { lhs[$0] = $1}
     }
 
-    /// 返回新的字典，不包含序列中的键
+    /// SS: 返回新的字典，不包含序列中的键
     ///
     ///        let dict: [String: String] = ["key1": "value1", "key2": "value2", "key3": "value3"]
     ///        let result = dict-["key1", "key2"]
@@ -253,7 +253,7 @@ public extension Dictionary {
         return result
     }
 
-    /// 从字典中删除序列中包含的键
+    /// SS: 从字典中删除序列中包含的键
     ///
     ///        var dict: [String: String] = ["key1": "value1", "key2": "value2", "key3": "value3"]
     ///        dict-=["key1", "key2"]

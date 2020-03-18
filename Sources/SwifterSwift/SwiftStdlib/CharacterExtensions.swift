@@ -9,7 +9,7 @@
 // MARK: - Properties
 public extension Character {
 
-    /// 检测是否是 Emoji
+    /// SS: 检测是否是 Emoji
     ///
     ///        Character("😀").isEmoji -> true
     ///
@@ -17,7 +17,7 @@ public extension Character {
         return unicodeScalars.contains { $0.isEmoji }
     }
 
-    /// 转为数字
+    /// SS: 转为数字
     ///
     ///        Character("1").int -> 1
     ///        Character("A").int -> nil
@@ -26,7 +26,7 @@ public extension Character {
         return Int(String(self))
     }
 
-    /// 转为 String 类型
+    /// SS: 转为 String 类型
     ///
     ///        Character("a").string -> "a"
     ///
@@ -34,7 +34,7 @@ public extension Character {
         return String(self)
     }
 
-    /// 返回对应的小写字符
+    /// SS: 返回对应的小写字符
     ///
     ///        Character("A").lowercased -> Character("a")
     ///
@@ -42,7 +42,7 @@ public extension Character {
         return String(self).lowercased().first!
     }
 
-    /// 返回对应的大写字符
+    /// SS: 返回对应的大写字符
     ///
     ///        Character("a").uppercased -> Character("A")
     ///
@@ -56,7 +56,7 @@ public extension Character {
 public extension Character {
 
     #if canImport(Foundation)
-    /// 随机字符，取大小写字符和数字。
+    /// SS: 随机字符，取大小写字符和数字。
     ///
     ///    Character.random() -> k
     ///
@@ -71,7 +71,7 @@ public extension Character {
 // MARK: - Operators
 public extension Character {
 
-    /// 重复 N 次字符，生成字符串。
+    /// SS: 重复 N 次字符，生成字符串。
     ///
     ///        Character("-") * 10 -> "----------"
     ///
@@ -84,7 +84,7 @@ public extension Character {
         return String(repeating: String(lhs), count: rhs)
     }
 
-    /// 重复 N 次字符，生成字符串。
+    /// SS: 重复 N 次字符，生成字符串。
     ///
     ///        10 * Character("-") -> "----------"
     ///

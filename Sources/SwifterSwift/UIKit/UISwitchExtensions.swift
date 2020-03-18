@@ -12,7 +12,7 @@ import UIKit
 // MARK: - Methods
 public extension UISwitch {
 
-    /// 切换开关
+    /// SS: 切换开关
     ///
     /// - Parameter animated: 是否具有动画效果（默认 true）
     func toggle(animated: Bool = true) {

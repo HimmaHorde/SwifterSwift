@@ -11,7 +11,7 @@ import QuartzCore
 
 extension CAGradientLayer {
 
-    /// SwifterSwift: Creates a CAGradientLayer with the specified colors, location, startPoint, endPoint, and type.
+    /// SS: Creates a CAGradientLayer with the specified colors, location, startPoint, endPoint, and type.
     /// - Parameter colors: An array of colors defining the color of each gradient stop
     /// - Parameter locations: An array of NSNumber defining the location of each
     ///                gradient stop as a value in the range [0,1]. The values must be

@@ -11,7 +11,7 @@ import AppKit
 
 public extension NSColor {
 
-    /// SwifterSwift: Create an NSColor with different colors for light and dark mode.
+    /// SS: Create an NSColor with different colors for light and dark mode.
     ///
     /// - Parameters:
     ///     - light: Color to use in light/unspecified mode.

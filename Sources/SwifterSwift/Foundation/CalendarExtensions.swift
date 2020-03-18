@@ -12,7 +12,7 @@ import Foundation
 // MARK: - Methods
 public extension Calendar {
 
-    /// 返回指定日期所在月份的总天数
+    /// SS: 返回指定日期所在月份的总天数
     ///
     ///		let date = Date() // "Jan 12, 2017, 7:07 PM"
     ///		Calendar.current.numberOfDaysInMonth(for: date) -> 31

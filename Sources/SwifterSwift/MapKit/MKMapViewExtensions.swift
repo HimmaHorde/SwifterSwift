@@ -13,7 +13,7 @@ import MapKit
 @available(tvOS 9.2, *)
 public extension MKMapView {
 
-    /// SwifterSwift: Dequeue reusable MKAnnotationView using class type
+    /// SS: Dequeue reusable MKAnnotationView using class type
     ///
     /// - Parameters:
     ///   - name: MKAnnotationView type.
@@ -22,7 +22,7 @@ public extension MKMapView {
         return dequeueReusableAnnotationView(withIdentifier: String(describing: name)) as? T
     }
 
-    /// SwifterSwift: Register MKAnnotationView using class type
+    /// SS: Register MKAnnotationView using class type
     ///
     /// - Parameter name: MKAnnotationView type.
     @available(iOS 11.0, tvOS 11.0, macOS 10.13, *)
@@ -30,7 +30,7 @@ public extension MKMapView {
         register(T.self, forAnnotationViewWithReuseIdentifier: String(describing: name))
     }
 
-    /// SwifterSwift: Dequeue reusable MKAnnotationView using class type
+    /// SS: Dequeue reusable MKAnnotationView using class type
     ///
     /// - Parameters:
     ///   - name: MKAnnotationView type.
@@ -45,7 +45,7 @@ public extension MKMapView {
         return annotationView
     }
 
-    /// SwifterSwift: Zooms in on multiple mapView coordinates.
+    /// SS: Zooms in on multiple mapView coordinates.
     ///
     /// - Parameters:
     ///   - coordinates: Gets the array of type CLLocationCoordinate2D.

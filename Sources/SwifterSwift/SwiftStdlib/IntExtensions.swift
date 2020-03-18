@@ -19,44 +19,44 @@ import Glibc
 // MARK: - Properties
 public extension Int {
 
-    /// 生成一个从零开始的开区间 0..< Int
+    /// SS: 生成一个从零开始的开区间 0..< Int
     var countableRange: CountableRange<Int> {
         return 0..<self
     }
 
-    /// 圆心角 -> 圆心角弧度数
+    /// SS: 圆心角 -> 圆心角弧度数
     var degreesToRadians: Double {
         return Double.pi * Double(self) / 180.0
     }
 
-    /// 圆心角弧度数 -> 圆心角
+    /// SS: 圆心角弧度数 -> 圆心角
     var radiansToDegrees: Double {
         return Double(self) * 180 / Double.pi
     }
 
-    /// 无符号整数值类型。
+    /// SS: 无符号整数值类型。
     var uInt: UInt {
         return UInt(self)
     }
 
-    /// 转为 Double
+    /// SS: 转为 Double
     var double: Double {
         return Double(self)
     }
 
-    /// 转为 Float.
+    /// SS: 转为 Float.
     var float: Float {
         return Float(self)
     }
 
     #if canImport(CoreGraphics)
-    /// 转为 CGFloat.
+    /// SS: 转为 CGFloat.
     var cgFloat: CGFloat {
         return CGFloat(self)
     }
     #endif
 
-    /// 转为以 K 为单位的字符串
+    /// SS: 转为以 K 为单位的字符串
     var kFormatted: String {
         var sign: String {
             return self >= 0 ? "" : "-"
@@ -72,7 +72,7 @@ public extension Int {
         return String(format: "\(sign)%ikk", abs / 100000)
     }
 
-    /// 转化为数字数组
+    /// SS: 转化为数字数组
     ///
     ///     123456789.digits ->[1, 2, 3, 4, 5, 6, 7, 8, 9]
     ///
@@ -91,7 +91,7 @@ public extension Int {
         return digits
     }
 
-    /// 位数
+    /// SS: 位数
     var digitsCount: Int {
         guard self != 0 else { return 1 }
         let number = Double(abs)
@@ -103,7 +103,7 @@ public extension Int {
 // MARK: - Methods
 public extension Int {
 
-    /// 是否是素数 Warning: Using big numbers can be computationally expensive!
+    /// SS: 是否是素数 Warning: Using big numbers can be computationally expensive!
     /// - Returns: true or false depending on prime-ness
     func isPrime() -> Bool {
         // To improve speed on latter loop :)
@@ -122,7 +122,7 @@ public extension Int {
         return true
     }
 
-    /// 转为罗马数字
+    /// SS: 转为罗马数字
     ///
     ///     10.romanNumeral() -> "X"
     ///
@@ -151,7 +151,7 @@ public extension Int {
         return romanValue
     }
 
-    /// SwifterSwift: Rounds to the closest multiple of n
+    /// SS: Rounds to the closest multiple of n
     func roundToNearest(_ number: Int) -> Int {
         return number == 0 ? self : Int(round(Double(self) / Double(number))) * number
     }
@@ -162,7 +162,7 @@ public extension Int {
 
 precedencegroup PowerPrecedence { higherThan: MultiplicationPrecedence }
 infix operator ** : PowerPrecedence
-/// 指数运算
+/// SS: 指数运算
 ///
 /// - Parameters:
 ///   - lhs: 底数
@@ -174,7 +174,7 @@ public func ** (lhs: Int, rhs: Int) -> Double {
 }
 
 prefix operator √
-/// 二次根号
+/// SS: 二次根号
 ///
 /// - Parameter int: 开根号的数
 /// - Returns: 平方根
@@ -185,7 +185,7 @@ public prefix func √ (int: Int) -> Double {
 }
 
 infix operator ±
-/// SwifterSwift: Tuple of plus-minus operation.
+/// SS: Tuple of plus-minus operation.
 ///
 /// - Parameters:
 ///   - lhs: integer number.
@@ -198,7 +198,7 @@ public func ± (lhs: Int, rhs: Int) -> (Int, Int) {
 }
 
 prefix operator ±
-/// SwifterSwift: Tuple of plus-minus operation.
+/// SS: Tuple of plus-minus operation.
 ///
 /// - Parameter int: integer number
 /// - Returns: tuple of plus-minus operation (example: ± 2 -> (2, -2)).

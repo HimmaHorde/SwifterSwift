@@ -21,35 +21,35 @@ import AppKit
 public extension NSAttributedString {
 
     #if os(iOS)
-    /// SwifterSwift: Bolded string.
+    /// SS: Bolded string.
     var bolded: NSAttributedString {
         return applying(attributes: [.font: UIFont.boldSystemFont(ofSize: UIFont.systemFontSize)])
     }
     #endif
 
     #if !os(Linux)
-    /// SwifterSwift: Underlined string.
+    /// SS: Underlined string.
     var underlined: NSAttributedString {
         return applying(attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
     }
     #endif
 
     #if os(iOS)
-    /// SwifterSwift: Italicized string.
+    /// SS: Italicized string.
     var italicized: NSAttributedString {
         return applying(attributes: [.font: UIFont.italicSystemFont(ofSize: UIFont.systemFontSize)])
     }
     #endif
 
     #if !os(Linux)
-    /// SwifterSwift: Struckthrough string.
+    /// SS: Struckthrough string.
     var struckthrough: NSAttributedString {
         return applying(attributes: [.strikethroughStyle: NSNumber(value: NSUnderlineStyle.single.rawValue as Int)])
     }
     #endif
 
     #if !os(Linux)
-    /// 应用于整个字符串的属性字典
+    /// SS: 应用于整个字符串的属性字典
     var attributes: [NSAttributedString.Key: Any] {
         guard self.length > 0 else { return [:] }
         return attributes(at: 0, effectiveRange: nil)
@@ -62,7 +62,7 @@ public extension NSAttributedString {
 public extension NSAttributedString {
 
     #if !os(Linux)
-    /// 将给定的属性应用于使用self对象初始化的NSAttributedString的新实例
+    /// SS: 将给定的属性应用于使用self对象初始化的NSAttributedString的新实例
     ///
     /// - Parameter attributes: 属性字典
     /// - Returns: 新的富文本
@@ -76,7 +76,7 @@ public extension NSAttributedString {
     #endif
 
     #if canImport(AppKit) || canImport(UIKit)
-    /// SwifterSwift: Add color to NSAttributedString.
+    /// SS: Add color to NSAttributedString.
     ///
     /// - Parameter color: text color.
     /// - Returns: a NSAttributedString colored with given color.
@@ -86,7 +86,7 @@ public extension NSAttributedString {
     #endif
 
     #if !os(Linux)
-    /// 将属性应用于匹配正则表达式的子字符串
+    /// SS: 将属性应用于匹配正则表达式的子字符串
     ///
     /// - Parameters:
     ///   - attributes: 属性字典
@@ -108,7 +108,7 @@ public extension NSAttributedString {
         return result
     }
 
-    /// 为指定字符串添加属性
+    /// SS: 为指定字符串添加属性
     ///
     /// - Parameters:
     ///   - attributes: 属性字典
@@ -126,7 +126,7 @@ public extension NSAttributedString {
 // MARK: - Operators
 public extension NSAttributedString {
 
-    /// 富文本添加一段字符串
+    /// SS: 富文本添加一段字符串
     ///
     /// - Parameters:
     ///   - lhs: NSAttributedString to add to.
@@ -137,7 +137,7 @@ public extension NSAttributedString {
         lhs = string
     }
 
-    /// 合成两个富文本
+    /// SS: 合成两个富文本
     ///
     /// - Parameters:
     ///   - lhs: NSAttributedString to add.
@@ -149,7 +149,7 @@ public extension NSAttributedString {
         return NSAttributedString(attributedString: string)
     }
 
-    /// 富文本添加一段字符串
+    /// SS: 富文本添加一段字符串
     ///
     /// - Parameters:
     ///   - lhs: NSAttributedString to add to.
@@ -158,7 +158,7 @@ public extension NSAttributedString {
         lhs += NSAttributedString(string: rhs)
     }
 
-    /// 合成富文本和一个字符串
+    /// SS: 合成富文本和一个字符串
     ///
     /// - Parameters:
     ///   - lhs: NSAttributedString to add.

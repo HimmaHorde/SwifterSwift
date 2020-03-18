@@ -25,7 +25,7 @@ import CoreGraphics
 public extension String {
 
     #if canImport(Foundation)
-    /// ss: base64 解密。
+    /// SS: base64 解密。
     ///
     ///        "SGVsbG8gV29ybGQh".base64Decoded = Optional("Hello World!")
     ///
@@ -45,7 +45,7 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// ss: base64 加密。
+    /// SS: base64 加密。
     ///
     ///        "Hello World!".base64Encoded -> Optional("SGVsbG8gV29ybGQh")
     ///
@@ -56,13 +56,13 @@ public extension String {
     }
     #endif
 
-    /// ss: 返回 characters 数组。
+    /// SS: 返回 characters 数组。
     var charactersArray: [Character] {
         return Array(self)
     }
 
     #if canImport(Foundation)
-    /// ss: 转换为驼峰字符串。
+    /// SS: 转换为驼峰字符串。
     ///
     ///        "sOme vAriable naMe".camelCased -> "someVariableName"
     ///
@@ -80,7 +80,7 @@ public extension String {
     }
     #endif
 
-    /// ss: 字符串是否包含 emoji。
+    /// SS: 字符串是否包含 emoji。
     ///
     ///        "Hello 😀".containEmoji -> true
     ///
@@ -89,7 +89,7 @@ public extension String {
         return unicodeScalars.contains { $0.isEmoji }
     }
 
-    /// ss: 字符串的第一个字符。
+    /// SS: 字符串的第一个字符。
     ///
     ///        "Hello".firstCharacterAsString -> Optional("H")
     ///        "".firstCharacterAsString -> nil
@@ -99,7 +99,7 @@ public extension String {
         return String(first)
     }
 
-    /// ss: 检查字符串是否包含字母。
+    /// SS: 检查字符串是否包含字母。
     ///
     ///        "123abc".hasLetters -> true
     ///        "123".hasLetters -> false
@@ -108,7 +108,7 @@ public extension String {
         return rangeOfCharacter(from: .letters, options: .numeric, range: nil) != nil
     }
 
-    /// ss: 检查字符串是否包含数字。
+    /// SS: 检查字符串是否包含数字。
     ///
     ///        "abcd".hasNumbers -> false
     ///        "123abc".hasNumbers -> true
@@ -117,7 +117,7 @@ public extension String {
         return rangeOfCharacter(from: .decimalDigits, options: .literal, range: nil) != nil
     }
 
-    /// ss: 检查字符串是否只包含字母 。
+    /// SS: 检查字符串是否只包含字母 。
     ///
     ///        "abc".isAlphabetic -> true
     ///        "123abc".isAlphabetic -> false
@@ -128,7 +128,7 @@ public extension String {
         return hasLetters && !hasNumbers
     }
 
-    /// ss: 检查字符串是否包含至少一个字母和一个数字。
+    /// SS: 检查字符串是否包含至少一个字母和一个数字。
     ///
     ///        // useful for passwords
     ///        "123abc".isAlphaNumeric -> true
@@ -141,7 +141,7 @@ public extension String {
         return comps.joined(separator: "").count == 0 && hasLetters && hasNumbers
     }
 
-    /// ss: 检测是否是回文（指顺读和倒读都一样的词语）。
+    /// SS: 检测是否是回文（指顺读和倒读都一样的词语）。
     ///
     ///     "abcdcba".isPalindrome -> true
     ///     "Mom".isPalindrome -> true
@@ -158,7 +158,7 @@ public extension String {
     }
 
     #if canImport(Foundation)
-    /// ss: 检查是否是有效的 email。
+    /// SS: 检查是否是有效的 email。
     ///
     /// - Note: Note that this property does not validate the email address against an email server. It merely attempts to determine whether its format is suitable for an email address.
     ///
@@ -172,7 +172,7 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// ss: 检查是否是有效的 URL。
+    /// SS: 检查是否是有效的 URL。
     ///
     ///        "https://google.com".isValidUrl -> true
     ///
@@ -182,7 +182,7 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// ss: 字符串是否包含 url 协议。
+    /// SS: 字符串是否包含 url 协议。
     ///
     ///        "https://google.com".isValidSchemedUrl -> true
     ///        "google.com".isValidSchemedUrl -> false
@@ -194,7 +194,7 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// ss: 是否是 https 的 url。
+    /// SS: 是否是 https 的 url。
     ///
     ///        "https://google.com".isValidHttpsUrl -> true
     ///
@@ -205,7 +205,7 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// ss: 是否是 http 的 url。
+    /// SS: 是否是 http 的 url。
     ///
     ///        "http://google.com".isValidHttpUrl -> true
     ///
@@ -216,7 +216,7 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// ss: 是否是 file url。
+    /// SS: 是否是 file url。
     ///
     ///        "file://Documents/file.txt".isValidFileUrl -> true
     ///
@@ -226,7 +226,7 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// ss: 检测 string 是否是有效 swift 数字 Note: 在北美, "." 是小数分隔符, 在很多欧洲地区 ","。
+    /// SS: 检测 string 是否是有效 swift 数字 Note: 在北美, "." 是小数分隔符, 在很多欧洲地区 ","。
     ///
     ///        "123".isNumeric -> true
     ///     "1.3".isNumeric -> true (en_US)
@@ -245,7 +245,7 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// ss: 检查字符串是否只包含数字。
+    /// SS: 检查字符串是否只包含数字。
     ///
     ///     "123".isDigits -> true
     ///     "1.3".isDigits -> false
@@ -256,7 +256,7 @@ public extension String {
     }
     #endif
 
-    /// ss: 字符串的最后一个字符。
+    /// SS: 字符串的最后一个字符。
     ///
     ///        "Hello".lastCharacterAsString -> Optional("o")
     ///        "".lastCharacterAsString -> nil
@@ -267,7 +267,7 @@ public extension String {
     }
 
     #if canImport(Foundation)
-    /// ss: 拉丁字母字符串。
+    /// SS: 拉丁字母字符串。
     ///
     ///        "Hèllö Wórld!".latinized -> "Hello World!"
     ///
@@ -277,7 +277,7 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// ss: 字符串转 bool 类型。
+    /// SS: 字符串转 bool 类型。
     ///
     ///        "1".bool -> true
     ///        "False".bool -> false
@@ -297,7 +297,7 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// ss: 字符串转日期 格式 "yyyy-MM-dd"。
+    /// SS: 字符串转日期 格式 "yyyy-MM-dd"。
     ///
     ///        "2007-06-29".date -> Optional(Date)
     ///
@@ -311,7 +311,7 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// ss: 字符串转日期 格式 "yyyy-MM-dd HH:mm:ss。
+    /// SS: 字符串转日期 格式 "yyyy-MM-dd HH:mm:ss。
     ///
     ///        "2007-06-29 14:23:09".dateTime -> Optional(Date)
     ///
@@ -324,7 +324,7 @@ public extension String {
     }
     #endif
 
-    /// ss: 字符串转 Int 类型。
+    /// SS: 字符串转 Int 类型。
     ///
     ///        "101".int -> 101
     ///
@@ -332,7 +332,7 @@ public extension String {
         return Int(self)
     }
 
-    /// ss: 获取指定长度的乱数假文。
+    /// SS: 获取指定长度的乱数假文。
     ///
     /// - Parameter length: number of characters to limit lorem ipsum to (default is 445 - full lorem ipsum).
     /// - Returns: Lorem ipsum dolor sit amet... string.
@@ -350,7 +350,7 @@ public extension String {
     }
 
     #if canImport(Foundation)
-    /// ss: 根据当前字符串生成URL。
+    /// SS: 根据当前字符串生成URL。
     ///
     ///        "https://google.com".url -> URL(string: "https://google.com")
     ///        "not url".url -> nil
@@ -361,7 +361,7 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// ss: 去除字符串开头结尾的空格和换行。
+    /// SS: 去除字符串开头结尾的空格和换行。
     ///
     ///        "   hello  \n".trimmed -> "hello"
     ///
@@ -371,7 +371,7 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// ss: url字符串解码。
+    /// SS: url字符串解码。
     ///
     ///        "it's%20easy%20to%20decode%20strings".urlDecoded -> "it's easy to decode strings"
     ///
@@ -381,7 +381,7 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// ss: 字符串url编码。
+    /// SS: 字符串url编码。
     ///
     ///        "it's easy to encode strings".urlEncoded -> "it's%20easy%20to%20encode%20strings"
     ///
@@ -391,7 +391,7 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// ss: 字符串没有空格和换行。
+    /// SS: 字符串没有空格和换行。
     ///
     ///        "   \n Swifter   \n  Swift  ".withoutSpacesAndNewLines -> "SwifterSwift"
     ///
@@ -401,14 +401,14 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// ss: 检查给定的字符串是否只包含空白。
+    /// SS: 检查给定的字符串是否只包含空白。
     var isWhitespace: Bool {
         return trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// ss: 检查给定的字符串拼写是否正确。
+    /// SS: 检查给定的字符串拼写是否正确。
     var isSpelledCorrectly: Bool {
         let checker = UITextChecker()
         let range = NSRange(location: 0, length: utf16.count)
@@ -424,7 +424,7 @@ public extension String {
 public extension String {
 
     #if canImport(Foundation)
-    /// ss: 字符串转为浮点型。
+    /// SS: 字符串转为浮点型。
     ///
     /// - Parameter locale: Locale (default is Locale.current)
     /// - Returns: Optional Float value from given string.
@@ -437,7 +437,7 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// ss: 字符串转为双精度类型。
+    /// SS: 字符串转为双精度类型。
     ///
     /// - Parameter locale: Locale (default is Locale.current)
     /// - Returns: Optional Double value from given string.
@@ -450,7 +450,7 @@ public extension String {
     #endif
 
     #if canImport(CoreGraphics) && canImport(Foundation)
-    /// ss: 字符串转CGFloat。
+    /// SS: 字符串转CGFloat。
     ///
     /// - Parameter locale: Locale (default is Locale.current)
     /// - Returns: Optional CGFloat value from given string.
@@ -463,7 +463,7 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// ss: 返回根据换行符分割字符串生成的数组。
+    /// SS: 返回根据换行符分割字符串生成的数组。
     ///
     ///        "Hello\ntest".lines() -> ["Hello", "test"]
     ///
@@ -478,7 +478,7 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// ss: 返回本地化的字符串，并为翻译人员提供可选的注释。。
+    /// SS: 返回本地化的字符串，并为翻译人员提供可选的注释。。
     ///
     ///        "Hello world".localized -> Hallo Welt
     ///
@@ -487,7 +487,7 @@ public extension String {
     }
     #endif
 
-    /// ss: 返回字符串中出现次数最多的单个字符。
+    /// SS: 返回字符串中出现次数最多的单个字符。
     ///
     ///        "This is a test, since e is appearing everywhere e should be the common character".mostCommonCharacter() -> "e"
     ///
@@ -501,7 +501,7 @@ public extension String {
         return mostCommon
     }
 
-    /// ss: 一个字符串中所有字符unicodes编码的数组。
+    /// SS: 一个字符串中所有字符unicodes编码的数组。
     ///
     ///        "SwifterSwift".unicodeArray() -> [83, 119, 105, 102, 116, 101, 114, 83, 119, 105, 102, 116]
     ///
@@ -511,7 +511,7 @@ public extension String {
     }
 
     #if canImport(Foundation)
-    /// ss: 字符串中所有单词的数组
+    /// SS: 字符串中所有单词的数组
     ///
     ///        "Swift is amazing".words() -> ["Swift", "is", "amazing"]
     ///
@@ -525,7 +525,7 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// ss: 字符串中单词的数量。
+    /// SS: 字符串中单词的数量。
     ///
     ///        "Swift is amazing".wordsCount() -> 3
     ///
@@ -540,7 +540,7 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// ss: 字符串空格改为'-'连接。
+    /// SS: 字符串空格改为'-'连接。
     ///
     ///        "Swift is amazing".toSlug() -> "swift-is-amazing"
     ///
@@ -569,7 +569,7 @@ public extension String {
     }
     #endif
 
-    /// ss: 安全下标字符串指定位置的字符。
+    /// SS: 安全下标字符串指定位置的字符。
     ///
     ///        "Hello World!"[safe: 3] -> "l"
     ///        "Hello World!"[safe: 20] -> nil
@@ -580,7 +580,7 @@ public extension String {
         return self[self.index(startIndex, offsetBy: index)]
     }
 
-    /// ss: 通过半开区间获取指定范围的子字符串。
+    /// SS: 通过半开区间获取指定范围的子字符串。
     ///
     ///        "Hello World!"[safe: 6..<11] -> "World"
     ///        "Hello World!"[safe: 21..<110] -> nil
@@ -592,7 +592,7 @@ public extension String {
         return String(self[lowerIndex..<upperIndex])
     }
 
-    /// ss: 通过闭区间获取指定范围的子字符串。
+    /// SS: 通过闭区间获取指定范围的子字符串。
     ///
     ///        "Hello World!"[safe: 6...11] -> "World!"
     ///        "Hello World!"[safe: 21...110] -> nil
@@ -605,7 +605,7 @@ public extension String {
     }
 
     #if os(iOS) || os(macOS)
-    /// ss: 复制字符串到全局剪贴板。
+    /// SS: 复制字符串到全局剪贴板。
     ///
     ///        "SomeText".copyToPasteboard() // copies "SomeText" to pasteboard
     ///
@@ -619,7 +619,7 @@ public extension String {
     }
     #endif
 
-    /// ss: 转换为驼峰格式。
+    /// SS: 转换为驼峰格式。
     ///
     ///        var str = "sOme vaRiabLe Name"
     ///        str.camelize()
@@ -642,7 +642,7 @@ public extension String {
         return self
     }
 
-    /// ss: 保留源字符串格式，并将单词的首字母的大写。
+    /// SS: 保留源字符串格式，并将单词的首字母的大写。
     ///
     ///        "hello world".firstCharacterUppercased() -> "Hello world"
     ///        "".firstCharacterUppercased() -> ""
@@ -652,7 +652,7 @@ public extension String {
         self = String(first).uppercased() + dropFirst()
     }
 
-    /// ss: 检查字符串是否只包含唯一字符。
+    /// SS: 检查字符串是否只包含唯一字符。
     ///
     func hasUniqueCharacters() -> Bool {
         guard count > 0 else { return false }
@@ -665,7 +665,7 @@ public extension String {
     }
 
     #if canImport(Foundation)
-    /// ss: 检查字符串是否包含子字符串的一个或多个实例。
+    /// SS: 检查字符串是否包含子字符串的一个或多个实例。
     ///
     ///        "Hello World!".contain("O") -> false
     ///        "Hello World!".contain("o", caseSensitive: false) -> true
@@ -683,7 +683,7 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// ss: 字符串中子字符串的个数。
+    /// SS: 字符串中子字符串的个数。
     ///
     ///        "Hello World!".count(of: "o") -> 2
     ///        "Hello World!".count(of: "L", caseSensitive: false) -> 3
@@ -700,7 +700,7 @@ public extension String {
     }
     #endif
 
-    /// ss: 检测字符串是否包含指定后缀。
+    /// SS: 检测字符串是否包含指定后缀。
     ///
     ///        "Hello World!".ends(with: "!") -> true
     ///        "Hello World!".ends(with: "WoRld!", caseSensitive: false) -> true
@@ -717,7 +717,7 @@ public extension String {
     }
 
     #if canImport(Foundation)
-    /// ss: 转为拉丁字母字符串。
+    /// SS: 转为拉丁字母字符串。
     ///
     ///        var str = "Hèllö Wórld!"
     ///        str.latinize()
@@ -730,7 +730,7 @@ public extension String {
     }
     #endif
 
-    /// ss: 获取随机长度的字符串。
+    /// SS: 获取随机长度的字符串。
     ///
     ///        String.random(ofLength: 18) -> "u7MMZYvGo9obcOcPj8"
     ///
@@ -746,7 +746,7 @@ public extension String {
         return randomString
     }
 
-    /// ss: 反转自身的字符串。
+    /// SS: 反转自身的字符串。
     @discardableResult
     mutating func reverse() -> String {
         let chars: [Character] = reversed()
@@ -754,7 +754,7 @@ public extension String {
         return self
     }
 
-    /// ss: 截取指定位置的字符串,指定初始位置和长度。
+    /// SS: 截取指定位置的字符串,指定初始位置和长度。
     ///
     ///        "Hello World".slicing(from: 6, length: 5) -> "World"
     ///
@@ -771,7 +771,7 @@ public extension String {
         return self[safe: index..<index.advanced(by: length)]
     }
 
-    /// ss: 自身等于新截取指定位置的字符串。
+    /// SS: 自身等于新截取指定位置的字符串。
     ///
     ///        var str = "Hello World"
     ///        str.slice(from: 6, length: 5)
@@ -788,7 +788,7 @@ public extension String {
         return self
     }
 
-    /// ss: 自身等于指定初始和结束位置的子字符串。
+    /// SS: 自身等于指定初始和结束位置的子字符串。
     ///
     ///        var str = "Hello World"
     ///        str.slice(from: 6, to: 11)
@@ -806,7 +806,7 @@ public extension String {
         return self
     }
 
-    /// ss: 自身等于从给定起始位置切割的字符串。
+    /// SS: 自身等于从给定起始位置切割的字符串。
     ///
     ///        var str = "Hello World"
     ///        str.slice(at: 6)
@@ -822,7 +822,7 @@ public extension String {
         return self
     }
 
-    /// ss: 检查是否已指定字符串作为前缀。
+    /// SS: 检查是否已指定字符串作为前缀。
     ///
     ///        "hello World".starts(with: "h") -> true
     ///        "hello World".starts(with: "H", caseSensitive: false) -> true
@@ -839,7 +839,7 @@ public extension String {
     }
 
     #if canImport(Foundation)
-    /// ss: 使用指定时间格式，转化为Date类型。
+    /// SS: 使用指定时间格式，转化为Date类型。
     ///
     ///        "2017-01-15".date(withFormat: "yyyy-MM-dd") -> Date set to Jan 15, 2017
     ///        "not date string".date(withFormat: "yyyy-MM-dd") -> nil
@@ -854,7 +854,7 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// ss: 删除自身开头和结尾中的空格和换行。
+    /// SS: 删除自身开头和结尾中的空格和换行。
     ///
     ///        var str = "  \n Hello World \n\n\n"
     ///        str.trim()
@@ -867,7 +867,7 @@ public extension String {
     }
     #endif
 
-    /// ss: 截断字符串(将其截断为给定数量的字符)。
+    /// SS: 截断字符串(将其截断为给定数量的字符)。
     ///
     ///        var str = "This is a very long sentence"
     ///        str.truncate(toLength: 14)
@@ -885,7 +885,7 @@ public extension String {
         return self
     }
 
-    /// ss: 截断的字符串(限制为给定的字符数)。
+    /// SS: 截断的字符串(限制为给定的字符数)。
     ///
     ///        "This is a very long sentence".truncated(toLength: 14) -> "This is a very..."
     ///        "Short sentence".truncated(toLength: 14) -> "Short sentence"
@@ -900,7 +900,7 @@ public extension String {
     }
 
     #if canImport(Foundation)
-    /// ss: 自身进行 url 解码。
+    /// SS: 自身进行 url 解码。
     ///
     ///        var str = "it's%20easy%20to%20decode%20strings"
     ///        str.urlDecode()
@@ -916,7 +916,7 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// ss: 自身进行 url 编码。
+    /// SS: 自身进行 url 编码。
     ///
     ///        var str = "it's easy to encode strings"
     ///        str.urlEncode()
@@ -932,7 +932,7 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// ss: 验证字符串是否符合给定的正则表达式。
+    /// SS: 验证字符串是否符合给定的正则表达式。
     ///
     /// - Parameter pattern: Pattern to verify.
     /// - Returns: true if string matches the pattern.
@@ -941,7 +941,7 @@ public extension String {
     }
     #endif
 
-    /// ss: 在字符串的前面填充字符串直到指定的长度。
+    /// SS: 在字符串的前面填充字符串直到指定的长度。
     ///
     ///   "hue".padStart(10) -> "       hue"
     ///   "hue".padStart(10, with: "br") -> "brbrbrbhue"
@@ -954,7 +954,7 @@ public extension String {
         return self
     }
 
-    /// ss: 在字符串的前面填充字符串直到指定的长度。返回填充后的字符串。
+    /// SS: 在字符串的前面填充字符串直到指定的长度。返回填充后的字符串。
     ///
     ///   "hue".paddingStart(10) -> "       hue"
     ///   "hue".paddingStart(10, with: "br") -> "brbrbrbhue"
@@ -977,7 +977,7 @@ public extension String {
         }
     }
 
-    /// ss: 在字符串的后面填充字符串直到指定的长度。
+    /// SS: 在字符串的后面填充字符串直到指定的长度。
     ///
     ///   "hue".padEnd(10) -> "hue       "
     ///   "hue".padEnd(10, with: "br") -> "huebrbrbrb"
@@ -990,7 +990,7 @@ public extension String {
         return self
     }
 
-    /// ss: 在字符串的后面填充字符串直到指定的长度。返回填充后的字符串。
+    /// SS: 在字符串的后面填充字符串直到指定的长度。返回填充后的字符串。
     ///
     ///   "hue".paddingEnd(10) -> "hue       "
     ///   "hue".paddingEnd(10, with: "br") -> "huebrbrbrb"
@@ -1013,7 +1013,7 @@ public extension String {
         }
     }
 
-    /// ss: 从字符串中移除给定的前缀。。
+    /// SS: 从字符串中移除给定的前缀。。
     ///
     ///   "Hello, World!".removingPrefix("Hello, ") -> "World!"
     ///
@@ -1024,7 +1024,7 @@ public extension String {
         return String(dropFirst(prefix.count))
     }
 
-    /// ss: 从字符串中删除给定的后缀。
+    /// SS: 从字符串中删除给定的后缀。
     ///
     ///   "Hello, World!".removingSuffix(", World!") -> "Hello"
     ///
@@ -1035,7 +1035,7 @@ public extension String {
         return String(dropLast(suffix.count))
     }
 
-    /// ss: 向字符串添加前缀(会检查是否存在是否存在前缀,存在则返回自身)。
+    /// SS: 向字符串添加前缀(会检查是否存在是否存在前缀,存在则返回自身)。
     ///
     ///     "www.apple.com".withPrefix("https://") -> "https://www.apple.com"
     ///
@@ -1052,7 +1052,7 @@ public extension String {
 public extension String {
 
     #if canImport(Foundation)
-    /// ss: 使用 base64 字符串初始化并解码。
+    /// SS: 使用 base64 字符串初始化并解码。
     ///
     ///        String(base64: "SGVsbG8gV29ybGQh") = "Hello World!"
     ///        String(base64: "hello") = nil
@@ -1065,7 +1065,7 @@ public extension String {
     }
     #endif
 
-    /// ss: 使用指定长度初始化的随机字符串。
+    /// SS: 使用指定长度初始化的随机字符串。
     ///
     ///        String(randomOfLength: 10) -> "gY8r3MHvlQ"
     ///
@@ -1100,35 +1100,35 @@ public extension String {
     #endif
 
     #if os(iOS) || os(macOS)
-    /// ss: 粗体。
+    /// SS: 粗体。
     var bold: NSAttributedString {
         return NSMutableAttributedString(string: self, attributes: [.font: Font.boldSystemFont(ofSize: Font.systemFontSize)])
     }
     #endif
 
     #if canImport(Foundation)
-    /// ss: 下划线 string
+    /// SS: 下划线 string
     var underline: NSAttributedString {
         return NSAttributedString(string: self, attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
     }
     #endif
 
     #if canImport(Foundation)
-    /// ss: 加删除线。
+    /// SS: 加删除线。
     var strikethrough: NSAttributedString {
         return NSAttributedString(string: self, attributes: [.strikethroughStyle: NSNumber(value: NSUnderlineStyle.single.rawValue as Int)])
     }
     #endif
 
     #if os(iOS)
-    /// ss: 斜体。
+    /// SS: 斜体。
     var italic: NSAttributedString {
         return NSMutableAttributedString(string: self, attributes: [.font: UIFont.italicSystemFont(ofSize: UIFont.systemFontSize)])
     }
     #endif
 
     #if canImport(AppKit) || canImport(UIKit)
-    /// ss: 给字符串添加颜色。
+    /// SS: 给字符串添加颜色。
     ///
     /// - Parameter color: text color.
     /// - Returns: a NSAttributedString versions of string colored with given color.
@@ -1144,7 +1144,7 @@ public extension String {
 // MARK: - Operators
 public extension String {
 
-    /// ss: 重复字符串多次。
+    /// SS: 重复字符串多次。
     ///
     ///        'bar' * 3 -> "barbarbar"
     ///
@@ -1157,7 +1157,7 @@ public extension String {
         return String(repeating: lhs, count: rhs)
     }
 
-    /// ss: 重复字符串多次。
+    /// SS: 重复字符串多次。
     ///
     ///        3 * 'bar' -> "barbarbar"
     ///
@@ -1177,39 +1177,39 @@ public extension String {
 // MARK: - NSString extensions
 public extension String {
 
-    /// ss: 转化为 NSString 类型。
+    /// SS: 转化为 NSString 类型。
     var nsString: NSString {
         return NSString(string: self)
     }
 
-    /// ss: 路径的最后一部分。
+    /// SS: 路径的最后一部分。
     ///
     ///  “/tmp/scratch.tiff” -> “scratch.tiff”
     var lastPathComponent: String {
         return (self as NSString).lastPathComponent
     }
 
-    /// ss: 获取拓展名。
+    /// SS: 获取拓展名。
     var pathExtension: String {
         return (self as NSString).pathExtension
     }
 
-    /// ss: 删除路径的最后一部分。
+    /// SS: 删除路径的最后一部分。
     var deletingLastPathComponent: String {
         return (self as NSString).deletingLastPathComponent
     }
 
-    /// ss: 删除拓展名。
+    /// SS: 删除拓展名。
     var deletingPathExtension: String {
         return (self as NSString).deletingPathExtension
     }
 
-    /// ss: 路径分割成字符串。
+    /// SS: 路径分割成字符串。
     var pathComponents: [String] {
         return (self as NSString).pathComponents
     }
 
-    /// ss: 组合新的字符串路径
+    /// SS: 组合新的字符串路径
     ///
     /// - Note: This method only works with file paths (not, for example, string representations of URLs.
     ///   See NSString [appendingPathComponent(_:)](https://developer.apple.com/documentation/foundation/nsstring/1417069-appendingpathcomponent)
@@ -1219,7 +1219,7 @@ public extension String {
         return (self as NSString).appendingPathComponent(str)
     }
 
-    /// ss: 路径添加后缀名
+    /// SS: 路径添加后缀名
     ///
     /// - Parameter str: The extension to append to the receiver.
     /// - Returns: a new string made by appending to the receiver an extension separator followed by ext (if applicable).

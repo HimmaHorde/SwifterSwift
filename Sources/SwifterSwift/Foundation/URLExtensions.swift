@@ -17,7 +17,7 @@ import AVFoundation
 // MARK: - Properties
 public extension URL {
 
-    /// URL的参数字典
+    /// SS: URL的参数字典
     ///
     ///     let url = URL.init(string: "http://www.baidu.com?name=yanglin&age=100")
     ///     print(url?.queryParameters) // -> Optional(["name": "yanglin", "age": "100"])
@@ -39,7 +39,7 @@ public extension URL {
 // MARK: - Methods
 public extension URL {
 
-    /// 生成新的URL并添加指定参数
+    /// SS: 生成新的URL并添加指定参数
     ///
     ///		let url = URL(string: "https://google.com")!
     ///		let param = ["q": "Swifter Swift"]
@@ -55,7 +55,7 @@ public extension URL {
         return urlComponents.url!
     }
 
-    /// 为当前 URL 添加参数
+    /// SS: 为当前 URL 添加参数
     ///
     ///		var url = URL(string: "https://google.com")!
     ///		let param = ["q": "Swifter Swift"]
@@ -67,7 +67,7 @@ public extension URL {
         self = appendingQueryParameters(parameters)
     }
 
-    /// 获取 URL 键对应的值
+    /// SS: 获取 URL 键对应的值
     ///
     ///     var url = URL(string: "https://google.com?code=12345")!
     ///     url.queryValue(for: "code")// -> "12345"
@@ -80,7 +80,7 @@ public extension URL {
             .value
     }
 
-    /// 返回一个删除所有路径的新URL。
+    /// SS: 返回一个删除所有路径的新URL。
     ///
     ///     let url = URL(string: "https://domain.com/path/other")!
     ///     print(url.deletingAllPathComponents()) // prints "https://domain.com/"
@@ -94,7 +94,7 @@ public extension URL {
         return url
     }
 
-    /// SwifterSwift: Remove all the path components from the URL.
+    /// SS: Remove all the path components from the URL.
     ///
     ///        var url = URL(string: "https://domain.com/path/other")!
     ///        url.deleteAllPathComponents()
@@ -105,7 +105,7 @@ public extension URL {
         }
     }
 
-    /// SwifterSwift: Generates new URL that does not have scheme.
+    /// SS: Generates new URL that does not have scheme.
     ///
     ///        let url = URL(string: "https://domain.com")!
     ///        print(url.droppedScheme()) // prints "domain.com"
@@ -127,7 +127,7 @@ public extension URL {
 public extension URL {
 
     #if os(iOS) || os(tvOS)
-    /// 从给定的 url生成缩略图。如果无法创建缩略图，则返回nil。建议异步执行
+    /// SS: 从给定的 url生成缩略图。如果无法创建缩略图，则返回nil。建议异步执行
     ///
     ///     // 可以是视频缩略图
     ///     var url = URL(string: "https://video.golem.de/files/1/1/20637/wrkw0718-sd.mp4")!

@@ -12,7 +12,7 @@ import SceneKit
 // MARK: - Methods
 public extension SCNCylinder {
 
-    /// SwifterSwift: Creates a cylinder geometry with the specified diameter and height.
+    /// SS: Creates a cylinder geometry with the specified diameter and height.
     ///
     /// - Parameters:
     ///   - radius: The radius of the cylinder’s circular cross section in the x- and z-axis dimensions of its local coordinate space.
@@ -22,7 +22,7 @@ public extension SCNCylinder {
         self.init(radius: diameter / 2, height: height)
     }
 
-    /// SwifterSwift: Creates a cylinder geometry with the specified radius, height and material.
+    /// SS: Creates a cylinder geometry with the specified radius, height and material.
     ///
     /// - Parameters:
     ///   - radius: The radius of the cylinder’s circular cross section in the x- and z-axis dimensions of its local coordinate space.
@@ -33,7 +33,7 @@ public extension SCNCylinder {
         materials = [material]
     }
 
-    /// SwifterSwift: Creates a cylinder geometry with the specified diameter, height and material.
+    /// SS: Creates a cylinder geometry with the specified diameter, height and material.
     ///
     /// - Parameters:
     ///   - radius: The radius of the cylinder’s circular cross section in the x- and z-axis dimensions of its local coordinate space.
@@ -44,7 +44,7 @@ public extension SCNCylinder {
         materials = [material]
     }
 
-    /// SwifterSwift: Creates a cylinder geometry with the specified radius, height, and material color.
+    /// SS: Creates a cylinder geometry with the specified radius, height, and material color.
     ///
     /// - Parameters:
     ///   - radius: The radius of the cylinder’s circular cross section in the x- and z-axis dimensions of its local coordinate space.
@@ -55,7 +55,7 @@ public extension SCNCylinder {
         materials = [SCNMaterial(color: color)]
     }
 
-    /// SwifterSwift: Creates a cylinder geometry with the specified diameter, height, and material color.
+    /// SS: Creates a cylinder geometry with the specified diameter, height, and material color.
     ///
     /// - Parameters:
     ///   - diameter: The diameter of the cylinder’s circular cross section in the x- and z-axis dimensions of its local coordinate space.

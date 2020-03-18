@@ -9,7 +9,7 @@
 // MARK: - Initializers
 public extension RangeReplaceableCollection {
 
-    /// SwifterSwift: Creates a new collection of a given size where for each position of the collection the value will be the result of a call of the given expression.
+    /// SS: Creates a new collection of a given size where for each position of the collection the value will be the result of a call of the given expression.
     ///
     ///     let values = Array(expression: "Value", count: 3)
     ///     print(values)
@@ -34,7 +34,7 @@ public extension RangeReplaceableCollection {
 // MARK: - Methods
 public extension RangeReplaceableCollection {
 
-    /// SwifterSwift: Returns a new rotated collection by the given places.
+    /// SS: Returns a new rotated collection by the given places.
     ///
     ///     [1, 2, 3, 4].rotated(by: 1) -> [4,1,2,3]
     ///     [1, 2, 3, 4].rotated(by: 3) -> [2,3,4,1]
@@ -48,7 +48,7 @@ public extension RangeReplaceableCollection {
         return copy.rotate(by: places)
     }
 
-    /// SwifterSwift: Rotate the collection by the given places.
+    /// SS: Rotate the collection by the given places.
     ///
     ///     [1, 2, 3, 4].rotate(by: 1) -> [4,1,2,3]
     ///     [1, 2, 3, 4].rotate(by: 3) -> [2,3,4,1]
@@ -74,7 +74,7 @@ public extension RangeReplaceableCollection {
         return self
     }
 
-    /// SwifterSwift: Removes the first element of the collection which satisfies the given predicate.
+    /// SS: Removes the first element of the collection which satisfies the given predicate.
     ///
     ///        [1, 2, 2, 3, 4, 2, 5].removeFirst { $0 % 2 == 0 } -> [1, 2, 3, 4, 2, 5]
     ///        ["h", "e", "l", "l", "o"].removeFirst { $0 == "e" } -> ["h", "l", "l", "o"]
@@ -87,14 +87,14 @@ public extension RangeReplaceableCollection {
         return remove(at: index)
     }
 
-    /// SwifterSwift: Remove a random value from the collection.
+    /// SS: Remove a random value from the collection.
     @discardableResult
     mutating func removeRandomElement() -> Element? {
         guard let randomIndex = indices.randomElement() else { return nil }
         return remove(at: randomIndex)
     }
 
-    /// SwifterSwift: Keep elements of Array while condition is true.
+    /// SS: Keep elements of Array while condition is true.
     ///
     ///        [0, 2, 4, 7].keep(while: { $0 % 2 == 0 }) -> [0, 2, 4]
     ///
@@ -109,7 +109,7 @@ public extension RangeReplaceableCollection {
         return self
     }
 
-    /// SwifterSwift: Take element of Array while condition is true.
+    /// SS: Take element of Array while condition is true.
     ///
     ///        [0, 2, 4, 7, 6, 8].take( where: {$0 % 2 == 0}) -> [0, 2, 4]
     ///
@@ -119,7 +119,7 @@ public extension RangeReplaceableCollection {
         return Self(try prefix(while: condition))
     }
 
-    /// SwifterSwift: Skip elements of Array while condition is true.
+    /// SS: Skip elements of Array while condition is true.
     ///
     ///        [0, 2, 4, 7, 6, 8].skip( where: {$0 % 2 == 0}) -> [6, 8]
     ///
@@ -130,7 +130,7 @@ public extension RangeReplaceableCollection {
         return Self(self[idx...])
     }
 
-    /// SwifterSwift: Remove all duplicate elements using KeyPath to compare.
+    /// SS: Remove all duplicate elements using KeyPath to compare.
     ///
     /// - Parameter path: Key path to compare, the value must be Equatable.
     mutating func removeDuplicates<E: Equatable>(keyPath path: KeyPath<Element, E>) {
@@ -144,7 +144,7 @@ public extension RangeReplaceableCollection {
         }
     }
 
-    /// SwifterSwift: Remove all duplicate elements using KeyPath to compare.
+    /// SS: Remove all duplicate elements using KeyPath to compare.
     ///
     /// - Parameter path: Key path to compare, the value must be Hashable.
     mutating func removeDuplicates<E: Hashable>(keyPath path: KeyPath<Element, E>) {

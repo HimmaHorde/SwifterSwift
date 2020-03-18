@@ -11,7 +11,7 @@ import Foundation
 
 public extension NSRegularExpression {
 
-    /// SwifterSwift: Enumerates the string allowing the Block to handle each regular expression match.
+    /// SS: Enumerates the string allowing the Block to handle each regular expression match.
     ///
     /// - Parameters:
     ///   - string: The string.
@@ -57,7 +57,7 @@ public extension NSRegularExpression {
     }
     #endif
 
-    /// SwifterSwift: Returns an array containing all the matches of the regular expression in the string.
+    /// SS: Returns an array containing all the matches of the regular expression in the string.
     ///
     /// - Parameters:
     ///   - string: The string to search.
@@ -72,7 +72,7 @@ public extension NSRegularExpression {
                        range: NSRange(range, in: string))
     }
 
-    /// SwifterSwift: Returns the number of matches of the regular expression within the specified range of the string.
+    /// SS: Returns the number of matches of the regular expression within the specified range of the string.
     ///
     /// - Parameters:
     ///   - string: The string to search.
@@ -87,7 +87,7 @@ public extension NSRegularExpression {
                                range: NSRange(range, in: string))
     }
 
-    /// SwifterSwift: Returns the first match of the regular expression within the specified range of the string.
+    /// SS: Returns the first match of the regular expression within the specified range of the string.
     ///
     /// - Parameters:
     ///   - string: The string to search.
@@ -102,7 +102,7 @@ public extension NSRegularExpression {
                           range: NSRange(range, in: string))
     }
 
-    /// SwifterSwift: Returns the range of the first match of the regular expression within the specified range of the string.
+    /// SS: Returns the range of the first match of the regular expression within the specified range of the string.
     ///
     /// - Parameters:
     ///   - string: The string to search.
@@ -118,7 +118,7 @@ public extension NSRegularExpression {
                      in: string)
     }
 
-    /// SwifterSwift: Returns a new string containing matching regular expressions replaced with the template string.
+    /// SS: Returns a new string containing matching regular expressions replaced with the template string.
     ///
     /// - Parameters:
     ///   - string: The string to search for values within.
@@ -136,7 +136,7 @@ public extension NSRegularExpression {
                                         withTemplate: templ)
     }
 
-    /// SwifterSwift: Replaces regular expression matches within the mutable string using the template string.
+    /// SS: Replaces regular expression matches within the mutable string using the template string.
     ///
     /// - Parameters:
     ///   - string: The mutable string to search and replace values within.

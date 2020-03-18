@@ -18,7 +18,7 @@ private func optionalCompareDescending<T: Comparable>(path1: T?, path2: T?) -> B
 
 public extension Array {
 
-    /// SwifterSwift: Returns a sorted array based on an optional keypath.
+    /// SS: Returns a sorted array based on an optional keypath.
     ///
     /// - Parameter path: Key path to sort. The key path type must be Comparable.
     /// - Parameter ascending: If order must be ascending.
@@ -31,7 +31,7 @@ public extension Array {
         return sorted(by: path, with: optionalCompareDescending)
     }
 
-    /// SwifterSwift: Returns a sorted array based on a keypath.
+    /// SS: Returns a sorted array based on a keypath.
     ///
     /// - Parameter path: Key path to sort. The key path type must be Comparable.
     /// - Parameter ascending: If order must be ascending.
@@ -44,7 +44,7 @@ public extension Array {
         return sorted(by: path, with: >)
     }
 
-    /// SwifterSwift: Sort the array based on an optional keypath.
+    /// SS: Sort the array based on an optional keypath.
     ///
     /// - Parameters:
     ///   - path: Key path to sort, must be Comparable.
@@ -61,7 +61,7 @@ public extension Array {
         return self
     }
 
-    /// SwifterSwift: Sort the array based on a keypath.
+    /// SS: Sort the array based on a keypath.
     ///
     /// - Parameters:
     ///   - path: Key path to sort, must be Comparable.
