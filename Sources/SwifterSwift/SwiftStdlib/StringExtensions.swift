@@ -580,28 +580,24 @@ public extension String {
         return self[self.index(startIndex, offsetBy: index)]
     }
 
-    /// SS: 通过半开区间获取指定范围的子字符串。
+    /// SS: 通过开区间获取指定范围的子字符串。
     ///
     ///        "Hello World!"[safe: 6..<11] -> "World"
     ///        "Hello World!"[safe: 21..<110] -> nil
     ///
-    /// - Parameter range: Half-open range.
-    subscript(safe range: CountableRange<Int>) -> String? {
-        guard let lowerIndex = index(startIndex, offsetBy: max(0, range.lowerBound), limitedBy: endIndex) else { return nil }
-        guard let upperIndex = index(lowerIndex, offsetBy: range.upperBound - range.lowerBound, limitedBy: endIndex) else { return nil }
-        return String(self[lowerIndex..<upperIndex])
-    }
-
-    /// SS: 通过闭区间获取指定范围的子字符串。
-    ///
     ///        "Hello World!"[safe: 6...11] -> "World!"
     ///        "Hello World!"[safe: 21...110] -> nil
     ///
-    /// - Parameter range: Closed range.
-    subscript(safe range: ClosedRange<Int>) -> String? {
-        guard let lowerIndex = index(startIndex, offsetBy: max(0, range.lowerBound), limitedBy: endIndex) else { return nil }
-        guard let upperIndex = index(lowerIndex, offsetBy: range.upperBound - range.lowerBound, limitedBy: endIndex) else { return nil }
-        return String(self[lowerIndex...upperIndex])
+    /// - Parameter range: Range expression.
+    subscript<R>(safe range: R) -> String? where R: RangeExpression, R.Bound == Int {
+        let range = range.relative(to: Int.min..<Int.max)
+        guard range.lowerBound >= 0,
+            let lowerIndex = index(startIndex, offsetBy: range.lowerBound, limitedBy: endIndex),
+            let upperIndex = index(startIndex, offsetBy: range.upperBound, limitedBy: endIndex) else {
+                return nil
+        }
+
+        return String(self[lowerIndex..<upperIndex])
     }
 
     #if os(iOS) || os(macOS)

@@ -5,6 +5,10 @@ The changelog for **SwifterSwift**. Also see the [releases](https://github.com/S
 ## Upcoming Release
 
 ### Added
+- **CATransform3D**:
+  - `identity`, `isIdentity`, `init(translationX:y:z:)`, `init(scaleX:y:z:)`, `init(rotationAngle:x:y:z:)`, `translatedBy(x:y:z:)`, `scaledBy(x:y:z:)`, `rotated(by:x:y:z:)`, `inverted()`, `concatenating(_:)`, `translateBy(x:y:z:)`, `scaleBy(x:y:z:)`, `rotate(by:x:y:z:)`, `invert()`, `concatenate(_:)`, `isAffine` and `affineTransform()`. Also conforms to `Codable` and `Equatable`. [#819](https://github.com/SwifterSwift/SwifterSwift/pull/819) by [guykogus](https://github.com/guykogus)
+- **CGAffineTransform**:
+  - `transform3D()`. [#819](https://github.com/SwifterSwift/SwifterSwift/pull/819) by [guykogus](https://github.com/guykogus)
 - **NotificationCenter**:
   - `observeOnce(forName:object:queue:using:)` for observing a single posting of a notification. [#812](https://github.com/SwifterSwift/SwifterSwift/pull/812) by [guykogus](https://github.com/guykogus)
 - **Optional**:
@@ -57,6 +61,7 @@ The changelog for **SwifterSwift**. Also see the [releases](https://github.com/S
   - Added `is12HourTimeFormat` to indicate if locale has 12h format. [#793](https://github.com/SwifterSwift/SwifterSwift/pull/793) by [DimaZava](https://github.com/DimaZava).
   - `flagEmoji(forRegionCode:)` to convert a region code into the corresponding flag emoji. [#813](https://github.com/SwifterSwift/SwifterSwift/pull/813) by [guykogus](https://github.com/guykogus)
 - **URLRequest**:
+  - `init(string:relativeTo:)` to allow initializing a `URL` with an optional `String`. [#818](https://github.com/SwifterSwift/SwifterSwift/pull/818) by [guykogus](https://github.com/guykogus)
   - Added `curlString` property to get a cURL command representation of this URL request. [#790](https://github.com/SwifterSwift/SwifterSwift/pull/790) by [DimaZava](https://github.com/DimaZava).
 - **SKProduct**:
   - Added `localizedPrice` to get localized price of product. [#781](https://github.com/SwifterSwift/SwifterSwift/pull/781) by [strawb3rryx7](https://github.com/strawb3rryx7).
@@ -79,7 +84,9 @@ The changelog for **SwifterSwift**. Also see the [releases](https://github.com/S
 - **NSAttributedString**:
   - Update `applying(attributes: [NSAttributedString.Key : Any], toRangesMatching pattern: String)` to respond `applying(attributes: [NSAttributedString.Key : Any], toRangesMatching pattern: String, options: NSRegularExpression.Options = [])` signature to support regular expression options.  [#791](https://github.com/SwifterSwift/SwifterSwift/pull/791) by [DimaZava](https://github.com/DimaZava)
 - **UIButton**:
- - Refactored `centerTextAndImage(spacing:)`: now the image position can be above the text, by setting a new parameter `imageAboveText` to `true`. [#807](https://github.com/SwifterSwift/SwifterSwift/pull/807) by [qchenqizhi](https://github.com/qchenqizhi).
+  - Refactored `centerTextAndImage(spacing:)`: now the image position can be above the text, by setting a new parameter `imageAboveText` to `true`. [#807](https://github.com/SwifterSwift/SwifterSwift/pull/807) by [qchenqizhi](https://github.com/qchenqizhi).
+- **String**:
+  - Bug fix `String[safe:]`, subscript should not crash. [#816](https://github.com/SwifterSwift/SwifterSwift/pull/816) by [cHaLkdusT](https://github.com/cHaLkdusT)
 
 ### Deprecated
 

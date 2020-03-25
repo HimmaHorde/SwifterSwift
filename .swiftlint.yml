@@ -3,7 +3,7 @@ custom_rules:
     included: ".*\\.swift"
     excluded: ".*Tests\\.swift"
     name: "Missing SS: prefix"
-    regex: "///\\s(?!SS:\\s)\\w+[^\\n]*$"
+    regex: "\\n\\n(\\s*///\\s(?!SS:\\s)\\w+[^\\n]*$)"
     match_kinds:
       - doccomment
     message: "Doc string should always start with the SS: prefix"
@@ -47,6 +47,9 @@ identifier_name:
     - i
     - j
     - ss
+    - x
+    - y
+    - z
 
 excluded:
   - vendor # Folder created by bundle install command that we run on CI

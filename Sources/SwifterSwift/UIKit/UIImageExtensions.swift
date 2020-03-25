@@ -106,7 +106,7 @@ public extension UIImage {
     ///
     /// - Parameter angle: 旋转的度数
     /// - Returns: 以给定角度旋转的新图像。
-    @available(iOS 10.0, tvOS 10.0, watchOS 3.0, *)
+    @available(tvOS 10.0, watchOS 3.0, *)
     func rotated(by angle: Measurement<UnitAngle>) -> UIImage? {
         let radians = CGFloat(angle.converted(to: .radians).value)
 
@@ -169,7 +169,7 @@ public extension UIImage {
     func filled(withColor color: UIColor) -> UIImage {
 
         #if !os(watchOS)
-        if #available(iOS 10, tvOS 10, *) {
+        if #available(tvOS 10.0, *) {
             let format = UIGraphicsImageRendererFormat()
             format.scale = scale
             let renderer = UIGraphicsImageRenderer(size: size, format: format)
@@ -267,7 +267,7 @@ public extension UIImage {
         let drawRect = CGRect(origin: .zero, size: size)
 
         #if !os(watchOS)
-        if #available(iOS 10.0, tvOS 10.0, *) {
+        if #available(tvOS 10.0, *) {
             let format = UIGraphicsImageRendererFormat()
             format.scale = scale
             return UIGraphicsImageRenderer(size: size, format: format).image { context in
@@ -297,7 +297,7 @@ public extension UIImage {
     func withBackgroundColor(_ backgroundColor: UIColor) -> UIImage {
 
         #if !os(watchOS)
-        if #available(iOS 10.0, tvOS 10.0, *) {
+        if #available(tvOS 10.0, *) {
             let format = UIGraphicsImageRendererFormat()
             format.scale = scale
             return UIGraphicsImageRenderer(size: size, format: format).image { context in

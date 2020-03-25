@@ -99,8 +99,38 @@ public extension UIView {
             layer.cornerRadius = abs(CGFloat(Int(newValue * 100)) / 100)
         }
     }
+    
+    /// SS: Height of view.
+    var height: CGFloat {
+        get {
+            return frame.size.height
+        }
+        set {
+            frame.size.height = newValue
+        }
+    }
 
-    /// SS: 阴影颜色
+    /// SS: Check if view is in RTL format.
+    var isRightToLeft: Bool {
+        if #available(tvOS 10.0, *) {
+            return effectiveUserInterfaceLayoutDirection == .rightToLeft
+        } else {
+            return false
+        }
+    }
+
+    /// SS: Take screenshot of view (if applicable).
+    var screenshot: UIImage? {
+        UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, 0)
+        defer {
+            UIGraphicsEndImageContext()
+        }
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+        layer.render(in: context)
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
+
+    /// SS: 阴影颜色 also inspectable from Storyboard.
     @IBInspectable var shadowColor: UIColor? {
         get {
             guard let color = layer.shadowColor else { return nil }
