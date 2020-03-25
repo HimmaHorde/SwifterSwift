@@ -35,7 +35,7 @@ extension CATransform3D: Equatable {
 // MARK: - Static Properties
 public extension CATransform3D {
 
-    /// SwifterSwift: The identity transform: [1 0 0 0; 0 1 0 0; 0 0 1 0; 0 0 0 1].
+    /// SS: The identity transform: [1 0 0 0; 0 1 0 0; 0 0 1 0; 0 0 0 1].
     @inlinable
     static var identity: CATransform3D { CATransform3DIdentity }
 
@@ -105,7 +105,7 @@ extension CATransform3D: Codable {
 // MARK: - Initializers
 public extension CATransform3D {
 
-    /// SwifterSwift: Returns a transform that translates by `(tx, ty, tz)`.
+    /// SS: Returns a transform that translates by `(tx, ty, tz)`.
     /// - Parameters:
     ///   - tx: x-axis translation
     ///   - ty: y-axis translation
@@ -115,7 +115,7 @@ public extension CATransform3D {
         self = CATransform3DMakeTranslation(tx, ty, tz)
     }
 
-    /// SwifterSwift: Returns a transform that scales by `(sx, sy, sz)`.
+    /// SS: Returns a transform that scales by `(sx, sy, sz)`.
     /// - Parameters:
     ///   - sx: x-axis scale
     ///   - sy: y-axis scale
@@ -125,7 +125,7 @@ public extension CATransform3D {
         self = CATransform3DMakeScale(sx, sy, sz)
     }
 
-    /// SwifterSwift: Returns a transform that rotates by `angle` radians about the vector `(x, y, z)`.
+    /// SS: Returns a transform that rotates by `angle` radians about the vector `(x, y, z)`.
     ///
     /// If the vector has zero length the behavior is undefined.
     /// - Parameters:
@@ -143,7 +143,7 @@ public extension CATransform3D {
 // MARK: - Properties
 public extension CATransform3D {
 
-    /// SwifterSwift: Returns `true` if the receiver is the identity transform.
+    /// SS: Returns `true` if the receiver is the identity transform.
     @inlinable
     var isIdentity: Bool { CATransform3DIsIdentity(self) }
 
@@ -152,7 +152,7 @@ public extension CATransform3D {
 // MARK: - Methods
 public extension CATransform3D {
 
-    /// SwifterSwift: Translate the receiver by `(tx, ty, tz)`.
+    /// SS: Translate the receiver by `(tx, ty, tz)`.
     /// - Parameters:
     ///   - tx: x-axis translation
     ///   - ty: y-axis translation
@@ -163,7 +163,7 @@ public extension CATransform3D {
         CATransform3DTranslate(self, tx, ty, tz)
     }
 
-    /// SwifterSwift: Scale the receiver by `(sx, sy, sz)`.
+    /// SS: Scale the receiver by `(sx, sy, sz)`.
     /// - Parameters:
     ///   - sx: x-axis scale
     ///   - sy: y-axis scale
@@ -174,7 +174,7 @@ public extension CATransform3D {
         CATransform3DScale(self, sx, sy, sz)
     }
 
-    /// SwifterSwift: Rotate the receiver by `angle` radians about the vector `(x, y, z)`.
+    /// SS: Rotate the receiver by `angle` radians about the vector `(x, y, z)`.
     ///
     /// If the vector has zero length the behavior is undefined.
     /// - Parameters:
@@ -188,7 +188,7 @@ public extension CATransform3D {
         CATransform3DRotate(self, angle, x, y, z)
     }
 
-    /// SwifterSwift: Invert the receiver.
+    /// SS: Invert the receiver.
     ///
     /// Returns the original matrix if the receiver has no inverse.
     /// - Returns: The inverted matrix of the receiver.
@@ -197,7 +197,7 @@ public extension CATransform3D {
         CATransform3DInvert(self)
     }
 
-    /// SwifterSwift: Concatenate `transform` to the receiver.
+    /// SS: Concatenate `transform` to the receiver.
     /// - Parameter t2: The transform to concatenate on to the receiver
     /// - Returns: The concatenated matrix.
     @inlinable
@@ -205,7 +205,7 @@ public extension CATransform3D {
         CATransform3DConcat(self, t2)
     }
 
-    /// SwifterSwift: Translate the receiver by `(tx, ty, tz)`.
+    /// SS: Translate the receiver by `(tx, ty, tz)`.
     /// - Parameters:
     ///   - tx: x-axis translation
     ///   - ty: y-axis translation
@@ -215,7 +215,7 @@ public extension CATransform3D {
         self = CATransform3DTranslate(self, tx, ty, tz)
     }
 
-    /// SwifterSwift: Scale the receiver by `(sx, sy, sz)`.
+    /// SS: Scale the receiver by `(sx, sy, sz)`.
     /// - Parameters:
     ///   - sx: x-axis scale
     ///   - sy: y-axis scale
@@ -225,7 +225,7 @@ public extension CATransform3D {
         self = CATransform3DScale(self, sx, sy, sz)
     }
 
-    /// SwifterSwift: Rotate the receiver by `angle` radians about the vector `(x, y, z)`.
+    /// SS: Rotate the receiver by `angle` radians about the vector `(x, y, z)`.
     ///
     /// If the vector has zero length the behavior is undefined.
     /// - Parameters:
@@ -238,7 +238,7 @@ public extension CATransform3D {
         self = CATransform3DRotate(self, angle, x, y, z)
     }
 
-    /// SwifterSwift: Invert the receiver.
+    /// SS: Invert the receiver.
     ///
     /// Returns the original matrix if the receiver has no inverse.
     @inlinable
@@ -246,7 +246,7 @@ public extension CATransform3D {
         self = CATransform3DInvert(self)
     }
 
-    /// SwifterSwift: Concatenate `transform` to the receiver.
+    /// SS: Concatenate `transform` to the receiver.
     /// - Parameter t2: The transform to concatenate on to the receiver
     @inlinable
     mutating func concatenate(_ t2: CATransform3D) { // swiftlint:disable:this identifier_name
@@ -262,11 +262,11 @@ import CoreGraphics
 // MARK: - CGAffineTransform
 public extension CATransform3D {
 
-    /// SwifterSwift: Returns true if the receiver can be represented exactly by an affine transform.
+    /// SS: Returns true if the receiver can be represented exactly by an affine transform.
     @inlinable
     var isAffine: Bool { CATransform3DIsAffine(self) }
 
-    /// SwifterSwift: Returns the affine transform represented by the receiver.
+    /// SS: Returns the affine transform represented by the receiver.
     ///
     /// If the receiver can not be represented exactly by an affine transform the returned value is undefined.
     @inlinable

@@ -59,9 +59,8 @@ public extension UIView {
 }
 
 // MARK: - Properties
-
-// MARK: private xib support
 public extension UIView {
+
     // 边框颜色
     @IBInspectable var borderColor: UIColor? {
         get {
@@ -99,16 +98,6 @@ public extension UIView {
             layer.cornerRadius = abs(CGFloat(Int(newValue * 100)) / 100)
         }
     }
-    
-    /// SS: Height of view.
-    var height: CGFloat {
-        get {
-            return frame.size.height
-        }
-        set {
-            frame.size.height = newValue
-        }
-    }
 
     /// SS: Check if view is in RTL format.
     var isRightToLeft: Bool {
@@ -119,7 +108,7 @@ public extension UIView {
         }
     }
 
-    /// SS: Take screenshot of view (if applicable).
+    /// SS: 生成当前view的截图.
     var screenshot: UIImage? {
         UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, 0)
         defer {
@@ -169,29 +158,6 @@ public extension UIView {
         set {
             layer.shadowRadius = newValue
         }
-    }
-}
-
-public extension UIView {
-
-    /// SS: Check if view is in RTL format.
-    var isRightToLeft: Bool {
-        if #available(iOS 10.0, *, tvOS 10.0, *) {
-            return effectiveUserInterfaceLayoutDirection == .rightToLeft
-        } else {
-            return false
-        }
-    }
-
-    /// SS: 对当前 View 截屏
-    var screenshot: UIImage? {
-        UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, 0)
-        defer {
-            UIGraphicsEndImageContext()
-        }
-        guard let context = UIGraphicsGetCurrentContext() else { return nil }
-        layer.render(in: context)
-        return UIGraphicsGetImageFromCurrentImageContext()
     }
 
     /// SS: 获取 view 所在 ViewController
@@ -604,7 +570,6 @@ public extension SwifterSwift where Base: UIView {
     }
 
     /// SS: view 的 x 坐标
-    // swiftlint:disable:next identifier_name
     var x: CGFloat {
         get {
             return base.frame.origin.x
@@ -615,7 +580,6 @@ public extension SwifterSwift where Base: UIView {
     }
 
     /// SS: view 的 y 坐标
-    // swiftlint:disable:next identifier_name
     var y: CGFloat {
         get {
             return base.frame.origin.y
