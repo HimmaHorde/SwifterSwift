@@ -420,6 +420,57 @@ final class UIViewExtensionsTests: XCTestCase {
         XCTAssertEqual(buttonSubview.ancestorView(withClass: UITableView.self), tableView)
     }
 
+    func testX() {
+        let frame = CGRect(x: 20, y: 20, width: 100, height: 100)
+        let view = UIView(frame: frame)
+        XCTAssertEqual(view.ss.x, 20)
+        view.ss.x = 10
+    }
+
+    func testY() {
+        let frame = CGRect(x: 20, y: 20, width: 100, height: 100)
+        let view = UIView(frame: frame)
+        XCTAssertEqual(view.ss.y, 20)
+        view.ss.y = 10
+        XCTAssertEqual(view.frame.origin.y, 10)
+    }
+
+    func testWidth() {
+        let frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        let view = UIView(frame: frame)
+        XCTAssertEqual(view.ss.width, 100)
+        view.ss.width = 150
+        XCTAssertEqual(view.frame.size.width, 150)
+    }
+
+    func testHeight() {
+        let frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        let view = UIView(frame: frame)
+        XCTAssertEqual(view.ss.height, 100)
+        view.ss.height = 150
+        XCTAssertEqual(view.frame.size.height, 150)
+    }
+
+    func testSize() {
+        let frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        let view = UIView(frame: frame)
+        XCTAssertEqual(view.ss.size, view.frame.size)
+
+        view.ss.size = CGSize(width: 50, height: 50)
+        XCTAssertEqual(view.frame.size.width, 50)
+        XCTAssertEqual(view.frame.size.height, 50)
+    }
+
+    func testOrigin() {
+        let frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        let view = UIView(frame: frame)
+        XCTAssertEqual(view.ss.origin, view.frame.origin)
+
+        view.ss.origin = CGPoint.init(x: 10, y: 10)
+        XCTAssertEqual(view.frame.origin.x, 10)
+        XCTAssertEqual(view.frame.origin.y, 10)
+    }
+
 }
 
 #endif

@@ -8,7 +8,7 @@
 
 // 代码引用自 rxswift，为防止个 rx 冲突已修改名称
 
-public struct SwifterSwift<Base> {
+public class SwifterSwift<Base> {
     /// SS: 要扩展的基本对象。
     public let base: Base
 
