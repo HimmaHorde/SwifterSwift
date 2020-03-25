@@ -16,12 +16,12 @@ import Foundation
 public typealias EdgeInsets = NSEdgeInsets
 
 public extension NSEdgeInsets {
-    /// SS: 上右下左都是0的 edge insets.
+    /// SS: 上右下左都是0的`EdgeInsets`.
     static let zero = NSEdgeInsets()
 }
 
 extension NSEdgeInsets: Equatable {
-    /// SS: 返回一个布尔值表示两个数是否相等.
+    /// SS: 返回一个判断两个`EdgeInsets`是否相等布尔值.
     ///
     ///     Equality is the inverse of inequality. For any values `a` and `b`,
     ///     `a == b` implies that `a != b` is `false`.
@@ -60,9 +60,9 @@ public extension EdgeInsets {
 
 // MARK: - Methods
 public extension EdgeInsets {
-    /// SS: Creates an `EdgeInsets` with the inset value applied to all (top, bottom, right, left)
+    /// SS: 创建一个所有边距都等于给定值的`EdgeInsets`.
     ///
-    /// - Parameter inset: Inset to be applied in all the edges.
+    /// - Parameter inset: 应用到所有边距的值.
     init(inset: CGFloat) {
         self.init(top: inset, left: inset, bottom: inset, right: inset)
     }
@@ -77,38 +77,38 @@ public extension EdgeInsets {
         self.init(top: vertical / 2, left: horizontal / 2, bottom: vertical / 2, right: horizontal / 2)
     }
 
-    /// SS: Creates an `EdgeInsets` based on current value and top offset.
+    /// SS: 创建一个新的`EdgeInsets`,top值为当前值加上偏移量.
     ///
     /// - Parameters:
-    ///   - top: Offset to be applied in to the top edge.
-    /// - Returns: EdgeInsets offset with given offset.
+    ///   - top: top的偏移量
+    /// - Returns: 偏移处理后的`EdgeInsets`
     func insetBy(top: CGFloat) -> EdgeInsets {
         return EdgeInsets(top: self.top + top, left: left, bottom: bottom, right: right)
     }
 
-    /// SS: Creates an `EdgeInsets` based on current value and left offset.
+    /// SS: 创建一个新的`EdgeInsets`,left值为当前值加上偏移量.
     ///
     /// - Parameters:
-    ///   - left: Offset to be applied in to the left edge.
-    /// - Returns: EdgeInsets offset with given offset.
+    ///   - left: 左的偏移量
+    /// - Returns: 偏移处理后的`EdgeInsets`
     func insetBy(left: CGFloat) -> EdgeInsets {
         return EdgeInsets(top: top, left: self.left + left, bottom: bottom, right: right)
     }
 
-    /// SS: Creates an `EdgeInsets` based on current value and bottom offset.
+    /// SS: 创建一个新的`EdgeInsets`,bottom值为当前值加上偏移量.
     ///
     /// - Parameters:
-    ///   - bottom: Offset to be applied in to the bottom edge.
-    /// - Returns: EdgeInsets offset with given offset.
+    ///   - bottom: 下边距的偏移量
+    /// - Returns: 偏移处理后的`EdgeInsets`
     func insetBy(bottom: CGFloat) -> EdgeInsets {
         return EdgeInsets(top: top, left: left, bottom: self.bottom + bottom, right: right)
     }
 
-    /// SS: Creates an `EdgeInsets` based on current value and right offset.
+    /// SS: 创建一个新的`EdgeInsets`,right值为当前值加上偏移量.
     ///
     /// - Parameters:
-    ///   - right: Offset to be applied in to the right edge.
-    /// - Returns: EdgeInsets offset with given offset.
+    ///   - right: 右边距的偏移量
+    /// - Returns: 偏移处理后的`EdgeInsets`
     func insetBy(right: CGFloat) -> EdgeInsets {
         return EdgeInsets(top: top, left: left, bottom: bottom, right: self.right + right)
     }
@@ -135,7 +135,7 @@ public extension EdgeInsets {
 // MARK: - Operators
 public extension EdgeInsets {
 
-    /// SS: Add all the properties of two `EdgeInsets` to create their addition.
+    /// SS: 返回一个新的`EdgeInsets`,其属性为两个`EdgeInsets`的所有属性相加.
     ///
     /// - Parameters:
     ///   - lhs: The left-hand expression
@@ -148,7 +148,7 @@ public extension EdgeInsets {
                             right: lhs.right + rhs.right)
     }
 
-    /// SS: Add all the properties of two `EdgeInsets` to the left-hand instance.
+    /// SS: 将两个`EdgeInsets`的所有属性相加赋值给左边的`EdgeInsets` .
     ///
     /// - Parameters:
     ///   - lhs: The left-hand expression to be mutated
