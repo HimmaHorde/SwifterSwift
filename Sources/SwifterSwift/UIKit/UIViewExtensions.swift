@@ -61,7 +61,7 @@ public extension UIView {
 // MARK: - Properties
 public extension UIView {
 
-    // 边框颜色
+    /// SS: 边框颜色
     @IBInspectable var borderColor: UIColor? {
         get {
             guard let color = layer.borderColor else { return nil }
@@ -78,7 +78,7 @@ public extension UIView {
         }
     }
 
-    // 边框的宽度
+    /// SS: 边框的宽度
     @IBInspectable var borderWidth: CGFloat {
         get {
             return layer.borderWidth
@@ -88,7 +88,7 @@ public extension UIView {
         }
     }
 
-    // 圆角
+    /// SS: 圆角
     @IBInspectable var cornerRadius: CGFloat {
         get {
             return layer.cornerRadius
