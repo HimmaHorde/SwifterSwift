@@ -66,7 +66,7 @@ public extension NSAttributedString {
     ///
     /// - Parameter attributes: 属性字典
     /// - Returns: 新的富文本
-    fileprivate func applying(attributes: [NSAttributedString.Key: Any]) -> NSAttributedString {
+    func applying(attributes: [NSAttributedString.Key: Any]) -> NSAttributedString {
         let copy = NSMutableAttributedString(attributedString: self)
         let range = (string as NSString).range(of: string)
         copy.addAttributes(attributes, range: range)

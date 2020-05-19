@@ -202,4 +202,36 @@ final class SequenceExtensionsTests: XCTestCase {
         let array1 = [Person(name: "Iveta", age: 20, location: Location(city: "Prague"), isStudent: true), Person(name: "Victor", age: 44, location: Location(city: "Dallas"), isStudent: false), Person(name: "Lukasz", age: 62, location: nil), Person(name: "Anna", age: 18, location: Location(city: "Minsk"), isStudent: true)]
         XCTAssertEqual(array1.filter(by: \.isStudent), [Person(name: "Iveta", age: 20, location: Location(city: "Prague"), isStudent: true), Person(name: "Anna", age: 18, location: Location(city: "Minsk"), isStudent: true)])
     }
+
+    func testFirstByKeyPath() {
+        let array1 = [
+            Person(name: "John", age: 30, location: Location(city: "Boston")),
+            Person(name: "Jan", age: 22, location: nil),
+            Person(name: "Roman", age: 30, location: Location(city: "Moscow"))
+        ]
+
+        let first30Age = array1.first(where: \.age, equals: 30)
+
+        XCTAssertEqual(first30Age, array1.first)
+
+        let missingPerson = array1.first(where: \.name, equals: "Tom")
+
+        XCTAssertNil(missingPerson)
+    }
+
+    func testLastByKeyPath() {
+        let array1 = [
+            Person(name: "John", age: 30, location: Location(city: "Boston")),
+            Person(name: "Jan", age: 22, location: nil),
+            Person(name: "Roman", age: 30, location: Location(city: "Moscow"))
+        ]
+
+        let last30Age = array1.last(where: \.age, equals: 30)
+
+        XCTAssertEqual(last30Age, array1.last)
+
+        let missingPerson = array1.last(where: \.name, equals: "Tom")
+
+        XCTAssertNil(missingPerson)
+    }
 }
