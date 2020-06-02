@@ -38,7 +38,7 @@ class ImageViewController: UIViewController {
             let oImage = UIImage.init(named: "wall.png")!
             let temp = oImage.scaled(toWidth: 100)
             print("original \(oImage.size)")
-            print("scaled \(temp?.size)")
+            print("scaled \(temp!.size)")
         default:
             break
         }
@@ -54,4 +54,49 @@ class ImageViewController: UIViewController {
     }
     */
 
+}
+
+extension UIImage {
+    func changeColor(_ color:UIColor, blendMode:CGBlendMode) -> UIImage {
+            //方式一（可以）
+            UIGraphicsBeginImageContextWithOptions(self.size, false, UIScreen.main.scale)
+            let context = UIGraphicsGetCurrentContext()
+            color.setFill()
+            //移动图片
+            context!.translateBy(x: 0, y: self.size.height)
+            context!.scaleBy(x: 1.0, y: -1.0)
+            
+            let rect = CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height)
+            context!.draw(self.cgImage!, in: rect)
+            //模式配置
+            context!.setBlendMode(blendMode)
+//            context!.addRect(rect)
+//            context!.drawPath(using: CGPathDrawingMode.fill)
+            context?.fill(rect)
+            //创建获取图片
+            let coloredImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            
+            return coloredImage!
+    }
+    func filled2(withColor color: UIColor) -> UIImage {
+        guard let mask = cgImage else { return self }
+
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        guard let context = UIGraphicsGetCurrentContext() else { return self }
+
+        color.setFill()
+
+        context.translateBy(x: 0, y: size.height)
+        context.scaleBy(x: 1.0, y: -1.0)
+        context.setBlendMode(CGBlendMode.normal)
+
+        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        context.clip(to: rect, mask: mask)
+        context.fill(rect)
+
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return newImage
+    }
 }

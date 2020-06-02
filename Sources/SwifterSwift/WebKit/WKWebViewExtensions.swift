@@ -12,7 +12,7 @@ import WebKit
 // MARK: - Methods
 extension WKWebView {
 
-    /// SwifterSwift: Navigate to `url`.
+    /// SS: Navigate to `url`.
     /// - Parameter url: URL to navigate.
     /// - Returns: A new navigation for given `url`.
     @discardableResult
@@ -20,7 +20,7 @@ extension WKWebView {
         return load(URLRequest(url: url))
     }
 
-    /// SwifterSwift: Navigate to url using `String`.
+    /// SS: Navigate to url using `String`.
     /// - Parameter urlString: The string specifying the URL to navigate to.
     /// - Returns: A new navigation for given `urlString`.
     @discardableResult

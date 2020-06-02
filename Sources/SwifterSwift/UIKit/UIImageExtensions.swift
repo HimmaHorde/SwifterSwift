@@ -180,16 +180,18 @@ public extension UIImage {
         }
         #endif
 
+        guard let mask = cgImage else { return self }
+
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
-        color.setFill()
         guard let context = UIGraphicsGetCurrentContext() else { return self }
+
+        color.setFill()
 
         context.translateBy(x: 0, y: size.height)
         context.scaleBy(x: 1.0, y: -1.0)
         context.setBlendMode(CGBlendMode.normal)
 
         let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        guard let mask = cgImage else { return self }
         context.clip(to: rect, mask: mask)
         context.fill(rect)
 
