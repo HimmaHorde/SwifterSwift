@@ -25,7 +25,7 @@ class ImageViewController: UIViewController {
         case 0:
             imageView.image = UIImage.init(named: "wall.png")?.filled(withColor: UIColor.red)
         case 1:
-            imageView.image = UIImage.init(named: "wall.png")?.tint(UIColor.white, blendMode: .multiply)
+            imageView.image = UIImage.init(named: "wall.png")?.tint(UIColor.white, blendMode: .destinationIn)
         case 2:
             let original = UIImage.init(named: "xiaofang")!
             print("original size = \(original.size)")
@@ -80,20 +80,11 @@ extension UIImage {
             return coloredImage!
     }
     func filled2(withColor color: UIColor) -> UIImage {
-        guard let mask = cgImage else { return self }
 
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
         guard let context = UIGraphicsGetCurrentContext() else { return self }
-
         color.setFill()
-
-        context.translateBy(x: 0, y: size.height)
-        context.scaleBy(x: 1.0, y: -1.0)
-        context.setBlendMode(CGBlendMode.normal)
-
-        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        context.clip(to: rect, mask: mask)
-        context.fill(rect)
+        context.fill(CGRect.init(origin: .zero, size: size))
 
         let newImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()

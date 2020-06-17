@@ -552,6 +552,8 @@ final class StringExtensionsTests: XCTestCase {
     }
 
     func testTruncated() {
+        XCTAssertEqual("".truncated(toLength: 5, trailing: nil), "")
+        XCTAssertEqual("This is a short sentence".truncated(toLength: -1, trailing: nil), "This is a short sentence")
         XCTAssertEqual("This is a very long sentence".truncated(toLength: 14), "This is a very...")
 
         XCTAssertEqual("This is a very long sentence".truncated(toLength: 14, trailing: nil), "This is a very")
@@ -576,6 +578,19 @@ final class StringExtensionsTests: XCTestCase {
         XCTAssertFalse("notanemail.com".matches(pattern: "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"))
         XCTAssertTrue("email@mail.com".matches(pattern: "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"))
     }
+    
+    #if canImport(Foundation)
+    func testRegexMatchOperator() {
+        XCTAssertTrue("123" ~= "\\d{3}")
+        XCTAssertFalse("dasda" ~= "\\d{3}")
+        XCTAssertFalse("notanemail.com" ~= "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}")
+        XCTAssertTrue("email@mail.com" ~= "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}")
+        XCTAssertTrue("hat" ~= "[a-z]at")
+        XCTAssertFalse("" ~= "[a-z]at")
+        XCTAssertTrue("" ~= "[a-z]*")
+        XCTAssertFalse("" ~= "[0-9]+")
+    }
+    #endif
 
     func testPadStart() {
         var str: String = "str"
