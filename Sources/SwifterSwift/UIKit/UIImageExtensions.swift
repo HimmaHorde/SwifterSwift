@@ -182,7 +182,7 @@ public extension UIImage {
 
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
         guard let context = UIGraphicsGetCurrentContext() else { return self }
-        
+
         color.setFill()
         context.fill(CGRect.init(origin: .zero, size: size))
 

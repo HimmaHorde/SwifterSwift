@@ -57,26 +57,26 @@ class ImageViewController: UIViewController {
 }
 
 extension UIImage {
-    func changeColor(_ color:UIColor, blendMode:CGBlendMode) -> UIImage {
-            //方式一（可以）
+    func changeColor(_ color: UIColor, blendMode: CGBlendMode) -> UIImage {
+            // 方式一（可以）
             UIGraphicsBeginImageContextWithOptions(self.size, false, UIScreen.main.scale)
             let context = UIGraphicsGetCurrentContext()
             color.setFill()
-            //移动图片
+            // 移动图片
             context!.translateBy(x: 0, y: self.size.height)
             context!.scaleBy(x: 1.0, y: -1.0)
-            
+
             let rect = CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height)
             context!.draw(self.cgImage!, in: rect)
-            //模式配置
+            // 模式配置
             context!.setBlendMode(blendMode)
 //            context!.addRect(rect)
 //            context!.drawPath(using: CGPathDrawingMode.fill)
             context?.fill(rect)
-            //创建获取图片
+            // 创建获取图片
             let coloredImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
-            
+
             return coloredImage!
     }
     func filled2(withColor color: UIColor) -> UIImage {

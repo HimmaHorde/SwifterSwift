@@ -41,8 +41,8 @@ public extension DispatchQueue {
 
         return DispatchQueue.getSpecific(key: key) != nil
     }
-    
-    /// SwifterSwift: Runs passed closure asynchronous after certain time interval
+
+    /// SS: Runs passed closure asynchronous after certain time interval
     ///
     /// - Parameters:
     ///   - delay: The time inverval after which the closure will run.

@@ -936,9 +936,9 @@ public extension String {
         return range(of: pattern, options: .regularExpression, range: nil, locale: nil) != nil
     }
     #endif
-    
+
     #if canImport(Foundation)
-    /// SwifterSwift: Overload Swift's 'contains' operator for matching regex pattern
+    /// SS: Overload Swift's 'contains' operator for matching regex pattern
     ///
     /// - Parameter lhs: String to check on regex pattern.
     /// - Parameter rhs: Regex pattern to match against.

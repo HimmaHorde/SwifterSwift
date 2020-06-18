@@ -7,4 +7,4 @@ gem 'danger-xcode_summary'
 gem 'xcpretty-json-formatter'
 
 gem 'fastlane'
-gem 'cocoapods'
+# gem 'cocoapods'

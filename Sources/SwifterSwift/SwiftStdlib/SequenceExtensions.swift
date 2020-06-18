@@ -318,9 +318,9 @@ public extension Sequence where Element: Equatable {
 
 public extension Sequence where Element: Hashable {
 
-    /// SS: Check whether a sequence contains duplicates.
+    /// SS: 检查序列中是否包含重复元素.
     ///
-    /// - Returns: true if the receiver contains duplicates.
+    /// - Returns: true 如果包含重复元素.
     func containsDuplicates() -> Bool {
         var set = Set<Element>()
         for element in self {
@@ -331,7 +331,7 @@ public extension Sequence where Element: Hashable {
         return false
     }
 
-    /// SS: Getting the duplicated elements in a sequence.
+    /// SS: 获取序列中的重复元素.
     ///
     ///     [1, 1, 2, 2, 3, 3, 3, 4, 5].duplicates().sorted() -> [1, 2, 3])
     ///     ["h", "e", "l", "l", "o"].duplicates().sorted() -> ["l"])
