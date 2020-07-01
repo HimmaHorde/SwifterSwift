@@ -14,7 +14,8 @@ public extension CGSize {
 
     /// SS: 宽高比
     var aspectRatio: CGFloat {
-        return height == 0 ? 0 : width / height
+        guard height != 0 else { return 0 }
+        return width / height
     }
 
     /// SS: 返回宽高中大的那个值

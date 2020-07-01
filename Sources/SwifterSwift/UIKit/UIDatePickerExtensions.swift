@@ -12,7 +12,8 @@ import UIKit
 // MARK: - Properties
 public extension UIDatePicker {
 
-    /// SS: 设置文字颜色
+    #if !targetEnvironment(macCatalyst)
+    /// SS: UIDatePicker 的文字颜色.
     var textColor: UIColor? {
         set {
             setValue(newValue, forKeyPath: "textColor")
@@ -21,6 +22,7 @@ public extension UIDatePicker {
             return value(forKeyPath: "textColor") as? UIColor
         }
     }
+    #endif
 
 }
 

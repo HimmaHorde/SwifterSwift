@@ -8,8 +8,8 @@ import SwifterSwift
 
 //: ### CGPoint extensions
 
-let point1 = CGPoint(x: 10, y: 10)
-let point2 = CGPoint(x: 30, y: 30)
+let point1 = CGPoint(x: 0, y: 3)
+let point2 = CGPoint(x: 4, y: 0)
 
 // Get distance from another CGPoint.
 point1.distance(from: point2)

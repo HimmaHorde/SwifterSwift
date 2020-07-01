@@ -141,12 +141,10 @@ public extension Int {
         for (index, romanChar) in romanValues.enumerated() {
             let arabicValue = arabicValues[index]
             let div = startingValue / arabicValue
-            if div > 0 {
-                for _ in 0..<div {
-                    romanValue += romanChar
-                }
-                startingValue -= arabicValue * div
+            for _ in 0..<div {
+                romanValue.append(romanChar)
             }
+            startingValue -= arabicValue * div
         }
         return romanValue
     }
@@ -205,5 +203,5 @@ prefix operator ±
 // swiftlint:disable:next identifier_name
 public prefix func ± (int: Int) -> (Int, Int) {
     // http://nshipster.com/swift-operators/
-    return 0 ± int
+    return (int, -int)
 }

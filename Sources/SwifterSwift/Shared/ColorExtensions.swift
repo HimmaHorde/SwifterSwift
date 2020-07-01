@@ -44,11 +44,11 @@ public extension Color {
     ///     UIColor.blue.rgbComponents.blue -> 255
     ///
     var rgbComponents: (red: Int, green: Int, blue: Int) {
-        var components: [CGFloat] {
-            let comps = cgColor.components!
-            if comps.count == 4 { return comps }
+        let components: [CGFloat] = {
+            let comps: [CGFloat] = cgColor.components!
+            guard comps.count != 4 else { return comps }
             return [comps[0], comps[0], comps[0], comps[1]]
-        }
+        }()
         let red = components[0]
         let green = components[1]
         let blue = components[2]
@@ -62,11 +62,11 @@ public extension Color {
     ///     UIColor.blue.rgbComponents.blue -> 1.0
     ///
     var cgFloatComponents: (red: CGFloat, green: CGFloat, blue: CGFloat) {
-        var components: [CGFloat] {
-            let comps = cgColor.components!
-            if comps.count == 4 { return comps }
+        let components: [CGFloat] = {
+            let comps: [CGFloat] = cgColor.components!
+            guard comps.count != 4 else { return comps }
             return [comps[0], comps[0], comps[0], comps[1]]
-        }
+        }()
         let red = components[0]
         let green = components[1]
         let blue = components[2]
@@ -89,9 +89,9 @@ public extension Color {
     /// SS: 获取完整的16 进制字符串 (read-only).
     var hexString: String {
         let components: [Int] = {
-            let comps = cgColor.components!
-            let components = comps.count == 4 ? comps : [comps[0], comps[0], comps[0], comps[1]]
-            return components.map { Int($0 * 255.0) }
+            let comps = cgColor.components!.map { Int($0 * 255.0) }
+            guard comps.count != 4 else { return comps }
+            return [comps[0], comps[0], comps[0], comps[1]]
         }()
         return String(format: "#%02X%02X%02X", components[0], components[1], components[2])
     }
@@ -114,9 +114,9 @@ public extension Color {
     /// SS: 返回十六进制字符串，对于符合short 规则的返回 `shortHexString`
     var shortHexOrHexString: String {
         let components: [Int] = {
-            let comps = cgColor.components!
-            let components = comps.count == 4 ? comps : [comps[0], comps[0], comps[0], comps[1]]
-            return components.map { Int($0 * 255.0) }
+            let comps = cgColor.components!.map { Int($0 * 255.0) }
+            guard comps.count != 4 else { return comps }
+            return [comps[0], comps[0], comps[0], comps[1]]
         }()
         let hexString = String(format: "#%02X%02X%02X", components[0], components[1], components[2])
         let string = hexString.replacingOccurrences(of: "#", with: "")
@@ -139,15 +139,16 @@ public extension Color {
 
     /// SS: 颜色的 10 进制值
     var uInt: UInt {
-        let comps: [CGFloat] = {
-            let comps = cgColor.components!
-            return comps.count == 4 ? comps : [comps[0], comps[0], comps[0], comps[1]]
+        let components: [CGFloat] = {
+            let comps: [CGFloat] = cgColor.components!
+            guard comps.count != 4 else { return comps }
+            return [comps[0], comps[0], comps[0], comps[1]]
         }()
 
         var colorAsUInt32: UInt32 = 0
-        colorAsUInt32 += UInt32(comps[0] * 255.0) << 16
-        colorAsUInt32 += UInt32(comps[1] * 255.0) << 8
-        colorAsUInt32 += UInt32(comps[2] * 255.0)
+        colorAsUInt32 += UInt32(components[0] * 255.0) << 16
+        colorAsUInt32 += UInt32(components[1] * 255.0) << 8
+        colorAsUInt32 += UInt32(components[2] * 255.0)
 
         return UInt(colorAsUInt32)
     }
@@ -201,13 +202,15 @@ public extension Color {
         guard level2 > 0 else { return color1 }
 
         let components1: [CGFloat] = {
-            let comps = color1.cgColor.components!
-            return comps.count == 4 ? comps : [comps[0], comps[0], comps[0], comps[1]]
+            let comps: [CGFloat] = color1.cgColor.components!
+            guard comps.count != 4 else { return comps }
+            return [comps[0], comps[0], comps[0], comps[1]]
         }()
 
         let components2: [CGFloat] = {
-            let comps = color2.cgColor.components!
-            return comps.count == 4 ? comps : [comps[0], comps[0], comps[0], comps[1]]
+            let comps: [CGFloat] = color2.cgColor.components!
+            guard comps.count != 4 else { return comps }
+            return [comps[0], comps[0], comps[0], comps[1]]
         }()
 
         let red1 = components1[0]
