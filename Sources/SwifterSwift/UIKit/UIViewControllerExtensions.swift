@@ -27,7 +27,6 @@ public extension UIViewController {
 
 // MARK: - Methods
 public extension UIViewController {
-    
     /// SS: 获取指定UIStoryboard的UIViewcontroller实例
     ///
     /// - Parameters:
@@ -43,7 +42,7 @@ public extension UIViewController {
         }
         return viewController
     }
-    
+
     /// SS: 给通知添加监听
     ///
     /// - Parameters:
