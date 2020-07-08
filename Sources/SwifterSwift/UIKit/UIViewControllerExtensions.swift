@@ -27,8 +27,24 @@ public extension UIViewController {
 
 // MARK: - Methods
 public extension UIViewController {
-
-    /// SS: 添加监听
+    
+    /// SS: 获取指定UIStoryboard的UIViewcontroller实例
+    ///
+    /// - Parameters:
+    ///   - storyboard: Name of the storyboard where the UIViewController is located
+    ///   - bundle: Bundle in which storyboard is located
+    ///   - identifier: UIViewController's storyboard identifier
+    /// - Returns: Custom UIViewController instantiated from storyboard
+    class func instantiate(from storyboard: String = "Main", bundle: Bundle? = nil, identifier: String? = nil) -> Self {
+        let viewControllerIdentifier = identifier ?? String(describing: self)
+        let storyboard = UIStoryboard(name: storyboard, bundle: bundle)
+        guard let viewController = storyboard.instantiateViewController(withIdentifier: viewControllerIdentifier) as? Self else {
+            preconditionFailure("Unable to instantiate view controller with identifier \(viewControllerIdentifier) as type \(type(of: self))")
+        }
+        return viewController
+    }
+    
+    /// SS: 给通知添加监听
     ///
     /// - Parameters:
     ///   - name: notification 名字

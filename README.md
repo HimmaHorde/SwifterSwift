@@ -76,6 +76,9 @@ SwifterSwift is Swift v5.0+ compatible starting from v5
 
 <h4>- Integrate WebKit extensions only:</h4>
 <pre><code class="ruby language-ruby">pod 'SwifterSwift/WebKit'</code></pre>
+
+<h4>- Integrate HealthKit extensions only:</h4>
+<pre><code class="ruby language-ruby">pod 'SwifterSwift/HealthKit'</code></pre>
 </details>
 
 <details>
@@ -147,7 +150,6 @@ let package = Package(
 <li><a href="https://github.com/SwifterSwift/SwifterSwift/tree/master/Sources/SwifterSwift/SwiftStdlib/FloatingPointExtensions.swift"><code>FloatingPoint extensions</code></a></li>
 <li><a href="https://github.com/SwifterSwift/SwifterSwift/tree/master/Sources/SwifterSwift/SwiftStdlib/IntExtensions.swift"><code>Int extensions</code></a></li>
 <li><a href="https://github.com/SwifterSwift/SwifterSwift/tree/master/Sources/SwifterSwift/SwiftStdlib/OptionalExtensions.swift"><code>Optional extensions</code></a></li>
-<li><a href="https://github.com/SwifterSwift/SwifterSwift/blob/master/Sources/SwifterSwift/SwiftStdlib/RandomAccessCollectionExtensions.swift"><code>RandomAccessCollection extensions</code></a></li>
 <li><a href="https://github.com/SwifterSwift/SwifterSwift/blob/master/Sources/SwifterSwift/SwiftStdlib/RangeReplaceableCollectionExtensions.swift"><code>RangeReplaceableCollection extensions</code></a></li>
 <li><a href="https://github.com/SwifterSwift/SwifterSwift/tree/master/Sources/SwifterSwift/SwiftStdlib/SequenceExtensions.swift"><code>Sequence extensions</code></a></li>
 <li><a href="https://github.com/SwifterSwift/SwifterSwift/tree/master/Sources/SwifterSwift/SwiftStdlib/SignedIntegerExtensions.swift"><code>SignedInteger extensions</code></a></li>
@@ -312,6 +314,14 @@ let package = Package(
 </br>
 <ul>
 <li><a href="https://github.com/SwifterSwift/SwifterSwift/blob/master/Sources/SwifterSwift/WebKit/WKWebViewExtensions.swift"><code>WKWebView extensions</code></a></li>
+</ul>
+</details>
+
+<details>
+<summary>HealthKit Extensions</summary>
+</br>
+<ul>
+<li><a href="https://github.com/SwifterSwift/SwifterSwift/blob/master/Sources/SwifterSwift/HealthKit/HKActivitySummaryExtensions.swift"><code>HKActivitySummary extensions</code></a></li>
 </ul>
 </details>
 

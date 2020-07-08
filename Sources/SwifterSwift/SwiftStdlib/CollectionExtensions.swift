@@ -59,10 +59,6 @@ public extension Collection {
         return slices
     }
 
-}
-
-// MARK: - Methods (Int)
-public extension Collection where Index == Int {
     /// SS: 获取满足条件的所有索引
     ///
     ///     [1, 7, 1, 2, 4, 1, 8].indices(where: { $0 == 1 }) -> [0, 2, 5]
@@ -70,11 +66,8 @@ public extension Collection where Index == Int {
     /// - Parameter condition: 条件闭包
     /// - Returns: 索引集合. (optional)
     func indices(where condition: (Element) throws -> Bool) rethrows -> [Index]? {
-        var indicies: [Index] = []
-        for (index, value) in lazy.enumerated() where try condition(value) {
-            indicies.append(index)
-        }
-        return indicies.isEmpty ? nil : indicies
+        let indices = try self.indices.filter { try condition(self[$0]) }
+        return indices.isEmpty ? nil : indices
     }
 
     /// SS: 集合分割成指定大小，调用指定闭包。
@@ -86,12 +79,11 @@ public extension Collection where Index == Int {
     ///   - slice: 分割数组的长度
     ///   - body: a closure that takes an array of slice size as a parameter.
     func forEach(slice: Int, body: ([Element]) throws -> Void) rethrows {
-        guard slice > 0, !isEmpty else { return }
-
-        var value: Int = 0
-        while value < count {
-            try body(Array(self[Swift.max(value, startIndex)..<Swift.min(value + slice, endIndex)]))
-            value += slice
+        var start = startIndex
+        while case let end = index(start, offsetBy: slice, limitedBy: endIndex) ?? endIndex,
+            start != end {
+                try body(Array(self[start..<end]))
+                start = end
         }
     }
 }
@@ -100,15 +92,33 @@ public extension Collection where Element: Equatable, Index == Int {
 
 }
 
-// MARK: - Methods (Integer)
-public extension Collection where Element == IntegerLiteralType, Index == Int {
+// MARK: - Methods (Equatable)
+public extension Collection where Element: Equatable {
+
+    /// SS: All indices of specified item.
+    ///
+    ///        [1, 2, 2, 3, 4, 2, 5].indices(of 2) -> [1, 2, 5]
+    ///        [1.2, 2.3, 4.5, 3.4, 4.5].indices(of 2.3) -> [1]
+    ///        ["h", "e", "l", "l", "o"].indices(of "l") -> [2, 3]
+    ///
+    /// - Parameter item: item to check.
+    /// - Returns: an array with all indices of the given item.
+    func indices(of item: Element) -> [Index] {
+        return indices.filter { self[$0] == item }
+    }
+
+}
+
+// MARK: - Methods (BinaryInteger)
+public extension Collection where Element: BinaryInteger {
 
     /// SS: 整数集合求平均值
     ///
     /// - Returns: 数组的平均值。
     func average() -> Double {
         // http://stackoverflow.com/questions/28288148/making-my-function-calculate-average-of-array-swift
-        return isEmpty ? 0 : Double(reduce(0, +)) / Double(count)
+        guard !isEmpty else { return .zero }
+        return Double(reduce(.zero, +)) / Double(count)
     }
 
 }
@@ -122,7 +132,7 @@ public extension Collection where Element: FloatingPoint {
     ///
     /// - Returns: average of the array's elements.
     func average() -> Element {
-        guard !isEmpty else { return 0 }
-        return reduce(0, {$0 + $1}) / Element(count)
+        guard !isEmpty else { return .zero }
+        return reduce(.zero, +) / Element(count)
     }
 }
