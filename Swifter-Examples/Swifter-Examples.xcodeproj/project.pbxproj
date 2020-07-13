@@ -14,6 +14,7 @@
 		CC38B6CD2223D5BD00DC4CDA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC38B6CB2223D5BD00DC4CDA /* LaunchScreen.storyboard */; };
 		CC4C68F42228FD9E00D3857A /* data.aa in Resources */ = {isa = PBXBuildFile; fileRef = CC4C68F32228FD9E00D3857A /* data.aa */; };
 		CC74F671222D26CD00CE6104 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC74F670222D26CD00CE6104 /* SearchViewController.swift */; };
+		CCB0B91C24B69F870039E193 /* PageAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB0B91B24B69F870039E193 /* PageAnimationController.swift */; };
 		CCDA8ADD222E082600E106D0 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDA8ADC222E082600E106D0 /* ImageViewController.swift */; };
 		CCDA8ADF222E091200E106D0 /* wall.png in Resources */ = {isa = PBXBuildFile; fileRef = CCDA8ADE222E091200E106D0 /* wall.png */; };
 		CCDA8AE1222E0AB000E106D0 /* wall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CCDA8AE0222E0AAF00E106D0 /* wall.jpg */; };
@@ -29,6 +30,7 @@
 		CC38B6CE2223D5BD00DC4CDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC4C68F32228FD9E00D3857A /* data.aa */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.aa; sourceTree = "<group>"; };
 		CC74F670222D26CD00CE6104 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		CCB0B91B24B69F870039E193 /* PageAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageAnimationController.swift; sourceTree = "<group>"; };
 		CCDA8ADC222E082600E106D0 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		CCDA8ADE222E091200E106D0 /* wall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wall.png; sourceTree = "<group>"; };
 		CCDA8AE0222E0AAF00E106D0 /* wall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wall.jpg; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				CC74F670222D26CD00CE6104 /* SearchViewController.swift */,
 				CCDA8ADC222E082600E106D0 /* ImageViewController.swift */,
 				CC2E365F229BC77000CD3903 /* SpringViewController.swift */,
+				CCB0B91B24B69F870039E193 /* PageAnimationController.swift */,
 				CC38B6C62223D5B900DC4CDA /* Main.storyboard */,
 				CC38B6C92223D5BD00DC4CDA /* Assets.xcassets */,
 				CC38B6CB2223D5BD00DC4CDA /* LaunchScreen.storyboard */,
@@ -153,6 +156,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCB0B91C24B69F870039E193 /* PageAnimationController.swift in Sources */,
 				CC74F671222D26CD00CE6104 /* SearchViewController.swift in Sources */,
 				CCDA8ADD222E082600E106D0 /* ImageViewController.swift in Sources */,
 				CC38B6C32223D5B800DC4CDA /* AppDelegate.swift in Sources */,
