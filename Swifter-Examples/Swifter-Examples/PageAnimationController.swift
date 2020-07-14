@@ -13,11 +13,11 @@ class PageAnimationController: UITableViewController, UIPopoverPresentationContr
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         .none
     }
-    
+
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         .none
     }
@@ -25,15 +25,13 @@ class PageAnimationController: UITableViewController, UIPopoverPresentationContr
 
 extension PageAnimationController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = SubPageController()
-        presentPopover(vc, sourcePoint: .init(x: 100, y: 100), size: .init(width: 200, height: 200), delegate: self, animated: true) {
-            
+        let pop = SubPageController()
+        presentPopover(pop, sourcePoint: .init(x: 100, y: 100), size: .init(width: 200, height: 200), delegate: self, animated: true) {
         }
     }
 }
 
-
-fileprivate class SubPageController: UIViewController {
+class SubPageController: UIViewController {
     override func viewDidLoad() {
         view.backgroundColor = .brown
     }

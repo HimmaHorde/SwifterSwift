@@ -148,6 +148,14 @@ final class UIViewExtensionsTests: XCTestCase {
         XCTAssertEqual(view.shadowOpacity, 0.5)
     }
 
+    func testMasksToBounds() {
+        let view = UIView(frame: .zero)
+        view.layer.masksToBounds = true
+        XCTAssertTrue(view.clipsToBounds)
+        view.clipsToBounds = false
+        XCTAssertFalse(view.clipsToBounds)
+    }
+
     func testParentViewController() {
         let viewController = UIViewController()
         XCTAssertNotNil(viewController.view.parentViewController)
