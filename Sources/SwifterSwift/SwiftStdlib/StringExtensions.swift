@@ -391,6 +391,16 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
+    /// SS: 用于包含在正则表达式模式中的转义字符串
+    ///
+    /// "hello ^$ there" -> "hello \\^\\$ there"
+    ///
+    var regexEscaped: String {
+      return NSRegularExpression.escapedPattern(for: self)
+    }
+    #endif
+
+    #if canImport(Foundation)
     /// SS: 字符串没有空格和换行。
     ///
     ///        "   \n Swifter   \n  Swift  ".withoutSpacesAndNewLines -> "SwifterSwift"

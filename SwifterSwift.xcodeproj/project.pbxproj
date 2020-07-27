@@ -571,10 +571,10 @@
 		CC209B802265A40900053A06 /* UnicodeScalarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC209B7E2265A40900053A06 /* UnicodeScalarExtensions.swift */; };
 		CC209B812265A40900053A06 /* UnicodeScalarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC209B7E2265A40900053A06 /* UnicodeScalarExtensions.swift */; };
 		CC209B822265A40900053A06 /* UnicodeScalarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC209B7E2265A40900053A06 /* UnicodeScalarExtensions.swift */; };
-		CC2E365E229B746100CD3903 /* SwifterSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2E365D229B746100CD3903 /* SwifterSwift.swift */; };
 		CC548C7723D3E9E8006EFFC9 /* SwifterSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2E365D229B746100CD3903 /* SwifterSwift.swift */; };
 		CC548C7823D3E9E9006EFFC9 /* SwifterSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2E365D229B746100CD3903 /* SwifterSwift.swift */; };
 		CC548C7923D3E9E9006EFFC9 /* SwifterSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2E365D229B746100CD3903 /* SwifterSwift.swift */; };
+		CC7D273924CECB79000E134F /* SwifterSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2E365D229B746100CD3903 /* SwifterSwift.swift */; };
 		CF30948A216AAC7A005609BC /* UIActivityExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF309489216AAC7A005609BC /* UIActivityExtensions.swift */; };
 		D951E8AA23D04DBE00F2CD0B /* DecodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D951E8A923D04DBE00F2CD0B /* DecodableExtensions.swift */; };
 		D951E8AB23D04DCA00F2CD0B /* DecodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D951E8A923D04DBE00F2CD0B /* DecodableExtensions.swift */; };
@@ -1997,11 +1997,11 @@
 				07B7F20F1F5EB43C00E6F910 /* DataExtensions.swift in Sources */,
 				0DAEBCE024B0045F00F61684 /* HKActivitySummaryExtensions.swift in Sources */,
 				07B7F19C1F5EB42000E6F910 /* UINavigationItemExtensions.swift in Sources */,
-				CC2E365E229B746100CD3903 /* SwifterSwift.swift in Sources */,
 				9D806A5B2258D2B8008E500A /* SCNMaterialExtensions.swift in Sources */,
 				F87AA5D5241257E3005F5B28 /* NotificationCenterExtensions.swift in Sources */,
 				07B7F1A51F5EB42000E6F910 /* UITextViewExtensions.swift in Sources */,
 				9D806A512258CFF9008E500A /* SCNSphereExtensions.swift in Sources */,
+				CC7D273924CECB79000E134F /* SwifterSwift.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -52,14 +52,3 @@ func ** (lhs: Float, rhs: Float) -> Float {
     // http://nshipster.com/swift-operators/
     return pow(lhs, rhs)
 }
-
-prefix operator √
-/// SS: 二次根号
-///
-/// - Parameter float: 开根号的数
-/// - Returns: 平分跟
-// swiftlint:disable:next identifier_name
-public prefix func √ (float: Float) -> Float {
-    // http://nshipster.com/swift-operators/
-    return sqrt(float)
-}
