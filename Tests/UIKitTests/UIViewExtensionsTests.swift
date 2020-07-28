@@ -520,7 +520,6 @@ final class UIViewExtensionsTests: XCTestCase {
         // simple empty case test
         XCTAssertNil(container.widthConstraint)
     }
->>>>>>> 6756b2e7260ae65940ecae630b5c947cf528118c
 }
 
 #endif

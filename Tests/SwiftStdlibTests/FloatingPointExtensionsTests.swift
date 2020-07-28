@@ -5,7 +5,6 @@
 //  Created by Omar Albeik on 5.04.2018.
 //  Copyright © 2018 SwifterSwift
 //
-
 import XCTest
 @testable import SwifterSwift
 

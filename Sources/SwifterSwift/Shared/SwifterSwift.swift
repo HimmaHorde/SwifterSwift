@@ -32,14 +32,14 @@ public protocol SwifterCompatible {
     var ss: SwifterSwift<SwifterSwiftBase> { get }
 }
 
-extension SwifterCompatible {
+public extension SwifterCompatible {
     /// SS: Reactive extensions.
-    public static var ss: SwifterSwift<Self>.Type {
+    static var ss: SwifterSwift<Self>.Type {
         return SwifterSwift<Self>.self
     }
 
     /// SS: Reactive extensions.
-    public var ss: SwifterSwift<Self> {
+    var ss: SwifterSwift<Self> {
         return SwifterSwift(self)
     }
 }
