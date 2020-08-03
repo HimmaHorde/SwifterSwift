@@ -618,7 +618,7 @@ public extension UIView {
     }
 }
 
-extension SwifterSwift where Base: UIView {
+public extension SwifterSwift where Base: UIView {
     /// SS: view 的 x 坐标
     var x: CGFloat {
         get {
