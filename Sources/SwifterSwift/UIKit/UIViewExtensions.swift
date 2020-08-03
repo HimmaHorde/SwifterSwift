@@ -292,6 +292,20 @@ public extension UIView {
         return UINib(nibName: name, bundle: bundle).instantiate(withOwner: nil, options: nil)[0] as? UIView
     }
 
+    /// SS: Load view of a certain type from nib
+    ///
+    /// - Parameters:SS
+    ///   - withClass: UIView type.
+    ///   - bundle: bundle of nib (default is nil).
+    /// - Returns: UIView
+    class func loadFromNib<T: UIView>(withClass name: T.Type, bundle: Bundle? = nil) -> T {
+        let named = String(describing: name)
+        guard let view = UINib(nibName: named, bundle: bundle).instantiate(withOwner: nil, options: nil)[0] as? T else {
+            fatalError("First element in xib file \(named) is not of type \(named)")
+        }
+        return view
+    }
+
     /// SS: 移除所有 subview
     func removeSubviews() {
         subviews.forEach({ $0.removeFromSuperview() })
