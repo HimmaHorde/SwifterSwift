@@ -61,19 +61,14 @@ public extension UITableView {
         })
     }
 
-    /// SS: 滑动到 scrollView 的底部。
-    ///
-    /// - Parameter animated: 是否开启动画（默认开启）。
-    func scrollToBottom(animated: Bool = true) {
-        let bottomOffset = CGPoint(x: 0, y: contentSize.height - bounds.size.height)
-        setContentOffset(bottomOffset, animated: animated)
+    /// SwifterSwift: Remove TableFooterView.
+    func removeTableFooterView() {
+        tableFooterView = nil
     }
 
-    /// SS: 滑动到 scrollView 的顶部。
-    ///
-    /// - Parameter animated: 是否开启动画（默认开启）。
-    func scrollToTop(animated: Bool = true) {
-        setContentOffset(CGPoint.zero, animated: animated)
+    /// SwifterSwift: Remove TableHeaderView.
+    func removeTableHeaderView() {
+        tableHeaderView = nil
     }
 
     /// SS: 根据类名复用UITableViewCell

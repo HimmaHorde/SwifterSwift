@@ -15,11 +15,11 @@ public extension UIDatePicker {
     #if !targetEnvironment(macCatalyst)
     /// SS: UIDatePicker 的文字颜色.
     var textColor: UIColor? {
+        get {
+            value(forKeyPath: "textColor") as? UIColor
+        }
         set {
             setValue(newValue, forKeyPath: "textColor")
-        }
-        get {
-            return value(forKeyPath: "textColor") as? UIColor
         }
     }
     #endif
