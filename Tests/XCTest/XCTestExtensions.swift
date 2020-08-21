@@ -11,18 +11,18 @@ import XCTest
 
 #if canImport(UIKit)
 import UIKit
-/// SwifterSwift: Color
+/// SS: Color
 public typealias Color = UIColor
 #endif
 
 #if canImport(AppKit) && !targetEnvironment(macCatalyst)
 import AppKit
-/// SwifterSwift: Color
+/// SS: Color
 public typealias Color = NSColor
 #endif
 
 #if canImport(AppKit) || canImport(UIKit)
-/// SwifterSwift: Asserts that the RGBA values of two `Color`s are equal within a certain accuracy.
+/// SS: Asserts that the RGBA values of two `Color`s are equal within a certain accuracy.
 /// - Parameters:
 ///   - expression1: A `Color`.
 ///   - expression2: A `Color`.

@@ -32,7 +32,7 @@ public extension UIScrollView {
         return UIGraphicsGetImageFromCurrentImageContext()
     }
 
-    /// SwifterSwift: The currently visible region of the scroll view.
+    /// SS: The currently visible region of the scroll view.
     var visibleRect: CGRect {
         let contentWidth = contentSize.width - contentOffset.x
         let contentHeight = contentSize.height - contentOffset.y
@@ -45,31 +45,31 @@ public extension UIScrollView {
 
 public extension UIScrollView {
 
-    /// SwifterSwift: Scroll to the top-most content offset.
+    /// SS: Scroll to the top-most content offset.
     /// - Parameter animated: `true` to animate the transition at a constant velocity to the new offset, `false` to make the transition immediate.
     func scrollToTop(animated: Bool = true) {
         setContentOffset(CGPoint(x: contentOffset.x, y: -contentInset.top), animated: animated)
     }
 
-    /// SwifterSwift: Scroll to the left-most content offset.
+    /// SS: Scroll to the left-most content offset.
     /// - Parameter animated: `true` to animate the transition at a constant velocity to the new offset, `false` to make the transition immediate.
     func scrollToLeft(animated: Bool = true) {
         setContentOffset(CGPoint(x: -contentInset.left, y: contentOffset.y), animated: animated)
     }
 
-    /// SwifterSwift: Scroll to the bottom-most content offset.
+    /// SS: Scroll to the bottom-most content offset.
     /// - Parameter animated: `true` to animate the transition at a constant velocity to the new offset, `false` to make the transition immediate.
     func scrollToBottom(animated: Bool = true) {
         setContentOffset(CGPoint(x: contentOffset.x, y: max(0, contentSize.height - bounds.height) + contentInset.bottom), animated: animated)
     }
 
-    /// SwifterSwift: Scroll to the right-most content offset.
+    /// SS: Scroll to the right-most content offset.
     /// - Parameter animated: `true` to animate the transition at a constant velocity to the new offset, `false` to make the transition immediate.
     func scrollToRight(animated: Bool = true) {
         setContentOffset(CGPoint(x: max(0, contentSize.width - bounds.width) + contentInset.right, y: contentOffset.y), animated: animated)
     }
 
-    /// SwifterSwift: Scroll up one page of the scroll view.
+    /// SS: Scroll up one page of the scroll view.
     /// If `isPagingEnabled` is `true`, the previous page location is used.
     /// - Parameter animated: `true` to animate the transition at a constant velocity to the new offset, `false` to make the transition immediate.
     func scrollUp(animated: Bool = true) {
@@ -85,7 +85,7 @@ public extension UIScrollView {
         setContentOffset(CGPoint(x: contentOffset.x, y: y), animated: animated)
     }
 
-    /// SwifterSwift: Scroll left one page of the scroll view.
+    /// SS: Scroll left one page of the scroll view.
     /// If `isPagingEnabled` is `true`, the previous page location is used.
     /// - Parameter animated: `true` to animate the transition at a constant velocity to the new offset, `false` to make the transition immediate.
     func scrollLeft(animated: Bool = true) {
@@ -101,7 +101,7 @@ public extension UIScrollView {
         setContentOffset(CGPoint(x: x, y: contentOffset.y), animated: animated)
     }
 
-    /// SwifterSwift: Scroll down one page of the scroll view.
+    /// SS: Scroll down one page of the scroll view.
     /// If `isPagingEnabled` is `true`, the next page location is used.
     /// - Parameter animated: `true` to animate the transition at a constant velocity to the new offset, `false` to make the transition immediate.
     func scrollDown(animated: Bool = true) {
@@ -117,7 +117,7 @@ public extension UIScrollView {
         setContentOffset(CGPoint(x: contentOffset.x, y: y), animated: animated)
     }
 
-    /// SwifterSwift: Scroll right one page of the scroll view.
+    /// SS: Scroll right one page of the scroll view.
     /// If `isPagingEnabled` is `true`, the next page location is used.
     /// - Parameter animated: `true` to animate the transition at a constant velocity to the new offset, `false` to make the transition immediate.
     func scrollRight(animated: Bool = true) {
