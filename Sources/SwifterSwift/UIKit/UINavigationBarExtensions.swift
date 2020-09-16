@@ -1,22 +1,16 @@
-//
-//  UINavigationBarExtensions.swift
-//  SwifterSwift
-//
-//  Created by Omar Albeik on 8/22/16.
-//  Copyright © 2016 SwifterSwift
-//
+// UINavigationBarExtensions.swift - Copyright 2020 SwifterSwift
 
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
 
 // MARK: - Methods
-public extension UINavigationBar {
 
-    /// SS: 设置NavigationBar标题的字体和颜色.
+public extension UINavigationBar {
+    /// SS: Set Navigation Bar title, title color and font.
     ///
     /// - Parameters:
-    ///   - font: 字体
-    ///   - color: 字体颜色（默认黑色）.
+    ///   - font: title font
+    ///   - color: title text color (default is .black).
     func setTitleFont(_ font: UIFont, color: UIColor = .black) {
         var attrs = [NSAttributedString.Key: Any]()
         attrs[.font] = font
@@ -24,7 +18,7 @@ public extension UINavigationBar {
         titleTextAttributes = attrs
     }
 
-    /// SS: 导航栏透明
+    /// SS: Make navigation bar transparent.
     ///
     /// - Parameter tint: tint color (default is .white).
     func makeTransparent(withTint tint: UIColor = .white) {
@@ -37,11 +31,11 @@ public extension UINavigationBar {
         shadowImage = UIImage()
     }
 
-    /// SS: 设置导航栏的文字颜色和背景颜色
+    /// SS: Set navigationBar background and text colors
     ///
     /// - Parameters:
-    ///   - background: 背景色
-    ///   - text: 标题文字颜色
+    ///   - background: backgound color
+    ///   - text: text color
     func setColors(background: UIColor, text: UIColor) {
         isTranslucent = false
         backgroundColor = background
@@ -50,7 +44,6 @@ public extension UINavigationBar {
         tintColor = text
         titleTextAttributes = [.foregroundColor: text]
     }
-
 }
 
 #endif

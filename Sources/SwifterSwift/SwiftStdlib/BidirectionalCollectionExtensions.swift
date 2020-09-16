@@ -1,15 +1,9 @@
-//
-//  BidirectionalCollectionExtensions.swift
-//  SwifterSwift
-//
-//  Created by Quentin Jin on 2018/10/13.
-//  Copyright © 2018 SwifterSwift
-//
+// BidirectionalCollectionExtensions.swift - Copyright 2020 SwifterSwift
 
 // MARK: - Methods
-public extension BidirectionalCollection {
 
-    /// SS: 通过下标获取集合的元素，正整数下标正向查找，负数反向查找
+public extension BidirectionalCollection {
+    /// SS: 通过下标获取集合的元素，正整数下标正向查找，负数反向查找.
     ///
     ///        let arr = [1, 2, 3, 4, 5]
     ///        arr[offset: 1] -> 2
@@ -20,5 +14,4 @@ public extension BidirectionalCollection {
         let index = distance >= 0 ? startIndex : endIndex
         return self[indices.index(index, offsetBy: distance)]
     }
-
 }

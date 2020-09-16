@@ -1,18 +1,13 @@
-//
-//  UIButtonExtensions.swift
-//  SwifterSwift
-//
-//  Created by Omar Albeik on 8/22/16.
-//  Copyright © 2016 SwifterSwift
-//
+// UIButtonExtensions.swift - Copyright 2020 SwifterSwift
 
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
 
 // MARK: - Properties
-public extension UIButton {
 
-    /// SS: Image of disabled state for button.
+public extension UIButton {
+    /// SS: Image of disabled state for button; also inspectable from Storyboard.
+    @IBInspectable
     var imageForDisabled: UIImage? {
         get {
             return image(for: .disabled)
@@ -22,7 +17,8 @@ public extension UIButton {
         }
     }
 
-    /// SS: Image of highlighted state for button.
+    /// SS: Image of highlighted state for button; also inspectable from Storyboard.
+    @IBInspectable
     var imageForHighlighted: UIImage? {
         get {
             return image(for: .highlighted)
@@ -32,7 +28,8 @@ public extension UIButton {
         }
     }
 
-    /// SS: Image of normal state for button.
+    /// SS: Image of normal state for button; also inspectable from Storyboard.
+    @IBInspectable
     var imageForNormal: UIImage? {
         get {
             return image(for: .normal)
@@ -42,7 +39,8 @@ public extension UIButton {
         }
     }
 
-    /// SS: Image of selected state for button.
+    /// SS: Image of selected state for button; also inspectable from Storyboard.
+    @IBInspectable
     var imageForSelected: UIImage? {
         get {
             return image(for: .selected)
@@ -52,7 +50,8 @@ public extension UIButton {
         }
     }
 
-    /// SS: Title color of disabled state for button.
+    /// SS: Title color of disabled state for button; also inspectable from Storyboard.
+    @IBInspectable
     var titleColorForDisabled: UIColor? {
         get {
             return titleColor(for: .disabled)
@@ -62,7 +61,8 @@ public extension UIButton {
         }
     }
 
-    /// SS: Title color of highlighted state for button.
+    /// SS: Title color of highlighted state for button; also inspectable from Storyboard.
+    @IBInspectable
     var titleColorForHighlighted: UIColor? {
         get {
             return titleColor(for: .highlighted)
@@ -72,7 +72,8 @@ public extension UIButton {
         }
     }
 
-    /// SS: Title color of normal state for button.
+    /// SS: Title color of normal state for button; also inspectable from Storyboard.
+    @IBInspectable
     var titleColorForNormal: UIColor? {
         get {
             return titleColor(for: .normal)
@@ -82,7 +83,8 @@ public extension UIButton {
         }
     }
 
-    /// SS: Title color of selected state for button.
+    /// SS: Title color of selected state for button; also inspectable from Storyboard.
+    @IBInspectable
     var titleColorForSelected: UIColor? {
         get {
             return titleColor(for: .selected)
@@ -92,7 +94,8 @@ public extension UIButton {
         }
     }
 
-    /// SS: Title of disabled state for button.
+    /// SS: Title of disabled state for button; also inspectable from Storyboard.
+    @IBInspectable
     var titleForDisabled: String? {
         get {
             return title(for: .disabled)
@@ -102,7 +105,8 @@ public extension UIButton {
         }
     }
 
-    /// SS: Title of highlighted state for button.
+    /// SS: Title of highlighted state for button; also inspectable from Storyboard.
+    @IBInspectable
     var titleForHighlighted: String? {
         get {
             return title(for: .highlighted)
@@ -112,7 +116,8 @@ public extension UIButton {
         }
     }
 
-    /// SS: Title of normal state for button.
+    /// SS: Title of normal state for button; also inspectable from Storyboard.
+    @IBInspectable
     var titleForNormal: String? {
         get {
             return title(for: .normal)
@@ -122,7 +127,8 @@ public extension UIButton {
         }
     }
 
-    /// SS: Title of selected state for button.
+    /// SS: Title of selected state for button; also inspectable from Storyboard.
+    @IBInspectable
     var titleForSelected: String? {
         get {
             return title(for: .selected)
@@ -131,12 +137,11 @@ public extension UIButton {
             setTitle(newValue, for: .selected)
         }
     }
-
 }
 
 // MARK: - Methods
-public extension UIButton {
 
+public extension UIButton {
     private var states: [UIControl.State] {
         return [.normal, .selected, .highlighted, .disabled]
     }
@@ -172,8 +177,7 @@ public extension UIButton {
             guard
                 let imageSize = imageView?.image?.size,
                 let text = titleLabel?.text,
-                let font = titleLabel?.font
-                else { return }
+                let font = titleLabel?.font else { return }
 
             let titleSize = text.size(withAttributes: [.font: font])
 
@@ -192,6 +196,6 @@ public extension UIButton {
             contentEdgeInsets = UIEdgeInsets(top: 0, left: insetAmount, bottom: 0, right: insetAmount)
         }
     }
-
 }
+
 #endif

@@ -1,15 +1,9 @@
-//
-//  ComparableExtensions.swift
-//  SwifterSwift
-//
-//  Created by Shai Mishali on 5/4/18.
-//  Copyright © 2018 SwifterSwift
-//
+// ComparableExtensions.swift - Copyright 2020 SwifterSwift
 
 // MARK: - Methods
-public extension Comparable {
 
-    /// SS: 判断元素是否在闭区间内。
+public extension Comparable {
+    /// SS: 判断元素是否在闭区间内.
     ///
     /// - Parameters:
     ///   - value: 元素值。
@@ -48,5 +42,4 @@ public extension Comparable {
     func clamped(to range: ClosedRange<Self>) -> Self {
         return max(range.lowerBound, min(self, range.upperBound))
     }
-
 }

@@ -1,14 +1,8 @@
-//
-//  ArrayExtensions.swift
-//  SwifterSwift
-//
-//  Created by Omar Albeik on 8/5/16.
-//  Copyright © 2016 SwifterSwift
-//
+// ArrayExtensions.swift - Copyright 2020 SwifterSwift
 
 // MARK: - Methods
-public extension Array {
 
+public extension Array {
     /// SS: 在数组的开头插入一个元素。
     ///
     ///     [2, 3, 4, 5].prepend(1) -> [1, 2, 3, 4, 5]
@@ -54,9 +48,9 @@ public extension Array {
 }
 
 // MARK: - Methods (Equatable)
-public extension Array where Element: Equatable {
 
-    /// SS: 移除数组中指定元素。
+public extension Array where Element: Equatable {
+    /// /// SS: 移除数组中指定元素的所有实例。
     ///
     ///        [1, 2, 2, 3, 4, 5].removeAll(2) -> [1, 3, 4, 5]
     ///        ["h", "e", "l", "l", "o"].removeAll("l") -> ["h", "e", "o"]
@@ -121,7 +115,7 @@ public extension Array where Element: Equatable {
     /// - Parameter path: 指定一个keyPath去比价，值必须是可比较的。
     /// - Returns: an array of unique elements.
     func withoutDuplicates<E: Equatable>(keyPath path: KeyPath<Element, E>) -> [Element] {
-        return reduce(into: [Element]()) { (result, element) in
+        return reduce(into: [Element]()) { result, element in
             if !result.contains(where: { $0[keyPath: path] == element[keyPath: path] }) {
                 result.append(element)
             }

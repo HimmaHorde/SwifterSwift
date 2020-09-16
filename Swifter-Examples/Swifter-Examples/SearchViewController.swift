@@ -20,7 +20,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = Color.FlatUI.turquoise
     }
 
     // 模拟用户输入文字，停止输入 1s 后发起网络请求

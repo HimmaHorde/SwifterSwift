@@ -1,10 +1,4 @@
-//
-//  URLRequestExtensions.swift
-//  SwifterSwift
-//
-//  Created by Omar Albeik on 9/5/17.
-//  Copyright © 2017 SwifterSwift
-//
+// URLRequestExtensions.swift - Copyright 2020 SwifterSwift
 
 #if canImport(Foundation)
 import Foundation
@@ -14,11 +8,11 @@ import FoundationNetworking
 #endif
 
 // MARK: - Initializers
-public extension URLRequest {
 
-    /// SS: url 字符串直接生成 Request
+public extension URLRequest {
+    /// SS: Create URLRequest from URL string.
     ///
-    /// - Parameter urlString: url 字符串
+    /// - Parameter urlString: URL string to initialize URL request from
     init?(urlString: String) {
         guard let url = URL(string: urlString) else { return nil }
         self.init(url: url)
@@ -26,7 +20,6 @@ public extension URLRequest {
 
     /// SS: cURL command representation of this URL request.
     var curlString: String {
-
         guard let url = url else { return "" }
 
         var baseCommand = "curl \(url.absoluteString)"
@@ -35,7 +28,7 @@ public extension URLRequest {
         }
 
         var command = [baseCommand]
-        if let method = httpMethod, method != "GET" && method != "HEAD" {
+        if let method = httpMethod, method != "GET", method != "HEAD" {
             command.append("-X \(method)")
         }
 
@@ -53,4 +46,5 @@ public extension URLRequest {
         return command.joined(separator: " \\\n\t")
     }
 }
+
 #endif

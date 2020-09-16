@@ -1,15 +1,9 @@
-//
-//  OptionalExtensions.swift
-//  SwifterSwift
-//
-//  Created by Omar Albeik on 3/3/17.
-//  Copyright © 2017 SwifterSwift
-//
+// OptionalExtensions.swift - Copyright 2020 SwifterSwift
 
 // MARK: - Methods
-public extension Optional {
 
-    /// SS: 获取self的默认值(如果self为nil)。
+public extension Optional {
+    /// SS: Get self of default value (if self is nil).
     ///
     ///		let foo: String? = nil
     ///		print(foo.unwrapped(or: "bar")) -> "bar"
@@ -24,7 +18,7 @@ public extension Optional {
         return self ?? defaultValue
     }
 
-    /// SS: 获取可选项的值。如果可选的是' nil '，则抛出一个自定义错误。
+    /// SS: Gets the wrapped value of an optional. If the optional is `nil`, throw a custom error.
     ///
     ///        let foo: String? = nil
     ///        try print(foo.unwrapped(or: MyError.notFound)) -> error: MyError.notFound
@@ -40,7 +34,7 @@ public extension Optional {
         return wrapped
     }
 
-    /// SS: 当这个可选实例不是nil时，计算给定的闭包，并将未包装的值作为参数传递。
+    /// SS: Runs a block to Wrapped if not nil
     ///
     ///		let foo: String? = nil
     ///		foo.run { unwrappedFoo in
@@ -60,7 +54,7 @@ public extension Optional {
         _ = map(block)
     }
 
-    /// SS: a ??= b ，b != nil 时赋值。
+    /// SS: Assign an optional value to a variable only if the value is not nil.
     ///
     ///     let someParameter: String? = nil
     ///     let parameters = [String: Any]() // Some parameters to be attached to a GET request
@@ -74,7 +68,7 @@ public extension Optional {
         lhs = rhs
     }
 
-    /// SS: a ?= b ，a = nil 时赋值。
+    /// SS: Assign an optional value to a variable only if the variable is nil.
     ///
     ///     var someText: String? = nil
     ///     let newText = "Foo"
@@ -90,13 +84,12 @@ public extension Optional {
             lhs = rhs()
         }
     }
-
 }
 
 // MARK: - Methods (Collection)
-public extension Optional where Wrapped: Collection {
 
-    /// SS: 检查是否为 nil or empty
+public extension Optional where Wrapped: Collection {
+    /// SS: Check if optional is nil or empty collection.
     var isNilOrEmpty: Bool {
         guard let collection = self else { return true }
         return collection.isEmpty
@@ -108,12 +101,11 @@ public extension Optional where Wrapped: Collection {
         guard !collection.isEmpty else { return nil }
         return collection
     }
-
 }
 
 // MARK: - Methods (RawRepresentable, RawValue: Equatable)
-public extension Optional where Wrapped: RawRepresentable, Wrapped.RawValue: Equatable {
 
+public extension Optional where Wrapped: RawRepresentable, Wrapped.RawValue: Equatable {
     // swiftlint:disable missing_swifterswift_prefix
 
     /// Returns a Boolean value indicating whether two values are equal.
@@ -165,9 +157,9 @@ public extension Optional where Wrapped: RawRepresentable, Wrapped.RawValue: Equ
     }
 
     // swiftlint:enable missing_swifterswift_prefix
-
 }
 
 // MARK: - Operators
-infix operator ??= : AssignmentPrecedence
-infix operator ?= : AssignmentPrecedence
+
+infix operator ??=: AssignmentPrecedence
+infix operator ?=: AssignmentPrecedence

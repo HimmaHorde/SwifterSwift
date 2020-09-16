@@ -1,29 +1,20 @@
-//
-//  URLExtensions.swift
-//  SwifterSwift
-//
-//  Created by Omar Albeik on 03/02/2017.
-//  Copyright © 2017 SwifterSwift
-//
+// URLExtensions.swift - Copyright 2020 SwifterSwift
 
 #if canImport(Foundation)
 import Foundation
 
 #if canImport(UIKit) && canImport(AVFoundation)
-import UIKit
 import AVFoundation
+import UIKit
 #endif
 
 // MARK: - Properties
-public extension URL {
 
-    /// SS: URL的参数字典
-    ///
-    ///     let url = URL.init(string: "http://www.baidu.com?name=yanglin&age=100")
-    ///     print(url?.queryParameters) // -> Optional(["name": "yanglin", "age": "100"])
-    ///
+public extension URL {
+    /// SS: Dictionary of the URL's query parameters
     var queryParameters: [String: String]? {
-        guard let components = URLComponents(url: self, resolvingAgainstBaseURL: false), let queryItems = components.queryItems else { return nil }
+        guard let components = URLComponents(url: self, resolvingAgainstBaseURL: false),
+            let queryItems = components.queryItems else { return nil }
 
         var items: [String: String] = [:]
 
@@ -33,12 +24,11 @@ public extension URL {
 
         return items
     }
-
 }
 
 // MARK: - Initializers
-public extension URL {
 
+public extension URL {
     /// SS: Initializes an `URL` object with a base URL and a relative string. If `string` was malformed, returns `nil`.
     /// - Parameters:
     ///   - string: The URL string with which to initialize the `URL` object. Must conform to RFC 2396. `string` is interpreted relative to `url`.
@@ -47,13 +37,12 @@ public extension URL {
         guard let string = string else { return nil }
         self.init(string: string, relativeTo: url)
     }
-
 }
 
 // MARK: - Methods
-public extension URL {
 
-    /// SS: 生成新的URL并添加指定参数
+public extension URL {
+    /// SS: 生成新的URL并添加指定参数.
     ///
     ///		let url = URL(string: "https://google.com")!
     ///		let param = ["q": "Swifter Swift"]
@@ -63,7 +52,8 @@ public extension URL {
     /// - Returns: 添加完新参数的 URL
     func appendingQueryParameters(_ parameters: [String: String]) -> URL {
         var urlComponents = URLComponents(url: self, resolvingAgainstBaseURL: true)!
-        urlComponents.queryItems = (urlComponents.queryItems ?? []) + parameters.map { URLQueryItem(name: $0, value: $1) }
+        urlComponents.queryItems = (urlComponents.queryItems ?? []) + parameters
+            .map { URLQueryItem(name: $0, value: $1) }
         return urlComponents.url!
     }
 
@@ -132,12 +122,11 @@ public extension URL {
         let droppedScheme = String(absoluteString.dropFirst(2))
         return URL(string: droppedScheme)
     }
-
 }
 
 // MARK: - Methods
-public extension URL {
 
+public extension URL {
     #if os(iOS) || os(tvOS)
     /// SS: 从给定的 url生成缩略图。如果无法创建缩略图，则返回nil。建议异步执行
     ///
@@ -163,6 +152,5 @@ public extension URL {
         return UIImage(cgImage: cgImage)
     }
     #endif
-
 }
 #endif

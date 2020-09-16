@@ -1,10 +1,4 @@
-//
-//  NSAttributedStringExtensions.swift
-//  SwifterSwift
-//
-//  Created by Omar Albeik on 26/11/2016.
-//  Copyright © 2016 SwifterSwift
-//
+// NSAttributedStringExtensions.swift - Copyright 2020 SwifterSwift
 
 #if canImport(Foundation)
 import Foundation
@@ -18,8 +12,8 @@ import AppKit
 #endif
 
 // MARK: - Properties
-public extension NSAttributedString {
 
+public extension NSAttributedString {
     #if os(iOS)
     /// SS: Bolded string.
     var bolded: NSAttributedString {
@@ -49,23 +43,22 @@ public extension NSAttributedString {
     #endif
 
     #if !os(Linux)
-    /// SS: 应用于整个字符串的属性字典
+    /// SS: Dictionary of the attributes applied across the whole string
     var attributes: [NSAttributedString.Key: Any] {
-        guard self.length > 0 else { return [:] }
+        guard length > 0 else { return [:] }
         return attributes(at: 0, effectiveRange: nil)
     }
     #endif
-
 }
 
 // MARK: - Methods
-public extension NSAttributedString {
 
+public extension NSAttributedString {
     #if !os(Linux)
-    /// SS: 将给定的属性应用于使用self对象初始化的NSAttributedString的新实例
+    /// SS: Applies given attributes to the new instance of NSAttributedString initialized with self object
     ///
-    /// - Parameter attributes: 属性字典
-    /// - Returns: 新的富文本
+    /// - Parameter attributes: Dictionary of attributes
+    /// - Returns: NSAttributedString with applied attributes
     func applying(attributes: [NSAttributedString.Key: Any]) -> NSAttributedString {
         let copy = NSMutableAttributedString(attributedString: self)
         let range = (string as NSString).range(of: string)
@@ -86,11 +79,11 @@ public extension NSAttributedString {
     #endif
 
     #if !os(Linux)
-    /// SS: 将属性应用于匹配正则表达式的子字符串
+    /// SS: Apply attributes to substrings matching a regular expression
     ///
     /// - Parameters:
-    ///   - attributes: 属性字典
-    ///   - pattern: 正则
+    ///   - attributes: Dictionary of attributes
+    ///   - pattern: a regular expression to target
     ///   - options: The regular expression options that are applied to the expression during matching. See NSRegularExpression.Options for possible values.
     /// - Returns: An NSAttributedString with attributes applied to substrings matching the pattern
     func applying(attributes: [NSAttributedString.Key: Any],
@@ -108,25 +101,25 @@ public extension NSAttributedString {
         return result
     }
 
-    /// SS: 为指定字符串添加属性
+    /// SS: Apply attributes to occurrences of a given string
     ///
     /// - Parameters:
-    ///   - attributes: 属性字典
-    ///   - target: 目标字符串
-    /// - Returns: 新富文本
-    func applying<T: StringProtocol>(attributes: [NSAttributedString.Key: Any], toOccurrencesOf target: T) -> NSAttributedString {
+    ///   - attributes: Dictionary of attributes
+    ///   - target: a subsequence string for the attributes to be applied to
+    /// - Returns: An NSAttributedString with attributes applied on the target string
+    func applying<T: StringProtocol>(attributes: [NSAttributedString.Key: Any],
+                                     toOccurrencesOf target: T) -> NSAttributedString {
         let pattern = "\\Q\(target)\\E"
 
         return applying(attributes: attributes, toRangesMatching: pattern)
     }
     #endif
-
 }
 
 // MARK: - Operators
-public extension NSAttributedString {
 
-    /// SS: 富文本添加一段字符串
+public extension NSAttributedString {
+    /// SS: Add a NSAttributedString to another NSAttributedString.
     ///
     /// - Parameters:
     ///   - lhs: NSAttributedString to add to.
@@ -137,7 +130,7 @@ public extension NSAttributedString {
         lhs = string
     }
 
-    /// SS: 合成两个富文本
+    /// SS: Add a NSAttributedString to another NSAttributedString and return a new NSAttributedString instance.
     ///
     /// - Parameters:
     ///   - lhs: NSAttributedString to add.
@@ -149,7 +142,7 @@ public extension NSAttributedString {
         return NSAttributedString(attributedString: string)
     }
 
-    /// SS: 富文本添加一段字符串
+    /// SS: Add a NSAttributedString to another NSAttributedString.
     ///
     /// - Parameters:
     ///   - lhs: NSAttributedString to add to.
@@ -158,7 +151,7 @@ public extension NSAttributedString {
         lhs += NSAttributedString(string: rhs)
     }
 
-    /// SS: 合成富文本和一个字符串
+    /// SS: Add a NSAttributedString to another NSAttributedString and return a new NSAttributedString instance.
     ///
     /// - Parameters:
     ///   - lhs: NSAttributedString to add.
@@ -167,7 +160,6 @@ public extension NSAttributedString {
     static func + (lhs: NSAttributedString, rhs: String) -> NSAttributedString {
         return lhs + NSAttributedString(string: rhs)
     }
-
 }
 
 #endif

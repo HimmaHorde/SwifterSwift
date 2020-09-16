@@ -1,13 +1,6 @@
-//
-//  SequenceExtensions.swift
-//  SwifterSwift
-//
-//  Created by Anton Novoselov on 04/04/2018.
-//  Copyright © 2018 SwifterSwift
-//
+// SequenceExtensions.swift - Copyright 2020 SwifterSwift
 
 public extension Sequence {
-
     /// SS: 检查所有元素是否遵守指定规则
     ///
     ///        [2, 2, 4].all(matching: {$0 % 2 == 0}) -> true
@@ -124,13 +117,13 @@ public extension Sequence {
     ///   - isIncluded: condition of inclusion to evaluate each element against.
     ///   - transform: transform element function to evaluate every element.
     /// - Returns: Return an filtered and mapped array.
-    func filtered<T>(_ isIncluded: (Element) throws -> Bool, map transform: (Element) throws -> T) rethrows ->  [T] {
-        return try compactMap({
+    func filtered<T>(_ isIncluded: (Element) throws -> Bool, map transform: (Element) throws -> T) rethrows -> [T] {
+        return try compactMap {
             if try isIncluded($0) {
                 return try transform($0)
             }
             return nil
-        })
+        }
     }
 
     /// SS: Get the only element based on a condition.
@@ -142,7 +135,7 @@ public extension Sequence {
     ///
     /// - Parameter condition: condition to evaluate each element against.
     /// - Returns: The only element in the array matching the specified condition. If there are more matching elements, nil is returned. (optional)
-    func single(where condition: ((Element) throws -> Bool)) rethrows -> Element? {
+    func single(where condition: (Element) throws -> Bool) rethrows -> Element? {
         var singleElement: Element?
         for element in self where try condition(element) {
             guard singleElement == nil else {
@@ -167,7 +160,7 @@ public extension Sequence {
         return try filter { set.insert(try transform($0)).inserted }
     }
 
-    /// SS: Separates all items into 2 lists based on a given predicate. The first list contains all items for which the specified condition evaluates to true. The second list contains those that don't.
+    ///  SS: Separates all items into 2 lists based on a given predicate. The first list contains all items for which the specified condition evaluates to true. The second list contains those that don't.
     ///
     ///     let (even, odd) = [0, 1, 2, 3, 4, 5].divided { $0 % 2 == 0 }
     ///     let (minors, adults) = people.divided { $0.age < 18 }
@@ -179,7 +172,7 @@ public extension Sequence {
         var matching = ContiguousArray<Element>()
         var nonMatching = ContiguousArray<Element>()
 
-        var iterator = self.makeIterator()
+        var iterator = makeIterator()
         while let element = iterator.next() {
             try condition(element) ? matching.append(element) : nonMatching.append(element)
         }
@@ -249,30 +242,6 @@ public extension Sequence {
         return reduce(.zero) { $0 + $1[keyPath: keyPath] }
     }
 
-    /// SS: Returns an array containing the results of mapping the given key path over the sequence’s elements.
-    ///
-    /// - Parameter keyPath: Key path to map.
-    /// - Returns: An array containing the results of mapping.
-    func map<T>(by keyPath: KeyPath<Element, T>) -> [T] {
-        return map { $0[keyPath: keyPath] }
-    }
-
-    /// SS: Returns an array containing the non-nil results of mapping the given key path over the sequence’s elements.
-    ///
-    /// - Parameter keyPath: Key path to map.
-    /// - Returns: An array containing the non-nil results of mapping.
-    func compactMap<T>(by keyPath: KeyPath<Element, T?>) -> [T] {
-        return compactMap { $0[keyPath: keyPath] }
-    }
-
-    /// SS: Returns an array containing the results of filtering the sequence’s elements by a boolean key path.
-    ///
-    /// - Parameter keyPath: Boolean key path. If it's value is `true` the element will be added to result.
-    /// - Returns: An array containing filtered elements.
-    func filter(by keyPath: KeyPath<Element, Bool>) -> [Element] {
-        return filter { $0[keyPath: keyPath] }
-    }
-
     /// SS: Returns the first element of the sequence with having property by given key path equals to given `value`.
     ///
     /// - Parameters:
@@ -295,7 +264,6 @@ public extension Sequence {
 }
 
 public extension Sequence where Element: Equatable {
-
     /// SS: Check if array contains an array of elements.
     ///
     ///        [1, 2, 3, 4, 5].contains([1, 2]) -> true
@@ -313,7 +281,6 @@ public extension Sequence where Element: Equatable {
         }
         return true
     }
-
 }
 
 public extension Sequence where Element: Hashable {
@@ -351,13 +318,12 @@ public extension Sequence where Element: Hashable {
 }
 
 // MARK: - Methods (Numeric)
-public extension Sequence where Element: Numeric {
 
-    /// SS: 数字序列所有元素的和
+public extension Sequence where Element: Numeric {
+    /// SS: 数字序列所有元素的和.
     ///
     ///        [1, 2, 3, 4, 5].sum() -> 15
     func sum() -> Element {
         return reduce(into: 0, +=)
     }
-
 }

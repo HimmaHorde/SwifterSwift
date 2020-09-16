@@ -1,15 +1,9 @@
-//
-//  BoolExtensions.swift
-//  SwifterSwift
-//
-//  Created by Omar Albeik on 07/12/2016.
-//  Copyright © 2016 SwifterSwift
-//
+// BoolExtensions.swift - Copyright 2020 SwifterSwift
 
 // MARK: - Properties
-public extension Bool {
 
-    /// SS: true 返回 1 ，false 返回 0
+public extension Bool {
+    /// SS: Return 1 if true, or 0 if false.
     ///
     ///        false.int -> 0
     ///        true.int -> 1
@@ -18,7 +12,7 @@ public extension Bool {
         return self ? 1 : 0
     }
 
-    /// SS: 返回true false 的字符串
+    /// SS: Return "true" if true, or "false" if false.
     ///
     ///        false.string -> "false"
     ///        true.string -> "true"

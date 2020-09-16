@@ -1,10 +1,4 @@
-//
-//  DoubleExtensions.swift
-//  SwifterSwift
-//
-//  Created by Omar Albeik on 8/6/16.
-//  Copyright © 2016 SwifterSwift
-//
+// DoubleExtensions.swift - Copyright 2020 SwifterSwift
 
 #if canImport(CoreGraphics)
 import CoreGraphics
@@ -17,37 +11,36 @@ import Glibc
 #endif
 
 // MARK: - Properties
-public extension Double {
 
-    /// SS: 转换为 Int
+public extension Double {
+    /// SS: Int.
     var int: Int {
         return Int(self)
     }
 
-    /// SS: 转换为 Float
+    /// SS: Float.
     var float: Float {
         return Float(self)
     }
 
     #if canImport(CoreGraphics)
-    /// SS: 转换为 CGFloat.
+    /// SS: CGFloat.
     var cgFloat: CGFloat {
         return CGFloat(self)
     }
     #endif
-
 }
 
 // MARK: - Operators
 
 precedencegroup PowerPrecedence { higherThan: MultiplicationPrecedence }
-infix operator ** : PowerPrecedence
-/// SS: 指数幂
+infix operator **: PowerPrecedence
+/// SS: Value of exponentiation.
 ///
 /// - Parameters:
-///   - lhs: 底数。
-///   - rhs: 指数。
-/// - Returns: 结果 (example: 4.4 ** 0.5 = 2.0976176963).
+///   - lhs: base double.
+///   - rhs: exponent double.
+/// - Returns: exponentiation result (example: 4.4 ** 0.5 = 2.0976176963).
 func ** (lhs: Double, rhs: Double) -> Double {
     // http://nshipster.com/swift-operators/
     return pow(lhs, rhs)

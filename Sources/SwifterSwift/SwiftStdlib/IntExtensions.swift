@@ -1,10 +1,4 @@
-//
-//  IntExtensions.swift
-//  SwifterSwift
-//
-//  Created by Omar Albeik on 8/6/16.
-//  Copyright © 2016 SwifterSwift
-//
+// IntExtensions.swift - Copyright 2020 SwifterSwift
 
 #if canImport(CoreGraphics)
 import CoreGraphics
@@ -17,46 +11,46 @@ import Glibc
 #endif
 
 // MARK: - Properties
-public extension Int {
 
-    /// SS: 生成一个从零开始的开区间 0..< Int
+public extension Int {
+    /// SS: CountableRange 0..<Int.
     var countableRange: CountableRange<Int> {
         return 0..<self
     }
 
-    /// SS: 圆心角 -> 圆心角弧度数
+    /// SS: Radian value of degree input.
     var degreesToRadians: Double {
         return Double.pi * Double(self) / 180.0
     }
 
-    /// SS: 圆心角弧度数 -> 圆心角
+    /// SS: Degree value of radian input
     var radiansToDegrees: Double {
         return Double(self) * 180 / Double.pi
     }
 
-    /// SS: 无符号整数值类型。
+    /// SS: UInt.
     var uInt: UInt {
         return UInt(self)
     }
 
-    /// SS: 转为 Double
+    /// SS: Double.
     var double: Double {
         return Double(self)
     }
 
-    /// SS: 转为 Float.
+    /// SS: Float.
     var float: Float {
         return Float(self)
     }
 
     #if canImport(CoreGraphics)
-    /// SS: 转为 CGFloat.
+    /// SS: CGFloat.
     var cgFloat: CGFloat {
         return CGFloat(self)
     }
     #endif
 
-    /// SS: 转为以 K 为单位的字符串
+    /// SS: String formatted for values over ±1000 (example: 1k, -2k, 100k, 1kk, -5kk..)
     var kFormatted: String {
         var sign: String {
             return self >= 0 ? "" : "-"
@@ -64,18 +58,15 @@ public extension Int {
         let abs = Swift.abs(self)
         if abs == 0 {
             return "0k"
-        } else if abs >= 0 && abs < 1000 {
+        } else if abs >= 0, abs < 1000 {
             return "0k"
-        } else if abs >= 1000 && abs < 1000000 {
+        } else if abs >= 1000, abs < 1_000_000 {
             return String(format: "\(sign)%ik", abs / 1000)
         }
-        return String(format: "\(sign)%ikk", abs / 100000)
+        return String(format: "\(sign)%ikk", abs / 100_000)
     }
 
-    /// SS: 转化为数字数组
-    ///
-    ///     123456789.digits ->[1, 2, 3, 4, 5, 6, 7, 8, 9]
-    ///
+    /// SS: Array of digits of integer value.
     var digits: [Int] {
         guard self != 0 else { return [0] }
         var digits = [Int]()
@@ -91,25 +82,24 @@ public extension Int {
         return digits
     }
 
-    /// SS: 位数
+    /// SS: Number of digits of integer value.
     var digitsCount: Int {
         guard self != 0 else { return 1 }
         let number = Double(abs)
         return Int(log10(number) + 1)
     }
-
 }
 
 // MARK: - Methods
-public extension Int {
 
-    /// SS: 是否是素数 Warning: Using big numbers can be computationally expensive!
+public extension Int {
+    /// SS: check if given integer prime or not. Warning: Using big numbers can be computationally expensive!
     /// - Returns: true or false depending on prime-ness
     func isPrime() -> Bool {
         // To improve speed on latter loop :)
         if self == 2 { return true }
 
-        guard self > 1 && self % 2 != 0 else { return false }
+        guard self > 1, self % 2 != 0 else { return false }
 
         // Explanation: It is enough to check numbers until
         // the square root of that number. If you go up from N by one,
@@ -122,7 +112,7 @@ public extension Int {
         return true
     }
 
-    /// SS: 转为罗马数字
+    /// SS: Roman numeral string from integer (if applicable).
     ///
     ///     10.romanNumeral() -> "X"
     ///
@@ -153,35 +143,37 @@ public extension Int {
     func roundToNearest(_ number: Int) -> Int {
         return number == 0 ? self : Int(round(Double(self) / Double(number))) * number
     }
-
 }
 
 // MARK: - Operators
 
 precedencegroup PowerPrecedence { higherThan: MultiplicationPrecedence }
-infix operator ** : PowerPrecedence
-/// SS: 指数运算
+infix operator **: PowerPrecedence
+/// SS: Value of exponentiation.
 ///
 /// - Parameters:
-///   - lhs: 底数
-///   - rhs: 指数
-/// - Returns: 结果 (example: 2 ** 3 = 8).
-public func ** (lhs: Int, rhs: Int) -> Double {
+///   - lhs: base integer.
+///   - rhs: exponent integer.
+/// - Returns: exponentiation result (example: 2 ** 3 = 8).
+func ** (lhs: Int, rhs: Int) -> Double {
     // http://nshipster.com/swift-operators/
     return pow(Double(lhs), Double(rhs))
 }
 
+// swiftlint:disable identifier_name
 prefix operator √
-/// SS: 二次根号
+/// SS: Square root of integer.
 ///
-/// - Parameter int: 开根号的数
-/// - Returns: 平方根
-// swiftlint:disable:next identifier_name
+/// - Parameter int: integer value to find square root for
+/// - Returns: square root of given integer.
 public prefix func √ (int: Int) -> Double {
     // http://nshipster.com/swift-operators/
     return sqrt(Double(int))
 }
 
+// swiftlint:enable identifier_name
+
+// swiftlint:disable identifier_name
 infix operator ±
 /// SS: Tuple of plus-minus operation.
 ///
@@ -189,19 +181,22 @@ infix operator ±
 ///   - lhs: integer number.
 ///   - rhs: integer number.
 /// - Returns: tuple of plus-minus operation (example: 2 ± 3 -> (5, -1)).
-// swiftlint:disable:next identifier_name
-public func ± (lhs: Int, rhs: Int) -> (Int, Int) {
+func ± (lhs: Int, rhs: Int) -> (Int, Int) {
     // http://nshipster.com/swift-operators/
     return (lhs + rhs, lhs - rhs)
 }
 
+// swiftlint:enable identifier_name
+
+// swiftlint:disable identifier_name
 prefix operator ±
 /// SS: Tuple of plus-minus operation.
 ///
 /// - Parameter int: integer number
 /// - Returns: tuple of plus-minus operation (example: ± 2 -> (2, -2)).
-// swiftlint:disable:next identifier_name
 public prefix func ± (int: Int) -> (Int, Int) {
     // http://nshipster.com/swift-operators/
     return (int, -int)
 }
+
+// swiftlint:enable identifier_name

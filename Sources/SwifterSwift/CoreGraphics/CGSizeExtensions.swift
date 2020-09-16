@@ -1,38 +1,31 @@
-//
-//  CGSizeExtensions.swift
-//  SwifterSwift
-//
-//  Created by Omar Albeik on 8/22/16.
-//  Copyright © 2016 SwifterSwift
-//
+// CGSizeExtensions.swift - Copyright 2020 SwifterSwift
 
 #if canImport(CoreGraphics)
 import CoreGraphics
 
 // MARK: - Methods
-public extension CGSize {
 
-    /// SS: 宽高比
+public extension CGSize {
+    /// SS: Returns the aspect ratio.
     var aspectRatio: CGFloat {
         guard height != 0 else { return 0 }
         return width / height
     }
 
-    /// SS: 返回宽高中大的那个值
+    /// SS: Returns width or height, whichever is the bigger value.
     var maxDimension: CGFloat {
         return max(width, height)
     }
 
-    /// SS: 获取宽高中小的那个值
+    /// SS: Returns width or height, whichever is the smaller value.
     var minDimension: CGFloat {
         return min(width, height)
     }
-
 }
 
 // MARK: - Methods
-public extension CGSize {
 
+public extension CGSize {
     /// SS: Aspect fit CGSize.
     ///
     ///     let rect = CGSize(width: 120, height: 80)
@@ -62,12 +55,11 @@ public extension CGSize {
         let aHeight = min(height * minRatio, boundingSize.height)
         return CGSize(width: aWidth, height: aHeight)
     }
-
 }
 
 // MARK: - Operators
-public extension CGSize {
 
+public extension CGSize {
     /// SS: Add two CGSize
     ///
     ///     let sizeA = CGSize(width: 5, height: 10)
@@ -255,7 +247,6 @@ public extension CGSize {
         lhs.width *= scalar
         lhs.height *= scalar
     }
-
 }
 
 #endif

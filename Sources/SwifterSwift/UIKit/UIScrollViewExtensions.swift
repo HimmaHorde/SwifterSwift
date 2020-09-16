@@ -1,23 +1,17 @@
-//
-//  UIScrollViewExtensions.swift
-//  SwifterSwift
-//
-//  Created by camila oliveira on 22/04/18.
-//  Copyright © 2018 SwifterSwift
-//
+// UIScrollViewExtensions.swift - Copyright 2020 SwifterSwift
 
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
 
 // MARK: - Methods
-public extension UIScrollView {
 
-    /// SS: 获取整个ScrollView的快照
+public extension UIScrollView {
+    /// SS: Takes a snapshot of an entire ScrollView
     ///
     ///    AnySubclassOfUIScroolView().snapshot
     ///    UITableView().snapshot
     ///
-    /// - Returns: 快照
+    /// - Returns: Snapshot as UIimage for rendered ScrollView
     var snapshot: UIImage? {
         // Original Source: https://gist.github.com/thestoics/1204051
         UIGraphicsBeginImageContextWithOptions(contentSize, false, 0)
@@ -40,11 +34,9 @@ public extension UIScrollView {
                       size: CGSize(width: min(min(bounds.size.width, contentSize.width), contentWidth),
                                    height: min(min(bounds.size.height, contentSize.height), contentHeight)))
     }
-
 }
 
 public extension UIScrollView {
-
     /// SS: Scroll to the top-most content offset.
     /// - Parameter animated: `true` to animate the transition at a constant velocity to the new offset, `false` to make the transition immediate.
     func scrollToTop(animated: Bool = true) {
@@ -60,13 +52,17 @@ public extension UIScrollView {
     /// SS: Scroll to the bottom-most content offset.
     /// - Parameter animated: `true` to animate the transition at a constant velocity to the new offset, `false` to make the transition immediate.
     func scrollToBottom(animated: Bool = true) {
-        setContentOffset(CGPoint(x: contentOffset.x, y: max(0, contentSize.height - bounds.height) + contentInset.bottom), animated: animated)
+        setContentOffset(
+            CGPoint(x: contentOffset.x, y: max(0, contentSize.height - bounds.height) + contentInset.bottom),
+            animated: animated)
     }
 
     /// SS: Scroll to the right-most content offset.
     /// - Parameter animated: `true` to animate the transition at a constant velocity to the new offset, `false` to make the transition immediate.
     func scrollToRight(animated: Bool = true) {
-        setContentOffset(CGPoint(x: max(0, contentSize.width - bounds.width) + contentInset.right, y: contentOffset.y), animated: animated)
+        setContentOffset(
+            CGPoint(x: max(0, contentSize.width - bounds.width) + contentInset.right, y: contentOffset.y),
+            animated: animated)
     }
 
     /// SS: Scroll up one page of the scroll view.
@@ -132,7 +128,6 @@ public extension UIScrollView {
         #endif
         setContentOffset(CGPoint(x: x, y: contentOffset.y), animated: animated)
     }
-
 }
 
 #endif

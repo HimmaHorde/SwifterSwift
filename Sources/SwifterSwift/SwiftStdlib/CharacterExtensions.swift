@@ -1,14 +1,8 @@
-//
-//  CharacterExtensions.swift
-//  SwifterSwift
-//
-//  Created by Omar Albeik on 8/8/16.
-//  Copyright © 2016 SwifterSwift
-//
+// CharacterExtensions.swift - Copyright 2020 SwifterSwift
 
 // MARK: - Properties
-public extension Character {
 
+public extension Character {
     /// SS: 检测是否是 Emoji
     ///
     ///        Character("😀").isEmoji -> true
@@ -49,14 +43,12 @@ public extension Character {
     var uppercased: Character {
         return String(self).uppercased().first!
     }
-
 }
 
 // MARK: - Methods
-public extension Character {
 
-    #if canImport(Foundation)
-    /// SS: 随机字符，取大小写字符和数字。
+public extension Character {
+    /// SS: 随机字符，取大小写字符和数字.
     ///
     ///    Character.random() -> k
     ///
@@ -64,13 +56,11 @@ public extension Character {
     static func randomAlphanumeric() -> Character {
         return "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".randomElement()!
     }
-    #endif
-
 }
 
 // MARK: - Operators
-public extension Character {
 
+public extension Character {
     /// SS: 重复 N 次字符，生成字符串。
     ///
     ///        Character("-") * 10 -> "----------"
@@ -96,5 +86,4 @@ public extension Character {
         guard lhs > 0 else { return "" }
         return String(repeating: String(rhs), count: lhs)
     }
-
 }

@@ -1,20 +1,14 @@
-//
-//  UserDefaultsExtensions.swift
-//  SwifterSwift
-//
-//  Created by Omar Albeik on 9/5/17.
-//  Copyright © 2017 SwifterSwift
-//
+// UserDefaultsExtensions.swift - Copyright 2020 SwifterSwift
 
 #if canImport(Foundation) && !os(Linux)
 import Foundation
 
 // MARK: - Methods
-public extension UserDefaults {
 
-    /// SS: 使用下标从UserDefaults获取对象
+public extension UserDefaults {
+    /// SS: get object from UserDefaults by using subscript
     ///
-    /// - Parameter key: 键
+    /// - Parameter key: key in the current user's defaults database.
     subscript(key: String) -> Any? {
         get {
             return object(forKey: key)
@@ -40,29 +34,28 @@ public extension UserDefaults {
         return object(forKey: key) as? Date
     }
 
-    /// SS: UserDefaults获取对象并进行JSON解析
+    /// SS: Retrieves a Codable object from UserDefaults.
     ///
     /// - Parameters:
-    ///   - type: 遵守 Codable 协议的类型
-    ///   - key: 对象的键
-    ///   - decoder: 解码器
-    /// - Returns: 解码后的值 (if exists).
+    ///   - type: Class that conforms to the Codable protocol.
+    ///   - key: Identifier of the object.
+    ///   - decoder: Custom JSONDecoder instance. Defaults to `JSONDecoder()`.
+    /// - Returns: Codable object for key (if exists).
     func object<T: Codable>(_ type: T.Type, with key: String, usingDecoder decoder: JSONDecoder = JSONDecoder()) -> T? {
         guard let data = value(forKey: key) as? Data else { return nil }
         return try? decoder.decode(type.self, from: data)
     }
 
-    /// SS: 将可编码对象，编码后放入UserDefaults。
+    /// SS: Allows storing of Codable objects to UserDefaults.
     ///
     /// - Parameters:
-    ///   - object: 要保存的源对象
-    ///   - key: 保存时的键
-    ///   - encoder: 编码器（默认 `JSONEncoder()`）
+    ///   - object: Codable object to store.
+    ///   - key: Identifier of the object.
+    ///   - encoder: Custom JSONEncoder instance. Defaults to `JSONEncoder()`.
     func set<T: Codable>(object: T, forKey key: String, usingEncoder encoder: JSONEncoder = JSONEncoder()) {
         let data = try? encoder.encode(object)
         set(data, forKey: key)
     }
-
 }
 
 #endif

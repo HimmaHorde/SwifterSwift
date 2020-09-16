@@ -1,33 +1,22 @@
-//
-//  UIViewControllerExtensions.swift
-//  SwifterSwift
-//
-//  Created by Emirhan Erdogan on 07/08/16.
-//  Copyright © 2016 SwifterSwift
-//
+// UIViewControllerExtensions.swift - Copyright 2020 SwifterSwift
 
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
 
 // MARK: - Properties
-public extension UIViewController {
 
-    /// SS: 检查 ViewController 是否在屏幕上而不是隐藏的。
+public extension UIViewController {
+    /// SS: Check if ViewController is onscreen and not hidden.
     var isVisible: Bool {
         // http://stackoverflow.com/questions/2777438/how-to-tell-if-uiviewcontrollers-view-is-visible
-        /*
-         if viewController.viewIfLoaded?.window != nil {
-            view 存在
-         }
-         */
         return isViewLoaded && view.window != nil
     }
-
 }
 
 // MARK: - Methods
+
 public extension UIViewController {
-    /// SS: 获取指定UIStoryboard的UIViewcontroller实例
+    /// SS: Instantiate UIViewController from storyboard
     ///
     /// - Parameters:
     ///   - storyboard: Name of the storyboard where the UIViewController is located
@@ -37,44 +26,51 @@ public extension UIViewController {
     class func instantiate(from storyboard: String = "Main", bundle: Bundle? = nil, identifier: String? = nil) -> Self {
         let viewControllerIdentifier = identifier ?? String(describing: self)
         let storyboard = UIStoryboard(name: storyboard, bundle: bundle)
-        guard let viewController = storyboard.instantiateViewController(withIdentifier: viewControllerIdentifier) as? Self else {
-            preconditionFailure("Unable to instantiate view controller with identifier \(viewControllerIdentifier) as type \(type(of: self))")
+        guard let viewController = storyboard
+            .instantiateViewController(withIdentifier: viewControllerIdentifier) as? Self else {
+            preconditionFailure(
+                "Unable to instantiate view controller with identifier \(viewControllerIdentifier) as type \(type(of: self))")
         }
         return viewController
     }
 
-    /// SS: 给通知添加监听
+    /// SS: Assign as listener to notification.
     ///
     /// - Parameters:
-    ///   - name: notification 名字
-    ///   - selector: 响应事件
+    ///   - name: notification name.
+    ///   - selector: selector to run with notified.
     func addNotificationObserver(name: Notification.Name, selector: Selector) {
         NotificationCenter.default.addObserver(self, selector: selector, name: name, object: nil)
     }
 
-    /// SS: 移除指定 notification。
+    /// SS: Unassign as listener to notification.
     ///
-    /// - Parameter name: 通知名。
+    /// - Parameter name: notification name.
     func removeNotificationObserver(name: Notification.Name) {
         NotificationCenter.default.removeObserver(self, name: name, object: nil)
     }
 
-    /// SS: 移除所有的监听
+    /// SS: Unassign as listener from all notifications.
     func removeNotificationsObserver() {
         NotificationCenter.default.removeObserver(self)
     }
 
-    /// SS: 快速显示一个系统 alert。
+    /// SS: Helper method to display an alert on any UIViewController subclass. Uses UIAlertController to show an alert
     ///
     /// - Parameters:
-    ///   - title: alert 标题
-    ///   - message: alert 的主题内容
+    ///   - title: title of the alert
+    ///   - message: message/body of the alert
     ///   - buttonTitles: (Optional)list of button titles for the alert. Default button i.e "OK" will be shown if this paramter is nil
     ///   - highlightedButtonIndex: (Optional) index of the button from buttonTitles that should be highlighted. If this parameter is nil no button will be highlighted
     ///   - completion: (Optional) completion block to be invoked when any one of the buttons is tapped. It passes the index of the tapped button as an argument
     /// - Returns: UIAlertController object (discardable).
     @discardableResult
-    func showAlert(title: String?, message: String?, buttonTitles: [String]? = nil, highlightedButtonIndex: Int? = nil, completion: ((Int) -> Void)? = nil) -> UIAlertController {
+    func showAlert(
+        title: String?,
+        message: String?,
+        buttonTitles: [String]? = nil,
+        highlightedButtonIndex: Int? = nil,
+        completion: ((Int) -> Void)? = nil) -> UIAlertController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         var allButtons = buttonTitles ?? [String]()
         if allButtons.count == 0 {
@@ -83,7 +79,7 @@ public extension UIViewController {
 
         for index in 0..<allButtons.count {
             let buttonTitle = allButtons[index]
-            let action = UIAlertAction(title: buttonTitle, style: .default, handler: { (_) in
+            let action = UIAlertAction(title: buttonTitle, style: .default, handler: { _ in
                 completion?(index)
             })
             alertController.addAction(action)
@@ -93,22 +89,21 @@ public extension UIViewController {
             }
         }
         present(alertController, animated: true, completion: nil)
-        CFRunLoopWakeUp(CFRunLoopGetCurrent())
         return alertController
     }
 
-    /// SS: 添加一个 childViewController，并自动添加到指定的 View 上
+    /// SS: Helper method to add a UIViewController as a childViewController.
     ///
     /// - Parameters:
-    ///   - child: 需要添加的 childViewController
-    ///   - containerView: childView 的容器
+    ///   - child: the view controller to add as a child
+    ///   - containerView: the containerView for the child viewcontroller's root view.
     func addChildViewController(_ child: UIViewController, toContainerView containerView: UIView) {
         addChild(child)
         containerView.addSubview(child.view)
         child.didMove(toParent: self)
     }
 
-    /// SS: 移除已添加的 childViewController
+    /// SS: Helper method to remove a UIViewController from its parent.
     func removeViewAndControllerFromParentViewController() {
         guard parent != nil else { return }
 
@@ -127,7 +122,13 @@ public extension UIViewController {
     ///   - delegate: the popover's presentationController delegate. Default is nil.
     ///   - animated: Pass true to animate the presentation; otherwise, pass false.
     ///   - completion: The block to execute after the presentation finishes. Default is nil.
-    func presentPopover(_ popoverContent: UIViewController, sourcePoint: CGPoint, size: CGSize? = nil, delegate: UIPopoverPresentationControllerDelegate? = nil, animated: Bool = true, completion: (() -> Void)? = nil) {
+    func presentPopover(
+        _ popoverContent: UIViewController,
+        sourcePoint: CGPoint,
+        size: CGSize? = nil,
+        delegate: UIPopoverPresentationControllerDelegate? = nil,
+        animated: Bool = true,
+        completion: (() -> Void)? = nil) {
         popoverContent.modalPresentationStyle = .popover
 
         if let size = size {
@@ -143,7 +144,6 @@ public extension UIViewController {
         present(popoverContent, animated: animated, completion: completion)
     }
     #endif
-
 }
 
 #endif

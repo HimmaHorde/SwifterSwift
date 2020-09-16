@@ -1,17 +1,11 @@
-//
-//  UITextFieldExtensions.swift
-//  SwifterSwift
-//
-//  Created by Omar Albeik on 8/5/16.
-//  Copyright © 2016 SwifterSwift
-//
+// UITextFieldExtensions.swift - Copyright 2020 SwifterSwift
 
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
 
 // MARK: - Enums
-public extension UITextField {
 
+public extension UITextField {
     /// SS: UITextField text type.
     ///
     /// - emailAddress: UITextField is used to enter email addresses.
@@ -27,12 +21,11 @@ public extension UITextField {
         /// SS: UITextField is used to enter generic text.
         case generic
     }
-
 }
 
 // MARK: - Properties
-public extension UITextField {
 
+public extension UITextField {
     /// SS: Set textField for common text types.
     var textType: TextType {
         get {
@@ -50,34 +43,32 @@ public extension UITextField {
                 autocorrectionType = .no
                 autocapitalizationType = .none
                 isSecureTextEntry = false
-                if placeholder?.isEmpty != false {
-                    placeholder = "Email Address"
-                }
+                placeholder = "Email Address"
+
             case .password:
                 keyboardType = .asciiCapable
                 autocorrectionType = .no
                 autocapitalizationType = .none
                 isSecureTextEntry = true
-                if placeholder?.isEmpty != false {
-                    placeholder = "Password"
-                }
+                placeholder = "Password"
+
             case .generic:
                 isSecureTextEntry = false
             }
         }
     }
 
-    /// SS: 文字是否为空
+    /// SS: Check if text field is empty.
     var isEmpty: Bool {
         return text?.isEmpty == true
     }
 
-    /// SS: 去除 text 头尾的空格和换行
+    /// SS: Return text with no spaces or new lines in beginning and end.
     var trimmedText: String? {
         return text?.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
-    /// SS: 检测是否是有效的 Mail
+    /// SS: Check if textFields text is a valid email format.
     ///
     ///		textField.text = "john@doe.com"
     ///		textField.hasValidEmail -> true
@@ -117,29 +108,28 @@ public extension UITextField {
             iconView.tintColor = newValue
         }
     }
-
 }
 
 // MARK: - Methods
-public extension UITextField {
 
-    /// SS: 清除 text
+public extension UITextField {
+    /// SS: Clear text.
     func clear() {
         text = ""
         attributedText = NSAttributedString(string: "")
     }
 
-    /// SS: 设置占位文字颜色
+    /// SS: Set placeholder text color.
     ///
-    /// - Parameter color: 颜色
+    /// - Parameter color: placeholder text color.
     func setPlaceHolderTextColor(_ color: UIColor) {
         guard let holder = placeholder, !holder.isEmpty else { return }
         attributedPlaceholder = NSAttributedString(string: holder, attributes: [.foregroundColor: color])
     }
 
-    /// SS: 在左侧添加一个空白的 view
+    /// SS: Add padding to the left of the textfield rect.
     ///
-    /// - Parameter padding: 左侧边距.
+    /// - Parameter padding: amount of padding to apply to the left of the textfield rect.
     func addPaddingLeft(_ padding: CGFloat) {
         leftView = UIView(frame: CGRect(x: 0, y: 0, width: padding, height: frame.height))
         leftViewMode = .always
@@ -182,7 +172,6 @@ public extension UITextField {
         rightView = iconView
         rightViewMode = .always
     }
-
 }
 
 #endif

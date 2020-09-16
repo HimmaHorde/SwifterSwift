@@ -1,10 +1,4 @@
-//
-//  NSColorExtensions.swift
-//  SwifterSwift
-//
-//  Created by Max Haertwig on 10/06/19.
-//  Copyright © 2019 SwifterSwift
-//
+// NSColorExtensions.swift - Copyright 2020 SwifterSwift
 
 #if canImport(AppKit) && !targetEnvironment(macCatalyst)
 import AppKit
@@ -20,7 +14,6 @@ public extension NSColor {
     convenience init(light: NSColor, dark: NSColor) {
         self.init(name: nil, dynamicProvider: { $0.name == .darkAqua ? dark : light })
     }
-
 }
 
 #endif

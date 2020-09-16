@@ -1,17 +1,11 @@
-//
-//  BinaryFloatingPointExtensions.swift
-//  SwifterSwift
-//
-//  Created by Quentin Jin on 2018/10/13.
-//  Copyright © 2018 SwifterSwift
-//
+// BinaryFloatingPointExtensions.swift - Copyright 2020 SwifterSwift
 
 #if canImport(Foundation)
 import Foundation
 
 // MARK: - Methods
-public extension BinaryFloatingPoint {
 
+public extension BinaryFloatingPoint {
     #if canImport(Foundation)
 
     /// SS: 返回指定小数位数和舍入规则的值
@@ -32,7 +26,6 @@ public extension BinaryFloatingPoint {
         return (self * factor).rounded(rule) / factor
     }
     #endif
-
 }
 
 #endif

@@ -1,10 +1,4 @@
-//
-//  EdgeInsetsExtensions.swift
-//  SwifterSwift
-//
-//  Created by Guy Kogus on 03/01/2020.
-//  Copyright © 2020 SwifterSwift
-//
+// EdgeInsetsExtensions.swift - Copyright 2020 SwifterSwift
 
 #if os(iOS) || os(tvOS) || os(watchOS)
 import UIKit
@@ -36,11 +30,13 @@ extension NSEdgeInsets: Equatable {
             lhs.right == rhs.right
     }
 }
+
 #endif
 
 #if os(iOS) || os(tvOS) || os(watchOS) || os(macOS)
 
 // MARK: - Properties
+
 public extension EdgeInsets {
     /// SS: 返回垂直insets。由top+bottom组成。
     ///
@@ -55,10 +51,10 @@ public extension EdgeInsets {
         // Source: https://github.com/MessageKit/MessageKit/blob/master/Sources/SwifterSwift/EdgeInsets%2BExtensions.swift
         return left + right
     }
-
 }
 
 // MARK: - Methods
+
 public extension EdgeInsets {
     /// SS: 创建一个所有边距都等于给定值的`EdgeInsets`.
     ///
@@ -133,9 +129,9 @@ public extension EdgeInsets {
 }
 
 // MARK: - Operators
-public extension EdgeInsets {
 
-    /// SS: 返回一个新的`EdgeInsets`,其属性为两个`EdgeInsets`的所有属性相加.
+public extension EdgeInsets {
+    /// SS: Add all the properties of two `EdgeInsets` to create their addition.
     ///
     /// - Parameters:
     ///   - lhs: The left-hand expression
@@ -143,9 +139,9 @@ public extension EdgeInsets {
     /// - Returns: A new `EdgeInsets` instance where the values of `lhs` and `rhs` are added together.
     static func + (_ lhs: EdgeInsets, _ rhs: EdgeInsets) -> EdgeInsets {
         return EdgeInsets(top: lhs.top + rhs.top,
-                            left: lhs.left + rhs.left,
-                            bottom: lhs.bottom + rhs.bottom,
-                            right: lhs.right + rhs.right)
+                          left: lhs.left + rhs.left,
+                          bottom: lhs.bottom + rhs.bottom,
+                          right: lhs.right + rhs.right)
     }
 
     /// SS: 将两个`EdgeInsets`的所有属性相加赋值给左边的`EdgeInsets` .
@@ -159,7 +155,6 @@ public extension EdgeInsets {
         lhs.bottom += rhs.bottom
         lhs.right += rhs.right
     }
-
 }
 
 #endif

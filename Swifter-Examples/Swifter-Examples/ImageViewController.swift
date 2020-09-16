@@ -25,7 +25,7 @@ class ImageViewController: UIViewController {
         case 0:
             imageView.image = UIImage.init(named: "wall.png")?.filled(withColor: UIColor.red)
         case 1:
-            imageView.image = UIImage.init(named: "wall.png")?.tint(UIColor.white, blendMode: .destinationIn)
+            imageView.image = UIImage.init(named: "wall.png")?.tint(UIColor.red, blendMode: .destinationIn, alpha: 0.8)
         case 2:
             let original = UIImage.init(named: "xiaofang")!
             print("original size = \(original.size)")

@@ -1,25 +1,19 @@
-//
-//  DictionaryExtensions.swift
-//  SwifterSwift
-//
-//  Created by Omar Albeik on 8/24/16.
-//  Copyright © 2016 SwifterSwift
-//
+// DictionaryExtensions.swift - Copyright 2020 SwifterSwift
 
 #if canImport(Foundation)
 import Foundation
 #endif
 
 // MARK: - Methods
-public extension Dictionary {
 
+public extension Dictionary {
     /// SS: 根据指定的 key path 进行分组，key 为 相同 key path 的值。
     ///
     /// - Parameters:
     ///   - sequence: Sequence being grouped
     ///   - keypath: The key path to group by.
     init<S: Sequence>(grouping sequence: S, by keyPath: KeyPath<S.Element, Key>) where Value == [S.Element] {
-       self.init(grouping: sequence, by: { $0[keyPath: keyPath] })
+        self.init(grouping: sequence, by: { $0[keyPath: keyPath] })
     }
 
     /// SS: 检查 key 在字典中是否存在
@@ -63,7 +57,8 @@ public extension Dictionary {
         guard JSONSerialization.isValidJSONObject(self) else {
             return nil
         }
-        let options = (prettify == true) ? JSONSerialization.WritingOptions.prettyPrinted : JSONSerialization.WritingOptions()
+        let options = (prettify == true) ? JSONSerialization.WritingOptions.prettyPrinted : JSONSerialization
+            .WritingOptions()
         return try? JSONSerialization.data(withJSONObject: self, options: options)
     }
     #endif
@@ -94,7 +89,8 @@ public extension Dictionary {
     /// - Returns: optional JSON String (if applicable).
     func jsonString(prettify: Bool = false) -> String? {
         guard JSONSerialization.isValidJSONObject(self) else { return nil }
-        let options = (prettify == true) ? JSONSerialization.WritingOptions.prettyPrinted : JSONSerialization.WritingOptions()
+        let options = (prettify == true) ? JSONSerialization.WritingOptions.prettyPrinted : JSONSerialization
+            .WritingOptions()
         guard let jsonData = try? JSONSerialization.data(withJSONObject: self, options: options) else { return nil }
         return String(data: jsonData, encoding: .utf8)
     }
@@ -114,13 +110,12 @@ public extension Dictionary {
     func compactMapKeysAndValues<K, V>(_ transform: ((key: Key, value: Value)) throws -> (K, V)?) rethrows -> [K: V] {
         return [K: V](uniqueKeysWithValues: try compactMap(transform))
     }
-
 }
 
 // MARK: - Methods (Value: Equatable)
-public extension Dictionary where Value: Equatable {
 
-    /// SS: 返回所有包含指定 value 的 keys
+public extension Dictionary where Value: Equatable {
+    /// SS: 返回所有包含指定 value 的 keys.
     ///
     ///        let dict = ["key1": "value1", "key2": "value1", "key3": "value2"]
     ///        dict.keys(forValue: "value1") -> ["key1", "key2"]
@@ -132,12 +127,10 @@ public extension Dictionary where Value: Equatable {
     func keys(forValue value: Value) -> [Key] {
         return keys.filter { self[$0] == value }
     }
-
 }
 
 // MARK: - Methods (ExpressibleByStringLiteral)
 public extension Dictionary where Key: StringProtocol {
-
     /// SS: 小写所有 keys
     ///
     ///        var dict = ["tEstKeY": "value"]
@@ -155,8 +148,8 @@ public extension Dictionary where Key: StringProtocol {
 }
 
 // MARK: - Subscripts
-public extension Dictionary {
 
+public extension Dictionary {
     /// SS: Deep fetch or set a value from nested dictionaries.
     ///
     ///        var dict =  ["key": ["key1": ["key2": "value"]]]
@@ -198,9 +191,9 @@ public extension Dictionary {
 }
 
 // MARK: - Operators
-public extension Dictionary {
 
-    /// SS: 合并两个字典
+public extension Dictionary {
+    /// SS: Merge the keys/values of two dictionaries.
     ///
     ///        let dict: [String: String] = ["key1": "value1"]
     ///        let dict2: [String: String] = ["key2": "value2"]
@@ -232,7 +225,7 @@ public extension Dictionary {
     ///   - lhs: 字典
     ///   - rhs: 字典
     static func += (lhs: inout [Key: Value], rhs: [Key: Value]) {
-        rhs.forEach { lhs[$0] = $1}
+        rhs.forEach { lhs[$0] = $1 }
     }
 
     /// SS: 返回新的字典，不包含序列中的键
@@ -267,5 +260,4 @@ public extension Dictionary {
     static func -= <S: Sequence>(lhs: inout [Key: Value], keys: S) where S.Element == Key {
         lhs.removeAll(keys: keys)
     }
-
 }

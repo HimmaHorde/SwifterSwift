@@ -1,56 +1,48 @@
-//
-//  NSPredicateExtensions.swift
-//  SwifterSwift
-//
-//  Created by Max Härtwig on 04.10.17.
-//  Copyright © 2017 SwifterSwift
-//
+// NSPredicateExtensions.swift - Copyright 2020 SwifterSwift
 
 #if canImport(Foundation)
 import Foundation
 
 // MARK: - Properties
-public extension NSPredicate {
 
-    /// SS: 快速产生非运算
+public extension NSPredicate {
+    /// SS: Returns a new predicate formed by NOT-ing the predicate.
     var not: NSCompoundPredicate {
         return NSCompoundPredicate(notPredicateWithSubpredicate: self)
     }
-
 }
 
 // MARK: - Methods
-public extension NSPredicate {
 
-    /// SS: 快速创建与运算
+public extension NSPredicate {
+    /// SS: Returns a new predicate formed by AND-ing the argument to the predicate.
     ///
-    /// - Parameter predicate: 谓词
+    /// - Parameter predicate: NSPredicate
     /// - Returns: NSCompoundPredicate
     func and(_ predicate: NSPredicate) -> NSCompoundPredicate {
         return NSCompoundPredicate(andPredicateWithSubpredicates: [self, predicate])
     }
 
-    /// SS: 快速创建或运算
+    /// SS: Returns a new predicate formed by OR-ing the argument to the predicate.
     ///
     /// - Parameter predicate: NSPredicate
     /// - Returns: NSCompoundPredicate
     func or(_ predicate: NSPredicate) -> NSCompoundPredicate {
         return NSCompoundPredicate(orPredicateWithSubpredicates: [self, predicate])
     }
-
 }
 
 // MARK: - Operators
-public extension NSPredicate {
 
-    /// SS: 快速产生非运算
+public extension NSPredicate {
+    /// SS: Returns a new predicate formed by NOT-ing the predicate.
     /// - Parameters: rhs: NSPredicate to convert.
     /// - Returns: NSCompoundPredicate
     static prefix func ! (rhs: NSPredicate) -> NSCompoundPredicate {
         return rhs.not
     }
 
-    /// SS: 快速创建与运算
+    /// SS: Returns a new predicate formed by AND-ing the argument to the predicate.
     ///
     /// - Parameters:
     ///   - lhs: NSPredicate.
@@ -60,7 +52,7 @@ public extension NSPredicate {
         return lhs.and(rhs)
     }
 
-    /// SS: 快速创建或运算
+    /// SS: Returns a new predicate formed by OR-ing the argument to the predicate.
     ///
     /// - Parameters:
     ///   - lhs: NSPredicate.
@@ -70,7 +62,7 @@ public extension NSPredicate {
         return lhs.or(rhs)
     }
 
-    ///  SS: ==  +！
+    /// SS: Returns a new predicate formed by remove the argument to the predicate.
     ///
     /// - Parameters:
     ///   - lhs: NSPredicate.
@@ -79,6 +71,6 @@ public extension NSPredicate {
     static func - (lhs: NSPredicate, rhs: NSPredicate) -> NSCompoundPredicate {
         return lhs + !rhs
     }
-
 }
+
 #endif

@@ -1,17 +1,11 @@
-//
-//  UIImageExtensions.swift
-//  SwifterSwift
-//
-//  Created by Omar Albeik on 8/6/16.
-//  Copyright © 2016 SwifterSwift
-//
+// UIImageExtensions.swift - Copyright 2020 SwifterSwift
 
 #if canImport(UIKit)
 import UIKit
 
 // MARK: - Properties
-public extension UIImage {
 
+public extension UIImage {
     /// SS: 图片的大小 单位:bytes
     var bytesSize: Int {
         return jpegData(compressionQuality: 1)?.count ?? 0
@@ -32,37 +26,67 @@ public extension UIImage {
         return withRenderingMode(.alwaysTemplate)
     }
 
+    #if canImport(CoreImage)
+    /// SS: Average color for this image
+    func averageColor() -> UIColor? {
+        // https://stackoverflow.com/questions/26330924
+        guard let ciImage = ciImage ?? CIImage(image: self) else { return nil }
+
+        // CIAreaAverage returns a single-pixel image that contains the average color for a given region of an image.
+        let parameters = [kCIInputImageKey: ciImage, kCIInputExtentKey: CIVector(cgRect: ciImage.extent)]
+        guard let outputImage = CIFilter(name: "CIAreaAverage", parameters: parameters)?.outputImage else {
+            return nil
+        }
+
+        // After getting the single-pixel image from the filter extract pixel's RGBA8 data
+        var bitmap = [UInt8](repeating: 0, count: 4)
+        let workingColorSpace: Any = cgImage?.colorSpace ?? NSNull()
+        let context = CIContext(options: [.workingColorSpace: workingColorSpace])
+        context.render(outputImage,
+                       toBitmap: &bitmap,
+                       rowBytes: 4,
+                       bounds: CGRect(x: 0, y: 0, width: 1, height: 1),
+                       format: .RGBA8,
+                       colorSpace: nil)
+
+        // Convert pixel data to UIColor
+        return UIColor(red: CGFloat(bitmap[0]) / 255.0,
+                       green: CGFloat(bitmap[1]) / 255.0,
+                       blue: CGFloat(bitmap[2]) / 255.0,
+                       alpha: CGFloat(bitmap[3]) / 255.0)
+    }
+    #endif
 }
 
 // MARK: - Methods
-public extension UIImage {
 
-    /// SS: 压缩图片质量,并返回压缩后的 UIImage。
+public extension UIImage {
+    /// SS: Compressed UIImage from original UIImage.
     ///
-    /// - Parameter quality: 生成的JPEG图像的质量，表示为从0.0到1.0的值。值0.0表示最大压缩(或最低质量)，值1.0表示最小压缩(或最佳质量)，(默认值为0.5)。
-    /// - Returns: 压缩后图片,可能为空。
+    /// - Parameter quality: The quality of the resulting JPEG image, expressed as a value from 0.0 to 1.0. The value 0.0 represents the maximum compression (or lowest quality) while the value 1.0 represents the least compression (or best quality), (default is 0.5).
+    /// - Returns: optional UIImage (if applicable).
     func compressed(quality: CGFloat = 0.5) -> UIImage? {
         guard let data = jpegData(compressionQuality: quality) else { return nil }
         return UIImage(data: data)
     }
 
-    /// SS: 压缩图片质量,返回压缩后的 Data。
+    /// SS: Compressed UIImage data from original UIImage.
     ///
-    /// - Parameter quality: 压缩系数 0 - 1;默认0.5。
-    /// - Returns: 压缩后的 Data
+    /// - Parameter quality: The quality of the resulting JPEG image, expressed as a value from 0.0 to 1.0. The value 0.0 represents the maximum compression (or lowest quality) while the value 1.0 represents the least compression (or best quality), (default is 0.5).
+    /// - Returns: optional Data (if applicable).
     func compressedData(quality: CGFloat = 0.5) -> Data? {
         return jpegData(compressionQuality: quality)
     }
 
-    /// SS: 剪切指定位置的图片,图片scale等于原图。
+    /// SS: UIImage Cropped to CGRect.
     ///
-    /// - Parameter rect: 位置。
-    /// - Returns: 剪切后图片
+    /// - Parameter rect: CGRect to crop UIImage to.
+    /// - Returns: cropped UIImage
     func cropped(to rect: CGRect) -> UIImage {
-        guard rect.size.width <= size.width && rect.size.height <= size.height else { return self }
-        let newRect = CGRect.init(x: rect.origin.x * scale, y: rect.origin.y * scale, width: rect.width * scale, height: rect.height * scale)
-        guard let image: CGImage = cgImage?.cropping(to: newRect) else { return self }
-        return UIImage.init(cgImage: image, scale: self.scale, orientation: .up)
+        guard rect.size.width <= size.width, rect.size.height <= size.height else { return self }
+        let scaledRect = rect.applying(CGAffineTransform(scaleX: scale, y: scale))
+        guard let image = cgImage?.cropping(to: scaledRect) else { return self }
+        return UIImage(cgImage: image, scale: scale, orientation: imageOrientation)
     }
 
     /// SS: UIImage根据高宽比缩放。
@@ -162,35 +186,48 @@ public extension UIImage {
         return newImage
     }
 
-    /// SS: 单色填充整个图片(无视原图的shape)
+    /// SS: 单色填充整个图片
     ///
     /// - Parameter color: 填充色
     /// - Returns: 填充后的新图
     func filled(withColor color: UIColor) -> UIImage {
-
         #if !os(watchOS)
         if #available(tvOS 10.0, *) {
             let format = UIGraphicsImageRendererFormat()
             format.scale = scale
+            let maskImage = cgImage
+            let rect = CGRect(origin: .zero, size: size)
             let renderer = UIGraphicsImageRenderer(size: size, format: format)
             return renderer.image { context in
+                if let mask = maskImage {
+                    context.cgContext.translateBy(x: 0, y: size.height)
+                    context.cgContext.scaleBy(x: 1.0, y: -1.0)
+                    context.cgContext.clip(to: rect, mask: mask)
+                }
                 color.setFill()
-                context.fill(CGRect(origin: .zero, size: size))
+                context.fill(rect)
             }
         }
         #endif
 
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        color.setFill()
         guard let context = UIGraphicsGetCurrentContext() else { return self }
 
-        color.setFill()
-        context.fill(CGRect.init(origin: .zero, size: size))
+        context.translateBy(x: 0, y: size.height)
+        context.scaleBy(x: 1.0, y: -1.0)
+        context.setBlendMode(CGBlendMode.normal)
+
+        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        guard let mask = cgImage else { return self }
+        context.clip(to: rect, mask: mask)
+        context.fill(rect)
 
         let newImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return newImage
     }
-
+    
     /// SS: 生成添加半透明遮罩的图片
     ///
     /// - Parameter color: 使用有透明度的颜色
@@ -288,7 +325,6 @@ public extension UIImage {
     ///   - backgroundColor: Color to use as background color
     /// - Returns: UIImage with a background color that is visible where alpha < 1
     func withBackgroundColor(_ backgroundColor: UIColor) -> UIImage {
-
         #if !os(watchOS)
         if #available(tvOS 10.0, *) {
             let format = UIGraphicsImageRendererFormat()
@@ -319,7 +355,7 @@ public extension UIImage {
     func withRoundedCorners(radius: CGFloat? = nil) -> UIImage? {
         let maxRadius = min(size.width, size.height) / 2
         let cornerRadius: CGFloat
-        if let radius = radius, radius > 0 && radius <= maxRadius {
+        if let radius = radius, radius > 0, radius <= maxRadius {
             cornerRadius = radius
         } else {
             cornerRadius = maxRadius
@@ -350,12 +386,11 @@ public extension UIImage {
     func jpegBase64String(compressionQuality: CGFloat) -> String? {
         return jpegData(compressionQuality: compressionQuality)?.base64EncodedString()
     }
-
 }
 
 // MARK: - Initializers
-public extension UIImage {
 
+public extension UIImage {
     /// SS: 生成指定颜色和尺寸的图片
     ///
     /// - Parameters:
@@ -402,6 +437,6 @@ public extension UIImage {
         let data = try Data(contentsOf: url)
         self.init(data: data, scale: scale)
     }
-
 }
+
 #endif

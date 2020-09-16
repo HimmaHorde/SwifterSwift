@@ -1,22 +1,16 @@
-//
-//  UITabBarExtensions.swift
-//  SwifterSwift
-//
-//  Created by Omar Albeik on 9/28/16.
-//  Copyright © 2016 SwifterSwift
-//
+// UITabBarExtensions.swift - Copyright 2020 SwifterSwift
 
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
 
 // MARK: - Methods
-public extension UITabBar {
 
-    /// SS: 设置 tabBar 的颜色
+public extension UITabBar {
+    /// SS: Set tabBar colors.
     ///
     /// - Parameters:
-    ///   - background: 背景色
-    ///   - selectedBackground: 选中的背景色
+    ///   - background: background color.
+    ///   - selectedBackground: background color for selected tab.
     ///   - item: icon tint color for items.
     ///   - selectedItem: icon tint color for item.
     func setColors(
@@ -24,7 +18,6 @@ public extension UITabBar {
         selectedBackground: UIColor? = nil,
         item: UIColor? = nil,
         selectedItem: UIColor? = nil) {
-
         // background
         barTintColor = background ?? barTintColor
 
@@ -40,7 +33,7 @@ public extension UITabBar {
         }
 
         if let selectedbg = selectedBackground {
-            let rect = CGSize(width: frame.width/CGFloat(barItems.count), height: frame.height)
+            let rect = CGSize(width: frame.width / CGFloat(barItems.count), height: frame.height)
             selectionIndicatorImage = { (color: UIColor, size: CGSize) -> UIImage in
                 UIGraphicsBeginImageContextWithOptions(size, false, 1)
                 color.setFill()
@@ -76,7 +69,7 @@ public extension UITabBar {
                     let newImage = UIGraphicsGetImageFromCurrentImageContext()!
                     UIGraphicsEndImageContext()
                     return newImage
-                    }(image, itemColor).withRenderingMode(.alwaysOriginal)
+                }(image, itemColor).withRenderingMode(.alwaysOriginal)
 
                 barItem.setTitleTextAttributes([.foregroundColor: itemColor], for: .normal)
                 if let selected = selectedItem {
@@ -85,7 +78,6 @@ public extension UITabBar {
             }
         }
     }
-
 }
 
 #endif

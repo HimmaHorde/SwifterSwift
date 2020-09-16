@@ -1,18 +1,12 @@
-//
-//  UITableViewExtensions.swift
-//  SwifterSwift
-//
-//  Created by Omar Albeik on 8/22/16.
-//  Copyright © 2016 SwifterSwift
-//
+// UITableViewExtensions.swift - Copyright 2020 SwifterSwift
 
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
 
 // MARK: - Properties
-public extension UITableView {
 
-    /// SS: 最后一个 row 的 indexpath
+public extension UITableView {
+    /// SS: 最后一个 row 的 indexpath.
     var indexPathForLastRow: IndexPath? {
         guard let lastSection = lastSection else { return nil }
         return indexPathForLastRow(inSection: lastSection)
@@ -22,12 +16,11 @@ public extension UITableView {
     var lastSection: Int? {
         return numberOfSections > 0 ? numberOfSections - 1 : nil
     }
-
 }
 
 // MARK: - Methods
-public extension UITableView {
 
+public extension UITableView {
     /// SS: tableView 全部 row 的个数。
     ///
     /// - Returns: 全部 row 的个数。
@@ -44,7 +37,7 @@ public extension UITableView {
     /// SS: 获取指定 Section 的最后一个 Cell 的 indexPath
     func indexPathForLastRow(inSection section: Int) -> IndexPath? {
         guard numberOfSections > 0, section >= 0 else { return nil }
-        guard numberOfRows(inSection: section) > 0  else {
+        guard numberOfRows(inSection: section) > 0 else {
             return IndexPath(row: 0, section: section)
         }
         return IndexPath(row: numberOfRows(inSection: section) - 1, section: section)
@@ -77,7 +70,8 @@ public extension UITableView {
     /// - Returns: UITableViewCell 实例.
     func dequeueReusableCell<T: UITableViewCell>(withClass name: T.Type) -> T {
         guard let cell = dequeueReusableCell(withIdentifier: String(describing: name)) as? T else {
-            fatalError("Couldn't find UITableViewCell for \(String(describing: name))")
+            fatalError(
+                "Couldn't find UITableViewCell for \(String(describing: name)), make sure the cell is registered with table view")
         }
         return cell
     }
@@ -90,7 +84,8 @@ public extension UITableView {
     /// - Returns: UITableViewCell 实例.
     func dequeueReusableCell<T: UITableViewCell>(withClass name: T.Type, for indexPath: IndexPath) -> T {
         guard let cell = dequeueReusableCell(withIdentifier: String(describing: name), for: indexPath) as? T else {
-            fatalError("Couldn't find UITableViewCell for \(String(describing: name))")
+            fatalError(
+                "Couldn't find UITableViewCell for \(String(describing: name)), make sure the cell is registered with table view")
         }
         return cell
     }
@@ -101,7 +96,8 @@ public extension UITableView {
     /// - Returns: UITableViewHeaderFooterView object with associated class name.
     func dequeueReusableHeaderFooterView<T: UITableViewHeaderFooterView>(withClass name: T.Type) -> T {
         guard let headerFooterView = dequeueReusableHeaderFooterView(withIdentifier: String(describing: name)) as? T else {
-            fatalError("Couldn't find UITableViewHeaderFooterView for \(String(describing: name))")
+            fatalError(
+                "Couldn't find UITableViewHeaderFooterView for \(String(describing: name)), make sure the view is registered with table view")
         }
         return headerFooterView
     }
@@ -202,6 +198,5 @@ public extension UITableView {
         guard indexPath.row < numberOfRows(inSection: indexPath.section) else { return }
         scrollToRow(at: indexPath, at: scrollPosition, animated: animated)
     }
-
 }
 #endif

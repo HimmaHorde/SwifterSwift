@@ -1,50 +1,42 @@
-//
-//  UIImageViewExtensions.swift
-//  SwifterSwift
-//
-//  Created by Omar Albeik on 8/25/16.
-//  Copyright © 2016 SwifterSwift
-//
+// UIImageViewExtensions.swift - Copyright 2020 SwifterSwift
 
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
 
 // MARK: - Methods
-public extension UIImageView {
 
-    /// SS: 设置网络图片
+public extension UIImageView {
+    /// SS: Set image from a URL.
     ///
     /// - Parameters:
-    ///   - url: 图片网址
-    ///   - contentMode: 缩放模式
-    ///   - placeHolder: 占位图
-    ///   - completionHandler: 结束回调
+    ///   - url: URL of image.
+    ///   - contentMode: imageView content mode (default is .scaleAspectFit).
+    ///   - placeHolder: optional placeholder image
+    ///   - completionHandler: optional completion handler to run when download finishs (default is nil).
     func download(
         from url: URL,
         contentMode: UIView.ContentMode = .scaleAspectFit,
         placeholder: UIImage? = nil,
         completionHandler: ((UIImage?) -> Void)? = nil) {
-
         image = placeholder
         self.contentMode = contentMode
-        URLSession.shared.dataTask(with: url) { (data, response, _) in
+        URLSession.shared.dataTask(with: url) { data, response, _ in
             guard
                 let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
                 let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
                 let data = data,
-                let image = UIImage(data: data)
-                else {
-                    completionHandler?(nil)
-                    return
+                let image = UIImage(data: data) else {
+                completionHandler?(nil)
+                return
             }
             DispatchQueue.main.async { [unowned self] in
                 self.image = image
                 completionHandler?(image)
             }
-            }.resume()
+        }.resume()
     }
 
-    /// SS: 高斯模糊，使用系统方法。
+    /// SS: Make image view blurry
     ///
     /// - Parameter style: UIBlurEffectStyle (default is .light).
     func blur(withStyle style: UIBlurEffect.Style = .light) {
@@ -65,7 +57,6 @@ public extension UIImageView {
         imgView.blur(withStyle: style)
         return imgView
     }
-
 }
 
 #endif
