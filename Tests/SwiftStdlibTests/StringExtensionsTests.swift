@@ -5,7 +5,8 @@ import XCTest
 
 // swiftlint:disable:next type_body_length
 final class StringExtensionsTests: XCTestCase {
-    var helloWorld = "Hello World!"
+    let helloWorld = "Hello World!"
+    let flower = "💐" // for testing multi-byte characters
 
     override func setUp() {
         super.setUp()
@@ -565,25 +566,40 @@ final class StringExtensionsTests: XCTestCase {
         XCTAssertEqual(url, "it's%20easy%20to%20encode%20strings")
     }
 
-    func testMatches() {
-        XCTAssert("123".matches(pattern: "\\d{3}"))
+    let emailPattern = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+
+    func testPatternMatches() {
+        XCTAssertTrue("123".matches(pattern: "\\d{3}"))
         XCTAssertFalse("dasda".matches(pattern: "\\d{3}"))
-        XCTAssertFalse("notanemail.com".matches(pattern: "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"))
-        XCTAssert("email@mail.com".matches(pattern: "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"))
+        XCTAssertFalse("notanemail.com".matches(pattern: emailPattern))
+        XCTAssertTrue("email@mail.com".matches(pattern: emailPattern))
+    }
+
+    func testRegexMatches() throws {
+        XCTAssertTrue("123".matches(regex: try NSRegularExpression(pattern: "\\d{3}")))
+        XCTAssertFalse("dasda".matches(regex: try NSRegularExpression(pattern: "\\d{3}")))
+        XCTAssertFalse("notanemail.com".matches(regex: try NSRegularExpression(pattern: emailPattern)))
+        XCTAssertTrue("email@mail.com".matches(regex: try NSRegularExpression(pattern: emailPattern)))
     }
 
     #if canImport(Foundation)
-    func testRegexMatchOperator() {
+    func testPatternMatchOperator() {
         XCTAssert("123" ~= "\\d{3}")
         XCTAssertFalse("dasda" ~= "\\d{3}")
-        XCTAssertFalse("notanemail.com" ~= "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}")
-        XCTAssert("email@mail.com" ~= "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}")
+        XCTAssertFalse("notanemail.com" ~= emailPattern)
+        XCTAssert("email@mail.com" ~= emailPattern)
         XCTAssert("hat" ~= "[a-z]at")
         XCTAssertFalse("" ~= "[a-z]at")
         XCTAssert("" ~= "[a-z]*")
         XCTAssertFalse("" ~= "[0-9]+")
     }
     #endif
+
+    func testRegexMatchOperator() throws {
+        let regex = try NSRegularExpression(pattern: "\\d{3}")
+        XCTAssert("123" ~= regex)
+        XCTAssertFalse("abc" ~= regex)
+    }
 
     func testPadStart() {
         var str: String = "str"
@@ -793,6 +809,12 @@ final class StringExtensionsTests: XCTestCase {
         XCTAssertEqual("Hello".nsString, NSString(string: "Hello"))
     }
 
+    func testFullNSRange() {
+        XCTAssertEqual("".fullNSRange, NSRange(location: 0, length: 0))
+        XCTAssertEqual(helloWorld.fullNSRange, NSRange(location: 0, length: 12))
+        XCTAssertEqual(flower.fullNSRange, NSRange(location: 0, length: 2))
+    }
+
     func testLastPathComponent() {
         let string = "hello"
         let nsString = NSString(string: "hello")
@@ -821,6 +843,34 @@ final class StringExtensionsTests: XCTestCase {
         let string = "hello"
         let nsString = NSString(string: "hello")
         XCTAssertEqual(string.pathComponents, nsString.pathComponents)
+    }
+
+    func testRange() {
+        let fullRange = helloWorld.range(from: NSRange(location: 0, length: 12))
+        XCTAssertEqual(String(helloWorld[fullRange]), helloWorld)
+
+        let range = helloWorld.range(from: NSRange(location: 6, length: 6))
+        XCTAssertEqual(helloWorld[range], "World!")
+
+        let emptyRange = helloWorld.range(from: NSRange(location: 0, length: 0))
+        XCTAssertEqual(helloWorld[emptyRange], "")
+
+        let flowerRange = flower.range(from: NSRange(location: 0, length: 2))
+        XCTAssertEqual(String(flower[flowerRange]), flower)
+    }
+
+    func testNSRange() {
+        let startIndex = helloWorld.startIndex
+        let endIndex = helloWorld.endIndex
+        XCTAssertEqual(helloWorld.nsRange(from: startIndex..<endIndex), NSRange(location: 0, length: 12))
+
+        XCTAssertEqual(
+            helloWorld.nsRange(from: helloWorld.index(startIndex, offsetBy: 6)..<endIndex),
+            NSRange(location: 6, length: 6))
+
+        XCTAssertEqual(helloWorld.nsRange(from: startIndex..<startIndex), NSRange(location: 0, length: 0))
+
+        XCTAssertEqual(flower.nsRange(from: flower.startIndex..<flower.endIndex), NSRange(location: 0, length: 2))
     }
 
     func testAppendingPathComponent() {
@@ -859,5 +909,34 @@ final class StringExtensionsTests: XCTestCase {
         let num = 12
         XCTAssertNotNil(num.ordinalString())
         XCTAssertEqual(num.ordinalString(), "12th")
+    }
+
+    func testReplacingOccurrencesRegex() throws {
+        let re1 = try NSRegularExpression(pattern: "empty")
+        XCTAssertEqual("", "".replacingOccurrences(of: re1, with: "case"))
+
+        let string = "hello"
+
+        let re2 = try NSRegularExpression(pattern: "not")
+        XCTAssertEqual("hello", string.replacingOccurrences(of: re2, with: "found"))
+        let re3 = try NSRegularExpression(pattern: "l+")
+        XCTAssertEqual("hexo", string.replacingOccurrences(of: re3, with: "x"))
+        let re4 = try NSRegularExpression(pattern: "(ll)")
+        XCTAssertEqual("hellxo", string.replacingOccurrences(of: re4, with: "$1x"))
+
+        let re5 = try NSRegularExpression(pattern: "ell")
+        let options: NSRegularExpression.MatchingOptions = [.anchored]
+        XCTAssertEqual("hello", string.replacingOccurrences(of: re5, with: "not found", options: options))
+
+        let re6 = try NSRegularExpression(pattern: "l")
+        let range = string.startIndex..<string.index(string.startIndex, offsetBy: 3)
+        XCTAssertEqual("hexlo", string.replacingOccurrences(of: re6, with: "x", range: range))
+    }
+
+    func testNSRangeSubscript() {
+        XCTAssertEqual(helloWorld[NSRange(location: 0, length: 0)], "")
+        XCTAssertEqual(String(helloWorld[NSRange(location: 0, length: 12)]), helloWorld)
+        XCTAssertEqual(String(helloWorld[NSRange(location: 6, length: 6)]), "World!")
+        XCTAssertEqual(String(flower[NSRange(location: 0, length: 2)]), flower)
     }
 }
