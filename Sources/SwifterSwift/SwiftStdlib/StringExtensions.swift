@@ -20,7 +20,7 @@ import CoreGraphics
 
 public extension String {
     #if canImport(Foundation)
-    /// SS: String decoded from base64 (if applicable).
+    /// SS: base64 解密.
     ///
     ///		"SGVsbG8gV29ybGQh".base64Decoded = Optional("Hello World!")
     ///
@@ -40,7 +40,7 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// SS: String encoded in base64 (if applicable).
+    /// SS: base64 加密.
     ///
     ///		"Hello World!".base64Encoded -> Optional("SGVsbG8gV29ybGQh")
     ///
@@ -51,7 +51,7 @@ public extension String {
     }
     #endif
 
-    /// SS: Array of characters of a string.
+    /// SS: 返回 characters 数组.
     var charactersArray: [Character] {
         return Array(self)
     }
@@ -75,36 +75,15 @@ public extension String {
     }
     #endif
 
-    /// SS: Check if string contains one or more emojis.
+    /// SS: 字符串是否包含 emoji.
     ///
     ///		"Hello 😀".containEmoji -> true
     ///
     var containEmoji: Bool {
-        // http://stackoverflow.com/questions/30757193/find-out-if-character-in-string-is-emoji
-        for scalar in unicodeScalars {
-            switch scalar.value {
-            case 0x1F600...0x1F64F, // Emoticons
-                 0x1F300...0x1F5FF, // Misc Symbols and Pictographs
-                 0x1F680...0x1F6FF, // Transport and Map
-                 0x1F1E6...0x1F1FF, // Regional country flags
-                 0x2600...0x26FF, // Misc symbols
-                 0x2700...0x27BF, // Dingbats
-                 0xE0020...0xE007F, // Tags
-                 0xFE00...0xFE0F, // Variation Selectors
-                 0x1F900...0x1F9FF, // Supplemental Symbols and Pictographs
-                 127_000...127_600, // Various asian characters
-                 65024...65039, // Variation selector
-                 9100...9300, // Misc items
-                 8400...8447: // Combining Diacritical Marks for Symbols
-                return true
-            default:
-                continue
-            }
-        }
-        return false
+        return unicodeScalars.contains { $0.isEmoji }
     }
 
-    /// SS: First character of string (if applicable).
+    /// SS: 字符串的第一个字符.
     ///
     ///		"Hello".firstCharacterAsString -> Optional("H")
     ///		"".firstCharacterAsString -> nil
@@ -114,7 +93,7 @@ public extension String {
         return String(first)
     }
 
-    /// SS: Check if string contains one or more letters.
+    /// SS: 检查字符串是否包含字母.
     ///
     ///		"123abc".hasLetters -> true
     ///		"123".hasLetters -> false
@@ -348,7 +327,7 @@ public extension String {
         return Int(self)
     }
 
-    /// SS: Lorem ipsum string of given length.
+    /// SS: 获取指定长度的乱数假文.
     ///
     /// - Parameter length: number of characters to limit lorem ipsum to (default is 445 - full lorem ipsum).
     /// - Returns: Lorem ipsum dolor sit amet... string.
@@ -366,7 +345,7 @@ public extension String {
     }
 
     #if canImport(Foundation)
-    /// SS: URL from string (if applicable).
+    /// SS: 根据当前字符串生成URL.
     ///
     ///		"https://google.com".url -> URL(string: "https://google.com")
     ///		"not url".url -> nil
@@ -377,7 +356,7 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// SS: String with no spaces or new lines in beginning and end.
+    /// SS: 去除字符串开头结尾的空格和换行.
     ///
     ///		"   hello  \n".trimmed -> "hello"
     ///
@@ -387,7 +366,7 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// SS: Readable string from a URL string.
+    /// SS: url字符串解码.
     ///
     ///		"it's%20easy%20to%20decode%20strings".urlDecoded -> "it's easy to decode strings"
     ///
@@ -397,7 +376,7 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// SS: URL escaped string.
+    /// SS: 字符串url编码.
     ///
     ///		"it's easy to encode strings".urlEncoded -> "it's%20easy%20to%20encode%20strings"
     ///
@@ -427,14 +406,14 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// SS: Check if the given string contains only white spaces
+    /// SS: 检查给定的字符串是否只包含空白
     var isWhitespace: Bool {
         return trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// SS: Check if the given string spelled correctly
+    /// SS: 检查给定的字符串拼写是否正确
     var isSpelledCorrectly: Bool {
         let checker = UITextChecker()
         let range = NSRange(startIndex..<endIndex, in: self)
@@ -493,7 +472,7 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// SS: Array of strings separated by new lines.
+    /// SS: 返回根据换行符分割字符串生成的数组.
     ///
     ///		"Hello\ntest".lines() -> ["Hello", "test"]
     ///
@@ -508,7 +487,7 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// SS: Returns a localized string, with an optional comment for translators.
+    /// SS: 返回本地化的字符串，并为翻译人员提供可选的注释.
     ///
     ///        "Hello world".localized -> Hallo Welt
     ///
@@ -570,7 +549,7 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
-    /// SS: Transforms the string into a slug string.
+    /// SS: 字符串空格改为'-'连接.
     ///
     ///        "Swift is amazing".toSlug() -> "swift-is-amazing"
     ///
@@ -599,7 +578,7 @@ public extension String {
     }
     #endif
 
-    /// SS: Safely subscript string with index.
+    /// SS: 安全下标字符串指定位置的字符.
     ///
     ///		"Hello World!"[safe: 3] -> "l"
     ///		"Hello World!"[safe: 20] -> nil
@@ -610,7 +589,7 @@ public extension String {
         return self[self.index(startIndex, offsetBy: index)]
     }
 
-    /// SS: Safely subscript string within a given range.
+    /// SS: 通过开区间获取指定范围的子字符串.
     ///
     ///        "Hello World!"[safe: 6..<11] -> "World"
     ///        "Hello World!"[safe: 21..<110] -> nil
@@ -631,7 +610,7 @@ public extension String {
     }
 
     #if os(iOS) || os(macOS)
-    /// SS: Copy string to global pasteboard.
+    /// SS: 复制字符串到全局剪贴板.
     ///
     ///		"SomeText".copyToPasteboard() // copies "SomeText" to pasteboard
     ///
@@ -645,7 +624,7 @@ public extension String {
     }
     #endif
 
-    /// SS: Converts string format to CamelCase.
+    /// SS: 转换为驼峰格式.
     ///
     ///		var str = "sOme vaRiabLe Name"
     ///		str.camelize()
@@ -668,7 +647,7 @@ public extension String {
         return self
     }
 
-    /// SS: First character of string uppercased(if applicable) while keeping the original string.
+    /// SS: 保留源字符串格式，并将单词的首字母的大写.
     ///
     ///        "hello world".firstCharacterUppercased() -> "Hello world"
     ///        "".firstCharacterUppercased() -> ""
@@ -780,7 +759,7 @@ public extension String {
         return self
     }
 
-    /// SS: Sliced string from a start index with length.
+    /// SS: 截取指定位置的字符串,指定初始位置和长度.
     ///
     ///        "Hello World".slicing(from: 6, length: 5) -> "World"
     ///
