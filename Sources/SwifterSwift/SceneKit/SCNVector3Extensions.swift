@@ -30,7 +30,7 @@ public extension SCNVector3 {
         return sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2))
     }
     
-    /// SwifterSwift: Returns the unit or normalized vector where `length = 1`.
+    /// SS: Returns the unit or normalized vector where `length = 1`.
     ///
     ///     SCNVector3(2, 3, 6).normalized  -> SCNVector3(2/7, 3/7, 6/7)
     ///
@@ -128,7 +128,7 @@ public extension SCNVector3 {
         return SCNVector3(vector.x * scalar, vector.y * scalar, vector.z * scalar)
     }
     
-    /// SwifterSwift: Divide a SCNVector3 with a scalar
+    /// SS: Divide a SCNVector3 with a scalar
     ///
     ///     SCNVector3(10, 20, -30) / 3 -> SCNVector3(3/10, 0.15, -30)
     ///
@@ -140,7 +140,7 @@ public extension SCNVector3 {
         return SCNVector3(vector.x / scalar, vector.y / scalar, vector.z / scalar)
     }
 
-    /// SwifterSwift: Divide self with a scalar
+    /// SS: Divide self with a scalar
     ///
     ///     SCNVector3(10, 20, -30) /= 3 -> SCNVector3(3/10, 0.15, -30)
     ///

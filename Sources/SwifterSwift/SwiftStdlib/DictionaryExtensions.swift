@@ -111,7 +111,7 @@ public extension Dictionary {
         return [K: V](uniqueKeysWithValues: try compactMap(transform))
     }
 
-    /// SwifterSwift: Creates a new dictionary using specified keys
+    /// SS: 根据指定的keys生成一个新字典
     ///
     ///        var dict =  ["key1": 1, "key2": 2, "key3": 3, "key4": 4]
     ///        dict.pick(keys: ["key1", "key3", "key4"]) -> ["key1": 1, "key3": 3, "key4": 4]
@@ -210,7 +210,7 @@ public extension Dictionary {
 // MARK: - Operators
 
 public extension Dictionary {
-    /// SS: Merge the keys/values of two dictionaries.
+    /// SS: 合并两个字典生成一个新的字典,如果有重复的key,左侧的字典的值会被右侧的值覆盖
     ///
     ///        let dict: [String: String] = ["key1": "value1"]
     ///        let dict2: [String: String] = ["key2": "value2"]
